@@ -1,0 +1,70 @@
+<header>
+    <a href="#" class="logo">
+        <img src="Imagenes/Logoreal.png" alt="Logo">
+    </a>
+
+    <nav>
+        <ul>
+            <li><a href="#">Inicio</a></li>
+            
+            <li class="dropdown">
+                <a href="#">Lo real ▾</a>
+                <ul>
+                    <li><a href="#">Curriculum</a></li>
+                    <li><a href="#">Trabajos</a></li>
+                    <li><a href="#">Trapicheos</a></li>
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a href="#">La calle ▾</a>
+                <ul>
+                    <li><a href="#">Joseo de alto nivel</a></li>
+                    <li><a href="#">Pajin</a></li>
+                    <li><a href="#">El balcon de pablo</a></li>
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a href="#">Los Gs ▾</a>
+                <ul>
+                    <li><a href="#">Cuartero y su embrague</a></li>
+                    <li><a href="#">Bravas y rutinas</a></li>
+                    <li><a href="#">CEO de Shein</a></li>
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a href="#">La elite ▾</a>
+                <ul>
+                    <li><a href="#">Patillas</a></li>
+                    <li><a href="#">Venas duras</a></li>
+                    <li><a href="#">Vector(nudes)</a></li>
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a href="#">Los hombres de Gonzalo ▾</a>
+                <ul>
+                    <li><a href="#">40€</a></li>
+                    <li><a href="#">Patricia estrella</a></li>
+                    <li><a href="#">Lucas(Agente de la CIA)</a></li>
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a href="#">El cartel de Douglas ▾</a>
+                <ul>
+                    <li><a href="#">Pajin y sus putas</a></li>
+                    <li><a href="#">Pablo x Patricia (video borrado)</a></li>
+                    <li><a href="#">ASIR Experimento del gobierno</a></li>
+                </ul>
+            </li>
+        </ul>
+    </nav>
+
+    <section class="enlaces-derecha">
+        <a href="#">Sobre nosotros</a>
+        <a href="#">Preguntas infrecuentemente frecuentes</a>
+    </section>
+</header>

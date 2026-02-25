@@ -1,0 +1,9 @@
+Voy a mencionar los requisitos funcionales y no funcionales de mi codigo
+Como funcionales tengo un input donde poner los numeros
+utilizo el session para guardar numeros 
+cuando alguien manda un numero se añade al array
+el formulario tiene radiobutons 
+Y como no funcionales tengo
+al utilizar sesion los datos se quedan guardados hasta que la sesion se cierre
+Es compatible con otros dispositivos
+Tiene el css por fuera	
