@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -394,3 +395,8 @@
 <?php include 'footer.php'; ?>
 </body>
 </html>
+=======
+<?php
+//HOLA. ESTE LO HACE GUILLE
+<?
+>>>>>>> e8ebf32e493ecf69368bd4f063ff77089abf405f
