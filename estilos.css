@@ -6,7 +6,7 @@
 }
 
 body {
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 /* 2. Header: Contenedor principal */
@@ -14,8 +14,8 @@ header {
     display: flex;
     align-items: center;
     background-color: #00065f;
-    padding: 0 5%; /* Aire a los lados */
-    height: 70px;  /* Altura fija para control total */
+    padding: 0 5%;
+    height: 70px;
 }
 
 /* 3. Logo: Tamaño controlado */
@@ -26,7 +26,7 @@ header a.logo img {
 
 /* 4. Menú: Posición "Centro-Izquierda" */
 nav {
-    margin-left: 5%; /* Ajusta este % para moverlo desde el logo */
+    margin-left: 5%;
 }
 
 nav ul {
@@ -42,13 +42,12 @@ nav ul li {
 nav ul li a {
     color: white;
     text-decoration: none;
-    padding: 25px 15px; /* Relleno vertical para que el hover sea grande */
+    padding: 25px 15px;
     display: block;
     font-weight: bold;
 }
 
-/* 5. Los enlaces de la derecha (EL TRUCO) */
-/* Al poner margin-left: auto, este bloque empuja todo hacia la derecha del todo */
+/* 5. Los enlaces de la derecha */
 .enlaces-derecha {
     margin-left: auto; 
     display: flex;
@@ -65,7 +64,6 @@ nav ul li a {
 nav ul li ul {
     display: none;
     position: absolute;
-    top: 100%; 
     left: 0;
     background-color: #00065f;
     min-width: 160px;
@@ -86,66 +84,47 @@ nav ul li ul li a:hover {
 }
 
 /* 7. Footer: Estilo básico */
-/* =========================================
-   ESTILOS DEL FOOTER
-   ========================================= */
 .footer {
     background-color: #00065f;
     color: white;
-    padding: 20px 5%; /* El 5% da un poco de aire a los lados */
+    padding: 20px 5%;
 }
 
-/* El contenedor principal que pone todo en fila */
 .footer-row {
     display: flex;
-    flex-direction: row;            /* Fuerza a que estén en horizontal */
-    justify-content: space-between; /* Separa los 4 bloques uniformemente */
-    align-items: center;            /* Los centra verticalmente */
+    justify-content: space-between;
+    align-items: center;
     gap: 20px;
-    flex-wrap: wrap;                /* Para que no se rompa en pantallas pequeñas */
+    flex-wrap: wrap;
     width: 100%;
-}
-
-/* 1. Copy */
-.copy {
-    margin: 0;
 }
 
 /* 2. Dirección */
 .direccion-telefono {
     display: flex;
-    flex-direction: column; /* Apila las 3 líneas de texto */
+    flex-direction: column;
     gap: 5px;               
-    font-style: normal;     /* Quita la cursiva automática de <address> */
+    font-style: normal;
     text-align: center;
     font-weight: bold;
 }
 
-.direccion-telefono p {
-    margin: 0; /* Quita los márgenes por defecto de los párrafos */
-}
-
 /* 3. Mapa */
-.map-container {
-    margin: 0;
-}
-
 .map-container iframe {
     display: block;
-    max-width: 100%; /* Evita que el mapa rompa el diseño si la pantalla es más pequeña que 600px */
-    border: 2px solid white !important; /* Mantiene el borde blanco */
+    max-width: 100%;
+    border: 2px solid white;
 }
 
-/* 4. Correo y Keloke */
+/* 4. Correo / Contacto final */
 .contacto-final {
     display: flex;
     flex-direction: column; 
-    align-items: flex-end; /* Los alinea hacia la derecha */
+    align-items: flex-end;
     gap: 10px;
 }
 
 .contacto-final p {
-    margin: 0;
     font-weight: bold;
 }
 
