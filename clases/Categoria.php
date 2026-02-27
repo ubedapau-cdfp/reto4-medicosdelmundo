@@ -6,7 +6,6 @@
         public string $icono;
         public int $id_madre; // Autorreferencia para subcategorías
         public string $fecha_actualizacion;
-    }
 
     public function __construct(
         int $id_categoria, 
@@ -22,5 +21,6 @@
         $this->descripcion = $descripcion;
         $this->icono = $icono;
         $this->fecha_actualizacion = $fecha_actualizacion ?: date('Y-m-d');
+    }
     }
 ?>

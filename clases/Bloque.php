@@ -7,7 +7,6 @@
         public int $orden;
         public string $fecha_actualizacion;
         public int $id_categoria;
-    }
 
     public function __construct(
         int $id_bloque, 
@@ -25,5 +24,6 @@
         $this->contenido = $contenido;
         $this->orden = $orden;
         $this->fecha_actualizacion = $fecha_actualizacion ?: date('Y-m-d');
+    }
     }
 ?>
