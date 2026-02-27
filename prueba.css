@@ -1,0 +1,283 @@
+/* Fuente personalizada, para su uso en la página web. */
+@font-face {
+    font-family: 'Nexa Pro';
+    src: url('Fonts/NexaPro_Trial_Variable-Regular.ttf') format("truetype"), /* Source: Carpeta fonts, archivo. Formato TTF (TrueType Font) */
+         url('Fonts/NexaPro_Trial_Variable-Italic.ttf') format("truetype");
+  font-weight: normal; /* Peso de la fuente (la carga en su estado de defecto.)*/
+  font-style: normal; /* Estilo de la fuente normal (es decir, no es italic, o negrita.) */
+  font-display: swap; /* Pone el texto personalizado en cuanto se cargue en la página */
+}
+
+
+/* 1. Reset Total */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Nexa Pro', 'Segoe UI', sans-serif;
+}
+
+/* 2. Header: Contenedor principal */
+header {
+    display: flex;
+    align-items: center;
+    background-color: #00065f;
+    padding: 0 5%;
+    height: 70px;
+}
+
+/* 3. Logo: Tamaño controlado */
+header a.logo img {
+    height: 45px;
+    display: block;
+}
+
+/* 4. Menú: Posición "Centro-Izquierda" */
+nav {
+    margin-left: 5%;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+}
+
+nav ul li {
+    position: relative;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 25px 15px;
+    display: block;
+    font-weight: bold;
+}
+
+/* 5. Los enlaces de la derecha */
+.enlaces-derecha {
+    margin-left: auto; 
+    display: flex;
+    gap: 20px;
+}
+
+.enlaces-derecha a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* 6. Desplegable Corregido */
+nav ul li ul {
+    display: none;
+    position: absolute;
+    left: 0;
+    background-color: #00065f;
+    min-width: 160px;
+    box-shadow: 0px 5px 10px rgba(0,0,0,0.3);
+}
+
+nav ul li:hover ul {
+    display: block;
+}
+
+nav ul li ul li a {
+    padding: 12px 15px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+nav ul li ul li a:hover {
+    background-color: #007BFF;
+}
+
+/* 7. Footer: Estilo básico */
+.footer {
+    background-color: #00065f;
+    color: white;
+    padding: 20px 5%;
+}
+
+.footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+/* 2. Dirección */
+.direccion-telefono {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;               
+    font-style: normal;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* 3. Mapa */
+.map-container iframe {
+    display: block;
+    max-width: 100%;
+    border: 2px solid white;
+}
+
+/* 4. Correo / Contacto final */
+.contacto-final {
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.contacto-final p {
+    font-weight: bold;
+}
+
+.contacto-final a {
+    color: white;
+    text-decoration: none;
+}
+
+/* SECTION del contenido a enseñar en la página web */
+.contenidos{
+    background-color: #bde0ec; /* Color del fondo */
+    border-color: #0f143d; /* Color del border */
+    border-radius:15px; /* Redondeo del border */
+    border-style:solid; /* Cómo debe de estar el border (solid = normal) */
+    padding:50px; /* relleno */
+    margin:15px; /* margen */
+    text-align: center; /* texto al centro */
+}
+
+.contenidos b {
+    font-size: 25px;
+}
+
+.contenidos b.subtitulos{
+    font-size: 20px;
+}
+
+.contenidos b.ejemplos{
+    font-size: 15px;
+}
+
+.button{
+    background-color:#00065f;
+    color: white;
+    border-radius:10px;
+    font-size:20px;
+    padding:5px;
+    margin:10px;
+    text-decoration: none;
+}
+
+.button:hover{
+    background-color: #003d6e;
+}
+
+input[type=button], .opciones{
+    background-color:#00065f;
+    border-color:#0f143d;
+    color: white;
+    border-radius:10px;
+    font-size:15px;
+    padding:5px;
+    margin:10px;
+    border-style: solid;
+    font-family: 'Nexa Pro', 'Segoe UI', sans-serif;
+}
+
+input[type=button]:hover{
+    background-color: #003d6e;
+}
+
+
+/* VISTA DE TABLET */
+@media (max-width: 1024px) {
+
+    header {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 15px 5%;
+    }
+
+    nav ul {
+        gap: 5px;
+    }
+
+    nav ul li a {
+        padding: 15px 10px;
+        font-size: 14px;
+    }
+
+    .footer-row {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .contacto-final {
+        align-items: center;
+    }
+}
+
+/* VISTA DE TELÉFONO MÓVIL */
+@media (max-width: 768px) {
+
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        height: auto;
+        padding: 15px;
+    }
+
+    nav {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    nav ul li a {
+        padding: 12px;
+        width: 100%;
+    }
+
+    nav ul li ul {
+        position: static;
+        box-shadow: none;
+    }
+
+    .enlaces-derecha {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .contenidos {
+        padding: 20px;
+        margin: 10px;
+    }
+
+    .footer-row {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .contacto-final {
+        align-items: center;
+    }
+
+    .direccion-telefono {
+        text-align: center;
+    }
+}

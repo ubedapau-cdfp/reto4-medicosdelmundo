@@ -8,11 +8,10 @@
             <li><a href="#">Inicio</a></li>
             
             <li class="dropdown">
-                <a href="#">Lo real ▾</a>
+                <a href="#">Contratos ▾</a>
                 <ul>
-                    <li><a href="#">Curriculum</a></li>
-                    <li><a href="#">Trabajos</a></li>
-                    <li><a href="#">Trapicheos</a></li>
+                    <li><a href="#">Requisitos para la Relación Laboral</a></li>
+                    <li><a href="prueba.php">Jerarquía normativa y derechos</a></li>
                 </ul>
             </li>
 
@@ -65,6 +64,6 @@
 
     <section class="enlaces-derecha">
         <a href="#">Sobre nosotros</a>
-        <a href="#">Preguntas infrecuentemente frecuentes</a>
+        <a href="#">Preguntas frecuentes</a>
     </section>
 </header>
