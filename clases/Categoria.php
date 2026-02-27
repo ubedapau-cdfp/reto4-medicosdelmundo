@@ -2,18 +2,18 @@
     class Categoria {
         public int $id_categoria;
         public string $titulo;
-        public ?string $descripcion;
-        public ?string $icono;
-        public ?int $id_madre; // Autorreferencia para subcategorías
+        public string $descripcion;
+        public string $icono;
+        public int $id_madre; // Autorreferencia para subcategorías
         public string $fecha_actualizacion;
     }
 
     public function __construct(
         int $id_categoria, 
         string $titulo, 
-        ?int $id_madre = null, 
-        ?string $descripcion = null, 
-        ?string $icono = null, 
+        int $id_madre = null, 
+        string $descripcion = null, 
+        string $icono = null, 
         string $fecha_actualizacion = ''
     ) {
         $this->id_categoria = $id_categoria;
