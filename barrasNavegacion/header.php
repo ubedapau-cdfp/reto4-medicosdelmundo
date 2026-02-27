@@ -12,6 +12,7 @@
                 <ul>
                     <li><a href="#">Requisitos para la Relación Laboral</a></li>
                     <li><a href="prueba.php">Jerarquía normativa y derechos</a></li>
+                    <li><a href="#">Elementos del contrato</a></li>
                 </ul>
             </li>
 
