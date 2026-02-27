@@ -1,0 +1,19 @@
+<?php
+// conexion.php
+    //conectar la bd con los datos de postgres
+    $host = "localhost"; //el nombre del servidor (servername)
+    $port = "5432";
+    $dbname = "medicosDelMundo"; // Asegúrate de que este es el nombre de tu BD
+    $user = "postgres";
+    $password = "P@ssw0rd"; // La contraseña de Postgres
+
+    try {
+    $conn = new PDO("pgsql:host=$host;port=$port;dbname=$dbname", $user, $password);
+    // Mensaje de error por si acaso
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    //linea de que se ha conectado bien por si acaso
+    echo "Connected successfully";
+    } catch(PDOException $e) {
+    echo "Connection failed: " . $e->getMessage();
+    }
+?>

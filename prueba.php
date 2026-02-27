@@ -31,6 +31,9 @@
 </section>
 <?php include 'barrasNavegacion\footer.php'; ?>
 
+<?php 
+//prueba.php
+?>
 
 </body>
 </html>

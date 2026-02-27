@@ -14,32 +14,65 @@
     <p>Escoge, del siguiente selector, el apartado que quieres leer:</p>
     <form action="" method='POST'>
         <select class="opciones" name="opciones">
-            <option value="edad" name="edad">Edad</option>
-            <option value="nacionalidad" name="nacionalidad">Nacionalidad</option>
-            <option value="relaciones" name="relaciones">Relaciones Excluidas y Especiales</option>
+            <option value="7">Edad</option>
+            <option value="8">Nacionalidad</option>
+            <option value="9">Relaciones Excluidas y Especiales</option>
         </select>
-        <div><button type="Submit" value="Submit">Mostrar apartado</button></div>
+        <button type="Submit" value="Submit">Mostrar apartado</button>
     </form>
 </section>
 
 <section class="subapartados">
-
 <?php 
-if (isset($_POST['opciones'])){
-    $opciones=$_POST['opciones'];
-    if ($opciones=="edad"){
-        echo "<h2>Edad</h2>";
-        echo "Este apartado tendrá su respectivo contenido en un futuro. Perdón por las molestias.";
-    } elseif ($opciones=="nacionalidad"){
-        echo "<h2>Nacionalidad</h2>";
-        echo "Este apartado tendrá su respectivo contenido en un futuro. Perdón por las molestias.";
-    } elseif ($opciones=="relaciones"){
-        echo "<h2>Relaciones Excluidas y Especiales</h2>";
-        echo "Este apartado tendrá su respectivo contenido en un futuro. Perdón por las molestias.";
-    } else {
-        echo "<h1>Error en la selección.</h1>";
+// serContratada.php
+
+    if (isset($_POST['opciones'])){
+        // traemos la conexión con la bd
+        include 'conexion.php'; 
+        // Cargamos las clases necesarias desde tu carpeta 'clases'
+        include 'clases/Categoria.php';
+        include 'clases/Bloque.php';
+
+        $categoria=$_POST['opciones'];
+
+       try {
+        // Preparamos la consulta SQL; smt: método para hacer inyección segura SQL
+        $stmt = $conn->prepare("SELECT * FROM BLOQUE WHERE id_categoria = :id ORDER BY orden");
+        $stmt->bindParam(':id', $categoria);
+        $stmt->execute();
+
+        // Obtenemos los resultados
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+        if (count($result) > 0) {
+          foreach($result as $row) {
+            
+            // Creamos el objeto de forma simple
+            $bloqueCreado = new Bloque(
+              $row['id_bloque'],
+              $row['id_categoria'],
+              $row['titulo'],
+              $row['subtitulo'],
+              $row['contenido'],
+              $row['orden']
+            );
+
+            // Mostramos el contenido usando las propiedades del objeto
+            echo "<h2>" . $bloqueCreado->titulo . "</h2>";
+            if ($bloqueCreado->subtitulo) {
+                echo "<h3>" . $bloqueCreado->subtitulo . "</h3>";
+            }
+            echo "<p>" . $bloqueCreado->contenido . "</p>";
+            echo "<hr>";
+          }
+        } else {
+          echo "No se encontró contenido para esta selección.";
+        }
+
+      } catch(PDOException $e) {
+        echo "Error: " . $e->getMessage();
+      }
     }
-}
 ?>
 </section>
 
