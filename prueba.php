@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="prueba.css">
 </head>
 <body>
-<?php include 'codigo repetido\header.php'; ?>
+<?php include 'barrasNavegacion\header.php'; ?>
 <p>
 <section class="contenidos">
     <p><b>Jerarquía normativa y Derechos</b></p>
@@ -29,7 +29,7 @@
     <a href="#" class="button">Contratar</a><a href="sercontratada.php" class="button">Ser Contratada</a><a href="#" class="button">Indemnización</a>
     </div>
 </section>
-<?php include 'codigo repetido\footer.php'; ?>
+<?php include 'barrasNavegacion\footer.php'; ?>
 
 
 </body>
