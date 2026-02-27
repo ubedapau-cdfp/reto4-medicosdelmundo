@@ -145,7 +145,7 @@ nav ul li ul li a:hover {
 }
 
 /* SECTION del contenido a enseñar en la página web */
-.contenidos{
+.contenidos, .subapartados{
     background-color: #bde0ec; /* Color del fondo */
     border-color: #0f143d; /* Color del border */
     border-radius:15px; /* Redondeo del border */
@@ -181,7 +181,7 @@ nav ul li ul li a:hover {
     background-color: #003d6e;
 }
 
-input[type=button], .opciones{
+button[type=submit], .opciones{
     background-color:#00065f;
     border-color:#0f143d;
     color: white;
@@ -193,7 +193,7 @@ input[type=button], .opciones{
     font-family: 'Nexa Pro', 'Segoe UI', sans-serif;
 }
 
-input[type=button]:hover{
+button[type=submit]:hover{
     background-color: #003d6e;
 }
 
