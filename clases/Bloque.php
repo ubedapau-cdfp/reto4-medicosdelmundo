@@ -1,21 +1,21 @@
 <?php
     class Bloque {
-        public int $id_bloque;
-        public string $titulo;
-        public string $subtitulo;
-        public string $contenido;
-        public int $orden;
-        public string $fecha_actualizacion;
-        public int $id_categoria;
+        public $id_bloque;
+        public $titulo;
+        public $subtitulo;
+        public $contenido;
+        public $orden;
+        public $fecha_actualizacion;
+        public $id_categoria;
 
     public function __construct(
-        int $id_bloque, 
-        int $id_categoria,
-        string $titulo = null, 
-        string $subtitulo = null, 
-        string $contenido = null, 
-        int $orden = null,
-        string $fecha_actualizacion = ''
+        $id_bloque, 
+        $id_categoria,
+        $titulo = null, 
+        $subtitulo = null, 
+        $contenido = null, 
+        $orden = null,
+        $fecha_actualizacion = ''
     ) {
         $this->id_bloque = $id_bloque;
         $this->id_categoria = $id_categoria;

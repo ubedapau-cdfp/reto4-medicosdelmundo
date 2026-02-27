@@ -1,12 +1,12 @@
 <?php
     class Faq {
-        public int $id_faq;
-        public string $pregunta;
-        public string $respuesta;
-        public string $fecha_actualizacion;
-        public int $id_categoria;
+        public $id_faq;
+        public $pregunta;
+        public $respuesta;
+        public $fecha_actualizacion;
+        public $id_categoria;
 
-    public function __construct(int $id_faq, string $pregunta, string $respuesta, int $id_categoria, string $fecha_actualizacion = '') {
+    public function __construct($id_faq, $pregunta, $respuesta, $id_categoria, $fecha_actualizacion = '') {
         $this->id_faq = $id_faq;
         $this->pregunta = $pregunta;
         $this->respuesta = $respuesta;

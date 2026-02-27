@@ -1,19 +1,19 @@
 <?php
     class Categoria {
-        public int $id_categoria;
-        public string $titulo;
-        public string $descripcion;
-        public string $icono;
-        public int $id_madre; // Autorreferencia para subcategorías
-        public string $fecha_actualizacion;
+        public $id_categoria;
+        public $titulo;
+        public $descripcion;
+        public $icono;
+        public $id_madre; // Autorreferencia para subcategorías
+        public $fecha_actualizacion;
 
     public function __construct(
-        int $id_categoria, 
-        string $titulo, 
-        int $id_madre = null, 
-        string $descripcion = null, 
-        string $icono = null, 
-        string $fecha_actualizacion = ''
+        $id_categoria, 
+        $titulo, 
+        $id_madre = null, 
+        $descripcion = null, 
+        $icono = null, 
+        $fecha_actualizacion = ''
     ) {
         $this->id_categoria = $id_categoria;
         $this->titulo = $titulo;
