@@ -10,7 +10,8 @@
     try {
     $conn = new PDO("pgsql:host=$host;port=$port;dbname=$dbname", $user, $password);
     // Mensaje de error por si acaso
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    //$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    //echo "Connected successfully";s
     } catch(PDOException $e) {
     echo "Connection failed: " . $e->getMessage();
     }
