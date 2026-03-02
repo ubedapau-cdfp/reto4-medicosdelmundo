@@ -5,7 +5,7 @@
     $port = "5432";
     $dbname = "medicosDelMundo"; // Asegúrate de que este es el nombre de tu BD
     $user = "postgres";
-    $password = "P@ssw0rd"; // La contraseña de Postgres
+    $password = "usuario"; // La contraseña de Postgres
 
     try {
     $conn = new PDO("pgsql:host=$host;port=$port;dbname=$dbname", $user, $password);

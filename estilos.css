@@ -167,6 +167,7 @@ nav ul li ul li a:hover {
     font-size: 15px;
 }
 
+/* botón general */
 .button{
     background-color:#00065f;
     color: white;
@@ -177,10 +178,12 @@ nav ul li ul li a:hover {
     text-decoration: none;
 }
 
+/* Hover del botón general */
 .button:hover{
     background-color: #003d6e;
 }
 
+/* Botones del contenido para redireccion (ej. Ser contratada), del tipo submit */
 button[type=submit], .opciones{
     background-color:#00065f;
     border-color:#0f143d;
@@ -193,10 +196,12 @@ button[type=submit], .opciones{
     font-family: 'Nexa Pro', 'Segoe UI', sans-serif;
 }
 
+/* Hover de los botones del contenido para redireccion (ej. Ser contratada), del tipo submit */
 button[type=submit]:hover{
     background-color: #003d6e;
 }
 
+/* Botón del login */
 .loginbutton{
     background-color:#005daa;
     border-color:#005daa;
@@ -206,19 +211,27 @@ button[type=submit]:hover{
     margin:15px;
     border-style: solid;
 } 
-
+ /* tag <a> del botón del login */
 .loginbutton a{
     text-decoration: none;
     color: white;
 }
 
+/* Hovers relacionados al botón del login */
 .loginbutton:hover, .loginbutton a:hover{
     background-color: #bde0ec;
     border-color: #bde0ec;
     color: #003d6e;
 }
 
+.intro{
+    display:flex;
+    justify-content: center;
+}
 
+
+
+/* -------------- VISTAS -----------------*/
 /* VISTA DE TABLET */
 @media (max-width: 1024px) {
 

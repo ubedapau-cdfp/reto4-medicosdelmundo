@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contratos</title>
+<title>Jerarquía normativa y derechos</title>
 <link rel="stylesheet" href="estilos.css">
 </head>
 <body>
@@ -26,7 +26,7 @@
     <p>Revisa los diferentes apartados que tenemos seleccionando uno de los siguientes botones:</p>
     &nbsp;
     <div class="botonera">
-    <a href="#" class="button">Contratar</a><a href="sercontratada.php" class="button">Ser Contratada</a><a href="#" class="button">Indemnización</a>
+    <a href="contratar.php" class="button">Contratar</a><a href="sercontratada.php" class="button">Ser Contratada</a><a href="#" class="button">Indemnización</a>
     </div>
 </section>
 <?php include 'barrasNavegacion\footer.php'; ?>

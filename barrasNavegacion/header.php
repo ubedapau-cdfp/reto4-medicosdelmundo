@@ -8,8 +8,8 @@
             <li class="dropdown">
                 <a href="#">Contratos ▾</a>
                 <ul>
-                    <li><a href="#">Requisitos para la Relación Laboral</a></li>
-                    <li><a href="contratos.php">Jerarquía normativa y derechos</a></li>
+                    <li><a href="relacionlaboral.php">Requisitos para la Relación Laboral</a></li>
+                    <li><a href="normativayderechos.php">Jerarquía normativa y derechos</a></li>
                     <li><a href="#">Elementos del contrato</a></li>
                 </ul>
             </li>
