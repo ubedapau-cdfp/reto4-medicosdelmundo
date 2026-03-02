@@ -1,26 +1,32 @@
 <?php
     class Categoria {
-        public $id_categoria;
-        public $titulo;
-        public $descripcion;
-        public $icono;
-        public $id_madre; // FK
-        public $fecha_actualizacion;
+        private $id_categoria;
+        private $titulo;
+        private $descripcion;
+        private $icono;
+        private $id_madre; // FK
+        private $fecha_actualizacion;
 
     public function __construct(
         $id_categoria, 
         $titulo, 
-        $id_madre = null, 
         $descripcion = null, 
         $icono = null, 
+        $id_madre = null, 
         $fecha_actualizacion = ''
     ) {
         $this->id_categoria = $id_categoria;
         $this->titulo = $titulo;
-        $this->id_madre = $id_madre;
         $this->descripcion = $descripcion;
         $this->icono = $icono;
+        $this->id_madre = $id_madre;
         $this->fecha_actualizacion = $fecha_actualizacion ?: date('Y-m-d');
+    }
+
+    // Función propia del objeto
+    function mostrarDatos() {
+        echo "<h1>" . $this->titulo . "</h1>";
+        echo "<p><i>" . $this->descripcion . "</i></p>";
     }
     }
 ?>
