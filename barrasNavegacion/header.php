@@ -17,7 +17,7 @@
             </li>
 
             <li class="dropdown">
-                <a href="#">La calle ▾</a>
+                <a href="#">Menú 2 ▾</a>
                 <ul>
                     <li><a href="#">Joseo de alto nivel</a></li>
                     <li><a href="#">Pajin</a></li>
@@ -26,7 +26,7 @@
             </li>
 
             <li class="dropdown">
-                <a href="#">Los Gs ▾</a>
+                <a href="#">Menú 3 ▾</a>
                 <ul>
                     <li><a href="#">Cuartero y su embrague</a></li>
                     <li><a href="#">Bravas y rutinas</a></li>
@@ -35,7 +35,7 @@
             </li>
 
             <li class="dropdown">
-                <a href="#">La elite ▾</a>
+                <a href="#">Menú 4 ▾</a>
                 <ul>
                     <li><a href="#">Patillas</a></li>
                     <li><a href="#">Venas duras</a></li>
@@ -44,7 +44,7 @@
             </li>
 
             <li class="dropdown">
-                <a href="#">Los hombres de Gonzalo ▾</a>
+                <a href="#">Menú 5 ▾</a>
                 <ul>
                     <li><a href="#">40€</a></li>
                     <li><a href="#">Patricia estrella</a></li>
@@ -53,7 +53,7 @@
             </li>
 
             <li class="dropdown">
-                <a href="#">El cartel de Douglas ▾</a>
+                <a href="#">Menú 6 ▾</a>
                 <ul>
                     <li><a href="#">Pajin y sus putas</a></li>
                     <li><a href="#">Pablo x Patricia (video borrado)</a></li>
