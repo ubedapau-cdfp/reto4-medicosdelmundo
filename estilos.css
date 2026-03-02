@@ -1,3 +1,14 @@
+/* Fuente personalizada, para su uso en la página web. */
+@font-face {
+    font-family: 'Nexa Pro';
+    src: url('Fonts/NexaPro_Trial_Variable-Regular.ttf') format("truetype"), /* Source: Carpeta fonts, archivo. Formato TTF (TrueType Font) */
+         url('Fonts/NexaPro_Trial_Variable-Italic.ttf') format("truetype");
+  font-weight: normal; /* Peso de la fuente (la carga en su estado de defecto.)*/
+  font-style: normal; /* Estilo de la fuente normal (es decir, no es italic, o negrita.) */
+  font-display: swap; /* Pone el texto personalizado en cuanto se cargue en la página */
+}
+
+
 /* 1. Reset Total */
 * {
     margin: 0;
@@ -6,7 +17,7 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Nexa Pro', 'Segoe UI', sans-serif;
 }
 
 /* 2. Header: Contenedor principal */
@@ -131,4 +142,163 @@ nav ul li ul li a:hover {
 .contacto-final a {
     color: white;
     text-decoration: none;
+}
+
+/* SECTION del contenido a enseñar en la página web */
+.contenidos, .subapartados{
+    background-color: #bde0ec; /* Color del fondo */
+    border-color: #0f143d; /* Color del border */
+    border-radius:15px; /* Redondeo del border */
+    border-style:solid; /* Cómo debe de estar el border (solid = normal) */
+    padding:50px; /* relleno */
+    margin:15px; /* margen */
+    text-align: center; /* texto al centro */
+}
+
+.contenidos b {
+    font-size: 25px;
+}
+
+.contenidos b.subtitulos{
+    font-size: 20px;
+}
+
+.contenidos b.ejemplos{
+    font-size: 15px;
+}
+
+.button{
+    background-color:#00065f;
+    color: white;
+    border-radius:10px;
+    font-size:20px;
+    padding:5px;
+    margin:10px;
+    text-decoration: none;
+}
+
+.button:hover{
+    background-color: #003d6e;
+}
+
+button[type=submit], .opciones{
+    background-color:#00065f;
+    border-color:#0f143d;
+    color: white;
+    border-radius:10px;
+    font-size:15px;
+    padding:5px;
+    margin:10px;
+    border-style: solid;
+    font-family: 'Nexa Pro', 'Segoe UI', sans-serif;
+}
+
+button[type=submit]:hover{
+    background-color: #003d6e;
+}
+
+.loginbutton{
+    background-color:#005daa;
+    border-color:#005daa;
+    border-radius:10px;
+    font-size:15px;
+    padding:5px;
+    margin:15px;
+    border-style: solid;
+} 
+
+.loginbutton a{
+    text-decoration: none;
+    color: white;
+}
+
+.loginbutton:hover, .loginbutton a:hover{
+    background-color: #bde0ec;
+    border-color: #bde0ec;
+    color: #003d6e;
+}
+
+
+/* VISTA DE TABLET */
+@media (max-width: 1024px) {
+
+    header {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 15px 5%;
+    }
+
+    nav ul {
+        gap: 5px;
+    }
+
+    nav ul li a {
+        padding: 15px 10px;
+        font-size: 14px;
+    }
+
+    .footer-row {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .contacto-final {
+        align-items: center;
+    }
+}
+
+/* VISTA DE TELÉFONO MÓVIL */
+@media (max-width: 768px) {
+
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        height: auto;
+        padding: 15px;
+    }
+
+    nav {
+        width: 100%;
+        margin-left: 0;
+    }
+
+    nav ul {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    nav ul li a {
+        padding: 12px;
+        width: 100%;
+    }
+
+    nav ul li ul {
+        position: static;
+        box-shadow: none;
+    }
+
+    .enlaces-derecha {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .contenidos {
+        padding: 20px;
+        margin: 10px;
+    }
+
+    .footer-row {
+        flex-direction: column;
+        text-align: center;
+        gap: 30px;
+    }
+
+    .contacto-final {
+        align-items: center;
+    }
+
+    .direccion-telefono {
+        text-align: center;
+    }
 }

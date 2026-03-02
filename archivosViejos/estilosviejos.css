@@ -1,0 +1,134 @@
+/* 1. Reset Total */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* 2. Header: Contenedor principal */
+header {
+    display: flex;
+    align-items: center;
+    background-color: #00065f;
+    padding: 0 5%;
+    height: 70px;
+}
+
+/* 3. Logo: Tamaño controlado */
+header a.logo img {
+    height: 45px;
+    display: block;
+}
+
+/* 4. Menú: Posición "Centro-Izquierda" */
+nav {
+    margin-left: 5%;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+}
+
+nav ul li {
+    position: relative;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    padding: 25px 15px;
+    display: block;
+    font-weight: bold;
+}
+
+/* 5. Los enlaces de la derecha */
+.enlaces-derecha {
+    margin-left: auto; 
+    display: flex;
+    gap: 20px;
+}
+
+.enlaces-derecha a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* 6. Desplegable Corregido */
+nav ul li ul {
+    display: none;
+    position: absolute;
+    left: 0;
+    background-color: #00065f;
+    min-width: 160px;
+    box-shadow: 0px 5px 10px rgba(0,0,0,0.3);
+}
+
+nav ul li:hover ul {
+    display: block;
+}
+
+nav ul li ul li a {
+    padding: 12px 15px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+nav ul li ul li a:hover {
+    background-color: #007BFF;
+}
+
+/* 7. Footer: Estilo básico */
+.footer {
+    background-color: #00065f;
+    color: white;
+    padding: 20px 5%;
+}
+
+.footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+/* 2. Dirección */
+.direccion-telefono {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;               
+    font-style: normal;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* 3. Mapa */
+.map-container iframe {
+    display: block;
+    max-width: 100%;
+    border: 2px solid white;
+}
+
+/* 4. Correo / Contacto final */
+.contacto-final {
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-end;
+    gap: 10px;
+}
+
+.contacto-final p {
+    font-weight: bold;
+}
+
+.contacto-final a {
+    color: white;
+    text-decoration: none;
+}

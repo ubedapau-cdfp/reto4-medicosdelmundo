@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Ser Contratada</title>
-<link rel="stylesheet" href="prueba.css">
+<link rel="stylesheet" href="estilos.css">
 </head>
 <body>
 <?php include 'barrasNavegacion\header.php'; ?>
