@@ -4,7 +4,7 @@
         public $titulo;
         public $descripcion;
         public $icono;
-        public $id_madre; // Autorreferencia para subcategorías
+        public $id_madre; // FK
         public $fecha_actualizacion;
 
     public function __construct(
