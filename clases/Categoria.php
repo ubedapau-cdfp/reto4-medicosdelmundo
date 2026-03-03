@@ -23,10 +23,43 @@
         $this->fecha_actualizacion = $fecha_actualizacion ?: date('Y-m-d');
     }
 
-    // Función propia del objeto
-    function mostrarDatos() {
+    // Getter para el título (lo usaremos en el <option> del HTML)
+    public function getTitulo() {
+        return $this->titulo;
+    }
+
+    // Función para mostrar la cabecera de la categoría
+    public function mostrarDatos() {
         echo "<h1>" . $this->titulo . "</h1>";
-        echo "<p><i>" . $this->descripcion . "</i></p>";
+        if (!empty($this->descripcion)) {
+            echo "<p><i>" . $this->descripcion . "</i></p>";
+        }
     }
+
+    public static function obtenerTodas($db) {
+        $categorias = [];
+        // Consulta simple para traer todas las categorías
+        $sql = "SELECT * FROM CATEGORIA ORDER BY titulo ASC";
+        
+        try {
+            $stmt = $db->query($sql);
+            
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                // Creamos una nueva instancia de Categoria por cada fila
+                $categorias[] = new self(
+                    $row['id_categoria'],
+                    $row['titulo'],
+                    $row['descripcion'],
+                    $row['icono'],
+                    $row['id_madre'],
+                    $row['fecha_actualizacion']
+                );
+            }
+        } catch (PDOException $e) {
+            echo "Error al obtener categorías: " . $e->getMessage();
+        }
+
+        return $categorias;
     }
+}
 ?>

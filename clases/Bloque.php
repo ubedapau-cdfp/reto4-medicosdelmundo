@@ -41,5 +41,33 @@
         echo "<p>" . $this->contenido . "</p>";
         echo "<hr>";
     }
+
+    // --- NUEVO MÉTODO ESTÁTICO ---
+    public static function obtenerPorCategoria($db, $nombreCategoria) {
+        $bloques = [];
+        $sql = "SELECT b.* FROM BLOQUE b 
+                INNER JOIN CATEGORIA c ON b.id_categoria = c.id_categoria 
+                WHERE c.titulo = :nombre 
+                ORDER BY b.orden";
+
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(':nombre', $nombreCategoria);
+        $stmt->execute();
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            // Cada fila de la BD se convierte en una instancia de esta clase
+            $bloques[] = new self(
+                $row['id_bloque'],
+                $row['id_categoria'],
+                $row['titulo'],
+                $row['subtitulo'],
+                $row['contenido'],
+                $row['orden'],
+                $row['fecha_actualizacion']
+            );
+        }
+        return $bloques;
+    }
+
     }
 ?>
