@@ -1,7 +1,7 @@
 <?php
 // conexion.php
     //conectar la bd con los datos de postgres
-    $host = "localhost"; //el nombre del servidor (servername)
+    $host = "192.168.4.18"; //el nombre del servidor (servername)
     $port = "5432";
     $dbname = "medicosDelMundo"; // Asegúrate de que este es el nombre de tu BD
     $user = "postgres";
