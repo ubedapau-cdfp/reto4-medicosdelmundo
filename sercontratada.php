@@ -36,37 +36,12 @@
         $categoria=$_POST['opciones'];
 
        try {
-        $sql = "SELECT b.* FROM BLOQUE b 
-                INNER JOIN CATEGORIA c ON b.id_categoria = c.id_categoria 
-                WHERE c.titulo = :nombre 
-                ORDER BY b.orden";
-
-        $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':nombre', $categoria);
-        $stmt->execute();
-
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        if ($result) {
-            foreach($result as $row) {
-                // Se crea el objeto
-                $nuevoBloque = new Bloque(
-                    $row['id_bloque'],
-                    $row['id_categoria'],
-                    $row['titulo'],
-                    $row['subtitulo'],
-                    $row['contenido'],
-                    $row['orden']
-                );
-
+                llamadaSQL();
                 //la lógica de impresión está DENTRO de la clase.
                 $nuevoBloque->mostrarDatos();
-            }
-          } else {
               // Corregido: usamos la variable $categoria que es la que viene del POST
               echo "No se encontraron resultados para: " . htmlspecialchars($categoria);
-          }
-        } catch(PDOException $e) {
+          } catch(PDOException $e) {
             echo "Error: " . $e->getMessage();
         }
     }

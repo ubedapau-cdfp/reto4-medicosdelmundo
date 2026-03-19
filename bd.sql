@@ -58,37 +58,3 @@ CREATE TABLE contenido (
     id_bloque INT REFERENCES BLOQUE(id_bloque)
 );
 
--- INSERTAR VALORES
--- 2. Insertar Categorías (Jerarquía del índice)
--- Nivel 1: Raíz
-INSERT INTO CATEGORIA (id_categoria, titulo) 
-VALUES (1, 'Contratos de trabajo');
-
--- Nivel 2: Hijos de 'Contratos de trabajo'
-INSERT INTO CATEGORIA (id_categoria, titulo, id_madre) VALUES 
-(2, 'Requisitos para la Relación Laboral', 1),
-(3, 'Jerarquía normativa y derechos', 1),
-(4, 'Contratar', 1),
-(5, 'Ser contratada', 1),
-(6, 'Indemnización', 1);
-
--- Nivel 3: Hijos de 'Ser contratada' (La rama que pediste)
-INSERT INTO CATEGORIA (id_categoria, titulo, id_madre) VALUES 
-(7, 'Edad', 5),
-(8, 'Nacionalidad', 5),
-(9, 'Relaciones Excluidas y Especiales', 5);
-
--- 3. Insertar Contenido en los Bloques (Ejemplos basados en tu texto)
-
--- Bloque para 'Edad'
-INSERT INTO BLOQUE (titulo, contenido, id_categoria, orden) VALUES 
-('Requisitos de Edad', 'La edad mínima legal para trabajar es 16 años. Entre los 16 y 17 años se requiere autorización de tutores legales.', 7, 1);
-
--- Bloque para 'Nacionalidad'
-INSERT INTO BLOQUE (titulo, contenido, id_categoria, orden) VALUES 
-('Ciudadanos UE', 'Documentación: Pasaporte o DNI en vigor. Registro obligatorio si la estancia supera los 3 meses.', 8, 1),
-('Extranjeros NIE', 'Requieren Permiso de Trabajo solicitado en la Oficina de Extranjería.', 8, 2);
-
--- Bloque para 'Relaciones Excluidas'
-INSERT INTO BLOQUE (titulo, contenido, id_categoria, orden) VALUES 
-('Exclusiones', 'Quedan fuera los funcionarios públicos, autónomos y trabajos familiares hasta 2º grado.', 9, 1);
