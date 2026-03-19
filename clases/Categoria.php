@@ -23,41 +23,43 @@
         $this->fecha_actualizacion = $fecha_actualizacion ?: date('Y-m-d');
     }
 
-    // Función propia del objeto
-    function mostrarDatos() {
-        echo "<h1>" . $this->titulo . "</h1>";
-        echo "<p><i>" . $this->descripcion . "</i></p>";
+    // Getter para el título (lo usaremos en el <option> del HTML)
+    public function getTitulo() {
+        return $this->titulo;
     }
 
+    // Función para mostrar la cabecera de la categoría
+    public function mostrarDatos() {
+        echo "<h1>" . $this->titulo . "</h1>";
+        if (!empty($this->descripcion)) {
+            echo "<p><i>" . $this->descripcion . "</i></p>";
+        }
+    }
 
-    public static function mostrarBloquePorCategoria($categoria){
-            include 'conexion.php'; 
-            $sql = "SELECT b.* FROM BLOQUE b 
-            INNER JOIN CATEGORIA c ON b.id_categoria = c.id_categoria 
-            WHERE c.titulo = :nombre 
-            ORDER BY b.orden";
-
-        $stmt = $conn->prepare($sql); //conexion
-        $stmt->bindParam(':nombre', $categoria);
-        $stmt->execute();
-
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        if ($result) {
-            foreach($result as $row) {
-                // Se crea el objeto
-                $nuevoBloque = new Bloque(
-                    $row['id_bloque'],
+    public static function obtenerTodas($db) {
+        $categorias = [];
+        // Consulta simple para traer todas las categorías
+        $sql = "SELECT * FROM CATEGORIA ORDER BY titulo ASC";
+        
+        try {
+            $stmt = $db->query($sql);
+            
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                // Creamos una nueva instancia de Categoria por cada fila
+                $categorias[] = new self(
                     $row['id_categoria'],
                     $row['titulo'],
-                    $row['subtitulo'],
-                    $row['contenido'],
-                    $row['orden']
-                    
+                    $row['descripcion'],
+                    $row['icono'],
+                    $row['id_madre'],
+                    $row['fecha_actualizacion']
                 );
-                $nuevoBloque->mostrarDatos();
             }
+        } catch (PDOException $e) {
+            echo "Error al obtener categorías: " . $e->getMessage();
         }
+
+        return $categorias;
     }
 }
 ?>

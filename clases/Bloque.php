@@ -42,35 +42,32 @@
         echo "<hr>";
     }
 
+    // --- NUEVO MÉTODO ESTÁTICO ---
+    public static function obtenerPorCategoria($db, $nombreCategoria) {
+        $bloques = [];
+        $sql = "SELECT b.* FROM BLOQUE b 
+                INNER JOIN CATEGORIA c ON b.id_categoria = c.id_categoria 
+                WHERE c.titulo = :nombre 
+                ORDER BY b.orden";
 
-    public static function mostrarBloquePorCategoria($categoria){
-            include 'conexion.php'; 
-            $sql = "SELECT b.* FROM BLOQUE b 
-            INNER JOIN CATEGORIA c ON b.id_categoria = c.id_categoria 
-            WHERE c.titulo = :nombre 
-            ORDER BY b.orden";
-
-        $stmt = $conn->prepare($sql); //conexion
-        $stmt->bindParam(':nombre', $categoria);
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(':nombre', $nombreCategoria);
         $stmt->execute();
 
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-        if ($result) {
-            foreach($result as $row) {
-                // Se crea el objeto
-                $nuevoBloque = new Bloque(
-                    $row['id_bloque'],
-                    $row['id_categoria'],
-                    $row['titulo'],
-                    $row['subtitulo'],
-                    $row['contenido'],
-                    $row['orden']
-                    
-                );
-                $nuevoBloque->mostrarDatos();
-            }
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            // Cada fila de la BD se convierte en una instancia de esta clase
+            $bloques[] = new self(
+                $row['id_bloque'],
+                $row['id_categoria'],
+                $row['titulo'],
+                $row['subtitulo'],
+                $row['contenido'],
+                $row['orden'],
+                $row['fecha_actualizacion']
+            );
         }
+        return $bloques;
     }
-}
+
+    }
 ?>
