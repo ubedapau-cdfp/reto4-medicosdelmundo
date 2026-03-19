@@ -18,6 +18,7 @@
 
 body {
     font-family: 'Nexa Pro', 'Segoe UI', sans-serif;
+    background-color: #f1eaea;
 }
 
 /* 2. Header: Contenedor principal */
@@ -81,8 +82,15 @@ nav ul li ul {
     box-shadow: 0px 5px 10px rgba(0,0,0,0.3);
 }
 
+nav ul li a:hover{
+    background-color: #bde0ec;
+    color:#00065f;
+    transition-duration: 0.2s;
+}
+
 nav ul li:hover ul {
     display: block;
+    
 }
 
 nav ul li ul li a {
@@ -91,7 +99,9 @@ nav ul li ul li a {
 }
 
 nav ul li ul li a:hover {
-    background-color: #007BFF;
+    background-color: #bde0ec;
+    color:#00065f;
+    transition-duration: 0.2s;
 }
 
 /* 7. Footer: Estilo básico */
@@ -99,6 +109,9 @@ nav ul li ul li a:hover {
     background-color: #00065f;
     color: white;
     padding: 20px 5%;
+    border-style:solid;
+    border-color:#00065f;
+
 }
 
 .footer-row {
@@ -108,6 +121,11 @@ nav ul li ul li a:hover {
     gap: 20px;
     flex-wrap: wrap;
     width: 100%;
+}
+
+.footer:hover{
+    transition-duration: 0.3s;
+    box-shadow: 0 0 20px 5px #bde0ec;
 }
 
 /* 2. Dirección */
@@ -180,7 +198,8 @@ nav ul li ul li a:hover {
 
 /* Hover del botón general */
 .button:hover{
-    background-color: #003d6e;
+    background-color: #0360ac;
+    transition-duration: 0.5s;
 }
 
 /* Botones del contenido para redireccion (ej. Ser contratada), del tipo submit */
@@ -198,7 +217,10 @@ button[type=submit], .opciones{
 
 /* Hover de los botones del contenido para redireccion (ej. Ser contratada), del tipo submit */
 button[type=submit]:hover{
-    background-color: #003d6e;
+    background-color: #0360ac;
+    border-color:#0360ac;
+    transition-duration: 0.3s;
+    cursor:pointer;
 }
 
 /* Botón del login */
@@ -210,6 +232,7 @@ button[type=submit]:hover{
     padding:5px;
     margin:15px;
     border-style: solid;
+    font-family: 'Nexa Pro', 'Segoe UI', sans-serif;
 } 
  /* tag <a> del botón del login */
 .loginbutton a{
@@ -222,12 +245,63 @@ button[type=submit]:hover{
     background-color: #bde0ec;
     border-color: #bde0ec;
     color: #003d6e;
+    transition-duration: 0.3s;
 }
 
 .intro{
     display:flex;
     justify-content: center;
 }
+
+.loginMenu{
+    display:flex;
+    width:100%;
+    min-height:100vh;
+}
+.ladoIzqdo{
+    background-image:url(Imagenes/loginimage.png);
+    background-repeat: no-repeat;
+    background-size: cover;     
+    background-position: center;
+    flex:0.5;
+
+}
+.ladoDcho{
+    background-color:#00065f;
+    background-image:url(Imagenes/loginimage2.png);
+    flex:1;
+    color:White;
+}
+
+.menuform{
+    display:block;
+    background-color:#bde0ec;
+    padding:100px;
+    margin-top:150px;
+    margin-left:250px;
+    margin-right:250px;
+    border-radius:10px;
+}
+
+.menuform h1,a,label{
+    color:#00065f;
+}
+
+.menuform:hover{
+    transition-duration: 0.3s;
+    box-shadow: 0 0 20px 5px #bde0ec;
+}
+
+input[type=text], input[type=password]{
+    font-family: 'Nexa Pro', 'Segoe UI', sans-serif;
+    height:30px;
+    border-color: #00065f;
+    border-style:solid;
+    margin-bottom:15px;
+    border-radius:10px;
+    font-size:17px;
+}
+
 
 
 

@@ -28,7 +28,7 @@
                 <ul>
                     <li><a href="#">Subapartado 1</a></li>
                     <li><a href="#">Subapartado 2</a></li>
-                    <li><a href="#">Subapartado 3</a></li>>
+                    <li><a href="#">Subapartado 3</a></li>
                 </ul>
             </li>
 
@@ -65,7 +65,7 @@
         <a href="#">Sobre nosotros</a>
         <a href="#">Preguntas frecuentes</a>
     </section>
-    <section class="loginbutton">
-        <a href="signin.php">Login</a>
+    <section>
+        <button class='loginbutton'><a href="signin.php">Login</a></button>
     </section>
 </header>
