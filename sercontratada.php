@@ -36,19 +36,6 @@
     </form>
 </section>
 
-<!-- <section class="contenidos">
-    <p><b>Ser Contratada</b></p>
-    <p>Escoge, del siguiente selector, el apartado que quieres leer:</p>
-    <form action="" method='POST'>
-        <select class="opciones" name="opciones">
-            <option value="Edad">Edad</option>
-            <option value="Nacionalidad">Nacionalidad</option>
-            <option value="Relaciones Excluidas y Especiales">Relaciones Excluidas y Especiales</option>
-        </select>
-        <button type="Submit" value="Submit">Mostrar apartado</button>
-    </form>
-</section> -->
-
 <section class="subapartados">
 <?php 
     // Paso 2: Procesar el formulario cuando se envía (POST)
