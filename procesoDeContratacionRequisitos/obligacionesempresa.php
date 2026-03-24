@@ -6,7 +6,7 @@ $base = '/reto4-medicosdelmundo/';
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Requisitos para la Relación Laboral</title>
+<title>Obligaciones de la Empresa</title>
 <link rel="icon" type="image/png" href="<?= $base ?>Imagenes/Logoreal.png">
 <link rel="stylesheet" href="../estilos.css">
 </head>
@@ -14,7 +14,7 @@ $base = '/reto4-medicosdelmundo/';
 <?php include '../barrasNavegacion/header.php'; ?>
 <p>
 <section class="contenidos">
-    <p><b>Requisitos para la Relación Laboral</b></p>
+    <p><b>Obligaciones de la Empresa</b></p>
     <p>Texto de ejemplo. Líneas, líneas. Texto, texto.</p>
     &nbsp; <!-- Non-Breaking Space. Proporciona saltos de línea, con un espacio. -->
     <p><b class="subtitulos">· Subtítulo. </b></p>
