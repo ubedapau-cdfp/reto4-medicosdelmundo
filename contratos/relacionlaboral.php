@@ -25,9 +25,9 @@
     &nbsp;
     <p>Revisa los diferentes apartados que tenemos seleccionando uno de los siguientes botones:</p>
     &nbsp;
-    <div class="botonera">
+    <section class="botonera">
     <a href="#" class="button">Botón</a><a href="#" class="button">Botón</a><a href="#" class="button">Botón</a>
-    </div>
+    </section>
 </section>
 <?php include '../barrasNavegacion/footer.php'; ?>
 
