@@ -9,7 +9,8 @@
 <body>
 <?php include 'barrasNavegacion\header.php'; ?>
 <section class="intro">
-    <h1>Hola</h1>
+    <h1>Bienvenidos a la página</h1>
+    <p>Disfruten su estancia.</p>
 </section>
 <?php include 'barrasNavegacion\footer.php'; ?>
 </body>

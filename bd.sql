@@ -16,7 +16,7 @@ CREATE TABLE ROL (
 CREATE TABLE USUARIOS (
     id_usuario SERIAL PRIMARY KEY,
     email VARCHAR(100) UNIQUE NOT NULL,
-    password VARCHAR(255) NOT NULL,
+    password_hash VARCHAR(255) NOT NULL,
     nombre VARCHAR(100),
     id_rol INT REFERENCES ROL(id_rol)
 );
@@ -58,3 +58,18 @@ CREATE TABLE contenido (
     id_bloque INT REFERENCES BLOQUE(id_bloque)
 );
 
+
+INSERT INTO ROL(id_rol, nombre_rol)
+VALUES 
+    ('1','Usuaria'),
+    ('2','Orientadora'),
+    ('3','Administradora');
+
+INSERT INTO USUARIOS(id_usuario, email, password_hash, nombre, id_rol)
+VALUES 
+    ('1','correodeprueba@google.com','$2a$12$BOn7nGRmV/J0p6vpXzJOVOAlfYtfaLY2WBUgMIrLBKz5G.ouOYO3S'/*pass1234*/,'Prueba','3'), 
+    ('2','correo@holamail.com','$2a$12$V0Gat3GouS0lWD44Oovz6u3VY8UZbNA7Q7YY5DmU9nqlYzfmNhea.'/*hola*/,'Usuaria123','3');
+
+/* PRUEBA DE SELECT */
+SELECT * FROM ROL;
+SELECT * FROM USUARIOS;

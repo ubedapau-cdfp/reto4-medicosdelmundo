@@ -215,6 +215,11 @@ button[type=submit], .opciones{
     font-family: 'Nexa Pro', 'Segoe UI', sans-serif;
 }
 
+ button[type=submit] a{
+    color:White;
+    text-decoration:none;
+ }
+
 /* Hover de los botones del contenido para redireccion (ej. Ser contratada), del tipo submit */
 button[type=submit]:hover{
     background-color: #0360ac;
@@ -251,6 +256,8 @@ button[type=submit]:hover{
 .intro{
     display:flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .loginMenu{
@@ -269,6 +276,8 @@ button[type=submit]:hover{
 .ladoDcho{
     background-color:#00065f;
     background-image:url(Imagenes/loginimage2.png);
+    background-repeat: no-repeat;
+    background-size:cover;
     flex:1;
     color:White;
 }
@@ -302,6 +311,19 @@ input[type=text], input[type=password]{
     font-size:17px;
 }
 
+.loginFail{
+    background-color:#be0000;
+    border-color:#be0000;
+    padding:10px;
+    border-style: solid;
+    border-radius:5px;
+    text-align:center;
+}
+
+.loginFail:hover{
+    transition-duration: 0.3s;
+    box-shadow: 0 0 15px 5px #880000;
+}
 
 
 
