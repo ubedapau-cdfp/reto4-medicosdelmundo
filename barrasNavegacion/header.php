@@ -1,6 +1,10 @@
+<?php
+$base = '/reto4-medicosdelmundo-1/';
+?>
+
 <header>
-    <a href="home.php" class="logo">
-        <img src="Imagenes/Logoreal.png" alt="Logo">
+    <a href="<?= $base ?>home/home.php" class="logo">
+        <img src="<?= $base ?>Imagenes/Logoreal.png" alt="Logo">
     </a>
 
     <nav>
@@ -8,54 +12,35 @@
             <li class="dropdown">
                 <a href="#">Contratos ▾</a>
                 <ul>
-                    <li><a href="relacionlaboral.php">Requisitos para la Relación Laboral</a></li>
-                    <li><a href="normativayderechos.php">Jerarquía normativa y derechos</a></li>
+                    <li><a href="<?= $base ?>contratos/relacionlaboral.php">Requisitos para la Relación Laboral</a></li>
+                    <li><a href="<?= $base ?>contratos/normativayderechos.php">Jerarquía normativa y derechos</a></li>
                     <li><a href="#">Elementos del contrato</a></li>
                 </ul>
             </li>
 
             <li class="dropdown">
-                <a href="#">Menú 2 ▾</a>
+                <a href="#">Elementos y Condiciones del Contrato ▾</a>
                 <ul>
-                    <li><a href="#">Subapartado 1</a></li>
-                    <li><a href="#">Subapartado 2</a></li>
-                    <li><a href="#">Subapartado 3</a></li>
+                    <li><a href="#">Elementos sustanciales</a></li>
+                    <li><a href="#">Elementos importantes pero no imprescindibles</a></li>
                 </ul>
             </li>
 
             <li class="dropdown">
-                <a href="#">Menú 3 ▾</a>
+                <a href="#">Proceso de Contratación y Requisitos ▾</a>
                 <ul>
-                    <li><a href="#">Subapartado 1</a></li>
-                    <li><a href="#">Subapartado 2</a></li>
-                    <li><a href="#">Subapartado 3</a></li>
+                    <li><a href="#">Obligaciones de la Empresa</a></li>
+                    <li><a href="#">Requisitos de la Trabajadora</a></li>
+                    <li><a href="#">Nacionalidad</a></li>
+                    <li><a href="#">Relaciones Excluidas y Especiales</a></li>
                 </ul>
             </li>
 
             <li class="dropdown">
-                <a href="#">Menú 4 ▾</a>
+                <a href="#">Relación Laboral ▾</a>
                 <ul>
-                    <li><a href="#">Subapartado 1</a></li>
-                    <li><a href="#">Subapartado 2</a></li>
-                    <li><a href="#">Subapartado 3</a></li>
-                </ul>
-            </li>
-
-            <li class="dropdown">
-                <a href="#">Menú 5 ▾</a>
-                <ul>
-                    <li><a href="#">Subapartado 1</a></li>
-                    <li><a href="#">Subapartado 2</a></li>
-                    <li><a href="#">Subapartado 3</a></li>
-                </ul>
-            </li>
-
-            <li class="dropdown">
-                <a href="#">Menú 6 ▾</a>
-                <ul>
-                    <li><a href="#">Subapartado 1</a></li>
-                    <li><a href="#">Subapartado 2</a></li>
-                    <li><a href="#">Subapartado 3</a></li>
+                    <li><a href="#">Definición y Requisitos</a></li>
+                    <li><a href="#">Principios Generales del Derecho Laboral</a></li>
                 </ul>
             </li>
         </ul>
@@ -66,6 +51,6 @@
         <a href="#">Preguntas frecuentes</a>
     </section>
     <section>
-        <button class='loginbutton'><a href="signin.php">Login</a></button>
+        <button class='loginbutton'><a href="<?= $base ?>signin.php">Login</a></button>
     </section>
 </header>

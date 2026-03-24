@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Jerarquía normativa y derechos</title>
-<link rel="stylesheet" href="estilos.css">
+<link rel="stylesheet" href="../estilos.css">
 </head>
 <body>
-<?php include 'barrasNavegacion\header.php'; ?>
+<?php include '../barrasNavegacion\header.php'; ?>
 <p>
 <section class="contenidos">
     <p><b>Jerarquía normativa y Derechos</b></p>
@@ -29,7 +29,7 @@
     <a href="contratar.php" class="button">Contratar</a><a href="sercontratada.php" class="button">Ser Contratada</a><a href="#" class="button">Indemnización</a>
     </section>
 </section>
-<?php include 'barrasNavegacion\footer.php'; ?>
+<?php include '../barrasNavegacion\footer.php'; ?>
 
 <?php 
 //prueba.php
