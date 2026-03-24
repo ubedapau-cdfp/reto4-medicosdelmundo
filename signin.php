@@ -22,7 +22,8 @@
                     <label for='contrasena'>Contraseña:</label>
                     <input type='password' name='contrasena' size='46' id='contrasena' placeholder=' •••••••' required>
                     <p></p>
-                    <button type='submit'>Iniciar Sesión</button><button type='submit'><a href='home.php'>Volver a Inicio</a></button>
+                    <button type='submit'>Iniciar Sesión</button>
+                    <button type='submit'><a href='/reto4-medicosdelmundo-1/home/home.php'>Volver a Inicio</a></button>
                     <p></p>
                     <?php
                         session_start();
@@ -31,7 +32,6 @@
                         if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             $user = $_POST['usuaria'];
                             $pass = $_POST['contrasena'];
-                            $hash = password_hash($pass, PASSWORD_DEFAULT);
 
                             try {
                                 $sql = "SELECT id_usuario, password_hash FROM USUARIOS WHERE nombre = :nombre";
@@ -41,10 +41,9 @@
                                 
                                 $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
 
-                                // Verificamos si el usuario existe y si la contraseña coincide con el hash
                                 if ($usuario && password_verify($pass, $usuario['password_hash'])) {
                                     $_SESSION['usuario_id'] = $usuario['id_usuario'];
-                                    header('Location: home.php');
+                                    header('Location: /reto4-medicosdelmundo-1/home/home.php');
                                     exit();
                                 } else {
                                     echo "<section class='loginFail'>Usuario o contraseña incorrectos.</section>";
@@ -53,10 +52,10 @@
                                 echo "<section class='loginFail'>Error: " . $e->getMessage()."</section>";
                             }
                         }
-                        ?>
+                    ?>
                 </form>
             </section>
         </section>
     </section>
 </body>
-</html> 
+</html>
