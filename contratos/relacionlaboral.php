@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Requisitos para la Relación Laboral</title>
-<link rel="stylesheet" href="estilos.css">
+<link rel="stylesheet" href="../estilos.css">
 </head>
 <body>
-<?php include 'barrasNavegacion\header.php'; ?>
+<?php include '../barrasNavegacion/header.php'; ?>
 <p>
 <section class="contenidos">
     <p><b>Requisitos para la Relación Laboral</b></p>
@@ -29,7 +29,7 @@
     <a href="#" class="button">Botón</a><a href="#" class="button">Botón</a><a href="#" class="button">Botón</a>
     </div>
 </section>
-<?php include 'barrasNavegacion\footer.php'; ?>
+<?php include '../barrasNavegacion/footer.php'; ?>
 
 <?php 
 //prueba.php
