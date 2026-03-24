@@ -1,5 +1,5 @@
 <?php
-$base = '/reto4-medicosdelmundo-1/';
+$base = '/reto4-medicosdelmundo/';
 ?>
 
 <header>
@@ -47,7 +47,7 @@ $base = '/reto4-medicosdelmundo-1/';
     </nav>
 
     <section class="enlaces-derecha">
-        <a href="#">Sobre nosotros</a>
+        <a href="#" class="googoo">Sobre nosotros</a>
         <a href="#">Preguntas frecuentes</a>
     </section>
     <section>

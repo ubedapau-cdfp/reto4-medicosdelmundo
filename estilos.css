@@ -70,6 +70,13 @@ nav ul li a {
     color: white;
     text-decoration: none;
     font-weight: bold;
+    display: flex;         
+    align-items: center;    
+    justify-content: center;
+    box-sizing: border-box; 
+    text-align: center;
+    height: 70px;
+    width: 150px;
 }
 
 /* 6. Desplegable Corregido */
@@ -323,6 +330,12 @@ input[type=text], input[type=password]{
 .loginFail:hover{
     transition-duration: 0.3s;
     box-shadow: 0 0 15px 5px #880000;
+}
+
+.enlaces-derecha a:hover{
+    color:#00065f;
+    background-color: #bde0ec;
+    transition-duration: 0.3s;
 }
 
 
