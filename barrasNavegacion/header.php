@@ -1,5 +1,5 @@
 <?php
-$base = '/reto4-medicosdelmundo-1/';
+$base = '/reto4-medicosdelmundo/';
 ?>
 
 <header>
