@@ -6,6 +6,7 @@
         private $icono;
         private $id_madre; // FK
         private $fecha_actualizacion;
+        //falta poner orden
 
     public function __construct(
         $id_categoria, 
