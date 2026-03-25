@@ -1,9 +1,13 @@
+<?php
+$base = '/reto4-medicosdelmundo/';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel='stylesheet' href='estilos.css'>
+    <link rel="icon" type="image/png" href="<?= $base ?>Imagenes/Logoreal.png">
     <title>Login</title>
 </head>
 <body>
@@ -23,36 +27,9 @@
                     <input type='password' name='contrasena' size='46' id='contrasena' placeholder=' •••••••' required>
                     <p></p>
                     <button type='submit'>Iniciar Sesión</button>
-                    <button type='submit'><a href='/reto4-medicosdelmundo-1/home/home.php'>Volver a Inicio</a></button>
+                    <button type='submit'><a href='/reto4-medicosdelmundo/home/home.php'>Volver a Inicio</a></button>
                     <p></p>
-                    <?php
-                        session_start();
-                        require_once 'conexion.php';
-
-                        if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                            $user = $_POST['usuaria'];
-                            $pass = $_POST['contrasena'];
-
-                            try {
-                                $sql = "SELECT id_usuario, password_hash FROM USUARIOS WHERE nombre = :nombre";
-                                $stmt = $conn->prepare($sql);
-                                $stmt->bindParam(':nombre', $user);
-                                $stmt->execute();
-                                
-                                $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
-
-                                if ($usuario && password_verify($pass, $usuario['password_hash'])) {
-                                    $_SESSION['usuario_id'] = $usuario['id_usuario'];
-                                    header('Location: /reto4-medicosdelmundo-1/home/home.php');
-                                    exit();
-                                } else {
-                                    echo "<section class='loginFail'>Usuario o contraseña incorrectos.</section>";
-                                }
-                            } catch (PDOException $e) {
-                                echo "<section class='loginFail'>Error: " . $e->getMessage()."</section>";
-                            }
-                        }
-                    ?>
+                    <?php require_once 'loginProceso.php' ?>
                 </form>
             </section>
         </section>
