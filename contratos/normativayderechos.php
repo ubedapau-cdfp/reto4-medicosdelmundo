@@ -30,7 +30,7 @@ $base = '/reto4-medicosdelmundo/';
     <p>Revisa los diferentes apartados que tenemos seleccionando uno de los siguientes botones:</p>
     &nbsp;
     <section class="botonera">
-    <a href="contratar.php" class="button">Contratar</a><a href="sercontratada.php" class="button">Ser Contratada</a><a href="#" class="button">Indemnización</a>
+    <a href="../contratar.php" class="button">Contratar</a><a href="../sercontratada.php" class="button">Ser Contratada</a><a href="#" class="button">Indemnización</a>
     </section>
 </section>
 <?php include '../barrasNavegacion\footer.php'; ?>
