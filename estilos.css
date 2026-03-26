@@ -176,9 +176,7 @@ nav ul li ul li a:hover {
 /* SECTION del contenido a enseñar en la página web */
 .contenidos, .subapartados{
     background-color: #b0b0b0; /* Color del fondo */
-    border-color: #0f143d; /* Color del border */
-    border-radius:15px; /* Redondeo del border */
-    border-style:solid; /* Cómo debe de estar el border (solid = normal) */
+    border-radius: 15px;
     padding:50px; /* relleno */
     margin:15px; /* margen */
     text-align: center; /* texto al centro */
