@@ -9,265 +9,272 @@
 }
 
 
-/* 1. Reset Total */
+/* ----------------------- ESTILOS GENERAL ---------------------------------- */
+/* MÁRGENES GENERALES */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin: 0; /* MARGEN */
+    padding: 0; /* RELLENO */
+    box-sizing: border-box; /* DEFINICIÓN DEL ANCHO Y ALTO TOTAL DE UN ELEMENTO */
 }
 
+/* BODY DE TODA LA PÁGINA */
 body {
-    font-family: 'Nexa Pro', 'Segoe UI', sans-serif;
-    background-color: #f1eaea;
+    font-family: 'Nexa Pro', 'Segoe UI', sans-serif; /* ORDEN DE FUENTES A USAR */
+    background-color: #f1eaea; /* COLOR DEL FONDO DE LA PÁGINA */
 }
 
-/* 2. Header: Contenedor principal */
+/* HEADER -> CONTENEDOR */
 header {
-    display: flex;
-    align-items: center;
-    background-color: #0f143d;
-    padding: 0 5%;
-    height: 70px;
+    display: flex; /* CONTENEDOR FLEXIBLE */
+    align-items: center; /* ITEMS CENTRADOS */
+    background-color: #0f143d; /* COLOR DEL FONDO DEL CONTENEDOR */
+    padding: 0 5%; /* ESPACIO ENTRE ELEMENTOS */
+    height: 70px; /* ALTURA */
 }
 
-/* 3. Logo: Tamaño controlado */
+/* LOGO */
 header a.logo img {
-    height: 45px;
-    display: block;
+    height: 45px; /* ALTURA */
+    display: block; /* OCUPACIÓN DE TODO EL ANCHO DISPONIBLE DEL CONTENEDOR */ 
 }
 
-/* 4. Menú: Posición "Centro-Izquierda" */
+/* MENÚ */
 nav {
-    margin-left: 5%;
+    margin-left: 5%; /* MARGEN RESPECTO A LA IZQUIERDA DE LA PÁGINA */
 }
 
 nav ul {
-    list-style: none;
-    display: flex;
-    gap: 10px;
+    list-style: none; /* NINGUNA DECORACIÓN EN LA LISTA */
+    display: flex; /* CONTENEDOR FLEXIBLE */
+    gap: 10px; /* HUECO DE 10 PÍXELES ENTRE APARTADOS */
 }
 
 nav ul li {
-    position: relative;
+    position: relative; /* CÓMO ESTÁ POSICIONADO EL ELEMENTO */
 }
 
 nav ul li a {
-    color: white;
-    text-decoration: none;
-    padding: 25px 15px;
-    display: block;
-    font-weight: bold;
+    color: white; /* COLOR DEL TEXTO */
+    text-decoration: none; /* DECORACIÓN DEL TEXTO, NINGUNA */
+    padding: 25px 15px; /* ESPACIO ENTRE ELEMENTOS */
+    display: block; /* OCUPACIÓN DE TODO EL ANCHO DISPONIBLE */
+    font-weight: bold; /* TIPO DE TEXTO: NEGRITA */
 }
 
-/* 5. Los enlaces de la derecha */
+/* ENLACES LADO DERECHO, CONTAINER */
 .enlaces-derecha {
-    margin-left: auto; 
-    display: flex;
-    gap: 20px;
+    margin-left: auto; /* MARGEN RESPECTO A LA IZQUIERDA AUTOMÁTICO */
+    display: flex; /* CONTENEDOR FLEXIBLE */
+    gap: 20px; /* HUECO DE 20 PÍXELES */
 }
 
+/* ENLACES LADO DERECHO -> EN EL <a> */
 .enlaces-derecha a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    display: flex;         
-    align-items: center;    
-    justify-content: center;
-    box-sizing: border-box; 
-    text-align: center;
-    height: 70px;
-    width: 150px;
+    color: white; /* COLOR DEL TEXTO */
+    text-decoration: none; /* DECORACIÓN DEL TEXTO: NINGUNA */
+    font-weight: bold; /* TIPO DE TEXTO: NEGRITA */
+    display: flex; /* CONTENEDOR FLEXIBLE */ 
+    align-items: center; /* ITEMS CENTRADOS */
+    justify-content: center; /* CONTENIDO JUSTIFICADO AL CENTRO */
+    box-sizing: border-box; /* DEFINICIÓN A LO ANCHO Y LO ALTO TOTAL DE UN ELEMENTO */
+    text-align: center; /* TEXTO CENTRADO */
+    height: 70px; /* ALTURA */
+    width: 150px; /* ANCHURA */
 }
 
-/* 6. Desplegable Corregido */
+/* DESPEGABLES */
 nav ul li ul {
-    display: none;
-    position: absolute;
-    left: 0;
-    background-color: #0f143d;
-    min-width: 160px;
-    box-shadow: 0px 5px 10px rgba(0,0,0,0.3);
+    display: none; /* NINGÚN TIPO DE CONTENEDOR */
+    position: absolute; /* FORMA DE COLOCAR ELEMENTOS PARTICULARES RESPECTO A UN CONTENEDOR PARTICULAR */
+    left: 0; /* POSICIÓN A LA IZQUIERDA */
+    background-color: #0f143d; /* COLOR DEL FONDO */
+    min-width: 160px; /* ANCHURA MÍNIMA */
+    box-shadow: 0px 5px 10px rgba(0,0,0,0.3); /* SOMBREADO */
 }
 
+/* HOVER PARA QUE SE CAMBIE EL COLOR AL PASAR EL RATÓN */
 nav ul li a:hover{
-    background-color: #bde0ec;
-    color:#00065f;
-    transition-duration: 0.2s;
+    background-color: #bde0ec; /* COLOR DEL FONDO */
+    color:#00065f; /* COLOR DEL TEXTO */
+    transition-duration: 0.2s; /* DURACIÓN DE LA TRANSICIÓN */
 }
 
 nav ul li:hover ul {
-    display: block;
-    
+    display: block; /* OCUPACIÓN DE TODO EL ANCHO DISPONIBLE */
 }
 
 nav ul li ul li a {
-    padding: 12px 15px;
-    border-top: 1px solid rgba(255,255,255,0.1);
+    padding: 12px 15px; /*  */
+    border-top: 1px solid rgba(255,255,255,0.1); /*  */
 }
 
 nav ul li ul li a:hover {
-    background-color: #bde0ec;
-    color:#00065f;
-    transition-duration: 0.2s;
+    background-color: #bde0ec; /*  */
+    color:#00065f; /*  */
+    transition-duration: 0.2s; /*  */
 }
 
-/* 7. Footer: Estilo básico */
+/* FOOTER -> ESTILOS GENERALES */
 .footer {
     position: fixed; /* Fija el footer en la parte inferior de la página */
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: #0f143d;
-    color: white;
-    padding: 0px 5%;
-    border-style:solid;
-    border-color:#0f143d;
+    left: 0; /*  */
+    bottom: 0; /*  */
+    width: 100%; /*  */
+    background-color: #0f143d; /*  */
+    color: white; /*  */
+    padding: 0px 5%; /*  */
+    border-style:solid; /*  */
+    border-color:#0f143d; /*  */
 
 }
 
 .footer-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    width: 100%;
+    display: flex; /*  */
+    justify-content: space-between; /*  */
+    align-items: center; /*  */
+    gap: 20px; /*  */ 
+    flex-wrap: wrap; /*  */
+    width: 100%; /*  */
 }
 
+/* HOVER DEL FOOTER PARA QUE SE CAMBIE EL COLOR EL RATÓN */
 .footer:hover{
-    transition-duration: 0.3s;
-    box-shadow: 0 0 20px 5px #bde0ec;
+    transition-duration: 0.3s; /*  */
+    box-shadow: 0 0 20px 5px #bde0ec; /*  */
 }
 
-/* 2. Dirección */
+/* CONTAINER PARA LA DIRECCIÓN DE TELÉFONO */
 .direccion-telefono {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;               
-    font-style: normal;
-    text-align: center;
-    font-weight: bold;
+    display: flex; /*  */
+    flex-direction: column; /*  */
+    gap: 5px; /*  */           
+    font-style: normal; /*  */
+    text-align: center; /*  */
+    font-weight: bold; /*  */
 }
 
-/* 3. Mapa */
+/* CONTAINER PARA EL MAPA, USANDO iframe, DE GOOGLE MAPS */
 .map-container iframe {
-    display: block;
-    max-width: 100%;
-    border: 2px solid white;
+    display: block; /*  */
+    max-width: 100%; /*  */
+    border: 2px solid white; /*  */
 }
 
-/* 4. Correo / Contacto final */
+/* CONTAINER PARA DATOS DE CONTACTO (CORREO ELECTRÓNICO) */
 .contacto-final {
-    display: flex;
-    flex-direction: column; 
-    align-items: flex-end;
-    gap: 10px;
+    display: flex; /*  */
+    flex-direction: column; /*  */
+    align-items: flex-end; /*  */
+    gap: 10px; /*  */
 }
 
 .contacto-final p {
-    font-weight: bold;
+    font-weight: bold; /*  */
 }
 
 .contacto-final a {
-    color: white;
-    text-decoration: none;
+    color: white; /*  */
+    text-decoration: none; /*  */
 }
 
-/* SECTION del contenido a enseñar en la página web */
+/* SECTION DEL CONTENIDO A ENSEÑAR EN LA PÁGINA WEB */
 .contenidos, .subapartados{
-    background-color: #b0b0b0; /* Color del fondo */
-    border-radius: 15px;
-    padding:50px; /* relleno */
-    margin:15px; /* margen */
-    text-align: center; /* texto al centro */
-    color: #000000; /* color del texto */
+    background-color: #b0b0b0; /* COLOR DE FONDO */
+    border-radius: 15px; /* REDONDEO DE ESQUINAS */
+    padding:50px; /* RELLENO */
+    margin:15px; /* MÁRGENES */
+    text-align: center; /* TEXTO CENTRADO */
+    color: #000000; /* COLOR DEL TEXTO */
 }
 
+/* HOVER DEL CONTAINER CONTENIDOS PARA QUE SE CAMBIE EL COLOR EL RATÓN */
 .contenidos:hover{
-    transition-duration: 0.3s;
-    box-shadow: 0 0 20px 5px #333333;
+    transition-duration: 0.3s; /* TIEMPO DE DURACIÓN DE LA TRANSICIÓN */
+    box-shadow: 0 0 20px 5px #333333; /* SOMBREADO */
 }
 
 .contenidos b {
-    font-size: 25px;
+    font-size: 25px; /* TAMAÑO DEL TEXTO */
 }
 
 .contenidos b.subtitulos{
-    font-size: 20px;
+    font-size: 20px; /* TAMAÑO DEL TEXTO */
 }
 
 .contenidos b.ejemplos{
-    font-size: 15px;
+    font-size: 15px; /* TAMAÑO DEL TEXTO */
 }
 
-/* botón general */
+/* BOTONES GENERALES */
 .button{
-    background-color:#00065f;
-    color: white;
-    border-radius:10px;
-    font-size:20px;
-    padding:5px;
-    margin:10px;
-    text-decoration: none;
+    background-color:#00065f; /*  */
+    color: white; /*  */
+    border-radius:10px; /*  */
+    font-size:20px; /*  */
+    padding:5px; /*  */
+    margin:10px; /*  */
+    text-decoration: none; /*  */
 }
 
-/* Hover del botón general */
+/* HOVERS DE LOS BOTONES GENERALES */
 .button:hover{
-    background-color: #0360ac;
-    transition-duration: 0.5s;
+    background-color: #0360ac; /*  */
+    transition-duration: 0.5s; /*  */
 }
 
-/* Botones del contenido para redireccion (ej. Ser contratada), del tipo submit */
+/* BOTONES DE TIPO SUBMIT PARA REDIRECCIONAR (ej. Ser contratada) */
 button[type=submit], .opciones{
-    background-color:#00065f;
-    border-color:#0f143d;
-    color: white;
-    border-radius:10px;
-    font-size:15px;
-    padding:5px;
-    margin:10px;
-    border-style: solid;
-    font-family: 'Nexa Pro', 'Segoe UI', sans-serif;
+    background-color:#00065f; /*  */
+    border-color:#0f143d; /*  */
+    color: white; /*  */
+    border-radius:10px; /*  */
+    font-size:15px; /*  */
+    padding:5px; /*  */
+    margin:10px; /*  */
+    border-style: solid; /*  */
+    font-family: 'Nexa Pro', 'Segoe UI', sans-serif; /*  */
 }
 
+/* APARTADO <a> DE LOS BOTONES TIPO SUBMIT */
  button[type=submit] a{
-    color:White;
-    text-decoration:none;
+    color:White; /*  */
+    text-decoration:none; /*  */
  }
 
-/* Hover de los botones del contenido para redireccion (ej. Ser contratada), del tipo submit */
+/* HOVER DE LOS BOTONES DE TIPO SUBMIT PARA REDIRECCIONAR (ej. Ser contratada) */
 button[type=submit]:hover{
-    background-color: #0360ac;
-    border-color:#0360ac;
-    transition-duration: 0.3s;
-    cursor:pointer;
+    background-color: #0360ac; /*  */
+    border-color:#0360ac; /*  */
+    transition-duration: 0.3s; /*  */
+    cursor:pointer; /*  */
 }
 
-/* Botón del login */
+/* BOTÓN DEL LOGIN */
 .loginbutton{
-    background-color:#005daa;
-    border-color:#005daa;
-    border-radius:10px;
-    font-size:15px;
-    padding:5px;
-    margin:15px;
-    border-style: solid;
-    font-family: 'Nexa Pro', 'Segoe UI', sans-serif;
+    background-color:#005daa; /*  */
+    border-color:#005daa; /*  */
+    border-radius:10px; /*  */
+    font-size:15px; /*  */
+    padding:5px; /*  */
+    margin:15px; /*  */
+    border-style: solid; /*  */
+    font-family: 'Nexa Pro', 'Segoe UI', sans-serif; /*  */
 } 
- /* tag <a> del botón del login */
+ /* APARTADO <a> DEL BOTÓN DEL LOGIN */
 .loginbutton a{
-    text-decoration: none;
-    color: white;
+    text-decoration: none; /*  */
+    color: white; /*  */
 }
 
-/* Hovers relacionados al botón del login */
+/* HOVERS DEL BOTÓN DEL LOGIN (PÁGINA PRINCIPAL) */
 .loginbutton:hover, .loginbutton a:hover{
-    background-color: #bde0ec;
-    border-color: #bde0ec;
-    color: #003d6e;
-    transition-duration: 0.3s;
+    background-color: #bde0ec; /*  */
+    border-color: #bde0ec; /*  */
+    color: #003d6e; /*  */
+    transition-duration: 0.3s; /*  */
 }
 
+/* CONTAINER INTRO - PÁGINA DE ENTRADA */
 .intro{
     display:flex;
     justify-content: center;
@@ -275,75 +282,77 @@ button[type=submit]:hover{
     flex-direction: column;
 }
 
+/* ----------------------- MENÚ DEL LOGIN ---------------------------------- */
+
 .loginMenu{
-    display:flex;
-    width:100%;
-    min-height:100vh;
+    display:flex; /*  */
+    width:100%; /*  */
+    min-height:100vh; /*  */
 }
 .ladoIzqdo{
-    background-image:url(Imagenes/loginimage.png);
-    background-repeat: no-repeat;
-    background-size: cover;     
-    background-position: center;
-    flex:0.5;
+    background-image:url(Imagenes/loginimage.png); /*  */
+    background-repeat: no-repeat; /*  */
+    background-size: cover; /*  */      
+    background-position: center; /*  */
+    flex:0.5; /*  */
 
 }
 .ladoDcho{
-    background-color:#00065f;
-    background-image:url(Imagenes/loginimage2.png);
-    background-repeat: no-repeat;
-    background-size:cover;
-    flex:1;
-    color:White;
+    background-color:#00065f; /*  */
+    background-image:url(Imagenes/loginimage2.png); /*  */
+    background-repeat: no-repeat; /*  */
+    background-size:cover; /*  */
+    flex:1; /*  */
+    color:White; /*  */
 }
 
 .menuform{
     display:block;
-    background-color:#bde0ec;
-    padding:100px;
-    margin-top:150px;
-    margin-left:250px;
-    margin-right:250px;
-    border-radius:10px;
+    background-color:#bde0ec; /*  */
+    padding:100px; /*  */
+    margin-top:150px; /*  */
+    margin-left:250px; /*  */
+    margin-right:250px; /*  */
+    border-radius:10px; /*  */
 }
 
 .menuform h1,a,label{
-    color:#00065f;
+    color:#00065f; /*  */
 }
 
 .menuform:hover{
-    transition-duration: 0.3s;
-    box-shadow: 0 0 20px 5px #bde0ec;
+    transition-duration: 0.3s; /*  */
+    box-shadow: 0 0 20px 5px #bde0ec; /*  */
 }
 
 input[type=text], input[type=password]{
-    font-family: 'Nexa Pro', 'Segoe UI', sans-serif;
-    height:30px;
-    border-color: #00065f;
-    border-style:solid;
-    margin-bottom:15px;
-    border-radius:10px;
-    font-size:17px;
+    font-family: 'Nexa Pro', 'Segoe UI', sans-serif; /*  */
+    height:30px; /*  */
+    border-color: #00065f; /*  */
+    border-style:solid; /*  */
+    margin-bottom:15px; /*  */
+    border-radius:10px; /*  */
+    font-size:17px; /*  */
 }
 
 .loginFail{
-    background-color:#be0000;
-    border-color:#be0000;
-    padding:10px;
-    border-style: solid;
-    border-radius:5px;
-    text-align:center;
+    background-color:#be0000; /*  */
+    border-color:#be0000; /*  */
+    padding:10px; /*  */
+    border-style: solid; /*  */
+    border-radius:5px; /*  */
+    text-align:center; /*  */
 }
 
 .loginFail:hover{
-    transition-duration: 0.3s;
-    box-shadow: 0 0 15px 5px #880000;
+    transition-duration: 0.3s; /*  */
+    box-shadow: 0 0 15px 5px #880000; /*  */
 }
 
 .enlaces-derecha a:hover{
-    color:#00065f;
-    background-color: #bde0ec;
-    transition-duration: 0.3s;
+    color:#00065f; /*  */
+    background-color: #bde0ec; /*  */
+    transition-duration: 0.3s; /*  */
 }
 
 
