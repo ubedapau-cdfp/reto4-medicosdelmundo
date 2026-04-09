@@ -73,54 +73,45 @@ VALUES
 -- ==========================================
 -- 1. INSERTAR CATEGORÍAS (Apartados del PDF)
 -- ==========================================
--- Usamos id_categoria explícitos para asegurar la relación con los bloques.
+-- 1. CATEGORÍA MADRE (La que engloba todo)
+INSERT INTO CATEGORIA (id_categoria, titulo, descripcion, icono, id_madre) 
+VALUES (1, 'Guía de Contratos y Relaciones Laborales', 'Toda la información sobre legislación, tipos de contrato y derechos del trabajador.', 'bi-briefcase', NULL);
 
-INSERT INTO CATEGORIA (id_categoria, titulo, descripcion)
-VALUES 
-    (1, 'Relación Laboral', 'Definición, requisitos y principios generales del derecho laboral.'),
-    (2, 'Proceso de Contratación', 'Obligaciones de la empresa y requisitos administrativos para contratar.'),
-    (3, 'Elementos del Contrato', 'Elementos sustanciales (consentimiento, objeto, causa) y condiciones.'),
-    (4, 'Tipología de Contratos', 'Diferentes tipos de contratos: indefinidos, temporales y formativos.'),
-    (5, 'Jornada Laboral y Horarios', 'Tipos de jornada, descansos, horas extras y horarios especiales.'),
-    (6, 'Extinción del Contrato', 'Causas de finalización del contrato y compensaciones.');
+-- 2. SUBCATEGORÍAS (Hijas de la ID 1)
+INSERT INTO CATEGORIA (id_categoria, titulo, descripcion, icono, id_madre) VALUES 
+(2, 'La Relación Laboral', 'Requisitos, principios y jerarquía normativa.', 'bi-info-circle', 1),
+(3, 'Capacidad para Trabajar', 'Normativa sobre edad y trabajadores extranjeros.', 'bi-person-check', 1),
+(4, 'Tipos de Contratos', 'Indefinitos, temporales y formativos.', 'bi-file-earmark-text', 1),
+(5, 'Jornada y Horarios', 'Distribución de horas, nocturnidad y reducciones.', 'bi-clock', 1),
+(6, 'Finalización y Casos Especiales', 'Indemnizaciones, finiquitos, ETT y TRADE.', 'bi-exclamation-triangle', 1);
 
--- ==========================================
--- 2. INSERTAR BLOQUES (Contenido de cada sección)
--- ==========================================
+-- Contenido para 'La Relación Laboral' (ID 2)
+INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES 
+('¿Qué es una relación laboral?', 'Las 5 condiciones simultáneas', 'Para que exista un contrato de trabajo deben cumplirse siempre: 1. Voluntariedad, 2. Carácter Personal, 3. Dependencia (órdenes del empresario), 4. Ajenidad (beneficios para la empresa) y 5. Retribución.', 1, 2),
+('Jerarquía Normativa', '¿Qué ley se aplica primero?', 'El orden de aplicación es: 1. Normas de la UE, 2. La Constitución Española, 3. El Estatuto de los Trabajadores, 4. Convenios Colectivos y 5. El contrato individual.', 2, 2);
 
--- --- Categoría 1: Relación Laboral ---
-INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria)
-VALUES 
-    ('Definición y Requisitos', '¿Cuándo existe un contrato?', 'Para que exista una relación laboral deben cumplirse 5 condiciones: Voluntaria, Personal, Por cuenta ajena, Dependiente y Remunerada.', 1, 1),
-    ('Principios Generales', 'Normas mínimas', 'Incluye el Principio de Irrenunciabilidad de Derechos (no puedes renunciar a vacaciones) y el de Norma Mínima (el contrato solo puede mejorar la ley).', 2, 1);
+-- Contenido para 'Capacidad para Trabajar' (ID 3)
+INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES 
+('Trabajar siendo menor', 'Límites de edad', 'La edad mínima son 16 años (con autorización). Los menores de 18 no pueden realizar horas extra, trabajos nocturnos ni actividades peligrosas.', 1, 3),
+('Nacionalidad', 'Comunitarios vs No Comunitarios', 'Ciudadanos UE: Libre circulación y trabajo. Ciudadanos no comunitarios: Requieren permiso de residencia y de trabajo previo.', 2, 3);
 
--- --- Categoría 2: Proceso de Contratación ---
-INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria)
-VALUES 
-    ('Obligaciones de la Empresa', 'Seguridad Social y SEPE', 'La empresa debe tener cuenta de cotización, dar de alta a la trabajadora antes del inicio y registrar el contrato en el SEPE en 10 días.', 1, 2),
-    ('Requisitos de la Trabajadora', 'Edad y Capacidad', 'Edad mínima de 16 años (con autorización hasta los 17). Plena capacidad a los 18 años.', 2, 2),
-    ('Nacionalidad', 'UE y Extranjeros', 'Ciudadanos UE requieren DNI/Pasaporte y CUE si están más de 3 meses. No comunitarios necesitan permiso de trabajo y residencia previo.', 3, 2);
+-- Contenido para 'Tipos de Contratos' (ID 4)
+INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES 
+('Elementos del Contrato', 'Sustanciales vs Importantes', 'Sustanciales (obligatorios): Consentimiento, Objeto y Causa. Si falta uno, el contrato es nulo. Importantes: Lugar, fecha y duración.', 1, 4),
+('Contratos Formativos', 'Alternancia y Práctica', 'Alternancia: Combina formación y trabajo (máx 65% de jornada el primer año). Práctica Profesional: Para titulados, debe firmarse en los 3 años siguientes al título.', 2, 4);
 
--- --- Categoría 3: Elementos del Contrato ---
-INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria)
-VALUES 
-    ('Elementos Sustanciales', 'Imprescindibles', 'Consentimiento (acuerdo), Objeto (materia del contrato) y Causa (intercambio de trabajo por salario). Si falta uno, el contrato es nulo.', 1, 3),
-    ('Condiciones Importantes', 'No imprescindibles', 'Datos como el horario, salario detallado, duración, pluses y vacaciones deben constar, pero su ausencia no anula el contrato completo.', 2, 3);
+-- Contenido para 'Jornada y Horarios' (ID 5)
+INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES 
+('Trabajo a Turnos y Nocturno', 'Organización 24/7', 'Se considera trabajo nocturno el realizado entre las 22:00 y las 06:00. El trabajo a turnos implica rotación y suele conllevar un plus salarial.', 1, 5),
+('Reducción por Guarda Legal', 'Conciliación familiar', 'Derecho a reducir la jornada entre 1/8 y 1/2 por cuidado de menores de 12 años o personas con discapacidad.', 2, 5);
 
--- --- Categoría 4: Tipología de Contratos ---
-INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria)
-VALUES 
-    ('Contrato Indefinido', 'Estabilidad laboral', 'No tienen fecha de fin. Pueden ser a jornada completa, parcial o fijos-discontinuos (trabajos intermitentes pero estables).', 1, 4),
-    ('Contrato Temporal', 'Causas justificadas', 'Solo por circunstancias de producción (máximo 6-12 meses) o sustitución de trabajadores con reserva de puesto.', 2, 4),
-    ('Contratos Formativos', 'Prácticas y Alternancia', 'Contrato para obtención de práctica profesional (máximo 1 año) y contrato de alternancia con estudios (máximo 2 años).', 3, 4);
+-- Contenido para 'Finalización' (ID 6)
+INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES 
+('Indemnizaciones', 'Cálculo por despido o fin', 'Contrato temporal: 12 días por año. Despido improcedente: 33 días por año (máximo 24 mensualidades).', 1, 6),
+('Relaciones Especiales', 'ETT y TRADE', 'ETT: Contratación a través de empresas de trabajo temporal. TRADE: Trabajadores Autónomos Económicamente Dependientes (85% de ingresos de un solo cliente).', 2, 6);
 
--- --- Categoría 5: Jornada Laboral ---
-INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria)
-VALUES 
-    ('Tipos de Jornada', 'Distribución del tiempo', 'Existen jornadas completas, parciales (proporcionales en salario) y jornadas partidas (con interrupción para comer).', 1, 5),
-    ('Horarios Especiales', 'Nocturnidad y Festivos', 'Nocturna (22:00 a 6:00) con plus específico. Festiva compensada con descanso o aumento salarial del 75%.', 2, 5);
-
--- --- Categoría 6: Extinción del Contrato ---
-INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria)
-VALUES 
-    ('Compensaciones', 'Indemnizaciones', 'Despido improcedente (33 días/año), despido objetivo (20 días/año) y fin de contrato temporal (12 días/año, salvo sustitución).', 1, 6);
+INSERT INTO FAQ (pregunta, respuesta, id_categoria) VALUES 
+('¿Si cuido a la hija de una vecina es relación laboral?', 'No, se considera un trabajo de "buena vecindad" o amistad y está excluido del Estatuto de los Trabajadores.', 2),
+('¿Puede un menor de 16 años trabajar en una película?', 'Sí, es la única excepción: el trabajo en espectáculos públicos con autorización de la autoridad laboral.', 3),
+('¿Qué pasa si mi contrato no tiene forma escrita?', 'Se presume que es indefinido y a jornada completa, salvo que la empresa demuestre lo contrario.', 4),
+('¿Con cuánto tiempo debo avisar para una reducción de jornada?', 'Se debe solicitar por escrito a la empresa con al menos 15 días de antelación.', 5);
