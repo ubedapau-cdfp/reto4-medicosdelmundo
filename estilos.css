@@ -1,6 +1,6 @@
 /* Fuente personalizada, para su uso en la página web. */
 @font-face {
-    font-family: 'Nexa Pro';
+    font-family: 'Nexa Pro'; /* Nombre de la fuente personalizada */
     src: url('Fonts/NexaPro_Trial_Variable-Regular.ttf') format("truetype"), /* Source: Carpeta fonts, archivo. Formato TTF (TrueType Font) */
          url('Fonts/NexaPro_Trial_Variable-Italic.ttf') format("truetype");
   font-weight: normal; /* Peso de la fuente (la carga en su estado de defecto.)*/
@@ -13,7 +13,7 @@
 /* MÁRGENES GENERALES */
 * {
     margin: 0; /* MARGEN */
-    padding: 0; /* RELLENO */
+    padding: 0; /* ESPACIO ENTRE ELEMENTOS */
     box-sizing: border-box; /* DEFINICIÓN DEL ANCHO Y ALTO TOTAL DE UN ELEMENTO */
 }
 
@@ -55,7 +55,7 @@ nav ul li {
 
 nav ul li a {
     color: white; /* COLOR DEL TEXTO */
-    text-decoration: none; /* DECORACIÓN DEL TEXTO, NINGUNA */
+    text-decoration: none; /* SIN DECORACIÓN DE TEXTO */
     padding: 25px 15px; /* ESPACIO ENTRE ELEMENTOS */
     display: block; /* OCUPACIÓN DE TODO EL ANCHO DISPONIBLE */
     font-weight: bold; /* TIPO DE TEXTO: NEGRITA */
@@ -65,13 +65,13 @@ nav ul li a {
 .enlaces-derecha {
     margin-left: auto; /* MARGEN RESPECTO A LA IZQUIERDA AUTOMÁTICO */
     display: flex; /* CONTENEDOR FLEXIBLE */
-    gap: 20px; /* HUECO DE 20 PÍXELES */
+    gap: 20px; /* HUECO DE 20 PÍXELES ENTRE APARTADOS */
 }
 
 /* ENLACES LADO DERECHO -> EN EL <a> */
 .enlaces-derecha a {
     color: white; /* COLOR DEL TEXTO */
-    text-decoration: none; /* DECORACIÓN DEL TEXTO: NINGUNA */
+    text-decoration: none; /* SIN DECORACIÓN DE TEXTO*/
     font-weight: bold; /* TIPO DE TEXTO: NEGRITA */
     display: flex; /* CONTENEDOR FLEXIBLE */ 
     align-items: center; /* ITEMS CENTRADOS */
@@ -104,84 +104,87 @@ nav ul li:hover ul {
 }
 
 nav ul li ul li a {
-    padding: 12px 15px; /*  */
-    border-top: 1px solid rgba(255,255,255,0.1); /*  */
+    padding: 12px 15px; /* ESPACIO ENTRE ELEMENTOS */
+    border-top: 1px solid rgba(255,255,255,0.1); /* SOMBREADO */
 }
 
 nav ul li ul li a:hover {
-    background-color: #bde0ec; /*  */
-    color:#00065f; /*  */
-    transition-duration: 0.2s; /*  */
+    background-color: #bde0ec; /* COLOR DEL FONDO */
+    color:#00065f; /* COLOR DEL TEXTO */
+    transition-duration: 0.2s; /* DURACIÓN DE LA TRANSICIÓN */
 }
 
 /* FOOTER -> ESTILOS GENERALES */
 .footer {
     position: fixed; /* Fija el footer en la parte inferior de la página */
-    left: 0; /*  */
-    bottom: 0; /*  */
-    width: 100%; /*  */
-    background-color: #0f143d; /*  */
-    color: white; /*  */
-    padding: 0px 5%; /*  */
-    border-style:solid; /*  */
-    border-color:#0f143d; /*  */
+    left: 0; /* POSICIÓN A LA IZQUIERDA */
+    bottom: 0; /* POSICIÓN DE ABAJO */
+    width: 100%; /* ANCHURA */
+    background-color: #0f143d; /* COLOR DE FONDO */
+    color: white; /* COLOR DE TEXTO */
+    padding: 0px 5%; /* ESPACIO ENTRE ELEMENTOS */
+    border-style:solid; /* TIPO DE BORDE SÓLIDO */
+    border-color:#0f143d; /* COLOR DEL BORDE */
 
 }
 
+/* APARTADO footer-row DEL FOOTER */
 .footer-row {
-    display: flex; /*  */
-    justify-content: space-between; /*  */
-    align-items: center; /*  */
-    gap: 20px; /*  */ 
-    flex-wrap: wrap; /*  */
-    width: 100%; /*  */
+    display: flex; /* CONTENIDO FLEXIBLE */
+    justify-content: space-between; /* CONTENIDO JUSTIFICADO */
+    align-items: center; /* ITEMS CENTRADOS */
+    gap: 20px; /* HUECO DE 20 PÍXELES ENTRE APARTADOS */ 
+    flex-wrap: wrap; /* ELEMENTOS PUEDEN PASAR A LA SIGUIENTE LINEA SI NO CABEN EN 1 FILA */
+    width: 100%; /* ANCHURA */
 }
 
 /* HOVER DEL FOOTER PARA QUE SE CAMBIE EL COLOR EL RATÓN */
 .footer:hover{
-    transition-duration: 0.3s; /*  */
-    box-shadow: 0 0 20px 5px #bde0ec; /*  */
+    transition-duration: 0.3s; /* DURACIÓN DE TRANSICIÓN */
+    box-shadow: 0 0 20px 5px #bde0ec; /* SOMBREADO */
 }
 
 /* CONTAINER PARA LA DIRECCIÓN DE TELÉFONO */
 .direccion-telefono {
-    display: flex; /*  */
-    flex-direction: column; /*  */
-    gap: 5px; /*  */           
-    font-style: normal; /*  */
-    text-align: center; /*  */
-    font-weight: bold; /*  */
+    display: flex; /* CONTENEDOR FLEXIBLE */
+    flex-direction: column; /* DE ESTILO COLUMNA */
+    gap: 5px; /* HUECO DE 5 PÍXELES ENTRE APARTADOS */           
+    font-style: normal; /* ESTILO DE TEXTO NORMAL */
+    text-align: center; /* TEXTO CENTRADO */
+    font-weight: bold; /* TIPO DE TEXTO: NEGRITA */
 }
 
 /* CONTAINER PARA EL MAPA, USANDO iframe, DE GOOGLE MAPS */
 .map-container iframe {
-    display: block; /*  */
-    max-width: 100%; /*  */
-    border: 2px solid white; /*  */
+    display: block; /* OCUPACIÓN DE TODO EL ANCHO DISPONIBLE DEL CONTENEDOR */
+    max-width: 100%; /* ANCHURA MÁXIMA */
+    border: 2px solid white; /* COLOR Y ESTILO (SÓLIDO) DEL BORDE */
 }
 
 /* CONTAINER PARA DATOS DE CONTACTO (CORREO ELECTRÓNICO) */
 .contacto-final {
-    display: flex; /*  */
-    flex-direction: column; /*  */
-    align-items: flex-end; /*  */
-    gap: 10px; /*  */
+    display: flex; /* CONTENEDOR FLEXIBLE */
+    flex-direction: column; /* DE ESTILO COLUMNA */
+    align-items: flex-end; /* ITEMS ALINEADOS */
+    gap: 10px; /* HUECO DE 10 PÍXELES ENTRE APARTADOS */
 }
 
+/* ESTILOS DEL CONTAINER contacto-final DEL TAG <p> */
 .contacto-final p {
-    font-weight: bold; /*  */
+    font-weight: bold; /* TIPO DE TEXTO: NEGRITA */
 }
 
+/* ESTILOS DEL CONTAINER contacto-final DEL TAG <a> */
 .contacto-final a {
-    color: white; /*  */
-    text-decoration: none; /*  */
+    color: white; /* COLOR DE TEXTO */
+    text-decoration: none; /* SIN DECORACIÓN DE TEXTO */
 }
 
 /* SECTION DEL CONTENIDO A ENSEÑAR EN LA PÁGINA WEB */
 .contenidos, .subapartados{
     background-color: #b0b0b0; /* COLOR DE FONDO */
-    border-radius: 15px; /* REDONDEO DE ESQUINAS */
-    padding:50px; /* RELLENO */
+    border-radius: 15px; /* REDONDEO DE ESQUINAS DE 15 PÍXELES */
+    padding:50px; /* ESPACIO ENTRE ELEMENTOS */
     margin:15px; /* MÁRGENES */
     text-align: center; /* TEXTO CENTRADO */
     color: #000000; /* COLOR DEL TEXTO */
@@ -192,169 +195,181 @@ nav ul li ul li a:hover {
     transition-duration: 0.3s; /* TIEMPO DE DURACIÓN DE LA TRANSICIÓN */
     box-shadow: 0 0 20px 5px #333333; /* SOMBREADO */
 }
-
+/* ESTILOS DEL TAG <b> DEL CONTAINER contenidos */
 .contenidos b {
     font-size: 25px; /* TAMAÑO DEL TEXTO */
 }
 
+/* ESTILOS DEL TAG <b> DEL CONTAINER contenidos SUBAPARTADO subtitulos */
 .contenidos b.subtitulos{
     font-size: 20px; /* TAMAÑO DEL TEXTO */
 }
 
+/* ESTILOS DEL TAG <b> DEL CONTAINER contenidos SUBAPARTADO ejemplos */
 .contenidos b.ejemplos{
     font-size: 15px; /* TAMAÑO DEL TEXTO */
 }
 
 /* BOTONES GENERALES */
 .button{
-    background-color:#00065f; /*  */
-    color: white; /*  */
-    border-radius:10px; /*  */
-    font-size:20px; /*  */
-    padding:5px; /*  */
-    margin:10px; /*  */
-    text-decoration: none; /*  */
+    background-color:#00065f; /* COLOR DEL FONDO */
+    color: white; /* COLOR DEL TEXTO */
+    border-radius:10px; /* REDONDEO DE ESQUINAS DE 10 PÍXELES */
+    font-size:20px; /* TAMAÑO DEL TEXTO */
+    padding:5px; /* ESPACIO ENTRE ELEMENTOS */
+    margin:10px; /* MÁRGENES */
+    text-decoration: none; /* SIN DECORACIÓN DE TEXTO */
 }
 
 /* HOVERS DE LOS BOTONES GENERALES */
 .button:hover{
-    background-color: #0360ac; /*  */
-    transition-duration: 0.5s; /*  */
+    background-color: #0360ac; /* COLOR DEL FONDO */
+    transition-duration: 0.5s; /* DURACIÓN DE TRANSICIÓN */
 }
 
 /* BOTONES DE TIPO SUBMIT PARA REDIRECCIONAR (ej. Ser contratada) */
 button[type=submit], .opciones{
-    background-color:#00065f; /*  */
-    border-color:#0f143d; /*  */
-    color: white; /*  */
-    border-radius:10px; /*  */
-    font-size:15px; /*  */
-    padding:5px; /*  */
-    margin:10px; /*  */
-    border-style: solid; /*  */
-    font-family: 'Nexa Pro', 'Segoe UI', sans-serif; /*  */
+    background-color:#00065f; /* COLOR DEL FONDO */
+    border-color:#0f143d; /* COLOR DEL BORDE */
+    color: white; /* COLOR DE TEXTO */
+    border-radius:10px; /* REDONDEO DE ESQUINAS DE 10 PÍXELES */
+    font-size:15px; /* TAMAÑO DEL TEXTO */
+    padding:5px; /* ESPACIO ENTRE ELEMENTOS */
+    margin:10px; /* MÁRGENES */
+    border-style: solid; /* TIPO DE BORDE SÓLIDO */
+    font-family: 'Nexa Pro', 'Segoe UI', sans-serif; /* ORDEN DE FUENTES A USAR */
 }
 
 /* APARTADO <a> DE LOS BOTONES TIPO SUBMIT */
  button[type=submit] a{
-    color:White; /*  */
-    text-decoration:none; /*  */
+    color:White; /* COLOR DEL TEXTO */
+    text-decoration:none; /* SIN DECORACIÓN DE TEXTO */
  }
 
 /* HOVER DE LOS BOTONES DE TIPO SUBMIT PARA REDIRECCIONAR (ej. Ser contratada) */
 button[type=submit]:hover{
-    background-color: #0360ac; /*  */
-    border-color:#0360ac; /*  */
-    transition-duration: 0.3s; /*  */
-    cursor:pointer; /*  */
+    background-color: #0360ac; /* COLOR DEL FONDO */
+    border-color:#0360ac; /* COLOR DEL BORDE */
+    transition-duration: 0.3s; /* DURACIÓN DE LA TRANSICIÓN */
+    cursor:pointer; /* DETECCIÓN DEL CURSOR AL PASAR SOBRE EL BOTÓN */
 }
 
 /* BOTÓN DEL LOGIN */
 .loginbutton{
-    background-color:#005daa; /*  */
-    border-color:#005daa; /*  */
-    border-radius:10px; /*  */
-    font-size:15px; /*  */
-    padding:5px; /*  */
-    margin:15px; /*  */
-    border-style: solid; /*  */
-    font-family: 'Nexa Pro', 'Segoe UI', sans-serif; /*  */
+    background-color:#005daa; /* COLOR DEL FONDO */
+    border-color:#005daa; /* COLOR DEL BORDE */
+    border-radius:10px; /* REDONDEO DE ESQUINAS DE 10 PÍXELES */
+    font-size:15px; /* TAMAÑO DEL TEXTO */
+    padding:5px; /* ESPACIO ENTRE ELEMENTOS */
+    margin:15px; /* MÁRGENES */
+    border-style: solid; /* TIPO DE BORDE SÓLIDO */
+    font-family: 'Nexa Pro', 'Segoe UI', sans-serif; /* ORDEN DE FUENTES A USAR */
 } 
  /* APARTADO <a> DEL BOTÓN DEL LOGIN */
 .loginbutton a{
-    text-decoration: none; /*  */
-    color: white; /*  */
+    text-decoration: none; /* SIN DECORACIÓN DE TEXTO */
+    color: white; /* COLOR DE TEXTO */
 }
 
 /* HOVERS DEL BOTÓN DEL LOGIN (PÁGINA PRINCIPAL) */
 .loginbutton:hover, .loginbutton a:hover{
-    background-color: #bde0ec; /*  */
-    border-color: #bde0ec; /*  */
-    color: #003d6e; /*  */
-    transition-duration: 0.3s; /*  */
+    background-color: #bde0ec; /* COLOR DE FONDO */
+    border-color: #bde0ec; /* REDONDEO DE ESQUINAS DE 10 PÍXELES */
+    color: #003d6e; /* COLOR DE TEXTO */
+    transition-duration: 0.3s; /* DURACIÓN DE LA TRANSICIÓN */
 }
 
-/* CONTAINER INTRO - PÁGINA DE ENTRADA */
+/* CONTAINER intro - PÁGINA DE ENTRADA */
 .intro{
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+    display:flex; /* CONTENEDOR FLEXIBLE */
+    justify-content: center; /* CONTENIDO CENTRADO */
+    align-items: center; /* ITEMS CENTRADOS */
+    flex-direction: column; /* DE ESTILO COLUMNA */
 }
 
 /* ----------------------- MENÚ DEL LOGIN ---------------------------------- */
-
+/* CONTAINER loginMenu */
 .loginMenu{
-    display:flex; /*  */
-    width:100%; /*  */
-    min-height:100vh; /*  */
+    display:flex; /* CONTENEDOR FLEXIBLE */
+    width:100%; /* ANCHURA */
+    min-height:100vh; /* ALTURA MÍNIMA */
 }
+
+/* CONTAINER ladoIzqdo */
 .ladoIzqdo{
-    background-image:url(Imagenes/loginimage.png); /*  */
-    background-repeat: no-repeat; /*  */
-    background-size: cover; /*  */      
-    background-position: center; /*  */
-    flex:0.5; /*  */
+    background-image:url(Imagenes/loginimage.png); /* IMÁGEN USADA PARA EL FONDO */
+    background-repeat: no-repeat; /* QUE NO SE REPITA, SÓLO SEA UNA IMÁGEN */
+    background-size: cover; /* QUE CUBRA TODA LA PANTALLA */      
+    background-position: center; /* QUE LA POSICIÓN SEA CENTRADA */
+    flex:0.5; /* OCUPACIÓN DEL 50% DEL ESPACIO DISPONIBLE DEL CONTENEDOR */
 
 }
+
+/* CONTAINER ladoDcho */
 .ladoDcho{
-    background-color:#00065f; /*  */
-    background-image:url(Imagenes/loginimage2.png); /*  */
-    background-repeat: no-repeat; /*  */
-    background-size:cover; /*  */
-    flex:1; /*  */
-    color:White; /*  */
+    background-color:#00065f; /* COLOR DEL FONDO */
+    background-image:url(Imagenes/loginimage2.png); /* IMÁGEN USADA PARA EL FONDO*/
+    background-repeat: no-repeat; /* QUE NO SE REPITA, SÓLO SEA UNA IMÁGEN */
+    background-size:cover; /* QUE CUBRA TODA LA PANTALLA */
+    flex:1; /* OCUPACIÓN DE TODO EL ESPACIO DISPONIBLE EN EL CONTENEDOR */
+    color:White; /* COLOR DEL TEXTO */
 }
 
+/* CONTAINER menuform */
 .menuform{
-    display:block;
-    background-color:#bde0ec; /*  */
-    padding:100px; /*  */
-    margin-top:150px; /*  */
-    margin-left:250px; /*  */
-    margin-right:250px; /*  */
-    border-radius:10px; /*  */
+    display:block; /*  */
+    background-color:#bde0ec; /* COLOR DEL FONDO */
+    padding:100px; /* ESPACIO ENTRE ELEMENTOS */
+    margin-top:150px; /* MARGEN RESPECTO ARRIBA */
+    margin-left:250px; /* MARGEN RESPECTO LA IZQUIERDA */
+    margin-right:250px; /* MARGEN RESPECTO LA DERECHA */
+    border-radius:10px; /* REDONDEO DE ESQUINAS DE 10 PÍXELES */
 }
 
+/* ESTILOS DE LOS TAG <h1>,<a>,<label> DEL CONTAINER menuform */
 .menuform h1,a,label{
-    color:#00065f; /*  */
+    color:#00065f; /* COLOR DEL TEXTO */
 }
 
+/* HOVER DEL CONTAINER menuform */
 .menuform:hover{
-    transition-duration: 0.3s; /*  */
-    box-shadow: 0 0 20px 5px #bde0ec; /*  */
+    transition-duration: 0.3s; /* DURACIÓN DE LA TRANSICIÓN */
+    box-shadow: 0 0 20px 5px #bde0ec; /* SOMBREADO */
 }
 
+/* ESTILOS DE TODOS LOS INPUT DE TIPO TEXTO O CONTRASEÑA */
 input[type=text], input[type=password]{
-    font-family: 'Nexa Pro', 'Segoe UI', sans-serif; /*  */
-    height:30px; /*  */
-    border-color: #00065f; /*  */
-    border-style:solid; /*  */
-    margin-bottom:15px; /*  */
-    border-radius:10px; /*  */
-    font-size:17px; /*  */
+    font-family: 'Nexa Pro', 'Segoe UI', sans-serif; /* ORDEN DE FUENTES A USAR */
+    height:30px; /* ALTURA */
+    border-color: #00065f; /* COLOR DEL BORDE */
+    border-style:solid; /* TIPO DE BORDE SÓLIDO */
+    margin-bottom:15px; /* MARGEN RESPECTO ABAJO */
+    border-radius:10px; /* REDONDEO DE ESQUINAS DE 10 PÍXELES */
+    font-size:17px; /* TAMAÑO DEL TEXTO */
 }
 
+/* CONTAINER DE MENSAJE DE ERROR AL INTENTAR HACER LOGIN */
 .loginFail{
-    background-color:#be0000; /*  */
-    border-color:#be0000; /*  */
-    padding:10px; /*  */
-    border-style: solid; /*  */
-    border-radius:5px; /*  */
-    text-align:center; /*  */
+    background-color:#be0000; /* COLOR DEL FONDO */
+    border-color:#be0000; /* COLOR DEL BORDE */
+    padding:10px; /* ESPACIO ENTRE ELEMENTOS */
+    border-style: solid; /* TIPO DE BORDE SÓLIDO */
+    border-radius:5px; /* REDONDEO DE ESQUINAS DE 5 PÍXELES */
+    text-align:center; /* TEXTO CENTRADO */
 }
 
+/* HOVER DEL CONTAINER DE MENSAJE DE ERROR AL INTENTAR HACER LOGIN */
 .loginFail:hover{
-    transition-duration: 0.3s; /*  */
-    box-shadow: 0 0 15px 5px #880000; /*  */
+    transition-duration: 0.3s; /* DURACIÓN DE LA TRANSICIÓN */
+    box-shadow: 0 0 15px 5px #880000; /* SOMBREADO */
 }
 
+/* HOVER DEL TAG <a> DEL CONTAINER enlaces-derecha */
 .enlaces-derecha a:hover{
-    color:#00065f; /*  */
-    background-color: #bde0ec; /*  */
-    transition-duration: 0.3s; /*  */
+    color:#00065f; /* COLOR DEL TEXTO */
+    background-color: #bde0ec; /* COLOR DEL FONDO */
+    transition-duration: 0.3s; /* DURACIÓN DE LA TRANSICIÓN */
 }
-
 
 
 /* -------------- VISTAS -----------------*/
@@ -362,27 +377,27 @@ input[type=text], input[type=password]{
 @media (max-width: 1024px) {
 
     header {
-        flex-wrap: wrap;
-        height: auto;
-        padding: 15px 5%;
+        flex-wrap: wrap; /* ELEMENTOS PUEDEN PASAR A LA SIGUIENTE LINEA SI NO CABEN EN 1 FILA */
+        height: auto; /* ALTURA */
+        padding: 15px 5%; /* ESPACIO ENTRE ELEMENTOS */
     }
 
     nav ul {
-        gap: 5px;
+        gap: 5px; /* HUECO ENTRE ELEMENTOS DE 5 PÍXELES */
     }
 
     nav ul li a {
-        padding: 15px 10px;
-        font-size: 14px;
+        padding: 15px 10px; /* ESPACIO ENTRE ELEMENTOS */
+        font-size: 14px; /* TAMAÑO DEL TEXTO */
     }
 
     .footer-row {
-        flex-direction: column;
-        text-align: center;
+        flex-direction: column; /* DE ESTILO COLUMNA */
+        text-align: center; /* TEXTO CENTRADO */
     }
 
     .contacto-final {
-        align-items: center;
+        align-items: center; /* ITEMS CENTRADOS */
     }
 }
 
@@ -390,55 +405,55 @@ input[type=text], input[type=password]{
 @media (max-width: 768px) {
 
     header {
-        flex-direction: column;
+        flex-direction: column; /* DE ESTILO COLUMNA */
         align-items: flex-start;
-        gap: 10px;
-        height: auto;
-        padding: 15px;
+        gap: 10px; /* HUECO DE 10 PÍXELES ENTRE APARTADOS */
+        height: auto; /* ALTURA */
+        padding: 15px; /* ESPACIO ENTRE ELEMENTOS */
     }
 
     nav {
-        width: 100%;
-        margin-left: 0;
+        width: 100%; /* ANCHURA */
+        margin-left: 0; /* MARGEN RESPECTO LA IZQUIERDA */
     }
 
     nav ul {
-        flex-direction: column;
-        width: 100%;
+        flex-direction: column; /* ESTILO COLUMNA */
+        width: 100%; /* ANCHURA */
     }
 
     nav ul li a {
-        padding: 12px;
-        width: 100%;
+        padding: 12px; /* ESPACIO ENTRE ELEMENTOS */
+        width: 100%; /* ANCHURA */
     }
 
     nav ul li ul {
-        position: static;
-        box-shadow: none;
+        position: static; /* NO HAY CONTROL DE POSICIÓN */
+        box-shadow: none; /* SIN SOMBREADO */
     }
 
     .enlaces-derecha {
-        width: 100%;
-        justify-content: space-between;
+        width: 100%; /* ANCHURA */
+        justify-content: space-between; /* REPARTE EL ESPACIO ENTRE LOS ELEMENTOS */
     }
 
     .contenidos {
-        padding: 20px;
-        margin: 10px;
+        padding: 20px; /* ESPACIO ENTRE ELEMENTOS */
+        margin: 10px; /* MÁRGENES */
     }
 
     .footer-row {
-        flex-direction: column;
-        text-align: center;
-        gap: 30px;
+        flex-direction: column; /* DE ESTILO COLUMNA */
+        text-align: center; /* TEXTO CENTRADO */
+        gap: 30px; /* HUECO DE 30 PÍXELES ENTRE APARTADOS */
     }
 
     .contacto-final {
-        align-items: center;
+        align-items: center; /* ITEMS CENTRADOS */
     }
 
     .direccion-telefono {
-        text-align: center;
+        text-align: center; /* TEXTO CENTRADO */
     }
 }
 hr {
