@@ -26,7 +26,9 @@ if (!isset($_SESSION['usuario_id']) || !isset($_SESSION['id_rol']) || intval($_S
 			if (isset($_SESSION['usuario_nombre'])) {
 				$nombre = basename($_SESSION['usuario_nombre']);
 				echo "<span class='admin-name'>Hola, " . $nombre . "</span>";
-				echo "<a class='logout-button' href='" . $base . "logout.php'>Cerrar sesión</a>";
+				echo "<button class='logoutbutton'>"; // Botón para cerrar sesión
+				echo "<a href='" . $base . "logout.php'>Cerrar sesión</a>";
+				echo "</button>";
 			}
 			?>
 		</div>

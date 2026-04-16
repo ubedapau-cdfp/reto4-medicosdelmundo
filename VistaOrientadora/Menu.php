@@ -17,20 +17,7 @@ if (!isset($_SESSION['usuario_id']) || !isset($_SESSION['id_rol']) || intval($_S
 	<link rel="icon" type="image/png" href="<?= $base ?>Imagenes/Logoreal.png">
 </head>
 <body class="menu-no-margin">
-	<header class="admin-top">
-		<a href="<?= $base ?>home/home.php" class="logo">
-			<img src="<?= $base ?>Imagenes/Logoreal.png" alt="Logo">
-		</a>
-		<section class="admin-session">
-			<?php
-			if (isset($_SESSION['usuario_nombre'])) {
-				$nombre = basename($_SESSION['usuario_nombre']);;
-				echo "<span class='admin-name'>Hola, " . $nombre . "</span>";
-				echo "<a class='logout-button' href='" . $base . "logout.php'>Cerrar sesión</a>";
-			}
-			?>
-		</section>
-	</header>
+	<?php include '../barrasNavegacion/headeradmin.php'; ?>
 	<main class="menu-grid">
 		<a class="menu-block block-contratos" href="<?= $base ?>contratos/relacionlaboral.php">
 			<section class="block-content">
