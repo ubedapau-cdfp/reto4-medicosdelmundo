@@ -1,8 +1,8 @@
 <?php
 session_start();
 $base = '/reto4-medicosdelmundo/';
-// Acceso sólo para administradoras (id_rol === 3)
-if (!isset($_SESSION['usuario_id']) || !isset($_SESSION['id_rol']) || intval($_SESSION['id_rol']) !== 3) {
+// Acceso sólo para orientadoras (id_rol === 2)
+if (!isset($_SESSION['usuario_id']) || !isset($_SESSION['id_rol']) || intval($_SESSION['id_rol']) !== 2) {
 	header('Location: /reto4-medicosdelmundo/signin.php');
 	exit();
 }
@@ -12,7 +12,7 @@ if (!isset($_SESSION['usuario_id']) || !isset($_SESSION['id_rol']) || intval($_S
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>Menú - Bloques</title>
+	<title>Menú - Orientadora</title>
 	<link rel="stylesheet" href="<?= $base ?>estilos.css">
 	<link rel="icon" type="image/png" href="<?= $base ?>Imagenes/Logoreal.png">
 </head>
@@ -21,15 +21,15 @@ if (!isset($_SESSION['usuario_id']) || !isset($_SESSION['id_rol']) || intval($_S
 		<a href="<?= $base ?>home/home.php" class="logo">
 			<img src="<?= $base ?>Imagenes/Logoreal.png" alt="Logo">
 		</a>
-		<div class="admin-session">
+		<section class="admin-session">
 			<?php
 			if (isset($_SESSION['usuario_nombre'])) {
-				$nombre = basename($_SESSION['usuario_nombre']);
+				$nombre = basename($_SESSION['usuario_nombre']);;
 				echo "<span class='admin-name'>Hola, " . $nombre . "</span>";
 				echo "<a class='logout-button' href='" . $base . "logout.php'>Cerrar sesión</a>";
 			}
 			?>
-		</div>
+		</section>
 	</header>
 	<main class="menu-grid">
 		<a class="menu-block block-contratos" href="<?= $base ?>contratos/relacionlaboral.php">
@@ -62,4 +62,3 @@ if (!isset($_SESSION['usuario_id']) || !isset($_SESSION['id_rol']) || intval($_S
 	</main>
 </body>
 </html>
-
