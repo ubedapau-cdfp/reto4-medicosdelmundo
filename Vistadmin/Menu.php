@@ -21,7 +21,7 @@ if (!isset($_SESSION['usuario_id']) || !isset($_SESSION['id_rol']) || intval($_S
 		<a href="<?= $base ?>home/home.php" class="logo">
 			<img src="<?= $base ?>Imagenes/Logoreal.png" alt="Logo">
 		</a>
-		<div class="admin-session">
+		<section class="admin-session">
 			<?php
 			if (isset($_SESSION['usuario_nombre'])) {
 				$nombre = basename($_SESSION['usuario_nombre']);
@@ -31,7 +31,7 @@ if (!isset($_SESSION['usuario_id']) || !isset($_SESSION['id_rol']) || intval($_S
 				echo "</button>";
 			}
 			?>
-		</div>
+		</section>
 	</header>
 	<main class="menu-grid">
 		<a class="menu-block block-contratos" href="<?= $base ?>contratos/relacionlaboral.php">
