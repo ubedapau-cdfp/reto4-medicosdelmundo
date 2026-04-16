@@ -1,4 +1,5 @@
 <?php // Inicio del apartado PHP
+if (session_status() === PHP_SESSION_NONE) session_start();
 $base = '/reto4-medicosdelmundo/'; // Valor $base equivale a la ruta absoluta para su uso en la página
 ?> <!-- Cierre del apartado PHP -->
 <header> <!-- Inicio del header -->
@@ -49,6 +50,18 @@ $base = '/reto4-medicosdelmundo/'; // Valor $base equivale a la ruta absoluta pa
         <a href="<?= $base ?>otros/preguntasfrecuentes.php">Preguntas frecuentes</a> <!-- Enlace que redirecciona a preguntasfrecuentes.php -->
     </section> <!-- Cierre del section enlaces-derecha -->
     <section> <!-- Inicio del section sin nombre -->
-        <button class='loginbutton'><a href="<?= $base ?>signin.php">Login</a></button> <!-- Botón que redirecciona al signin.php -->
+<?php
+$page = basename($_SERVER['PHP_SELF']);
+
+if (isset($_SESSION['usuario_nombre']) && $page !== 'Menu.php') {
+    $nombre = $_SESSION['usuario_nombre'];
+    echo "<span class='admin-name'>Hola, " . $nombre . "</span>";
+    echo "<a class='logout-button' href='" . $base . "logout.php'>Cerrar sesión</a>";
+} else {
+    echo "<button class='loginbutton'>";
+    echo "<a href='" . $base . "signin.php'>Login</a>";
+    echo "</button>";
+}
+?>
     </section> <!-- Cierre del section sin nombre -->
 </header> <!-- Cierre del header -->
