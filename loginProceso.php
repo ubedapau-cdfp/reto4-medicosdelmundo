@@ -10,7 +10,7 @@
         $stmt->bindParam(':nombre', $user);
         $stmt->execute();
         
-        $usuario = $stmt->fetch(PDO::FETCH_ASSOC);
+        $usuario = $stmt->fetch(PDO::FETCH_ASSOC); // 
 
         if ($usuario && password_verify($pass, $usuario['password_hash'])) {
             $_SESSION['usuario_id'] = $usuario['id_usuario'];

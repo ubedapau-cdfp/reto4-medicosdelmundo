@@ -8,6 +8,10 @@
   font-display: swap; /* Pone el texto personalizado en cuanto se cargue en la página */
 }
 
+/* ---------------------- APARTADO PARA FONT AWESOME ----------------------------*/
+.fa-solid{
+    margin-right:8px; /* MARGEN A LA DERECHA */
+}
 
 /* ----------------------- ESTILOS GENERAL ---------------------------------- */
 /* MÁRGENES GENERALES */
