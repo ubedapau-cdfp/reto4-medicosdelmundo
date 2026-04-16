@@ -49,18 +49,18 @@ $base = '/reto4-medicosdelmundo/'; // Valor $base equivale a la ruta absoluta pa
         <a href="<?= $base ?>otros/sobrenosotras.php">Sobre nosotras</a> <!-- Enlace que redirecciona a sobrenosotras.php -->
         <a href="<?= $base ?>otros/preguntasfrecuentes.php">Preguntas frecuentes</a> <!-- Enlace que redirecciona a preguntasfrecuentes.php -->
     </section> <!-- Cierre del section enlaces-derecha -->
-    <section> <!-- Inicio del section sin nombre -->
+    <section class="admin-session"> <!-- Inicio del section sin nombre -->
 <?php
-$page = basename($_SERVER['PHP_SELF']);
+$page = basename($_SERVER['PHP_SELF']);// Obtener el nombre del archivo PHP actual pero solo la ultima parte
 
-if (isset($_SESSION['usuario_nombre']) && $page !== 'Menu.php') {
-    $nombre = $_SESSION['usuario_nombre'];
-    echo "<span class='admin-name'>Hola, " . $nombre . "</span>";
-    echo "<a class='logout-button' href='" . $base . "logout.php'>Cerrar sesión</a>";
+if (isset($_SESSION['usuario_nombre'])) {// Verificar si la variable de sesión 'usuario_nombre' está establecida, lo que indica que el usuario ha iniciado sesión
+    $nombre = $_SESSION['usuario_nombre'];// Obtener el nombre del usuario desde la variable de sesión
+    echo "<span class='admin-name'>Hola, " . $nombre . "</span>";// Mostrar un mensaje de bienvenida con el nombre del usuario
+    echo "<a class='logout-button' href='" . $base . "logout.php'>Cerrar sesión</a>";// Mostrar un enlace para cerrar sesión que redirecciona a logout.php
 } else {
-    echo "<button class='loginbutton'>";
-    echo "<a href='" . $base . "signin.php'>Login</a>";
-    echo "</button>";
+    echo "<button class='loginbutton'>";// Mostrar un botón de inicio de sesión
+    echo "<a href='" . $base . "signin.php'>Login</a>";// Mostrar un enlace dentro del botón que redirecciona a signin.php
+    echo "</button>";// Cerrar el botón de inicio de sesión
 }
 ?>
     </section> <!-- Cierre del section sin nombre -->

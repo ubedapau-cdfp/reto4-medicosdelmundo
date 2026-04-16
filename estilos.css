@@ -39,7 +39,6 @@ header {
 
 /* Botón/Campo de cerrar sesión en headers administrativos */
 .logout-button {
-    margin-left: auto;
     color: white;
     text-decoration: none;
     font-weight: bold;
@@ -48,6 +47,21 @@ header {
     display: flex;
     align-items: center;
     text-align: center;
+}
+
+/* Contenedor de sesión del admin (nombre + logout) */
+.admin-session {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-left: auto;
+}
+
+/* Nombre del admin en el header */
+.admin-name {
+    color: white;
+    font-weight: bold;
+    white-space: nowrap;
 }
 
 /* LOGO */
