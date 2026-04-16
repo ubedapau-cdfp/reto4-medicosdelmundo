@@ -41,6 +41,19 @@ header {
     height: 70px; /* ALTURA */
 }
 
+/* Botón/Campo de cerrar sesión en headers administrativos */
+.logout-button {
+    margin-left: auto;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0 15px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
 /* LOGO */
 header a.logo img {
     height: 45px; /* ALTURA */
@@ -508,7 +521,31 @@ hr {
 }
 
 /* Paletas suaves para cada bloque */
-.block-contratos{ background: linear-gradient(135deg,#005daa,#003d6e); }
-.block-elementos{ background: linear-gradient(135deg,#0360ac,#004b7a); }
-.block-proceso{ background: linear-gradient(135deg,#0f143d,#2b3a73); }
-.block-relacion{ background: linear-gradient(135deg,#3a6ea8,#0b2447); }
+/* Color único #00065f y estructura mínima */
+.block-contratos, .block-elementos, .block-proceso, .block-relacion, 
+.header-logout, .logout-button, .menu-block, .admin-top .logout-button { 
+    background: #00065f !important; 
+    color: #fff; 
+}
+
+.header-user-name { color: #fff; font-weight: 700; margin-left: 12px; }
+
+.header-logout, .logout-button { 
+    padding: 8px 12px; 
+    border-radius: 8px; 
+    text-decoration: none; 
+    font-weight: 700; 
+    
+    /* Mantenemos Flexbox para que el texto se centre */
+    display: inline-flex; 
+    align-items: center;      /* Centrado vertical */
+    justify-content: center;   /* Centrado horizontal */
+}
+
+.admin-top { 
+    position: fixed; top: 0; width: 100%; 
+    padding: 12px; display: flex; justify-content: flex-end; 
+    z-index: 1000; 
+}
+
+.menu-grid { margin-top: 72px; height: calc(100vh - 72px); }

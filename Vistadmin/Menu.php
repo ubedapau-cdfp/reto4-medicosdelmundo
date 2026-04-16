@@ -8,8 +8,15 @@ $base = '/reto4-medicosdelmundo/';
 	<meta name="viewport" content="width=device-width,initial-scale=1">
 	<title>Menú - Bloques</title>
 	<link rel="stylesheet" href="<?= $base ?>estilos.css">
+	<link rel="icon" type="image/png" href="<?= $base ?>Imagenes/Logoreal.png">
 </head>
 <body class="menu-no-margin">
+	<header class="admin-top">
+		<a href="<?= $base ?>home/home.php" class="logo">
+			<img src="<?= $base ?>Imagenes/Logoreal.png" alt="Logo">
+		</a>
+		<a class="logout-button" href="<?= $base ?>logout.php">Cerrar sesión</a>
+	</header>
 	<main class="menu-grid">
 		<a class="menu-block block-contratos" href="<?= $base ?>contratos/relacionlaboral.php">
 			<section class="block-content">
