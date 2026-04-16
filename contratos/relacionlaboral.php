@@ -33,7 +33,7 @@ $base = '/reto4-medicosdelmundo/';
     <a href="#" class="button">Botón</a><a href="#" class="button">Botón</a><a href="#" class="button">Botón</a>
     </section>
 </section>
-<?php include '../barrasNavegacion/footer.php'; ?>
+<?php include '../barrasNavegacion/footer.php'; ?>  
 
 <?php 
 //prueba.php
