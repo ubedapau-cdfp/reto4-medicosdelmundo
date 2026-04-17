@@ -52,17 +52,6 @@ header {
     height: 70px; /* ALTURA */
 }
 
-/* Botón/Campo de cerrar sesión en headers administrativos */
-.logout-button {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    padding: 0 15px;
-    height: 70px;
-    display: flex;
-    align-items: center;
-    text-align: center;
-}
 
 /* Contenedor de sesión del admin (nombre + logout) */
 .admin-session {
@@ -326,6 +315,31 @@ button[type=submit]:hover{
     transition-duration: 0.3s; /* DURACIÓN DE LA TRANSICIÓN */
 }
 
+/* BOTÓN DEL LOGOUT */
+.logoutbutton{
+    background-color:#005daa; /* COLOR DEL FONDO */
+    border-color:#005daa; /* COLOR DEL BORDE */
+    border-radius:10px; /* REDONDEO DE ESQUINAS DE 10 PÍXELES */
+    font-size:15px; /* TAMAÑO DEL TEXTO */
+    padding:5px; /* ESPACIO ENTRE ELEMENTOS */
+    margin:15px; /* MÁRGENES */
+    border-style: solid; /* TIPO DE BORDE SÓLIDO */
+    font-family: 'Nexa Pro', 'Segoe UI', sans-serif; /* ORDEN DE FUENTES A USAR */
+} 
+ /* APARTADO <a> DEL BOTÓN DEL LOGOUT */
+.logoutbutton a{
+    text-decoration: none; /* SIN DECORACIÓN DE TEXTO */
+    color: white; /* COLOR DE TEXTO */
+}
+
+/* HOVERS DEL BOTÓN DEL LOGOUT */
+.logoutbutton:hover, .logoutbutton a:hover{
+    background-color: #bde0ec; /* COLOR DE FONDO */
+    border-color: #bde0ec; /* REDONDEO DE ESQUINAS DE 10 PÍXELES */
+    color: #003d6e; /* COLOR DE TEXTO */
+    transition-duration: 0.3s; /* DURACIÓN DE LA TRANSICIÓN */
+}
+
 /* CONTAINER intro - PÁGINA DE ENTRADA */
 .intro{
     display:flex; /* CONTENEDOR FLEXIBLE */
@@ -548,14 +562,14 @@ hr {
 /* Paletas suaves para cada bloque */
 /* Color único #00065f y estructura mínima */
 .block-contratos, .block-elementos, .block-proceso, .block-relacion, 
-.header-logout, .logout-button, .menu-block, .admin-top .logout-button { 
+.header-logout, .menu-block { 
     background: #00065f !important; 
     color: #fff; 
 }
 
 .header-user-name { color: #fff; font-weight: 700; margin-left: 12px; }
 
-.header-logout, .logout-button { 
+.header-logout { 
     padding: 8px 12px; 
     border-radius: 8px; 
     text-decoration: none; 
@@ -567,10 +581,5 @@ hr {
     justify-content: center;   /* Centrado horizontal */
 }
 
-.admin-top { 
-    position: fixed; top: 0; width: 100%; 
-    padding: 12px; display: flex; justify-content: flex-end; 
-    z-index: 1000; 
-}
 
 .menu-grid { margin-top: 72px; height: calc(100vh - 72px); }

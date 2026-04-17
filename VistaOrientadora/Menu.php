@@ -10,27 +10,15 @@ if (!isset($_SESSION['usuario_id']) || !isset($_SESSION['id_rol']) || intval($_S
 <!doctype html>
 <html lang="es">
 <head>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>Menú - Orientadora</title>
+	<title>Menú de Orientadora</title>
 	<link rel="stylesheet" href="<?= $base ?>estilos.css">
 	<link rel="icon" type="image/png" href="<?= $base ?>Imagenes/Logoreal.png">
 </head>
 <body class="menu-no-margin">
-	<header class="admin-top">
-		<a href="<?= $base ?>home/home.php" class="logo">
-			<img src="<?= $base ?>Imagenes/Logoreal.png" alt="Logo">
-		</a>
-		<section class="admin-session">
-			<?php
-			if (isset($_SESSION['usuario_nombre'])) {
-				$nombre = basename($_SESSION['usuario_nombre']);;
-				echo "<span class='admin-name'>Hola, " . $nombre . "</span>";
-				echo "<a class='logout-button' href='" . $base . "logout.php'>Cerrar sesión</a>";
-			}
-			?>
-		</section>
-	</header>
+	<?php include '../barrasNavegacion/headeradmin.php'; ?>
 	<main class="menu-grid">
 		<a class="menu-block block-contratos" href="<?= $base ?>contratos/relacionlaboral.php">
 			<section class="block-content">

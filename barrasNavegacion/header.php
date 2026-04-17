@@ -71,15 +71,18 @@ header.php (ORIGINAL)
         <?php
             $page = basename($_SERVER['PHP_SELF']);// Obtener el nombre del archivo PHP actual pero solo la ultima parte
 
-            if (isset($_SESSION['usuario_nombre'])) {// Verificar si la variable de sesión 'usuario_nombre' está establecida, lo que indica que el usuario ha iniciado sesión
-                $nombre = $_SESSION['usuario_nombre'];// Obtener el nombre del usuario desde la variable de sesión
-                echo "<span class='admin-name'>Hola, " . $nombre . "</span>";// Mostrar un mensaje de bienvenida con el nombre del usuario
-                echo "<a class='logout-button' href='" . $base . "logout.php'>Cerrar sesión</a>";// Mostrar un enlace para cerrar sesión que redirecciona a logout.php
-            } else {
-                echo "<button class='loginbutton'>";
-                echo "<a href='" . $base . "signin.php'>"."<i class=\"fa-solid fa-user\"></i>"."Login</a>"; // Botón que redirecciona al signin.php
-                echo "</button>";
-            }
-        ?>
+if (isset($_SESSION['usuario_nombre'])) {// Verificar si la variable de sesión 'usuario_nombre' está establecida, lo que indica que el usuario ha iniciado sesión
+    $nombre = $_SESSION['usuario_nombre'];// Obtener el nombre del usuario desde la variable de sesión
+    echo "<span class='admin-name'>Hola, " . $nombre . "</span>";// Mostrar un mensaje de bienvenida con el nombre del usuario
+    echo "<button class='logoutbutton'>"; // Botón para cerrar sesión
+    echo "<a href='" . $base . "logout.php'>Cerrar Sesión</a>";// Mostrar un enlace para cerrar sesión que redirecciona a logout.php
+    echo "</button>";
+} else {
+    echo "<button class='loginbutton'>";
+    echo "<a href='" . $base . "signin.php'>"."<i class=\"fa-solid fa-user\"></i>"."Login</a>"; // Botón que redirecciona al signin.php
+    echo "</button>";
+}
+
+?>
     </section> <!-- Cierre del section sin nombre -->
 </header> <!-- Cierre del header -->

@@ -10,9 +10,10 @@ if (!isset($_SESSION['usuario_id']) || !isset($_SESSION['id_rol']) || intval($_S
 <!doctype html>
 <html lang="es">
 <head>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1">
-	<title>Menú - Bloques</title>
+	<title>Menú de Administradora</title>
 	<link rel="stylesheet" href="<?= $base ?>estilos.css">
 	<link rel="icon" type="image/png" href="<?= $base ?>Imagenes/Logoreal.png">
 </head>
@@ -21,15 +22,17 @@ if (!isset($_SESSION['usuario_id']) || !isset($_SESSION['id_rol']) || intval($_S
 		<a href="<?= $base ?>home/home.php" class="logo">
 			<img src="<?= $base ?>Imagenes/Logoreal.png" alt="Logo">
 		</a>
-		<div class="admin-session">
+		<section class="admin-session">
 			<?php
 			if (isset($_SESSION['usuario_nombre'])) {
 				$nombre = basename($_SESSION['usuario_nombre']);
 				echo "<span class='admin-name'>Hola, " . $nombre . "</span>";
-				echo "<a class='logout-button' href='" . $base . "logout.php'>Cerrar sesión</a>";
+				echo "<button class='logoutbutton'>"; // Botón para cerrar sesión
+				echo "<a href='" . $base . "logout.php'><i class=\"fa-solid fa-right-from-bracket\"></i>Cerrar sesión</a>";
+				echo "</button>";
 			}
 			?>
-		</div>
+		</section>
 	</header>
 	<main class="menu-grid">
 		<a class="menu-block block-contratos" href="<?= $base ?>contratos/relacionlaboral.php">

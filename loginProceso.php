@@ -5,13 +5,13 @@
      $user = $_POST['usuaria'];
      $pass = $_POST['contrasena'];
      try {
-        $sql = "SELECT id_usuario, password_hash, id_rol, nombre FROM USUARIOS WHERE nombre = :nombre";
+        $sql = "SELECT id_usuario, password_hash, id_rol, nombre FROM USUARIOS WHERE nombre = :usuario";
         $stmt = $conn->prepare($sql);
-        $stmt->bindParam(':nombre', $user);
+        $stmt->bindParam(':usuario', $user);
         $stmt->execute();
         
         $usuario = $stmt->fetch(PDO::FETCH_ASSOC); // 
-
+        echo "Debug: Hash en BD es: " . $usuario['password_hash'] . " Longitud: " . strlen($usuario['password_hash']);
         if ($usuario && password_verify($pass, $usuario['password_hash'])) {
             $_SESSION['usuario_id'] = $usuario['id_usuario'];
             $_SESSION['id_rol'] = intval($usuario['id_rol']);
