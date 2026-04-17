@@ -78,6 +78,7 @@ if (isset($_SESSION['usuario_nombre'])) {// Verificar si la variable de sesión 
     echo "<button class='logoutbutton'>"; // Botón para cerrar sesión
     echo "<a href='" . $base . "logout.php'>Cerrar Sesión</a>";// Mostrar un enlace para cerrar sesión que redirecciona a logout.php
     echo "</button>";
+    
 } else {
     echo "<button class='loginbutton'>";
     echo "<a href='" . $base . "signin.php'>"."<i class=\"fa-solid fa-user\"></i>"."Login</a>"; // Botón que redirecciona al signin.php

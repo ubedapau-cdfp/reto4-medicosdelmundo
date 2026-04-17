@@ -1,8 +1,8 @@
 <?php
 session_start();
 $base = '/reto4-medicosdelmundo/';
-// Acceso sólo para administradoras (id_rol === 3)
-if (!isset($_SESSION['usuario_id']) || !isset($_SESSION['id_rol']) || intval($_SESSION['id_rol']) !== 3) {
+// Acceso para administradoras (id_rol === 3) y orientadoras (id_rol === 2)
+if (!isset($_SESSION['usuario_id']) || !isset($_SESSION['id_rol']) || (intval($_SESSION['id_rol']) !== 3 && intval($_SESSION['id_rol']) !== 2)) {
 	header('Location: /reto4-medicosdelmundo/signin.php');
 	exit();
 }
@@ -22,6 +22,13 @@ if (!isset($_SESSION['usuario_id']) || !isset($_SESSION['id_rol']) || intval($_S
 		<a href="<?= $base ?>home/home.php" class="logo">
 			<img src="<?= $base ?>Imagenes/Logoreal.png" alt="Logo">
 		</a>
+		<?php
+			if (intval($_SESSION['id_rol']) === 2) {
+				echo '<button class="logoutbutton"><a href="' . $base . 'VistaOrientadora/Menu.php"><i class="fa-solid fa-house"></i>Menú de Orientadora</a></button>';
+			} elseif (intval($_SESSION['id_rol']) === 3) {
+				echo '<button class="logoutbutton"><a href="' . $base . 'Vistadmin/Menu.php"><i class="fa-solid fa-house"></i>Menú de Administradora</a></button>';
+			}
+		?>
 		<section class="admin-session">
 			<?php
 			if (isset($_SESSION['usuario_nombre'])) {
