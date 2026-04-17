@@ -18,10 +18,13 @@ if (!isset($_SESSION['usuario_id']) || !isset($_SESSION['id_rol']) || intval($_S
 	<link rel="icon" type="image/png" href="<?= $base ?>Imagenes/Logoreal.png">
 </head>
 <body class="menu-no-margin">
-	<header class="admin-top">
-		<a href="<?= $base ?>home/home.php" class="logo">
+	<header class="admin-top" style="display:flex;align-items:center;justify-content:space-between;padding:10px;">
+		<a href="<?= $base ?>home/home.php" class="logo" style="margin-right:10px;">
 			<img src="<?= $base ?>Imagenes/Logoreal.png" alt="Logo">
 		</a>
+		<section style="flex:1;text-align:center;">
+			<a href="<?= $base ?>Vistadmin/gestion_header.php" class="gestion-header-button" style="display:inline-block;padding:6px 10px;background:#007bff;color:#fff;border-radius:4px;text-decoration:none;">Gestión Header</a>
+		</section>
 		<section class="admin-session">
 			<?php
 			if (isset($_SESSION['usuario_nombre'])) {

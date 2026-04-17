@@ -583,3 +583,42 @@ hr {
 
 
 .menu-grid { margin-top: 72px; height: calc(100vh - 72px); }
+
+/* ─────────────────────── GESTIÓN HEADER ───────────────────────── */
+.gestion-header-container {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.gestion-header-main {
+    padding: 20px;
+}
+
+.gestion-error {
+    color: red;
+}
+
+.gestion-message {
+    color: green;
+}
+
+.gestion-section {
+    margin-bottom: 20px;
+}
+
+.gestion-input-300 {
+    width: 300px;
+}
+
+.gestion-input-400 {
+    width: 400px;
+}
+
+.gestion-delete-link {
+    color: red;
+    text-decoration: none;
+}
+
+.gestion-delete-link:hover {
+    text-decoration: underline;
+}

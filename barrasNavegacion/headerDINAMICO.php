@@ -24,19 +24,24 @@
             foreach ($categorias_madre as $madre): 
                 // Llamamos a la función de subcategorías pasando el ID de la madre actual
                 $subcategorias = obtenerSubcategorias($conn, $madre['id_categoria']);
+                // Si la categoría madre tiene una ruta definida, úsala como enlace
+                $madreHref = (isset($madre['ruta']) && !empty($madre['ruta'])) ? $base . $madre['ruta'] : '#';
             ?>
                 <li class="dropdown">
-                    <a href="#">
-                        <i class="fa-solid <?= $madre['icono'] ?>"></i> 
-                        <?= $madre['titulo'] ?> ▾
+                    <a href="<?= $madreHref ?>">
+                        <?php if (!empty($madre['icono'])): ?><i class="fa-solid <?= $madre['icono'] ?>"></i><?php endif; ?>
+                        <?= $madre['titulo'] ?> <?php if (count($subcategorias) > 0) echo '▾'; ?>
                     </a>
                     
                     <?php if (count($subcategorias) > 0): ?>
                         <ul>
-                            <?php foreach ($subcategorias as $hija): ?>
+                            <?php foreach ($subcategorias as $hija): 
+                                // Para cada subcategoría, si tiene 'ruta' usarla, si no usar contenidos.php?id=
+                                $hijaHref = (isset($hija['ruta']) && !empty($hija['ruta'])) ? $base . $hija['ruta'] : $base . "contenidos.php?id=" . $hija['id_categoria'];
+                            ?>
                                 <li>
-                                    <a href="<?= $base ?>contenidos.php?id=<?= $hija['id_categoria'] ?>">
-                                        <i class="fa-solid <?= $hija['icono'] ?>"></i>
+                                    <a href="<?= $hijaHref ?>">
+                                        <?php if (!empty($hija['icono'])): ?><i class="fa-solid <?= $hija['icono'] ?>"></i><?php endif; ?>
                                         <?= $hija['titulo'] ?>
                                     </a>
                                 </li>
