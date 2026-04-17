@@ -1,4 +1,4 @@
-header.php (ORIGINAL)
+<!--header.php (ORIGINAL)-->
 <?php // Inicio del apartado PHP
     // Incluimos tu archivo de conexión existente
         include_once __DIR__ . "/../conexion.php";
@@ -22,9 +22,10 @@ header.php (ORIGINAL)
         <ul> <!-- Inicio de la lista desordenada general -->
             <?php 
                 // 3. Recorremos las categorías madre
-                foreach ($categorias_madre as $madre): 
+                foreach ($categorias_madre as $madre){
                     // Llamamos a la función de subcategorías pasando el ID de la madre actual
                     $subcategorias = obtenerSubcategorias($conn, $madre['id_categoria']);
+                }
             ?>
             <li class="dropdown"> <!-- Inicio del ítem de lista class dropdown -->
                 <a href="#"><i class="fa-solid fa-file-contract"></i>Contratos ▾</a> <!-- Enlace sin redirección que muestra los apartados, título del apartado -->
@@ -60,7 +61,7 @@ header.php (ORIGINAL)
                 </ul> <!-- Cierre de lista desordenada del class dropdown -->
             </li> <!-- Cierre de ítem de lista del class dropdown -->
         </ul> <!-- Cierre de lista desordenada general -->
-    </nav> Cierre del nav
+    </nav> <!-- Cierre del nav -->
 
     <section class="enlaces-derecha"> <!-- Inicio del section enlaces-derecha -->
         <a href="<?= $base ?>otros/sobrenosotras.php"><i class="fa-solid fa-users"></i>Sobre nosotras</a> <!-- Enlace que redirecciona a sobrenosotras.php -->
