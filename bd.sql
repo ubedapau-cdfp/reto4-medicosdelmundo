@@ -73,45 +73,81 @@ VALUES
 -- ==========================================
 -- 1. INSERTAR CATEGORÍAS (Apartados del PDF)
 -- ==========================================
--- 1. CATEGORÍA MADRE (La que engloba todo)
-INSERT INTO CATEGORIA (id_categoria, titulo, descripcion, icono, id_madre) 
-VALUES (1, 'Guía de Contratos y Relaciones Laborales', 'Toda la información sobre legislación, tipos de contrato y derechos del trabajador.', 'bi-briefcase', NULL);
-
--- 2. SUBCATEGORÍAS (Hijas de la ID 1)
+-- CATEGORÍAS MADRE
 INSERT INTO CATEGORIA (id_categoria, titulo, descripcion, icono, id_madre) VALUES 
-(2, 'La Relación Laboral', 'Requisitos, principios y jerarquía normativa.', 'bi-info-circle', 1),
-(3, 'Capacidad para Trabajar', 'Normativa sobre edad y trabajadores extranjeros.', 'bi-person-check', 1),
-(4, 'Tipos de Contratos', 'Indefinitos, temporales y formativos.', 'bi-file-earmark-text', 1),
-(5, 'Jornada y Horarios', 'Distribución de horas, nocturnidad y reducciones.', 'bi-clock', 1),
-(6, 'Finalización y Casos Especiales', 'Indemnizaciones, finiquitos, ETT y TRADE.', 'bi-exclamation-triangle', 1);
+(1, 'Mis Derechos Iniciales', 'Todo sobre el inicio de tu relación laboral y requisitos.', 'icon-inicio', NULL),
+(2, 'Protección y Cambios', 'Tus derechos ante cambios, pausas o el fin del contrato.', 'icon-escudo', NULL);
 
--- Contenido para 'La Relación Laboral' (ID 2)
-INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES 
-('¿Qué es una relación laboral?', 'Las 5 condiciones simultáneas', 'Para que exista un contrato de trabajo deben cumplirse siempre: 1. Voluntariedad, 2. Carácter Personal, 3. Dependencia (órdenes del empresario), 4. Ajenidad (beneficios para la empresa) y 5. Retribución.', 1, 2),
-('Jerarquía Normativa', '¿Qué ley se aplica primero?', 'El orden de aplicación es: 1. Normas de la UE, 2. La Constitución Española, 3. El Estatuto de los Trabajadores, 4. Convenios Colectivos y 5. El contrato individual.', 2, 2);
+-- SUB-CATEGORÍAS MADRE 1 (Contratos y Jornada)
+INSERT INTO CATEGORIA (id_categoria, titulo, descripcion, icono, id_madre) VALUES 
+(11, 'Ser Trabajadora', 'Requisitos y condiciones para que exista un contrato.', 'icon-mujer', 1),
+(12, 'Edad y Nacionalidad', 'Capacidad legal según tus circunstancias personales.', 'icon-id', 1),
+(13, 'Tipos de Contrato', 'Detalles de contratos indefinidos, temporales y formativos.', 'icon-file', 1),
+(14, 'Jornada y Descanso', 'Límites de horas, descansos y horarios especiales.', 'icon-clock', 1);
 
--- Contenido para 'Capacidad para Trabajar' (ID 3)
+-- SUB-CATEGORÍAS MADRE 2 (Modificaciones y Extinción)
+INSERT INTO CATEGORIA (id_categoria, titulo, descripcion, icono, id_madre) VALUES 
+(21, 'Cambios de Condiciones', 'Derechos ante traslados o cambios de funciones.', 'icon-refresh', 2),
+(22, 'Maternidad y Pausas', 'Bajas por nacimiento, excedencias y suspensiones.', 'icon-maternidad', 2),
+(23, 'Despido y Cierre', 'Tipos de despido y cómo defender tus derechos.', 'icon-end', 2),
+(24, 'Finiquito y Liquidación', 'Cálculo de las cantidades que te deben al marcharte.', 'icon-money', 2);
+-- Contenido para "Ser Trabajadora"
 INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES 
-('Trabajar siendo menor', 'Límites de edad', 'La edad mínima son 16 años (con autorización). Los menores de 18 no pueden realizar horas extra, trabajos nocturnos ni actividades peligrosas.', 1, 3),
-('Nacionalidad', 'Comunitarios vs No Comunitarios', 'Ciudadanos UE: Libre circulación y trabajo. Ciudadanos no comunitarios: Requieren permiso de residencia y de trabajo previo.', 2, 3);
+('La Relación Laboral', 'Los 5 requisitos clave', 'Para que seas considerada trabajadora y estés protegida por la ley, tu relación debe ser: 
+1. Voluntaria: Tú eliges trabajar libremente. 
+2. Personal: El trabajo lo realizas tú, nadie puede sustituirte. 
+3. Por cuenta ajena: Los beneficios del trabajo son para la empresa. 
+4. Dependiente: Trabajas bajo las órdenes de tu jefa. 
+5. Retribución: Trabajas a cambio de un salario.', 1, 11),
+('Leyes que te Protegen', 'Jerarquía normativa', 'Tus derechos están ordenados. Nada de lo que firmes puede ir en contra de esto:
+- Constitución Española: El derecho al trabajo y no discriminación.
+- Estatuto de los Trabajadores: La ley principal para todas.
+- Convenio Colectivo: Las normas específicas de tu sector.
+- Contrato de Trabajo: Tus condiciones particulares (siempre deben mejorar la ley).', 2, 11);
 
--- Contenido para 'Tipos de Contratos' (ID 4)
+-- Contenido para "Edad y Nacionalidad"
 INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES 
-('Elementos del Contrato', 'Sustanciales vs Importantes', 'Sustanciales (obligatorios): Consentimiento, Objeto y Causa. Si falta uno, el contrato es nulo. Importantes: Lugar, fecha y duración.', 1, 4),
-('Contratos Formativos', 'Alternancia y Práctica', 'Alternancia: Combina formación y trabajo (máx 65% de jornada el primer año). Práctica Profesional: Para titulados, debe firmarse en los 3 años siguientes al título.', 2, 4);
+('Capacidad por Edad', 'Menores de edad', 'Si tienes entre 16 y 18 años, necesitas la autorización de tus tutoras. Tienes prohibido: realizar horas extras, trabajar de noche (22:00 a 06:00) y realizar tareas peligrosas. Tu descanso debe ser de 30 minutos si la jornada supera 4.5 horas.', 1, 12),
+('Situación de Nacionalidad', 'Mujeres extranjeras', 'Si eres de fuera de la UE, necesitas la autorización de residencia y trabajo. La empresa tiene la obligación de solicitarla y darte de alta en Seguridad Social. Si no tienes permiso y trabajas, el contrato es nulo pero tienes derecho a reclamar tu sueldo por el tiempo trabajado.', 2, 12);
 
--- Contenido para 'Jornada y Horarios' (ID 5)
+-- Contenido para "Tipos de Contrato"
 INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES 
-('Trabajo a Turnos y Nocturno', 'Organización 24/7', 'Se considera trabajo nocturno el realizado entre las 22:00 y las 06:00. El trabajo a turnos implica rotación y suele conllevar un plus salarial.', 1, 5),
-('Reducción por Guarda Legal', 'Conciliación familiar', 'Derecho a reducir la jornada entre 1/8 y 1/2 por cuidado de menores de 12 años o personas con discapacidad.', 2, 5);
+('Contratos Estables', 'Indefinidos y Fijos-Discontinuos', 'El contrato indefinido no tiene fecha de fin. El Fijo-Discontinuo es para trabajos que no son todo el año pero se repiten siempre (ej. campañas de recogida o comedores escolares). Tienes los mismos derechos que una trabajadora a tiempo completo.', 1, 13),
+('Contratos de Duración', 'Temporales y Formativos', 'Solo se permiten por:
+- Circunstancias de la producción: Máximo 6 meses (ampliable a 1 año) por exceso de trabajo.
+- Sustitución: Para cubrir a una compañera (ej. por maternidad).
+- Formación: Si no tienes título (Alternancia) o si acabas de obtenerlo (Práctica Profesional, duración de 6 meses a 1 año).', 2, 13);
 
--- Contenido para 'Finalización' (ID 6)
+-- Contenido para "Cambios de Condiciones"
 INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES 
-('Indemnizaciones', 'Cálculo por despido o fin', 'Contrato temporal: 12 días por año. Despido improcedente: 33 días por año (máximo 24 mensualidades).', 1, 6),
-('Relaciones Especiales', 'ETT y TRADE', 'ETT: Contratación a través de empresas de trabajo temporal. TRADE: Trabajadores Autónomos Económicamente Dependientes (85% de ingresos de un solo cliente).', 2, 6);
+('Movilidad Geográfica', 'Traslados y Desplazamientos', 'Si la empresa quiere que trabajes en otra ciudad:
+- Traslado: Es definitivo. Deben avisarte con 30 días. Puedes aceptar (te pagan mudanza), rescindir el contrato (20 días de indemnización/año) o reclamar al juez.
+- Desplazamiento: Es temporal. Tienes derecho a 4 días de permiso pagado por cada 3 meses fuera.', 1, 21),
+('Movilidad Funcional', 'Cambio de tareas', 'Si te piden hacer tareas de superior categoría, deben pagarte el sueldo de esa categoría. Si son tareas de inferior categoría, solo pueden obligarte por causas urgentes y deben mantenerte tu sueldo original.', 2, 21);
+
+-- Contenido para "Maternidad y Pausas"
+INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES 
+('Permiso por Nacimiento', 'Tus 16 semanas', 'Tienes derecho a 16 semanas:
+- 6 semanas obligatorias tras el parto.
+- 10 semanas voluntarias que puedes usar hasta que el bebé cumpla 1 año.
+Cobrarás el 100% de tu sueldo a través de la Seguridad Social.', 1, 22),
+('Derecho a Excedencia', 'Cuidado de familiares', 'Puedes pedir excedencia para cuidar a tus hijos (hasta 3 años) o a un familiar que no pueda valerse por sí mismo (hasta 2 años). Durante el primer año tienes reserva de tu puesto de trabajo exacto.', 2, 22);
+
+-- Contenido para "Despido y Cierre"
+INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES 
+('Protección ante el Despido', '¿Qué es un Despido Nulo?', 'Si te despiden por estar embarazada, por pedir la lactancia o por ser víctima de violencia de género, el despido es NULO. Esto significa que la empresa está obligada a readmitirte inmediatamente y pagarte los sueldos que no cobraste.', 1, 23),
+('Tipos de Despido', 'Objetivo y Disciplinario', 'El despido Objetivo (causas económicas) da derecho a 20 días por año. El Disciplinario (por falta grave) no da indemnización. Si no estás de acuerdo, firma siempre como "NO CONFORME" para poder reclamar ante el juez.', 2, 23);
+
+-- Contenido para "Finiquito y Liquidación"
+INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES 
+('Tu Liquidación Final', '¿Qué te deben pagar?', 'Al irte, te deben el finiquito que incluye:
+1. Días trabajados del mes actual.
+2. Vacaciones no disfrutadas.
+3. Parte proporcional de las pagas extras.
+Si se acaba un contrato temporal, también te corresponden 12 días de indemnización por año trabajado.', 1, 24);
 
 INSERT INTO FAQ (pregunta, respuesta, id_categoria) VALUES 
-('¿Si cuido a la hija de una vecina es relación laboral?', 'No, se considera un trabajo de "buena vecindad" o amistad y está excluido del Estatuto de los Trabajadores.', 2),
-('¿Puede un menor de 16 años trabajar en una película?', 'Sí, es la única excepción: el trabajo en espectáculos públicos con autorización de la autoridad laboral.', 3),
-('¿Qué pasa si mi contrato no tiene forma escrita?', 'Se presume que es indefinido y a jornada completa, salvo que la empresa demuestre lo contrario.', 4),
-('¿Con cuánto tiempo debo avisar para una reducción de jornada?', 'Se debe solicitar por escrito a la empresa con al menos 15 días de antelación.', 5);
+('¿Me pueden despedir por estar embarazada?', 'No. Se considera despido nulo y la empresa deberá readmitirte de inmediato.', 23),
+('¿Qué pasa si no tengo papeles y trabajo?', 'El contrato no es válido legalmente, pero tú tienes derecho a cobrar por todo el tiempo que hayas trabajado.', 12),
+('¿Cuánto tiempo tengo para descansar entre jornadas?', 'Por ley, deben pasar al menos 12 horas desde que sales del trabajo hasta que vuelves a entrar.', 14),
+('¿Puedo pedir una hora para cuidar a mi bebé?', 'Sí, es el permiso de lactancia. Tienes derecho a una hora de ausencia hasta que el bebé cumpla 9 meses.', 22);

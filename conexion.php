@@ -16,4 +16,23 @@
     echo "Connection failed: " . $e->getMessage();
     die();
     }
+
+    // --- NUEVAS FUNCIONES PARA EL HEADER ---
+
+// Función para obtener las Categorías Madre
+    function obtenerCategoriasMadre($conexion) {
+        $sql = "SELECT * FROM CATEGORIA WHERE id_madre IS NULL ORDER BY id_categoria ASC";
+        $stmt = $conexion->prepare($sql);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    // Función para obtener las Subcategorías de una Madre específica
+    function obtenerSubcategorias($conexion, $id_madre) {
+        $sql = "SELECT * FROM CATEGORIA WHERE id_madre = :id_madre ORDER BY id_categoria ASC";
+        $stmt = $conexion->prepare($sql);
+        $stmt->bindParam(':id_madre', $id_madre, PDO::PARAM_INT);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
 ?>

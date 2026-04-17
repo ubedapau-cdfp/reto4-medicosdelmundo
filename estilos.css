@@ -1,9 +1,20 @@
 /* Fuente personalizada, para su uso en la página web. */
+/* 1. Definimos la fuente normal (incluye todos los pesos: bold, regular, etc.) */
 @font-face {
-    font-family: 'Nexa Pro'; /* Nombre de la fuente personalizada */
-    src: url('Fonts/NexaPro_Trial_Variable-Regular.ttf') format("truetype"), /* Source: Carpeta fonts, archivo. Formato TTF (TrueType Font) */
-         url('Fonts/NexaPro_Trial_Variable-Italic.ttf') format("truetype");
-  font-weight: normal; /* Peso de la fuente (la carga en su estado de defecto.)*/
+    font-family: "Open Sans";
+    src: url('Fonts/OpenSans-VariableFont_wdth,wght.ttf') format("truetype-variations"),
+         url('Fonts/OpenSans-VariableFont_wdth,wght.ttf') format("truetype");
+    font-weight: 100 900; /* Esto le dice al navegador que el archivo soporta todos los pesos */
+    font-style: normal;
+    font-display: swap;
+}
+
+/* 2. Definimos la versión Itálica */
+@font-face {
+    font-family: "Open Sans";
+    src: url('Fonts/OpenSans-Italic-VariableFont_wdth,wght.ttf') format("truetype-variations"),
+         url('Fonts/OpenSans-Italic-VariableFont_wdth,wght.ttf') format("truetype");
+    font-weight: normal; /* Peso de la fuente (la carga en su estado de defecto.)*/
   font-style: normal; /* Estilo de la fuente normal (es decir, no es italic, o negrita.) */
   font-display: swap; /* Pone el texto personalizado en cuanto se cargue en la página */
 }
@@ -23,7 +34,7 @@
 
 /* BODY DE TODA LA PÁGINA */
 body {
-    font-family: 'Nexa Pro', 'Segoe UI', sans-serif; /* ORDEN DE FUENTES A USAR */
+    font-family: "Open Sans", sans-serif; /* ORDEN DE FUENTES A USAR */
     background-color: #f1eaea; /* COLOR DEL FONDO DE LA PÁGINA */
 }
 
