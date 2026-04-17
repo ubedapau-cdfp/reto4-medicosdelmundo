@@ -1,38 +1,32 @@
 <?php
-// conexion.php
-    //conectar la bd con los datos de postgres
-    $host = "192.168.4.18"; //el nombre del servidor (servername)
-    $port = "5432";
-    $dbname = "medicosDelMundo"; // Asegúrate de que este es el nombre de tu BD
-    $user = "postgres";
-    $password = "P@ssw0rd"; // La contraseña de Postgres
 
-    try {
-    $conn = new PDO("pgsql:host=$host;port=$port;dbname=$dbname", $user, $password);
-    // Mensaje de error por si acaso
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    // echo "Connected successfully";
-    } catch(PDOException $e) {
-    echo "Connection failed: " . $e->getMessage();
-    die();
+class Database {
+    // Atributos privados con tus datos originales
+    private $host = "192.168.4.18";
+    private $port = "5432";
+    private $dbname = "medicosDelMundo";
+    private $user = "postgres";
+    private $password = "P@ssw0rd";
+    public $conn;
+
+    // Método para conectar
+    public function conectar() {
+        $this->conn = null;
+
+        try {
+            $this->conn = new PDO(
+                "pgsql:host=" . $this->host . ";port=" . $this->port . ";dbname=" . $this->dbname, 
+                $this->user, 
+                $this->password
+            );
+            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        } catch(PDOException $e) {
+            echo "Conexión fallida: " . $e->getMessage();
+            die();
+        }
+
+        return $this->conn;
     }
+}
 
-    // --- NUEVAS FUNCIONES PARA EL HEADER ---
-
-// Función para obtener las Categorías Madre
-    function obtenerCategoriasMadre($conexion) {
-        $sql = "SELECT * FROM CATEGORIA WHERE id_madre IS NULL ORDER BY id_categoria ASC";
-        $stmt = $conexion->prepare($sql);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-
-    // Función para obtener las Subcategorías de una Madre específica
-    function obtenerSubcategorias($conexion, $id_madre) {
-        $sql = "SELECT * FROM CATEGORIA WHERE id_madre = :id_madre ORDER BY id_categoria ASC";
-        $stmt = $conexion->prepare($sql);
-        $stmt->bindParam(':id_madre', $id_madre, PDO::PARAM_INT);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
 ?>
