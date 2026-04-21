@@ -14,7 +14,6 @@
         $stmt->execute();
         
         $usuario = $stmt->fetch(PDO::FETCH_ASSOC); // 
-        echo "Debug: Hash en BD es: " . $usuario['password_hash'] . " Longitud: " . strlen($usuario['password_hash']);
         if ($usuario && password_verify($pass, $usuario['password_hash'])) {
             $_SESSION['usuario_id'] = $usuario['id_usuario'];
             $_SESSION['id_rol'] = intval($usuario['id_rol']);

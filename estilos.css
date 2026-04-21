@@ -399,7 +399,7 @@ button[type=submit]:hover{
 }
 
 /* ESTILOS DE TODOS LOS INPUT DE TIPO TEXTO O CONTRASEÑA */
-input[type=text], input[type=password]{
+input[type=text], input[type=password], select[name="id_madre"]{
     font-family: 'Nexa Pro', 'Segoe UI', sans-serif; /* ORDEN DE FUENTES A USAR */
     height:30px; /* ALTURA */
     border-color: #00065f; /* COLOR DEL BORDE */
