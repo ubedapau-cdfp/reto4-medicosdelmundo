@@ -1,12 +1,11 @@
 <?php
-    class Categoria {
-        private $id_categoria;
-        private $titulo;
-        private $descripcion;
-        private $icono;
-        private $id_madre; // FK
-        private $fecha_actualizacion;
-        //falta poner orden
+class Categoria {
+    private $id_categoria;
+    private $titulo;
+    private $descripcion;
+    private $icono;
+    private $id_madre; // FK
+    private $fecha_actualizacion;
 
     public function __construct(
         $id_categoria, 
@@ -24,12 +23,14 @@
         $this->fecha_actualizacion = $fecha_actualizacion ?: date('Y-m-d');
     }
 
-    // Getter para el título (lo usaremos en el <option> del HTML)
-    public function getTitulo() {
-        return $this->titulo;
+    // Getters necesarios
+    public function getTitulo(){ 
+    return $this->titulo; 
+    }
+    public function getIdCategoria(){ 
+    return $this->id_categoria; 
     }
 
-    // Función para mostrar la cabecera de la categoría
     public function mostrarDatos() {
         echo "<h1>" . $this->titulo . "</h1>";
         if (!empty($this->descripcion)) {
@@ -37,16 +38,23 @@
         }
     }
 
+    // --- MÉTODOS ESTÁTICOS DE BÚSQUEDA ---
+
     public static function obtenerTodas($db) {
-        $categorias = [];
-        // Consulta simple para traer todas las categorías
         $sql = "SELECT * FROM CATEGORIA ORDER BY titulo ASC";
-        
+        return self::ejecutarConsulta($db, $sql);
+    }
+
+    /**
+     * Función auxiliar interna para evitar repetir código de mapeo
+     */
+    private static function ejecutarConsulta($db, $sql, $params = []) {
+        $categorias = [];
         try {
-            $stmt = $db->query($sql);
+            $stmt = $db->prepare($sql);
+            $stmt->execute($params);
             
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                // Creamos una nueva instancia de Categoria por cada fila
                 $categorias[] = new self(
                     $row['id_categoria'],
                     $row['titulo'],
@@ -57,10 +65,23 @@
                 );
             }
         } catch (PDOException $e) {
-            echo "Error al obtener categorías: " . $e->getMessage();
+            echo "Error en la consulta: " . $e->getMessage();
         }
-
         return $categorias;
     }
+
+
+    // NUEVO: Obtener solo las categorías principales (Madres)
+    public static function obtenerCategoriasMadre($db) {
+        $sql = "SELECT * FROM CATEGORIA WHERE id_madre IS NULL ORDER BY id_categoria ASC";
+        return self::ejecutarConsulta($db, $sql);
+    }
+
+    // NUEVO: Obtener las subcategorías de una madre específica
+    public static function obtenerSubcategorias($db, $id_madre) {
+        $sql = "SELECT * FROM CATEGORIA WHERE id_madre = :id_madre ORDER BY id_categoria ASC";
+        return self::ejecutarConsulta($db, $sql, [':id_madre' => $id_madre]);
+    }
 }
+
 ?>

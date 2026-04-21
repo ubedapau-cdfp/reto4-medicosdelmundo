@@ -10,6 +10,7 @@ $base = '/reto4-medicosdelmundo/';
 <title>Inicio</title>
 <link rel="icon" type="image/png" href="<?= $base ?>Imagenes/Logoreal.png">
 <link rel="stylesheet" href="../estilos.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
 <?php

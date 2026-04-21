@@ -1,12 +1,19 @@
 <!--header.php (ORIGINAL)-->
 <?php // Inicio del apartado PHP
-    // Incluimos tu archivo de conexión existente
-        include_once __DIR__ . "/../conexion.php";
+    // conexion.php está en la raíz, así que subimos un nivel
+    include_once __DIR__ . "/../conexion.php";
+
+    // Categoria.php está dentro de la carpeta 'clases', que está un nivel arriba
+    include_once __DIR__ . "/../clases/Categoria.php";
     if (session_status() === PHP_SESSION_NONE) session_start();
     $base = '/reto4-medicosdelmundo/'; // Valor $base equivale a la ruta absoluta para su uso en la página
 
-    //Llamamos a la función para obtener las categorías principales
-    $categorias_madre = obtenerCategoriasMadre($conn);
+    // 2. Inicializamos la conexión POO
+    $database = new Database();
+    $conn = $database->conectar();
+
+    // 3. Llamamos al método estático de la clase Categoria
+    $categorias_madre = Categoria::obtenerCategoriasMadre($conn);
 ?> <!-- Cierre del apartado PHP -->
 
 <head>
@@ -22,10 +29,9 @@
         <ul> <!-- Inicio de la lista desordenada general -->
             <?php 
                 // 3. Recorremos las categorías madre
-                foreach ($categorias_madre as $madre){
-                    // Llamamos a la función de subcategorías pasando el ID de la madre actual
-                    $subcategorias = obtenerSubcategorias($conn, $madre['id_categoria']);
-                }
+                foreach ($categorias_madre as $madre): 
+                // Obtenemos las subcategorías para esta madre específica
+                $subcategorias = Categoria::obtenerSubcategorias($conn, $madre->getIdCategoria());
             ?>
             <li class="dropdown"> <!-- Inicio del ítem de lista class dropdown -->
                 <a href="#"><i class="fa-solid fa-file-contract"></i>Contratos ▾</a> <!-- Enlace sin redirección que muestra los apartados, título del apartado -->
@@ -60,6 +66,7 @@
                     <li><a href="<?= $base ?>RelacionLaboral/principiosgeneralesderecholaboral.php"><i class="fa-solid fa-gavel"></i>Principios Generales del Derecho Laboral</a></li> <!-- Ítem de lista con enlace que redirecciona a principiosgeneralesderecholaboral.php -->
                 </ul> <!-- Cierre de lista desordenada del class dropdown -->
             </li> <!-- Cierre de ítem de lista del class dropdown -->
+            <?php endforeach; ?>
         </ul> <!-- Cierre de lista desordenada general -->
     </nav> <!-- Cierre del nav -->
 
@@ -78,6 +85,7 @@ if (isset($_SESSION['usuario_nombre'])) {// Verificar si la variable de sesión 
     echo "<button class='logoutbutton'>"; // Botón para cerrar sesión
     echo "<a href='" . $base . "logout.php'>Cerrar Sesión</a>";// Mostrar un enlace para cerrar sesión que redirecciona a logout.php
     echo "</button>";
+    
 } else {
     echo "<button class='loginbutton'>";
     echo "<a href='" . $base . "signin.php'>"."<i class=\"fa-solid fa-user\"></i>"."Login</a>"; // Botón que redirecciona al signin.php
