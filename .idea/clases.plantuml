@@ -1,0 +1,64 @@
+@startuml
+
+!theme plain
+top to bottom direction
+skinparam linetype ortho
+
+class Bloque {
+   __construct(id_bloque, id_categoria, titulo, subtitulo, contenido, orden, fecha_actualizacion): 
+   contenido: 
+   subtitulo: 
+   id_categoria: 
+   id_bloque: 
+   titulo: 
+   fecha_actualizacion: 
+   orden: 
+   mostrarDatos(): 
+   obtenerPorCategoria(db, nombreCategoria): 
+   getTitulo(): 
+}
+class Categoria {
+   __construct(id_categoria, titulo, descripcion, icono, id_madre, fecha_actualizacion): 
+   descripcion: 
+   icono: 
+   id_categoria: 
+   titulo: 
+   fecha_actualizacion: 
+   id_madre: 
+   obtenerCategoriasMadre(db): 
+   ejecutarConsulta(db, sql, params): 
+   obtenerTodas(db): 
+   mostrarDatos(): 
+   obtenerSubcategorias(db, id_madre): 
+   getIdCategoria(): 
+   getTitulo(): 
+}
+class ContenidoExterno {
+   __construct(id_url, url_externas, id_bloque): 
+   url_externas: 
+   id_url: 
+   id_bloque: 
+}
+class Faq {
+   __construct(id_faq, pregunta, respuesta, id_categoria, fecha_actualizacion): 
+   id_categoria: 
+   id_faq: 
+   fecha_actualizacion: 
+   respuesta: 
+   pregunta: 
+}
+class Rol {
+   __construct(id_rol, nombre_rol): 
+   id_rol: 
+   nombre_rol: 
+}
+class Usuario {
+   __construct(id_usuario, email, password, id_rol, nombre): 
+   id_rol: 
+   password: 
+   id_usuario: 
+   nombre: 
+   email: 
+}
+
+@enduml
