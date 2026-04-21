@@ -1,14 +1,3 @@
-<?php
-session_start();
-// Dirección base del proyecto
-$base = '/reto4-medicosdelmundo/';
-// PASO 2: Si el usuario no es administrador (rol = 3), mandarlo al login
-if (!isset($_SESSION['usuario_id']) || $_SESSION['id_rol'] != 3) {
-    header('Location: ' . $base . 'signin.php');
-    exit();
-}
-?>
-
 <?php // Inicio del apartado PHP
 $base = '/reto4-medicosdelmundo/'; // valor $base equivale a la ruta absoluta para su uso en la página
 ?> <!-- Cierre del apartado PHP -->
