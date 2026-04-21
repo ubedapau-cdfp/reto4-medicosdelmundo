@@ -8,9 +8,9 @@ $base = '/reto4-medicosdelmundo/'; // Valor $base equivale a la ruta absoluta pa
 		</a>
 		<?php
 			if (intval($_SESSION['id_rol']) === 2) {
-				echo '<button class="logoutbutton"><a href="' . $base . 'VistaOrientadora/Menu.php"><i class="fa-solid fa-house"></i>Menú de Orientadora</a></button>';
+				echo '<a class="logoutbutton" href="' . $base . 'VistaOrientadora/Menu.php"><i class="fa-solid fa-house"></i>Menú de Orientadora</a>';
 			} elseif (intval($_SESSION['id_rol']) === 3) {
-				echo '<button class="logoutbutton"><a href="' . $base . 'Vistadmin/Menu.php"><i class="fa-solid fa-house"></i>Menú de Administradora</a></button>';
+				echo '<a class="logoutbutton" href="' . $base . 'Vistadmin/Menu.php"><i class="fa-solid fa-house"></i>Menú de Administradora</a>';
 			}
 		?>
 		<section class="admin-session">
@@ -18,9 +18,7 @@ $base = '/reto4-medicosdelmundo/'; // Valor $base equivale a la ruta absoluta pa
 			if (isset($_SESSION['usuario_nombre'])) {
 				$nombre = basename($_SESSION['usuario_nombre']);
 				echo "<span class='admin-name'>Hola, " . $nombre . "</span>";
-				echo "<button class='logoutbutton'>"; // Botón para cerrar sesión
-				echo "<a href='" . $base . "logout.php'><i class=\"fa-solid fa-right-from-bracket\"></i>Cerrar sesión</a>";
-				echo "</button>";
+				echo '<a class="logoutbutton" href="' . $base . 'logout.php"><i class="fa-solid fa-right-from-bracket"></i>Cerrar sesión</a>';
 			}
 			?>
 	</section>

@@ -4,6 +4,10 @@
     include 'clases/Categoria.php';
     include 'clases/Bloque.php';
 
+    // Inicializamos la conexión POO y obtenemos $conn
+    $database = new Database();
+    $conn = $database->conectar();
+
     // Paso 1: Obtener las categorías ANTES de mostrar el HTML del selector
     $listaCategorias = Categoria::obtenerTodas($conn);
 ?>

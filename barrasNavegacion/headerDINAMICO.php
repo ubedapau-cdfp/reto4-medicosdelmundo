@@ -65,11 +65,9 @@
             if (isset($_SESSION['usuario_nombre'])) {// Verificar si la variable de sesión 'usuario_nombre' está establecida, lo que indica que el usuario ha iniciado sesión
                 $nombre = $_SESSION['usuario_nombre'];// Obtener el nombre del usuario desde la variable de sesión
                 echo "<span class='admin-name'>Hola, " . $nombre . "</span>";// Mostrar un mensaje de bienvenida con el nombre del usuario
-                echo "<a class='logout-button' href='" . $base . "logout.php'>Cerrar sesión</a>";// Mostrar un enlace para cerrar sesión que redirecciona a logout.php
+                echo '<a class="logout-button" href="' . $base . 'logout.php">Cerrar sesión</a>';// Mostrar un enlace para cerrar sesión que redirecciona a logout.php
             } else {
-                echo "<button class='loginbutton'>";
-                echo "<a href='" . $base . "signin.php'>"."<i class=\"fa-solid fa-user\"></i>"."Login</a>"; // Botón que redirecciona al signin.php
-                echo "</button>";
+                echo '<a class="loginbutton" href="' . $base . 'signin.php"><i class="fa-solid fa-user"></i>Login</a>';
             }
         ?>
     </section> <!-- Cierre del section sin nombre -->
