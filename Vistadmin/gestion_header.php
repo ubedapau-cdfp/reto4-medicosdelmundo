@@ -10,6 +10,9 @@ if (!isset($_SESSION['usuario_id']) || $_SESSION['id_rol'] != 3) {
  
 // PASO 3: Conectar con la base de datos
 include_once __DIR__ . "/../conexion.php";
+// Inicializar Database y obtener PDO en $conn (compatibilidad)
+$database = new Database();
+$conn = $database->conectar();
  
 // Añadir la columna "ruta" a la tabla si todavía no existe
 try {

@@ -1,11 +1,11 @@
 <?php // Inicio del apartado PHP
-    // Incluimos tu archivo de conexión existente
-        include_once __DIR__ . "/../conexion.php";
+    // Incluimos la conexión POO y obtenemos las categorías madre
+    include_once __DIR__ . "/../conexion.php";
     if (session_status() === PHP_SESSION_NONE) session_start();
     $base = '/reto4-medicosdelmundo/'; // Valor $base equivale a la ruta absoluta para su uso en la página
 
-    //Llamamos a la función para obtener las categorías principales
-    $categorias_madre = obtenerCategoriasMadre($conn);
+    $database = new Database();
+    $categorias_madre = $database->obtenerCategoriasMadre();
 ?> <!-- Cierre del apartado PHP -->
 
 <head>
@@ -22,8 +22,8 @@
             <?php 
             // 3. Recorremos las categorías madre
             foreach ($categorias_madre as $madre): 
-                // Llamamos a la función de subcategorías pasando el ID de la madre actual
-                $subcategorias = obtenerSubcategorias($conn, $madre['id_categoria']);
+                // Obtener subcategorías usando la clase Database
+                $subcategorias = $database->obtenerSubcategorias((int)$madre['id_categoria']);
                 // Si la categoría madre tiene una ruta definida, úsala como enlace
                 $madreHref = (isset($madre['ruta']) && !empty($madre['ruta'])) ? $base . $madre['ruta'] : '#';
             ?>

@@ -1,21 +1,10 @@
-<!--header.php (ORIGINAL)-->
 <?php // Inicio del apartado PHP
-    // conexion.php está en la raíz, así que subimos un nivel
-    include_once __DIR__ . "/../conexion.php";
-
-    // Usamos la clase Database (POO) para obtener datos
-    if (session_status() === PHP_SESSION_NONE) session_start();
-    $base = '/reto4-medicosdelmundo/'; // Valor $base equivale a la ruta absoluta para su uso en la página
-
-    // 2. Inicializamos la conexión POO y usamos sus métodos simples
-    $database = new Database();
-    $categorias_madre = $database->obtenerCategoriasMadre();
+if (session_status() === PHP_SESSION_NONE) session_start();
+$base = '/reto4-medicosdelmundo/'; // Valor $base equivale a la ruta absoluta para su uso en la página
 ?> <!-- Cierre del apartado PHP -->
-
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
-
 <header> <!-- Inicio del header -->
     <a href="<?= $base ?>home/home.php" class="logo"> <!-- Inicio del enlace, que redirecciona al home.php -->
         <img src="<?= $base ?>Imagenes/Logoreal.png" alt="Logo"> <!-- Imagen del logo de la ONG -->
@@ -56,21 +45,6 @@
                     <li><a href="<?= $base ?>RelacionLaboral/principiosgeneralesderecholaboral.php"><i class="fa-solid fa-gavel"></i>Principios Generales del Derecho Laboral</a></li> <!-- Ítem de lista con enlace que redirecciona a principiosgeneralesderecholaboral.php -->
                 </ul> <!-- Cierre de lista desordenada del class dropdown -->
             </li> <!-- Cierre de ítem de lista del class dropdown -->
-
-            <?php 
-                // 3. Recorremos las categorías madre y añadimos un dropdown por cada una sin duplicar los menús estáticos
-                foreach ($categorias_madre as $madre):
-                    $subcategorias = $database->obtenerSubcategorias((int)$madre['id_categoria']);
-            ?>
-                <li class="dropdown">
-                    <a href="#"><i class="fa-solid fa-folder"></i><?= htmlspecialchars($madre['titulo']) ?> ▾</a>
-                    <ul>
-                        <?php foreach ($subcategorias as $sub): ?>
-                            <li><a href="<?= $base ?>categoria.php?id=<?= $sub['id_categoria'] ?>"><i class="fa-solid fa-angle-right"></i><?= htmlspecialchars($sub['titulo']) ?></a></li>
-                        <?php endforeach; ?>
-                    </ul>
-                </li>
-            <?php endforeach; ?>
         </ul> <!-- Cierre de lista desordenada general -->
     </nav> <!-- Cierre del nav -->
 
@@ -78,18 +52,20 @@
         <a href="<?= $base ?>otros/sobrenosotras.php"><i class="fa-solid fa-users"></i>Sobre nosotras</a> <!-- Enlace que redirecciona a sobrenosotras.php -->
         <a href="<?= $base ?>otros/preguntasfrecuentes.php"><i class="fa-solid fa-circle-question"></i>FAQs</a> <!-- Enlace que redirecciona a preguntasfrecuentes.php -->
     </section> <!-- Cierre del section enlaces-derecha -->
-
     <section class="admin-session"> <!-- Inicio del section sin nombre -->
-        <?php
-            $page = basename($_SERVER['PHP_SELF']);// Obtener el nombre del archivo PHP actual pero solo la ultima parte
+<?php
+$page = basename($_SERVER['PHP_SELF']);// Obtener el nombre del archivo PHP actual pero solo la ultima parte
 
 if (isset($_SESSION['usuario_nombre'])) {// Verificar si la variable de sesión 'usuario_nombre' está establecida, lo que indica que el usuario ha iniciado sesión
     $nombre = $_SESSION['usuario_nombre'];// Obtener el nombre del usuario desde la variable de sesión
     echo "<span class='admin-name'>Hola, " . $nombre . "</span>";// Mostrar un mensaje de bienvenida con el nombre del usuario
-    echo '<a class="logoutbutton" href="' . $base . 'logout.php">Cerrar Sesión</a>';
-    
+    echo "<button class='logoutbutton'>"; // Botón para cerrar sesión
+    echo "<a href='" . $base . "logout.php'>Cerrar Sesión</a>";// Mostrar un enlace para cerrar sesión que redirecciona a logout.php
+    echo "</button>";
 } else {
-    echo '<a class="loginbutton" href="' . $base . 'signin.php"><i class="fa-solid fa-user"></i>Login</a>';
+    echo "<button class='loginbutton'>";
+    echo "<a href='" . $base . "signin.php'>"."<i class=\"fa-solid fa-user\"></i>"."Login</a>"; // Botón que redirecciona al signin.php
+    echo "</button>";
 }
 
 ?>

@@ -1,6 +1,9 @@
 <?php
  session_start();
  require_once 'conexion.php';
+ // Inicializar la conexión POO
+ $database = new Database();
+ $conn = $database->conectar();
  if ($_SERVER["REQUEST_METHOD"] == "POST") {
      $user = $_POST['usuaria'];
      $pass = $_POST['contrasena'];
