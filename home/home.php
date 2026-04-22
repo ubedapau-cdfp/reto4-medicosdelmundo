@@ -23,8 +23,16 @@ if (!isset($_SESSION['id_rol']) || intval($_SESSION['id_rol']) === 1) {
 }
 ?>
 <section class="intro">
-    <h1>Bienvenidos a la página</h1>
-    <p>Disfruten su estancia.</p>
+    &nbsp; <!-- ESPACIO EN BLANCO -->
+    <p class="texto-inicio">Bienvenidas a la página web de Médicos del Mundo</p> 
+    <p class="subtexto-inicio">Esperemos que disfruten su estancia.</p>
+    <section class="imagenes">
+        <img src="../Imagenes/imageninicio1.jpg" alt="Imagen 1" width="600" height="400">
+        <img src="../Imagenes/imageninicio2.jpg" alt="Imagen 1" width="600" height="400">
+    </section>
+    <section class="imagenes2">
+        <img src="../Imagenes/imageninicio3.jpg" alt="Imagen 1" width="600" height="400">
+        <img src="../Imagenes/imageninicio4.jpg" alt="Imagen 1" width="600" height="400">
 </section>
 <?php include '../barrasNavegacion/footer.php'; ?>
 </body>

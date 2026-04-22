@@ -10,7 +10,7 @@ $base = '/reto4-medicosdelmundo/'; // Valor $base equivale a la ruta absoluta pa
 			if (intval($_SESSION['id_rol']) === 2) {
 				echo '<a class="logoutbutton" href="' . $base . 'VistaOrientadora/Menu.php"><i class="fa-solid fa-house"></i>Menú de Orientadora</a>';
 			} elseif (intval($_SESSION['id_rol']) === 3) {
-				echo '<a class="logoutbutton" href="' . $base . 'Vistadmin/Menu.php"><i class="fa-solid fa-house"></i>Menú de Administradora</a>';
+				echo '<a class="logoutbutton admin-menu-btn" href="' . $base . 'Vistadmin/Menu.php"><i class="fa-solid fa-house"></i>Menú de Administradora</a>';
 			}
 		?>
 		<section class="admin-session">

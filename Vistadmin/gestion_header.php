@@ -214,11 +214,32 @@ try {
     <!-- Título que aparece en la pestaña del navegador -->
     <link rel="stylesheet" href="<?= $base ?>estilos.css">
     <!-- Enlazamos la hoja de estilos (CSS) que da aspecto visual a la página -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 </head>
 <body>
     <header class="gestion-header-container">
-        <a href="<?= $base ?>home/home.php">Volver al sitio</a>
+        
+        <a href="<?= $base ?>home/home.php" class="logo" style="margin-right:10px;">
+			<img src="<?= $base ?>Imagenes/Logoreal.png" alt="Logo">
+		</a>
+        <?php
+			if (intval($_SESSION['id_rol']) === 3) {
+				echo '<button class="logoutbutton"><a href="' . $base . 'Vistadmin/Menu.php"><i class="fa-solid fa-house"></i>Menú de Administradora</a></button>';
+			}
+		?>
         <!-- Enlace para volver a la página principal del sitio -->
+         <section class="admin-session">
+			<?php
+			if (isset($_SESSION['usuario_nombre'])) {
+				$nombre = basename($_SESSION['usuario_nombre']);
+				echo "<span class='admin-name'>Hola, " . $nombre . "</span>";
+				echo "<button class='logoutbutton'>"; // Botón para cerrar sesión
+				echo "<a href='" . $base . "logout.php'><i class=\"fa-solid fa-right-from-bracket\"></i>Cerrar sesión</a>";
+				echo "</button>";
+			}
+			?>
+		</section>
     </header>
 
     <main class="gestion-header-main">

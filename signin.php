@@ -4,6 +4,7 @@ $base = '/reto4-medicosdelmundo/'; // valor $base equivale a la ruta absoluta pa
 <!DOCTYPE html> <!-- Tipo de documento HTML -->
 <html lang="es"> <!-- Inicio del HTML -->
 <head> <!--  -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <meta charset="UTF-8"> <!-- Juego de carácteres para visualización correcta. Tipo UTF-8 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Tamaño y forma del viewport -->
     <link rel='stylesheet' href='estilos.css'> <!-- Conexión con el CSS -->
@@ -26,8 +27,8 @@ $base = '/reto4-medicosdelmundo/'; // valor $base equivale a la ruta absoluta pa
                     <label for='contrasena'>Contraseña:</label> <!-- Texto para identificar el apartado 'Contrasena' -->
                     <input type='password' name='contrasena' size='46' id='contrasena' placeholder=' •••••••' required> <!-- Campo de texto del apartado 'Contrasena' obligatorio -->
                     <p></p> <!-- Separador -->
-                    <button type='submit'>Iniciar Sesión</button> <!-- Botón para iniciar sesión -->
-                    <button type='submit'><a href='/reto4-medicosdelmundo/home/home.php'>Volver a Inicio</a></button> <!-- Botón con enlace que redirecciona a home.php -->
+                    <button type='submit'><i class="fa-solid fa-user-check"></i>Iniciar Sesión</button> <!-- Botón para iniciar sesión -->
+                    <button type='submit'><a href='/reto4-medicosdelmundo/home/home.php'><i class="fa-solid fa-arrow-rotate-left"></i>Volver a Inicio</a></button> <!-- Botón con enlace que redirecciona a home.php -->
                     <p></p> <!-- Separador -->
                     <?php require_once 'loginProceso.php' ?> <!-- Proceso del login importado mediante PHP -->
                 </form> <!-- Cierre del formulario -->

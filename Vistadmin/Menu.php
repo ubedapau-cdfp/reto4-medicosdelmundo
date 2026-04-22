@@ -29,8 +29,10 @@ if (!isset($_SESSION['usuario_id']) || !isset($_SESSION['id_rol']) || (intval($_
 				echo '<button class="logoutbutton"><a href="' . $base . 'Vistadmin/Menu.php"><i class="fa-solid fa-house"></i>Menú de Administradora</a></button>';
 			}
 		?>
-		<section style="flex:1;text-align:center;">
-			<a href="<?= $base ?>Vistadmin/gestion_header.php" class="gestion-header-button" style="display:inline-block;padding:6px 10px;background:#007bff;color:#fff;border-radius:4px;text-decoration:none;">Gestión Header</a>
+		<section class="buttongestion">
+			<button class="logoutbutton">
+			<a href="<?= $base ?>Vistadmin/gestion_header.php" class="gestion-header-button"><i class="fa-solid fa-screwdriver-wrench"></i>Gestión Header</a>
+			</button>
 		</section>
 		<section class="admin-session">
 			<?php

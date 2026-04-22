@@ -24,6 +24,24 @@
     margin-right:8px; /* MARGEN A LA DERECHA */
 }
 
+/* ---------------------- HOME. APARTADO DEL TEXTO ----------------------------*/
+.texto-inicio{
+    font-weight: bold; /* TIPO DE TEXTO: NEGRITA */
+    font-size: 30px; /* TAMAÑO DEL TEXTO */
+    color:#010979;
+}
+.subtexto-inicio{
+    font-size: 18px; /* TAMAÑO DEL TEXTO */
+    color:black; 
+}
+
+.imagenes, .imagenes2{
+    margin-top: 20px; /* MARGEN RESPECTO ARRIBA */
+    display: flex; /* CONTENEDOR FLEXIBLE */
+    justify-content: center; /* CONTENIDO CENTRADO */   
+    gap: 15px; /* HUECO DE 15 PÍXELES ENTRE APARTADOS */
+}
+
 /* ----------------------- ESTILOS GENERAL ---------------------------------- */
 /* MÁRGENES GENERALES */
 * {
@@ -36,6 +54,7 @@
 body {
     font-family: "Open Sans", sans-serif; /* ORDEN DE FUENTES A USAR */
     background-color: #f1eaea; /* COLOR DEL FONDO DE LA PÁGINA */
+    margin-bottom:200px; /* MARGEN RESPECTO ABAJO PARA QUE EL FOOTER NO SE SOLAPE CON EL CONTENIDO */
 }
 
 /* Ajuste puntual para la página de menú: eliminar margen si se necesita */
@@ -54,12 +73,14 @@ header {
 
 
 /* Contenedor de sesión del admin (nombre + logout) */
-.admin-session {
+.admin-session, .logoutbutton {
     display: flex;
     align-items: center;
-    gap: 15px;
     margin-left: auto;
+    color:white !important; /* COLOR DEL TEXTO */
+    text-decoration:none !important; /* SIN DECORACIÓN DE TEXTO */
 }
+
 
 /* Nombre del admin en el header */
 .admin-name {
@@ -67,7 +88,6 @@ header {
     font-weight: bold;
     white-space: nowrap;
 }
-
 /* LOGO */
 header a.logo img {
     height: 45px; /* ALTURA */
@@ -156,6 +176,7 @@ nav ul li ul li a:hover {
     left: 0; /* POSICIÓN A LA IZQUIERDA */
     bottom: 0; /* POSICIÓN DE ABAJO */
     width: 100%; /* ANCHURA */
+    margin-top:35px;
     background-color: #0f143d; /* COLOR DE FONDO */
     color: white; /* COLOR DE TEXTO */
     padding: 0px 5%; /* ESPACIO ENTRE ELEMENTOS */
@@ -338,6 +359,10 @@ button[type=submit]:hover{
     border-color: #bde0ec; /* REDONDEO DE ESQUINAS DE 10 PÍXELES */
     color: #003d6e; /* COLOR DE TEXTO */
     transition-duration: 0.3s; /* DURACIÓN DE LA TRANSICIÓN */
+}
+.buttongestion{
+    flex:1;
+    text-align:center;
 }
 
 /* CONTAINER intro - PÁGINA DE ENTRADA */
