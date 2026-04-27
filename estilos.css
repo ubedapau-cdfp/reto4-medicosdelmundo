@@ -10,7 +10,7 @@
 }
 
 /* 2. Definimos la versión Itálica */
-@font-face {
+@font-face { 
     font-family: "Open Sans";
     src: url('Fonts/OpenSans-Italic-VariableFont_wdth,wght.ttf') format("truetype-variations"),
          url('Fonts/OpenSans-Italic-VariableFont_wdth,wght.ttf') format("truetype");
@@ -119,7 +119,7 @@ nav ul li a {
 
 /* ENLACES LADO DERECHO, CONTAINER */
 .enlaces-derecha {
-    margin-left: auto; /* MARGEN RESPECTO A LA IZQUIERDA AUTOMÁTICO */
+    margin-left: 23vh; /* MARGEN RESPECTO A LA IZQUIERDA */
     display: flex; /* CONTENEDOR FLEXIBLE */
     gap: 20px; /* HUECO DE 20 PÍXELES ENTRE APARTADOS */
 }
@@ -610,9 +610,13 @@ hr {
 .menu-grid { margin-top: 72px; height: calc(100vh - 72px); }
 
 /* ─────────────────────── GESTIÓN HEADER ───────────────────────── */
+
 .gestion-header-container {
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
+    display: flex; /* CONTENEDOR FLEXIBLE */
+    align-items: center; /* ITEMS CENTRADOS */
+    background-color: #0f143d; /* COLOR DEL FONDO DEL CONTENEDOR */
+    padding: 0 5%; /* ESPACIO ENTRE ELEMENTOS */
+    height: 70px; /* ALTURA */
 }
 
 .gestion-header-main {

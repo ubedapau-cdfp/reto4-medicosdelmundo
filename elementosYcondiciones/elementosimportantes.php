@@ -9,10 +9,19 @@ $base = '/reto4-medicosdelmundo/';
 <title>Elementos Importantes pero No Imprescindibles</title>
 <link rel="icon" type="image/png" href="<?= $base ?>Imagenes/Logoreal.png">
 <link rel="stylesheet" href="../estilos.css">
-</head>
-<body>
-<?php include '../barrasNavegacion/header.php'; ?>
-<p>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"> <!-- Conexión con la librería de iconos Font Awesome -->
+</head> <!-- Cierre del head -->
+<body> <!-- Inicio del body -->
+<?php // Header importado externamente mediante PHP para mostrar diferentes barras de navegación según el rol del usuario
+if (!isset($_SESSION['id_rol']) || intval($_SESSION['id_rol']) === 1) {
+    include '../barrasNavegacion/header.php';  // Si no hay sesión iniciada o el rol es 1, se muestra el header.php 
+} elseif (in_array(intval($_SESSION['id_rol']), [2, 3], true)) {
+    include '../barrasNavegacion/headeradmin.php'; // Si el rol es 2 o 3, se muestra el headeradmin.php
+} else {
+    include '../barrasNavegacion/header.php'; // Para cualquier otro caso, se muestra el header.php
+}
+?> <!-- Cierre del apartado PHP -->
+<p></p> <!-- Separador -->
 <section class="contenidos">
     <p><b>Elementos Importantes pero No Imprescindibles</b></p>
     <p>Texto de ejemplo. Líneas, líneas. Texto, texto.</p>

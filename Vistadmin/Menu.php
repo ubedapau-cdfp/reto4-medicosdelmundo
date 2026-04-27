@@ -18,34 +18,8 @@ if (!isset($_SESSION['usuario_id']) || !isset($_SESSION['id_rol']) || (intval($_
 	<link rel="icon" type="image/png" href="<?= $base ?>Imagenes/Logoreal.png">
 </head>
 <body class="menu-no-margin">
-	<header class="admin-top" style="display:flex;align-items:center;justify-content:space-between;padding:10px;">
-		<a href="<?= $base ?>home/home.php" class="logo" style="margin-right:10px;">
-			<img src="<?= $base ?>Imagenes/Logoreal.png" alt="Logo">
-		</a>
-		<?php
-			if (intval($_SESSION['id_rol']) === 2) {
-				echo '<button class="logoutbutton"><a href="' . $base . 'VistaOrientadora/Menu.php"><i class="fa-solid fa-house"></i>Menú de Orientadora</a></button>';
-			} elseif (intval($_SESSION['id_rol']) === 3) {
-				echo '<button class="logoutbutton"><a href="' . $base . 'Vistadmin/Menu.php"><i class="fa-solid fa-house"></i>Menú de Administradora</a></button>';
-			}
-		?>
-		<section class="buttongestion">
-			<button class="logoutbutton">
-			<a href="<?= $base ?>Vistadmin/gestion_header.php" class="gestion-header-button"><i class="fa-solid fa-screwdriver-wrench"></i>Gestión Header</a>
-			</button>
-		</section>
-		<section class="admin-session">
-			<?php
-			if (isset($_SESSION['usuario_nombre'])) {
-				$nombre = basename($_SESSION['usuario_nombre']);
-				echo "<span class='admin-name'>Hola, " . $nombre . "</span>";
-				echo "<button class='logoutbutton'>"; // Botón para cerrar sesión
-				echo "<a href='" . $base . "logout.php'><i class=\"fa-solid fa-right-from-bracket\"></i>Cerrar sesión</a>";
-				echo "</button>";
-			}
-			?>
-		</section>
-	</header>
+	<?php include '../barrasNavegacion/headeradmin.php'; ?>
+	
 	<main class="menu-grid">
 		<a class="menu-block block-contratos" href="<?= $base ?>contratos/relacionlaboral.php">
 			<section class="block-content">

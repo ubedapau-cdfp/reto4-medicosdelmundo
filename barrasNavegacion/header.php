@@ -2,9 +2,9 @@
 if (session_status() === PHP_SESSION_NONE) session_start();
 $base = '/reto4-medicosdelmundo/'; // Valor $base equivale a la ruta absoluta para su uso en la página
 ?> <!-- Cierre del apartado PHP -->
-<head>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-</head>
+<head> <!-- Inicio del head -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"> <!-- Conexión con la librería de iconos Font Awesome -->
+</head> <!-- Cierre del head -->
 <header> <!-- Inicio del header -->
     <a href="<?= $base ?>home/home.php" class="logo"> <!-- Inicio del enlace, que redirecciona al home.php -->
         <img src="<?= $base ?>Imagenes/Logoreal.png" alt="Logo"> <!-- Imagen del logo de la ONG -->
@@ -38,16 +38,6 @@ $base = '/reto4-medicosdelmundo/'; // Valor $base equivale a la ruta absoluta pa
                 </ul> <!-- Cierre de lista desordenada del class dropdown -->
             </li> <!-- Cierre de ítem de lista del class dropdown -->
 
-            <li class="dropdown"> <!-- Inicio del ítem de lista class dropdown -->
-                <a href="#"><i class="fa-solid fa-handshake"></i>Relación Laboral ▾</a> <!-- Enlace sin redirección que muestra los apartados, título del apartado -->
-                <ul> <!-- Inicio de lista desordenada del class dropdown --> 
-                    <li><a href="<?= $base ?>RelacionLaboral/definicionyrequisitos.php"><i class="fa-solid fa-book-bookmark"></i>Definición y Requisitos</a></li> <!-- Ítem de lista con enlace que redirecciona a definicionyrequisitos.php -->
-                    <li><a href="<?= $base ?>RelacionLaboral/principiosgeneralesderecholaboral.php"><i class="fa-solid fa-gavel"></i>Principios Generales del Derecho Laboral</a></li> <!-- Ítem de lista con enlace que redirecciona a principiosgeneralesderecholaboral.php -->
-                </ul> <!-- Cierre de lista desordenada del class dropdown -->
-            </li> <!-- Cierre de ítem de lista del class dropdown -->
-        </ul> <!-- Cierre de lista desordenada general -->
-    </nav> <!-- Cierre del nav -->
-
     <section class="enlaces-derecha"> <!-- Inicio del section enlaces-derecha -->
         <a href="<?= $base ?>otros/sobrenosotras.php"><i class="fa-solid fa-users"></i>Sobre nosotras</a> <!-- Enlace que redirecciona a sobrenosotras.php -->
         <a href="<?= $base ?>otros/preguntasfrecuentes.php"><i class="fa-solid fa-circle-question"></i>FAQs</a> <!-- Enlace que redirecciona a preguntasfrecuentes.php -->
@@ -61,13 +51,12 @@ if (isset($_SESSION['usuario_nombre'])) {// Verificar si la variable de sesión 
     echo "<span class='admin-name'>Hola, " . $nombre . "</span>";// Mostrar un mensaje de bienvenida con el nombre del usuario
     echo "<button class='logoutbutton'>"; // Botón para cerrar sesión
     echo "<a href='" . $base . "logout.php'>Cerrar Sesión</a>";// Mostrar un enlace para cerrar sesión que redirecciona a logout.php
-    echo "</button>";
+    echo "</button>"; // Cierre del botón
 } else {
-    echo "<button class='loginbutton'>";
+    echo "<button class='loginbutton'>"; // Botón para iniciar sesión
     echo "<a href='" . $base . "signin.php'>"."<i class=\"fa-solid fa-user\"></i>"."Login</a>"; // Botón que redirecciona al signin.php
-    echo "</button>";
+    echo "</button>"; // Cierre del botón
 }
-
-?>
+?> <!-- Cierre del apartado PHP -->
     </section> <!-- Cierre del section sin nombre -->
 </header> <!-- Cierre del header -->
