@@ -15,7 +15,7 @@ $base = '/reto4-medicosdelmundo/';
 <body>
 <?php
 if (!isset($_SESSION['id_rol']) || intval($_SESSION['id_rol']) === 1) {
-    include '../barrasNavegacion/headerDINAMICO.php';
+    include '../barrasNavegacion/header.php';
 } elseif (in_array(intval($_SESSION['id_rol']), [2, 3], true)) {
     include '../barrasNavegacion/headeradmin.php';
 } else {
