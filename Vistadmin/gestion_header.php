@@ -202,31 +202,23 @@ try {
     // FETCH_ASSOC significa que cada fila será un array con nombres de columna como claves.
  
 } catch (PDOException $e) {
-    $categorias = [];
-    // Si hay error, dejamos la lista vacía...
-    $error      = 'Error al leer categorías: ' . $e->getMessage();
-    // ...y guardamos el mensaje de error.
+    $categorias = []; // Si hay error, dejamos la lista vacía
+    $error      = 'Error al leer categorías: ' . $e->getMessage(); //  guardamos el mensaje de error
 }
 ?>
 
-<!doctype html>
-<!-- Indicamos que este documento es HTML5 -->
-<html lang="es">
-<!-- La página está en español -->
+<!doctype html> <!-- Documento de tipo HTML -->
+<html lang="es"> <!-- página en español -->
 <head>
-    <meta charset="utf-8">
-    <!-- Soporte para caracteres especiales como tildes y eñes -->
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <!-- La página se adapta bien a móviles -->
-    <title>Gestión del Header</title>
-    <!-- Título que aparece en la pestaña del navegador -->
-    <link rel="stylesheet" href="<?= $base ?>estilos.css">
-    <!-- Enlazamos la hoja de estilos (CSS) que da aspecto visual a la página -->
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-</head>
-<body>
-    <header class="gestion-header-container">
+    <meta charset="utf-8"> <!-- Soporte para caracteres especiales como tildes y eñes -->
+    <meta name="viewport" content="width=device-width,initial-scale=1"> <!-- La página se adapta bien a móviles -->
+    <title>Gestión del Header</title> <!-- Título que aparece en la pestaña del navegador -->
+    <link rel="stylesheet" href="<?= $base ?>estilos.css"> <!-- Enlazamos la hoja de estilos (CSS) que da aspecto visual a la página -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"> <!-- Biblioteca de iconos FontAwesome para usar iconos en la página -->
+    <link rel="icon" type="image/png" href="<?= $base ?>Imagenes/Logoreal.png"> <!-- Icono que aparece en la pestaña del navegador -->
+</head> <!-- Cierre del head-->
+<body> <!-- Inicio del body -->
+    <header class="gestion-header-container"> <!-- Encabezado de la página, con clase para estilos específicos -->
         
         <a href="<?= $base ?>home/home.php" class="logo" style="margin-right:10px;">
 			<img src="<?= $base ?>Imagenes/Logoreal.png" alt="Logo">
