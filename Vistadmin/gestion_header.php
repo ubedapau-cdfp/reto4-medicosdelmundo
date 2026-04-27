@@ -91,14 +91,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['action'] == 'add') {
         // Si después de limpiar la ruta quedó vacía, la ponemos como NULL.
  
         $fecha = date('Y-m-d');
-        // Obtenemos la fecha de hoy en formato Año-Mes-Día (ej: 2025-04-21).
- 
-        // Construir y ejecutar la consulta SQL directamente
+
+        // --- NUEVA LÓGICA PARA REUTILIZAR IDs ---
+        // Buscamos el primer número que no existe en la columna id_categoria
+        $res_id = $conn->query("SELECT MIN(t1.id_categoria + 1) AS proximo_id 
+                                FROM CATEGORIA t1 
+                                LEFT JOIN CATEGORIA t2 ON t1.id_categoria + 1 = t2.id_categoria 
+                                WHERE t2.id_categoria IS NULL");
+        $fila_id = $res_id->fetch(PDO::FETCH_ASSOC);
+        $nuevo_id = $fila_id['proximo_id'];
+
+        // Si la tabla está totalmente vacía, el query anterior devuelve NULL, así que ponemos 1
+        if ($nuevo_id === null) {
+            $nuevo_id = 1;
+        }
+        // ----------------------------------------
+
         try {
-            $conn->exec("INSERT INTO CATEGORIA (titulo, descripcion, icono, id_madre, fecha_actualizacion, ruta)
-                         VALUES ('$titulo', '$descripcion', '$icono', $id_madre, '$fecha', '$ruta_limpia')");
-            // Le pedimos a la base de datos que INSERTE (guarde) una nueva fila
-            // en la tabla CATEGORIA con todos los datos que recogimos.
+            // Modificamos el INSERT para incluir la columna id_categoria y el $nuevo_id
+            $conn->exec("INSERT INTO CATEGORIA (id_categoria, titulo, descripcion, icono, id_madre, fecha_actualizacion, ruta)
+                         VALUES ($nuevo_id, '$titulo', '$descripcion', '$icono', $id_madre, '$fecha', '$ruta_limpia')");
  
             // ── Crear el archivo PHP en disco si se dio una ruta ──
             if ($ruta_limpia != 'NULL') {
@@ -161,21 +173,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['action'] == 'add') {
  
 // PASO 5: Si se pide ELIMINAR una categoría...
 if (isset($_GET['action']) && $_GET['action'] == 'delete' && isset($_GET['id'])) {
-    // Si en la URL aparece "?action=delete&id=X", es que el usuario quiere borrar
-    // la categoría con el número X.
- 
     $id = intval($_GET['id']);
-    // Convertimos el número de la URL a un entero puro, por seguridad.
- 
     try {
+        // Borrar categoría y sus hijas
         $conn->exec("DELETE FROM CATEGORIA WHERE id_categoria = $id OR id_madre = $id");
-        // Borramos de la base de datos la categoría con ese ID,
-        // Y TAMBIÉN todas sus subcategorías (las que tienen ese ID como "madre").
- 
+        
+        // --- CAMBIO PARA POSTGRESQL ---
+        // En lugar de AUTO_INCREMENT, reseteamos la secuencia asociada a la columna
+        $conn->exec("SELECT setval(pg_get_serial_sequence('categoria', 'id_categoria'), COALESCE((SELECT MAX(id_categoria) FROM categoria), 0) + 1, false)");
+
         header('Location: ' . $base . 'Vistadmin/gestion_header.php');
-        // Redirigimos al usuario de vuelta a esta misma página.
         exit();
-        // Paramos la ejecución del código aquí.
  
     } catch (PDOException $e) {
         $error = 'Error al eliminar: ' . $e->getMessage();
