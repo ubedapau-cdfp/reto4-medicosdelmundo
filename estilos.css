@@ -184,6 +184,11 @@ nav ul li ul li a:hover {
     border-color:#0f143d; /* COLOR DEL BORDE */
 
 }
+/* TELEFONO */
+.telefono a{
+    color:white; /* COLOR DEL TEXTO */ 
+    text-decoration: none; /* SIN DECORACIÓN DE TEXTO */
+}
 
 /* APARTADO footer-row DEL FOOTER */
 .footer-row {

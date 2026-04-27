@@ -7,7 +7,7 @@
         <address class="direccion-telefono"> <!-- Inicio del address direccion-telefono -->
             <p>Calatorao 8, local.</p> <!-- Párrafo de texto de la dirección de la sede de la ONG (Calle) -->
             <p>Zaragoza, 50003</p> <!-- Párrafo de texto de la dirección de la sede de la ONG (Ciudad) + Código Postal) -->
-            <p>976404940 / 608218170</p> <!-- Párrafo de texto de los números de teléfono de la ONG -->
+            <p class="telefono"><a href="tel:976404940">976404940</a> / <a href="tel:608218170">608218170</a></p> <!-- Párrafo de texto de los números de teléfono de la ONG -->
         </address> <!-- Cierre del address direccion-telefono -->
 
         <figure class="map-container"> <!-- Inicio del figure map-container (Extraído de Google Maps) -->
@@ -17,7 +17,7 @@
 
         <section class="contacto-final"> <!-- Inicio del section contacto-final -->
             <p><strong>Correo</strong></p> <!-- Párrafo de texto en negrita, indica Correo -->
-            <p>aragon@medicosdelmundo.org</p> <!-- Párrafo de texto (correo electrónico) -->
+            <a href="mailto:aragon@medicosdelmundo.org"><p>aragon@medicosdelmundo.org</p></a> <!-- Enlace de correo electrónico -->
         </section> <!-- Cierre del section contacto-final -->
     </section> <!-- Cierre del section footer-row -->
 </footer> <!-- Cierre del footer -->
