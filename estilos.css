@@ -119,7 +119,7 @@ nav ul li a {
 
 /* ENLACES LADO DERECHO, CONTAINER */
 .enlaces-derecha {
-    margin-left: auto; /* MARGEN RESPECTO A LA IZQUIERDA AUTOMÁTICO */
+    margin-left: 45vh; /* MARGEN RESPECTO A LA IZQUIERDA AUTOMÁTICO */
     display: flex; /* CONTENEDOR FLEXIBLE */
     gap: 20px; /* HUECO DE 20 PÍXELES ENTRE APARTADOS */
 }
@@ -314,6 +314,8 @@ button[type=submit]:hover{
 /* BOTÓN DEL LOGIN */
 .loginbutton{
     background-color:#005daa; /* COLOR DEL FONDO */
+    color:white; /* COLOR DE TEXTO */
+    text-decoration: none; /* SIN DECORACIÓN DE TEXTO */
     border-color:#005daa; /* COLOR DEL BORDE */
     border-radius:10px; /* REDONDEO DE ESQUINAS DE 10 PÍXELES */
     font-size:15px; /* TAMAÑO DEL TEXTO */
@@ -322,11 +324,6 @@ button[type=submit]:hover{
     border-style: solid; /* TIPO DE BORDE SÓLIDO */
     font-family: 'Nexa Pro', 'Segoe UI', sans-serif; /* ORDEN DE FUENTES A USAR */
 } 
- /* APARTADO <a> DEL BOTÓN DEL LOGIN */
-.loginbutton a{
-    text-decoration: none; /* SIN DECORACIÓN DE TEXTO */
-    color: white; /* COLOR DE TEXTO */
-}
 
 /* HOVERS DEL BOTÓN DEL LOGIN (PÁGINA PRINCIPAL) */
 .loginbutton:hover, .loginbutton a:hover{
@@ -357,7 +354,7 @@ button[type=submit]:hover{
 .logoutbutton:hover, .logoutbutton a:hover{
     background-color: #bde0ec; /* COLOR DE FONDO */
     border-color: #bde0ec; /* REDONDEO DE ESQUINAS DE 10 PÍXELES */
-    color: #003d6e; /* COLOR DE TEXTO */
+    color: #003d6e !important; /* COLOR DE TEXTO */
     transition-duration: 0.3s; /* DURACIÓN DE LA TRANSICIÓN */
 }
 .buttongestion{
@@ -611,8 +608,11 @@ hr {
 
 /* ─────────────────────── GESTIÓN HEADER ───────────────────────── */
 .gestion-header-container {
-    padding: 10px;
-    border-bottom: 1px solid #ccc;
+    display: flex; /* CONTENEDOR FLEXIBLE */
+    align-items: center; /* ITEMS CENTRADOS */
+    background-color: #0f143d; /* COLOR DEL FONDO DEL CONTENEDOR */
+    padding: 0 5%; /* ESPACIO ENTRE ELEMENTOS */
+    height: 70px; /* ALTURA */
 }
 
 .gestion-header-main {
