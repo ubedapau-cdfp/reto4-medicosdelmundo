@@ -30,6 +30,12 @@ class Categoria {
     public function getIdCategoria(){ 
     return $this->id_categoria; 
     }
+    public function getDescripcion() {
+        return $this->descripcion;
+    }
+    public function getIdMadre() {
+        return $this->id_madre;
+    }
 
     public function mostrarDatos() {
         echo "<h1>" . $this->titulo . "</h1>";
@@ -81,6 +87,13 @@ class Categoria {
     public static function obtenerSubcategorias($db, $id_madre) {
         $sql = "SELECT * FROM CATEGORIA WHERE id_madre = :id_madre ORDER BY id_categoria ASC";
         return self::ejecutarConsulta($db, $sql, [':id_madre' => $id_madre]);
+    }
+
+    // NUEVO: Obtener una categoría por su ID
+    public static function obtenerPorId($db, $id_categoria) {
+        $sql = "SELECT * FROM CATEGORIA WHERE id_categoria = :id_categoria";
+        $categorias = self::ejecutarConsulta($db, $sql, [':id_categoria' => $id_categoria]);
+        return !empty($categorias) ? $categorias[0] : null;
     }
 }
 

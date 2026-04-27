@@ -69,5 +69,28 @@
         return $bloques;
     }
 
+    // NUEVO: Obtener bloques por ID de categoría
+    public static function obtenerPorCategoriaId($db, $id_categoria) {
+        $bloques = [];
+        $sql = "SELECT * FROM BLOQUE WHERE id_categoria = :id_categoria ORDER BY orden";
+
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(':id_categoria', $id_categoria, PDO::PARAM_INT);
+        $stmt->execute();
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $bloques[] = new self(
+                $row['id_bloque'],
+                $row['id_categoria'],
+                $row['titulo'],
+                $row['subtitulo'],
+                $row['contenido'],
+                $row['orden'],
+                $row['fecha_actualizacion']
+            );
+        }
+        return $bloques;
     }
+
+}
 ?>

@@ -128,7 +128,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['action'] == 'add') {
                 if (!file_exists($ruta_archivo)) {
                     // Solo creamos el archivo si todavía no existe (para no sobreescribir).
 
-                    $contenido  = "<?php include_once \$_SERVER['DOCUMENT_ROOT'] . '{$base}barrasNavegacion/headerDINAMICO.php'; ?>\n";
+                    $contenido  = "<?php include_once \$_SERVER['DOCUMENT_ROOT'] . '{$base}barrasNavegacion/header.php'; ?>\n";
                     // Primera línea del archivo: incluye el menú de navegación dinámico del sitio.
                     $contenido .= "<!doctype html>\n<html lang='es'>\n<head>\n";
                     // Estructura básica de una página HTML.
