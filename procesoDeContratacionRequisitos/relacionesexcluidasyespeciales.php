@@ -9,18 +9,9 @@ $base = '/reto4-medicosdelmundo/';
 <title>Relaciones Excluidas y Especiales</title>
 <link rel="icon" type="image/png" href="<?= $base ?>Imagenes/Logoreal.png">
 <link rel="stylesheet" href="../estilos.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"> <!-- Conexión con la librería de iconos Font Awesome -->
-</head> <!-- Cierre del head -->
-<body> <!-- Inicio del body -->
-<?php // Header importado externamente mediante PHP para mostrar diferentes barras de navegación según el rol del usuario
-if (!isset($_SESSION['id_rol']) || intval($_SESSION['id_rol']) === 1) {
-    include '../barrasNavegacion/header.php';  // Si no hay sesión iniciada o el rol es 1, se muestra el header.php 
-} elseif (in_array(intval($_SESSION['id_rol']), [2, 3], true)) {
-    include '../barrasNavegacion/headeradmin.php'; // Si el rol es 2 o 3, se muestra el headeradmin.php
-} else {
-    include '../barrasNavegacion/header.php'; // Para cualquier otro caso, se muestra el header.php
-}
-?> <!-- Cierre del apartado PHP -->
+</head>
+<body>
+<?php include '../barrasNavegacion/header.php'; ?>
 <p>
 <section class="contenidos">
     <p><b>Relaciones Excluidas y Especiales</b></p>

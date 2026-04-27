@@ -1,5 +1,4 @@
 <?php // Inicio del apartado PHP
-session_start(); // Iniciar sesión para gestionar roles de usuario
 $base = '/reto4-medicosdelmundo/'; // valor $base equivale a la ruta absoluta para su uso en la página
 ?> <!-- Cierre del apartado PHP -->
 <!DOCTYPE html> <!-- Tipo de documento HTML -->
@@ -10,18 +9,9 @@ $base = '/reto4-medicosdelmundo/'; // valor $base equivale a la ruta absoluta pa
 <title>Jerarquía normativa y derechos</title> <!-- Título para la parte superior -->
 <link rel="icon" type="image/png" href="<?= $base ?>Imagenes/Logoreal.png"> <!-- Icono para la parte superior -->
 <link rel="stylesheet" href="../estilos.css"> <!-- Conexión con el CSS -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"> <!-- Conexión con la librería de iconos Font Awesome -->
 </head> <!-- Cierre del head -->
 <body> <!-- Inicio del body -->
-<?php // Header importado externamente mediante PHP para mostrar diferentes barras de navegación según el rol del usuario
-if (!isset($_SESSION['id_rol']) || intval($_SESSION['id_rol']) === 1) {
-    include '../barrasNavegacion/header.php'; // Si no hay sesión iniciada o el rol es 1, se muestra el header.php
-} elseif (in_array(intval($_SESSION['id_rol']), [2, 3], true)) {
-    include '../barrasNavegacion/headeradmin.php'; // Si el rol es 2 o 3, se muestra el headeradmin.php
-} else {
-    include '../barrasNavegacion/header.php'; // Para cualquier otro caso, se muestra el header.php
-}
-?> <!-- Cierre del apartado PHP -->
+<?php include '../barrasNavegacion\header.php'; ?> <!-- Header importado externamente mediante PHP -->
 <p></p> <!-- Separador -->
 <section class="contenidos"> <!-- Inicio del section contenidos -->
     <p><b>Jerarquía normativa y Derechos</b></p> <!-- Párrafo de texto, título en negrita -->
