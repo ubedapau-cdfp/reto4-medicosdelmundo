@@ -14,5 +14,16 @@ $base = '/reto4-medicosdelmundo/'; // Valor $base equivale a la ruta absoluta pa
 				echo '<a class="logoutbutton" href="' . $base . 'Vistadmin/gestion_header.php" class="gestion-header-button"><i class="fa-solid fa-screwdriver-wrench"></i>Gestión Header</a>';
 			}
 		?>
-	</section> <!-- Cierre sección admin-session -->
+
+		<section class="admin-session">
+			<?php
+			if (isset($_SESSION['usuario_nombre'])) {
+				$nombre = basename($_SESSION['usuario_nombre']);
+				echo "<span class='admin-name'>Hola, " . $nombre . "</span>";
+				echo "<button class='logoutbutton'>"; // Botón para cerrar sesión
+				echo "<a href='" . $base . "logout.php'><i class=\"fa-solid fa-right-from-bracket\"></i>Cerrar sesión</a>";
+				echo "</button>";
+			}
+			?>
+		</section>
 </header> <!-- Cierre del header -->
