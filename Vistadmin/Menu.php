@@ -1,8 +1,8 @@
 <?php
 session_start();
 $base = '/reto4-medicosdelmundo/';
-// Acceso para administradoras (id_rol === 3) y orientadoras (id_rol === 2)
-if (!isset($_SESSION['usuario_id']) || !isset($_SESSION['id_rol']) || (intval($_SESSION['id_rol']) !== 3 && intval($_SESSION['id_rol']) !== 2)) {
+// Acceso para administradoras (id_rol === 3)
+if (!isset($_SESSION['usuario_id']) || !isset($_SESSION['id_rol']) || intval($_SESSION['id_rol']) !== 3) {
 	header('Location: /reto4-medicosdelmundo/signin.php');
 	exit();
 }

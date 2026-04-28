@@ -459,6 +459,135 @@ input[type=text], input[type=password], select[name="id_madre"]{
     transition-duration: 0.3s; /* DURACIÓN DE LA TRANSICIÓN */
 }
 
+/* ----- PANELUSUARIAS.PHP ------*/
+
+.listadousuarias{
+    display:flex; /* CONTENEDOR FLEXIBLE */
+    flex-direction: column; /* DE ESTILO COLUMNA */
+    gap:30px; /* HUECO DE 30 PÍXELES ENTRE APARTADOS */
+    padding:20px; /* ESPACIO ENTRE ELEMENTOS */
+}
+
+.editarusuaria{
+    padding:20px; /* ESPACIO ENTRE ELEMENTOS */
+}
+
+.titulousuarias{
+    text-align: center; /* ITEMS CENTRADOS */
+    font-size:30px; /* TAMAÑO DEL TEXTO */
+    color:#00065f; /* COLOR DEL TEXTO */
+    font-weight: bold; /* TIPO DE TEXTO: NEGRITA */
+
+}
+
+.tabla-contenedor{
+    display:flex; /* CONTENEDOR FLEXIBLE */
+    justify-content:center; /* CONTENIDO CENTRADO */
+    font-weight:500; /* TIPO DE TEXTO: NEGRITA */
+
+}
+
+table {
+    border-collapse: collapse; /* COLAPSO DE BORDES */
+    width: 70vw; /* ANCHURA */
+    background-color: #b8c1c4; /* COLOR DEL FONDO */
+    border-spacing:0; /* ESPACIO ENTRE LOS BORDES DE LAS CELDAS */
+    border-radius:5px; /* REDONDEO DE ESQUINAS DE 15 PÍXELES */
+    overflow:hidden; /* PARA QUE EL REDONDEO DE ESQUINAS FUNCIONE CORRECTAMENTE */
+    border: 2px solid #00065f; /* COLOR Y ESTILO (SÓLIDO) DEL BORDE */
+    
+}
+
+th, td{
+    padding:15px; /* ESPACIO ENTRE ELEMENTOS */
+    border-bottom: 2px solid #3b3b3b; /* COLOR Y ESTILO (SÓLIDO) DEL BORDE */
+    border-right: 2px solid #3b3b3b; /* COLOR Y ESTILO (SÓLIDO) DEL BORDE */
+}
+
+.acciones{
+    width:1%; /* ANCHURA */
+    white-space:nowrap; /* EVITA QUE EL CONTENIDO SE DIVIDA EN VARIAS LÍNEAS */
+    text-align:center; /* TEXTO CENTRADO */
+}
+
+/* BOTÓN DE BORRAR */
+.deletebutton{
+    background-color:#e71616; /* COLOR DEL FONDO */
+    border-color:#e71616; /* COLOR DEL BORDE */
+    border-radius:10px; /* REDONDEO DE ESQUINAS DE 10 PÍXELES */
+    font-size:15px; /* TAMAÑO DEL TEXTO */
+    padding:5px /*Arriba/abajo*/ 20px; /*Izquierda/Derecha*/ /* ESPACIO ENTRE ELEMENTOS */
+    margin:15px; /* MÁRGENES */
+    border-style: solid; /* TIPO DE BORDE SÓLIDO */
+    font-family: 'Nexa Pro', 'Segoe UI', sans-serif; /* ORDEN DE FUENTES A USAR */
+    text-decoration: none; /* SIN DECORACIÓN DE TEXTO */
+    color: white; /* COLOR DE TEXTO */
+} 
+
+/* HOVERS DEL BOTÓN DE BORRAR */
+.deletebutton:hover, .deletebutton a:hover{
+    background-color: #9b0000; /* COLOR DE FONDO */
+    border-color: #9b0000; /* REDONDEO DE ESQUINAS DE 10 PÍXELES */
+    color: WHITE !important; /* COLOR DE TEXTO */
+    transition-duration: 0.3s; /* DURACIÓN DE LA TRANSICIÓN */
+}
+/* ----- PANELUSUARIAS.PHP, BOTONES DE EDICIÓN ------*/
+
+/* BOTÓN DE EDICIÓN */
+.editbutton{
+    background-color:#22c213; /* COLOR DEL FONDO */
+    border-color:#22c213; /* COLOR DEL BORDE */
+    border-radius:10px; /* REDONDEO DE ESQUINAS DE 10 PÍXELES */
+    font-size:15px; /* TAMAÑO DEL TEXTO */
+    padding:5px /*Arriba/abajo*/ 20px; /*Izquierda/Derecha*/ /* ESPACIO ENTRE ELEMENTOS */
+    border-style: solid; /* TIPO DE BORDE SÓLIDO */
+    font-family: 'Nexa Pro', 'Segoe UI', sans-serif; /* ORDEN DE FUENTES A USAR */
+    text-decoration: none; /* SIN DECORACIÓN DE TEXTO */
+    color: black; /* COLOR DE TEXTO */
+} 
+
+/* HOVERS DEL BOTÓN DE EDICIÓN */
+.editbutton:hover, .editbutton a:hover{
+    background-color: #1d7a01; /* COLOR DE FONDO */
+    border-color: #1d7a01; /* REDONDEO DE ESQUINAS DE 10 PÍXELES */
+    color: WHITE !important; /* COLOR DE TEXTO */
+    transition-duration: 0.3s; /* DURACIÓN DE LA TRANSICIÓN */
+}
+
+/* --- EDITAR USUARIA --- */
+form {
+    max-width: 600px; /* ANCHURA MÁXIMA */ 
+    margin: 20px auto; /* MÁRGENES AUTOMÁTICOS PARA CENTRAR EL FORMULARIO */
+    padding: 20px; /* ESPACIO ENTRE ELEMENTOS */ 
+    border-radius: 8px; /* REDONDEO DE BORDE DE 8 PÍXELES */
+}
+
+form label {
+    display: block; /* HACE QUE CADA ETIQUETA OCUPA UNA LÍNEA COMPLETA */
+    margin-bottom: 6px; /* ESPACIO ENTRE ELEMENTOS */
+    font-weight:600; /* TIPO DE TEXTO: NEGRITA */
+    color: #00065f; /* COLOR DEL TEXTO */
+}
+
+/* VISTA FORMULARIO DE EDICIÓN */
+#nombre.formulario-edit, /* NOMBRE DENTRO DEL FORMULARIO DE EDICIÓN */
+form input[type="email"].formulario-edit,
+form select.formulario-edit {
+    font-family: 'Open Sans', sans-serif; /* ORDEN DE FUENTES A USAR */
+    font-weight:500; /* TIPO DE TEXTO: NEGRITA */
+    width: 100% !important; /* ANCHURA */
+    padding: 10px !important; /* ESPACIO ENTRE ELEMENTOS */
+    margin-bottom: 15px !important; /* ESPACIO ENTRE ELEMENTOS */
+    border: 1px solid #00065f !important; /* COLOR DEL BORDE */
+    border-radius: 4px !important; /* REDONDEO DE BORDE DE 4 PÍXELES */
+    box-sizing: border-box !important; /* DEFINICIÓN DEL ANCHO Y ALTO TOTAL DE UN ELEMENTO */
+    display: block !important; /* HACE QUE CADA INPUT OCUPA UNA LÍNEA COMPLETA */
+    height: 45px !important; /* ALTURA */
+    background-color: #fff !important; /* COLOR DEL FONDO */
+    font-size: 1rem !important; /* TAMAÑO DEL TEXTO */
+}
+
+
 
 /* -------------- VISTAS -----------------*/
 /* VISTA DE TABLET */
