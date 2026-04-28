@@ -25,14 +25,21 @@ class Categoria {
 
     // Getters necesarios
     public function getTitulo(){ 
-    return $this->titulo; 
+        return $this->titulo; 
     }
+
     public function getIdCategoria(){ 
-    return $this->id_categoria; 
+        return $this->id_categoria; 
     }
+
     public function getDescripcion() {
         return $this->descripcion;
     }
+
+    public function getIcono() {
+        return $this->icono;
+    }
+
     public function getIdMadre() {
         return $this->id_madre;
     }
