@@ -611,42 +611,73 @@ hr {
 
 .menu-grid { margin-top: 72px; height: calc(100vh - 72px); }
 
-/* ─────────────────────── GESTIÓN HEADER ───────────────────────── */
-.gestion-header-container {
-    display: flex; /* CONTENEDOR FLEXIBLE */
-    align-items: center; /* ITEMS CENTRADOS */
-    background-color: #0f143d; /* COLOR DEL FONDO DEL CONTENEDOR */
-    padding: 0 5%; /* ESPACIO ENTRE ELEMENTOS */
-    height: 70px; /* ALTURA */
-}
-
-.gestion-header-main {
+.menu-grid-container {
     padding: 20px;
 }
 
-.gestion-error {
-    color: red;
-}
-
-.gestion-message {
-    color: green;
-}
-
-.gestion-section {
+.menu-page-actions {
     margin-bottom: 20px;
+    text-align: right;
 }
 
-.gestion-input-300 {
-    width: 300px;
-}
-
-.gestion-input-400 {
-    width: 400px;
-}
-
-.gestion-delete-link {
-    color: red;
+.menu-add-btn {
+    display: inline-block;
+    background-color: #2196F3;
+    color: white;
+    padding: 10px 18px;
     text-decoration: none;
+    border-radius: 10px;
+    font-weight: 700;
+}
+
+.menu-block-wrapper {
+    position: relative;
+}
+
+.menu-block-actions {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    z-index: 2;
+}
+
+.menu-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 12px;
+    border-radius: 8px;
+    color: white;
+    text-decoration: none;
+    font-size: 0.85rem;
+}
+
+.menu-action.editar {
+    background-color: #4CAF50;
+}
+
+.menu-action.eliminar,
+.menu-action-form button {
+    background-color: #f44336;
+    border: none;
+    cursor: pointer;
+}
+
+.menu-action-form {
+    margin: 0;
+}
+
+.menu-action-form button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 12px;
+    border-radius: 8px;
+    color: white;
+    font-size: 0.85rem;
 }
 
 /* Estilos para gestionar contenido */
