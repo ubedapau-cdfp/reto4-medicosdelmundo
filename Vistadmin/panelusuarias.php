@@ -7,6 +7,26 @@ if (!isset($_SESSION['usuario_id']) || !isset($_SESSION['id_rol']) || intval($_S
 	exit();
 }
 
+require_once __DIR__ . '/../clases/Usuario.php';
+
+$mensajeUsuario = '';
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['accion']) && $_POST['accion'] === 'guardar_usuaria') {
+    $nombre = trim($_POST['nombre'] ?? '');
+    $email = trim($_POST['email'] ?? '');
+    $password = trim($_POST['password'] ?? '');
+    $rol = intval($_POST['rol'] ?? 0);
+
+    if ($nombre !== '' && $email !== '' && $password !== '' && in_array($rol, [2, 3], true)) {
+        if (Usuario::crear($nombre, $email, $password, $rol)) {
+            header('Location: panelusuarias.php');
+            exit();
+        }
+        $mensajeUsuario = 'No se pudo crear la usuaria. Intenta nuevamente.';
+    } else {
+        $mensajeUsuario = 'Por favor completa todos los campos correctamente.';
+    }
+}
+
 ?>
 <!doctype html>
 <html lang="es">
@@ -38,8 +58,34 @@ $usuarios = $stmt->fetchAll();
 
 ?>
 <section class="listadousuarias">
-<h2 class="titulousuarias">Gestión de usuarias registradas</h2> 
-    
+<h2 class="titulousuarias">Gestión de usuarias registradas</h2>
+<a class="menu-add-btn" href="panelusuarias.php?nueva_usuaria=1">+ Añadir usuaria</a>
+
+<?php if (isset($_GET['nueva_usuaria'])): ?>
+    <section class="gestion-section">
+        <h3>Añadir nueva usuaria</h3>
+        <?php if ($mensajeUsuario): ?>
+            <p class="error"><?php echo htmlspecialchars($mensajeUsuario); ?></p>
+        <?php endif; ?>
+        <form method="post" action="panelusuarias.php" class="gestionar-form">
+            <input type="hidden" name="accion" value="guardar_usuaria">
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" class="formulario-edit" required>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" class="formulario-edit" required>
+            <label for="password">Contraseña</label>
+            <input type="password" id="password" name="password" class="formulario-edit" required>
+            <label for="rol">Rol</label>
+            <select id="rol" name="rol" class="formulario-edit" required>
+                <option value="2">Orientadora</option>
+                <option value="3">Administradora</option>
+            </select>
+            <button type="submit" class="savebutton"><i class="fa-solid fa-user-plus"></i> Crear usuaria</button>
+            <a class="gestionar-btn" href="panelusuarias.php">Cancelar</a>
+        </form>
+    </section>
+<?php endif; ?>
+
     <?php if (!empty($usuarios)): ?>
         <div class="tabla-contenedor">
             <table>

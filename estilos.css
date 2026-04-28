@@ -1048,6 +1048,114 @@ h1{
     margin-top: 2px;
 }
 
+/* ─────────────────────── SOBRE NOSOTRAS ─────────────────────── */
+.sobre-nosotras-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.sobre-nosotras-texto {
+    line-height: 1.8;
+    margin-bottom: 40px;
+}
+
+.sobre-nosotras-texto p {
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.sobre-nosotras-texto .subtitulos {
+    color: #00065f;
+    font-size: 18px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.sobre-nosotras-enlace {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.button-web-mdm {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #00065f;
+    color: white;
+    padding: 15px 25px;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.button-web-mdm:hover {
+    background-color: #0360ac;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+
+.button-web-mdm i {
+    font-size: 18px;
+}
+
+/* ─────────────────────── SOBRE NOSOTRAS ─────────────────────── */
+.sobre-nosotras-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.sobre-nosotras-texto {
+    line-height: 1.8;
+    margin-bottom: 40px;
+}
+
+.sobre-nosotras-texto p {
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.sobre-nosotras-texto .subtitulos {
+    color: #00065f;
+    font-size: 18px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.sobre-nosotras-enlace {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.button-web-mdm {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #00065f;
+    color: white;
+    padding: 15px 25px;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.button-web-mdm:hover {
+    background-color: #0360ac;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+}
+
+.button-web-mdm i {
+    font-size: 18px;
+}
+
 /* ---------- VISTAS ---------- */
 /* ================================================================
    RESPONSIVE MEDIA QUERIES

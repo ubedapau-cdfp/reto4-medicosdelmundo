@@ -1,14 +1,3 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="../estilos.css">
-    <link rel="icon" type="image/png" href="<?= $base ?>Imagenes/Logoreal.png">
-    <title>Editar Usuaria</title>
-</head>
-<body>
 <?php
 session_start();
 $base = '/reto4-medicosdelmundo/';
@@ -18,7 +7,6 @@ if (!isset($_SESSION['usuario_id']) || !isset($_SESSION['id_rol']) || intval($_S
     exit();
 }
 require_once __DIR__ . '/../clases/Usuario.php';
-include '../barrasNavegacion/headeradmin.php';
 
 $error = null;
 $usuaria = null;
@@ -52,6 +40,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="../estilos.css">
+    <link rel="icon" type="image/png" href="<?= $base ?>Imagenes/Logoreal.png">
+    <title>Editar Usuaria</title>
+</head>
+<body>
+<?php include '../barrasNavegacion/headeradmin.php'; ?>
 <section class="editarusuaria">
     <h2 class="titulousuarias">Editar usuaria</h2>
 
