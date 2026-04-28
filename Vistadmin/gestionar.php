@@ -82,6 +82,7 @@ if (isset($_GET['editar_bloque'])) {
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>Gestionar Contenido</title>
     <link rel="stylesheet" href="<?= $base ?>estilos.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="icon" type="image/png" href="<?= $base ?>Imagenes/Logoreal.png">
 </head>
 <body>
@@ -223,7 +224,7 @@ if (isset($_GET['editar_bloque'])) {
                     <?php else: ?>
                         <input type="hidden" name="id_categoria" value="<?= $categoryId ?>">
                     <?php endif; ?>
-                    <button type="submit" class="gestionar-btn gestionar-btn-edit">Guardar</button>
+                    <button type="submit" class="gestionar-btn gestionar-btn-edit"><i class="fa-solid fa-floppy-disk"></i>Guardar</button>
                     <a href="?id=<?= $categoryId ?>" class="gestionar-btn">Cancelar</a>
                 </form>
             </section>

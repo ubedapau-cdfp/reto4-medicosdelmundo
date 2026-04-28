@@ -39,11 +39,11 @@ $categoriasMadre = Categoria::obtenerCategoriasMadre($conn);
 						</section>
 					</a>
 					<section class="menu-block-actions">
-						<a class="menu-action editar" href="<?= $base ?>Vistadmin/gestionar.php?id=<?= $cat->getIdCategoria() ?>&editar_categoria=<?= $cat->getIdCategoria() ?>">Editar</a>
-						<form method="post" action="<?= $base ?>Vistadmin/gestionar.php" class="menu-action-form" onsubmit="return confirm('¿Eliminar categoría madre?');">
+						<a class="editbutton" href="<?= $base ?>Vistadmin/gestionar.php?id=<?= $cat->getIdCategoria() ?>&editar_categoria=<?= $cat->getIdCategoria() ?>"><i class="fas fa-pencil"></i> Editar</a>
+					<form method="post" action="<?= $base ?>Vistadmin/gestionar.php" class="menu-action-form" onsubmit="return confirm('¿Eliminar categoría madre?');">
 							<input type="hidden" name="accion" value="eliminar_categoria">
 							<input type="hidden" name="id_categoria" value="<?= $cat->getIdCategoria() ?>">
-							<button type="submit" class="menu-action eliminar">Eliminar</button>
+							<button type="submit" class="deletebutton"><i class="fas fa-trash"></i> Eliminar</button>
 						</form>
 					</section>
 			</section>

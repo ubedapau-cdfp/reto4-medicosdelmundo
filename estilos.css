@@ -691,19 +691,17 @@ hr {
     border-radius: 12px;
     color: white;
     text-decoration: none;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.25);
     overflow: hidden;
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    transition: 0.3s;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 .menu-block:hover {
-    transform: translateY(-6px) scale(1.01);
     box-shadow: 0 16px 40px rgba(0,0,0,0.35);
 }
 .menu-block .block-content {
-    padding: 30px;
+    padding: 50px;
     text-align: center;
 }
 .menu-block h2 {
@@ -723,7 +721,11 @@ hr {
     color: #fff; 
 }
 
-.header-user-name { color: #fff; font-weight: 700; margin-left: 12px; }
+.header-user-name { 
+    color: #fff; 
+    font-weight: 700; 
+    margin-left: 12px; 
+}
 
 .header-logout { 
     padding: 8px 12px; 
@@ -738,7 +740,9 @@ hr {
 }
 
 
-.menu-grid { margin-top: 72px; height: calc(100vh - 72px); }
+.menu-grid { 
+    height: calc(100vh - 90vh); 
+}
 
 .menu-grid-container {
     padding: 20px;
@@ -763,50 +767,72 @@ hr {
     position: relative;
 }
 
+/* --- UNIFICACIÓN DE BOTONES EN ACCIONES DE BLOQUE --- */
+
 .menu-block-actions {
     position: absolute;
     top: 16px;
     right: 16px;
     display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 10px;
     z-index: 2;
 }
 
-.menu-action {
-    display: inline-flex;
+.menu-block-actions .editbutton,
+.menu-block-actions .menu-action-form button.deletebutton {
+    /* IMPORTANTE: Ancho fijo para que sean iguales */
+    width: 120px !important; 
+    height: 40px !important;
+    display: inline-flex !important;
     align-items: center;
     justify-content: center;
-    padding: 8px 12px;
-    border-radius: 8px;
-    color: white;
-    text-decoration: none;
-    font-size: 0.85rem;
-}
-
-.menu-action.editar {
-    background-color: #4CAF50;
-}
-
-.menu-action.eliminar,
-.menu-action-form button {
-    background-color: #f44336;
-    border: none;
+    gap: 8px;
+    margin: 0 !important; 
+    padding: 0 !important;
+    box-sizing: border-box !important;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
     cursor: pointer;
+    text-decoration: none;
+    border-style: solid;
+    border-width: 1px;
+    white-space: nowrap;
 }
 
-.menu-action-form {
+.menu-block-actions .editbutton {
+    margin-left:19px !important;
+    background-color: #22c213;
+    border-color: #22c213;
+    color: black !important;
+}
+
+.menu-block-actions .menu-action-form button.deletebutton {
+    background-color: #e71616;
+    border-color: #e71616;
+    color: white !important;
+}
+
+/* Hovers */
+.menu-block-actions .editbutton:hover {
+    background-color: #1d7a01;
+    border-color: #1d7a01;
+    color: white !important;
+}
+
+.menu-block-actions .menu-action-form button.deletebutton:hover {
+    background-color: #9b0000;
+    border-color: #9b0000;
+}
+
+.menu-block-actions .editbutton,
+.menu-block-actions button.deletebutton {
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+}
+
+.menu-block-actions .menu-action-form {
     margin: 0;
-}
-
-.menu-action-form button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    padding: 8px 12px;
-    border-radius: 8px;
-    color: white;
-    font-size: 0.85rem;
 }
 
 /* Estilos para gestionar contenido */
@@ -935,6 +961,7 @@ hr {
 
 .faq-respuesta {
     font-size: 14px;
+    font-weight:500;
     color: #333;
     line-height: 1.6;
     display: flex;
