@@ -25,14 +25,21 @@ class Categoria {
 
     // Getters necesarios
     public function getTitulo(){ 
-    return $this->titulo; 
+        return $this->titulo; 
     }
+
     public function getIdCategoria(){ 
-    return $this->id_categoria; 
+        return $this->id_categoria; 
     }
+
     public function getDescripcion() {
         return $this->descripcion;
     }
+
+    public function getIcono() {
+        return $this->icono;
+    }
+
     public function getIdMadre() {
         return $this->id_madre;
     }
@@ -79,13 +86,13 @@ class Categoria {
 
     // NUEVO: Obtener solo las categorías principales (Madres)
     public static function obtenerCategoriasMadre($db) {
-        $sql = "SELECT * FROM CATEGORIA WHERE id_madre IS NULL ORDER BY id_categoria ASC";
+        $sql = "SELECT * FROM CATEGORIA WHERE id_madre IS NULL ORDER BY titulo ASC";
         return self::ejecutarConsulta($db, $sql);
     }
 
     // NUEVO: Obtener las subcategorías de una madre específica
     public static function obtenerSubcategorias($db, $id_madre) {
-        $sql = "SELECT * FROM CATEGORIA WHERE id_madre = :id_madre ORDER BY id_categoria ASC";
+        $sql = "SELECT * FROM CATEGORIA WHERE id_madre = :id_madre ORDER BY titulo ASC";
         return self::ejecutarConsulta($db, $sql, [':id_madre' => $id_madre]);
     }
 
@@ -94,6 +101,56 @@ class Categoria {
         $sql = "SELECT * FROM CATEGORIA WHERE id_categoria = :id_categoria";
         $categorias = self::ejecutarConsulta($db, $sql, [':id_categoria' => $id_categoria]);
         return !empty($categorias) ? $categorias[0] : null;
+    }
+
+    // Método para insertar una nueva categoría
+    public static function insertar($db, $titulo, $descripcion, $icono, $id_madre) {
+        $sql = "INSERT INTO CATEGORIA (titulo, descripcion, icono, id_madre) VALUES (:titulo, :descripcion, :icono, :id_madre)";
+        try {
+            $stmt = $db->prepare($sql);
+            $stmt->execute([
+                ':titulo' => $titulo,
+                ':descripcion' => $descripcion,
+                ':icono' => $icono,
+                ':id_madre' => $id_madre
+            ]);
+            return $db->lastInsertId();
+        } catch (PDOException $e) {
+            echo "Error al insertar categoría: " . $e->getMessage();
+            return false;
+        }
+    }
+
+    // Método para actualizar una categoría
+    public static function actualizar($db, $id_categoria, $titulo, $descripcion, $icono, $id_madre) {
+        $sql = "UPDATE CATEGORIA SET titulo = :titulo, descripcion = :descripcion, icono = :icono, id_madre = :id_madre, fecha_actualizacion = CURRENT_DATE WHERE id_categoria = :id_categoria";
+        try {
+            $stmt = $db->prepare($sql);
+            $stmt->execute([
+                ':titulo' => $titulo,
+                ':descripcion' => $descripcion,
+                ':icono' => $icono,
+                ':id_madre' => $id_madre,
+                ':id_categoria' => $id_categoria
+            ]);
+            return true;
+        } catch (PDOException $e) {
+            echo "Error al actualizar categoría: " . $e->getMessage();
+            return false;
+        }
+    }
+
+    // Método para eliminar una categoría
+    public static function eliminar($db, $id_categoria) {
+        $sql = "DELETE FROM CATEGORIA WHERE id_categoria = :id_categoria";
+        try {
+            $stmt = $db->prepare($sql);
+            $stmt->execute([':id_categoria' => $id_categoria]);
+            return true;
+        } catch (PDOException $e) {
+            echo "Error al eliminar categoría: " . $e->getMessage();
+            return false;
+        }
     }
 }
 
