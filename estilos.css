@@ -649,6 +649,66 @@ hr {
     text-decoration: none;
 }
 
+/* Estilos para gestionar contenido */
+.gestionar-main {
+    padding: 20px;
+}
+
+.gestionar-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.gestionar-th, .gestionar-td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.gestionar-th {
+    background-color: #f2f2f2;
+}
+
+.gestionar-btn {
+    padding: 5px 10px;
+    margin: 2px;
+    cursor: pointer;
+}
+
+.gestionar-btn-edit {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.gestionar-btn-delete {
+    background-color: #f44336;
+    color: white;
+}
+
+.gestionar-btn-add {
+    background-color: #2196F3;
+    color: white;
+}
+
+.gestionar-form {
+    margin-bottom: 20px;
+}
+
+.gestionar-label {
+    display: block;
+    margin-top: 10px;
+}
+
+.gestionar-input, .gestionar-textarea, .gestionar-select {
+    width: 100%;
+    padding: 8px;
+}
+
+.gestionar-form-inline {
+    display: inline;
+}
+
 .gestion-delete-link:hover {
     text-decoration: underline;
 }

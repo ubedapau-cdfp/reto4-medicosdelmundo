@@ -32,6 +32,26 @@
         return $this->titulo;
     }
 
+    public function getIdBloque() {
+        return $this->id_bloque;
+    }
+
+    public function getSubtitulo() {
+        return $this->subtitulo;
+    }
+
+    public function getContenido() {
+        return $this->contenido;
+    }
+
+    public function getOrden() {
+        return $this->orden;
+    }
+
+    public function getIdCategoria() {
+        return $this->id_categoria;
+    }
+
     //funcion mostrar datos
     public function mostrarDatos() {
         echo "<h2>" . $this->titulo . "</h2>";
@@ -92,5 +112,77 @@
         return $bloques;
     }
 
+    // Método para obtener un bloque por ID
+    public static function obtenerPorId($db, $id_bloque) {
+        $sql = "SELECT * FROM BLOQUE WHERE id_bloque = :id_bloque";
+        $stmt = $db->prepare($sql);
+        $stmt->bindParam(':id_bloque', $id_bloque, PDO::PARAM_INT);
+        $stmt->execute();
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        if ($row) {
+            return new self(
+                $row['id_bloque'],
+                $row['id_categoria'],
+                $row['titulo'],
+                $row['subtitulo'],
+                $row['contenido'],
+                $row['orden'],
+                $row['fecha_actualizacion']
+            );
+        }
+        return null;
+    }
+
+    // Método para insertar un nuevo bloque
+    public static function insertar($db, $titulo, $subtitulo, $contenido, $orden, $id_categoria) {
+        $sql = "INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES (:titulo, :subtitulo, :contenido, :orden, :id_categoria)";
+        try {
+            $stmt = $db->prepare($sql);
+            $stmt->execute([
+                ':titulo' => $titulo,
+                ':subtitulo' => $subtitulo,
+                ':contenido' => $contenido,
+                ':orden' => $orden,
+                ':id_categoria' => $id_categoria
+            ]);
+            return $db->lastInsertId();
+        } catch (PDOException $e) {
+            echo "Error al insertar bloque: " . $e->getMessage();
+            return false;
+        }
+    }
+
+    // Método para actualizar un bloque
+    public static function actualizar($db, $id_bloque, $titulo, $subtitulo, $contenido, $orden, $id_categoria) {
+        $sql = "UPDATE BLOQUE SET titulo = :titulo, subtitulo = :subtitulo, contenido = :contenido, orden = :orden, id_categoria = :id_categoria, fecha_actualizacion = CURRENT_DATE WHERE id_bloque = :id_bloque";
+        try {
+            $stmt = $db->prepare($sql);
+            $stmt->execute([
+                ':titulo' => $titulo,
+                ':subtitulo' => $subtitulo,
+                ':contenido' => $contenido,
+                ':orden' => $orden,
+                ':id_categoria' => $id_categoria,
+                ':id_bloque' => $id_bloque
+            ]);
+            return true;
+        } catch (PDOException $e) {
+            echo "Error al actualizar bloque: " . $e->getMessage();
+            return false;
+        }
+    }
+
+    // Método para eliminar un bloque
+    public static function eliminar($db, $id_bloque) {
+        $sql = "DELETE FROM BLOQUE WHERE id_bloque = :id_bloque";
+        try {
+            $stmt = $db->prepare($sql);
+            $stmt->execute([':id_bloque' => $id_bloque]);
+            return true;
+        } catch (PDOException $e) {
+            echo "Error al eliminar bloque: " . $e->getMessage();
+            return false;
+        }
+    }
 }
 ?>

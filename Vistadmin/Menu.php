@@ -6,6 +6,12 @@ if (!isset($_SESSION['usuario_id']) || !isset($_SESSION['id_rol']) || (intval($_
 	header('Location: /reto4-medicosdelmundo/signin.php');
 	exit();
 }
+require_once '../conexion.php';
+require_once '../clases/Categoria.php';
+
+$db = new Database();
+$conn = $db->conectar();
+$categoriasMadre = Categoria::obtenerCategoriasMadre($conn);
 ?>
 <!doctype html>
 <html lang="es">
@@ -18,35 +24,16 @@ if (!isset($_SESSION['usuario_id']) || !isset($_SESSION['id_rol']) || (intval($_
 	<link rel="icon" type="image/png" href="<?= $base ?>Imagenes/Logoreal.png">
 </head>
 <body class="menu-no-margin">
-		<?php include '../barrasNavegacion/headeradmin.php'; ?>
+	<?php include '../barrasNavegacion/headeradmin.php'; ?>
 	<main class="menu-grid">
-		<a class="menu-block block-contratos" href="<?= $base ?>contratos/relacionlaboral.php">
-			<section class="block-content">
-				<h2>Contratos</h2>
-				<p>Requisitos para la Relación Laboral y normativa</p>
-			</section>
-		</a>
-    
-		<a class="menu-block block-elementos" href="<?= $base ?>elementosYcondiciones/elementossustanciales.php">
-			<section class="block-content">
-				<h2>Elementos y Condiciones</h2>
-				<p>Elementos sustanciales e importantes</p>
-			</section>
-		</a>
-
-		<a class="menu-block block-proceso" href="<?= $base ?>procesoDeContratacionRequisitos/obligacionesempresa.php">
-			<section class="block-content">
-				<h2>Proceso y Requisitos</h2>
-				<p>Obligaciones de la empresa y requisitos de la trabajadora</p>
-			</section>
-		</a>
-
-		<a class="menu-block block-relacion" href="<?= $base ?>RelacionLaboral/definicionyrequisitos.php">
-			<section class="block-content">
-				<h2>Relación Laboral</h2>
-				<p>Definición, principios y requisitos</p>
-			</section>
-		</a>
+		<?php foreach ($categoriasMadre as $cat): ?>
+			<a class="menu-block" href="<?= $base ?>Vistadmin/gestionar.php?id=<?= $cat->getIdCategoria() ?>">
+				<section class="block-content">
+					<h2><?= htmlspecialchars($cat->getTitulo()) ?></h2>
+					<p><?= htmlspecialchars($cat->getDescripcion()) ?></p>
+				</section>
+			</a>
+		<?php endforeach; ?>
 	</main>
 </body>
 </html>
