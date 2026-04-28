@@ -105,6 +105,7 @@ class Categoria {
 
     // Método para insertar una nueva categoría
     public static function insertar($db, $titulo, $descripcion, $icono, $id_madre) {
+        $id_madre = !empty($id_madre) ? intval($id_madre) : null;
         $sql = "INSERT INTO CATEGORIA (titulo, descripcion, icono, id_madre) VALUES (:titulo, :descripcion, :icono, :id_madre)";
         try {
             $stmt = $db->prepare($sql);
@@ -123,6 +124,7 @@ class Categoria {
 
     // Método para actualizar una categoría
     public static function actualizar($db, $id_categoria, $titulo, $descripcion, $icono, $id_madre) {
+        $id_madre = !empty($id_madre) ? intval($id_madre) : null;
         $sql = "UPDATE CATEGORIA SET titulo = :titulo, descripcion = :descripcion, icono = :icono, id_madre = :id_madre, fecha_actualizacion = CURRENT_DATE WHERE id_categoria = :id_categoria";
         try {
             $stmt = $db->prepare($sql);
@@ -142,10 +144,25 @@ class Categoria {
 
     // Método para eliminar una categoría
     public static function eliminar($db, $id_categoria) {
-        $sql = "DELETE FROM CATEGORIA WHERE id_categoria = :id_categoria";
         try {
+            // Eliminar primero los bloques asociados a la categoría actual
+            $sqlBloques = "DELETE FROM BLOQUE WHERE id_categoria = :id_categoria";
+            $stmtBloques = $db->prepare($sqlBloques);
+            $stmtBloques->execute([':id_categoria' => $id_categoria]);
+
+            // Eliminar recursivamente subcategorías hijas
+            $sqlHijas = "SELECT id_categoria FROM CATEGORIA WHERE id_madre = :id_madre";
+            $stmtHijas = $db->prepare($sqlHijas);
+            $stmtHijas->execute([':id_madre' => $id_categoria]);
+            while ($row = $stmtHijas->fetch(PDO::FETCH_ASSOC)) {
+                self::eliminar($db, $row['id_categoria']);
+            }
+
+            // Eliminar la categoría actual
+            $sql = "DELETE FROM CATEGORIA WHERE id_categoria = :id_categoria";
             $stmt = $db->prepare($sql);
             $stmt->execute([':id_categoria' => $id_categoria]);
+
             return true;
         } catch (PDOException $e) {
             echo "Error al eliminar categoría: " . $e->getMessage();

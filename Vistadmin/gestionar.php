@@ -26,32 +26,39 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             Categoria::eliminar($conn, $_POST['id_categoria']);
         } elseif ($accion === 'guardar_categoria') {
             $id = $_POST['id_categoria'] ?? null;
-            $titulo = $_POST['titulo'];
-            $descripcion = $_POST['descripcion'];
-            $icono = $_POST['icono'];
+            $titulo = trim($_POST['titulo'] ?? '');
+            $descripcion = trim($_POST['descripcion'] ?? '');
+            $icono = trim($_POST['icono'] ?? '');
+            $id_madre = isset($_POST['id_madre']) && $_POST['id_madre'] !== '' ? (int) $_POST['id_madre'] : null;
             if ($id) {
                 $existingCategoria = Categoria::obtenerPorId($conn, $id);
-                $id_madre = $existingCategoria ? $existingCategoria->getIdMadre() : null;
-                Categoria::actualizar($conn, $id, $titulo, $descripcion, $icono, $id_madre);
+                $currentIdMadre = $existingCategoria ? $existingCategoria->getIdMadre() : null;
+                Categoria::actualizar($conn, $id, $titulo, $descripcion, $icono, $currentIdMadre);
             } else {
-                $id_madre = ($currentCategory && $isMadre) ? $currentCategory->getIdCategoria() : null;
                 Categoria::insertar($conn, $titulo, $descripcion, $icono, $id_madre);
             }
         } elseif ($accion === 'eliminar_bloque' && isset($_POST['id_bloque'])) {
             Bloque::eliminar($conn, $_POST['id_bloque']);
         } elseif ($accion === 'guardar_bloque') {
             $id = $_POST['id_bloque'] ?? null;
-            $titulo = $_POST['titulo'];
-            $subtitulo = $_POST['subtitulo'];
-            $contenido = $_POST['contenido'];
-            $orden = $_POST['orden'];
-            $id_categoria = $_POST['id_categoria'];
+            $titulo = trim($_POST['titulo'] ?? '');
+            $subtitulo = trim($_POST['subtitulo'] ?? '');
+            $contenido = trim($_POST['contenido'] ?? '');
+            $orden = intval($_POST['orden'] ?? 0);
+            $id_categoria = intval($_POST['id_categoria'] ?? 0);
             if ($id) {
                 Bloque::actualizar($conn, $id, $titulo, $subtitulo, $contenido, $orden, $id_categoria);
             } else {
                 Bloque::insertar($conn, $titulo, $subtitulo, $contenido, $orden, $id_categoria);
             }
         }
+
+        $redirectUrl = $base . 'Vistadmin/gestionar.php';
+        if ($categoryId) {
+            $redirectUrl .= '?id=' . $categoryId;
+        }
+        header('Location: ' . $redirectUrl);
+        exit();
     }
 }
 
