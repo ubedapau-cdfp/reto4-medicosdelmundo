@@ -10,7 +10,7 @@ class Database {
     private $password = "P@ssw0rd";
 
     // Aquí guardamos la conexión PDO una vez creada
-    public $conn = null;
+    private $conn = null;
 
     // Constructor opcional: permite pasar otros parámetros si se desea
     public function __construct($host = null, $port = null, $dbname = null, $user = null, $password = null) {
@@ -39,32 +39,12 @@ class Database {
             // Devolver resultados como arrays asociativos por defecto (más sencillo)
             $this->conn->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
         } catch (PDOException $e) {
-            // Mensaje simple para principiantes
+            // Mensaje simple de error
             echo "Conexión fallida: " . $e->getMessage();
             exit; // Paramos la ejecución si no hay conexión
         }
 
         return $this->conn;
-    }
-
-    // Método sencillo: devuelve las categorías madre (id_madre IS NULL)
-    // Devuelve un array asociativo similar a conexionVIEJA.php
-    public function obtenerCategoriasMadre() {
-        $db = $this->conectar();
-        $sql = "SELECT * FROM CATEGORIA WHERE id_madre IS NULL ORDER BY id_categoria ASC";
-        $stmt = $db->prepare($sql);
-        $stmt->execute();
-        return $stmt->fetchAll();
-    }
-
-    // Método sencillo: devuelve las subcategorías de una madre
-    public function obtenerSubcategorias($id_madre) {
-        $db = $this->conectar();
-        $sql = "SELECT * FROM CATEGORIA WHERE id_madre = :id_madre ORDER BY id_categoria ASC";
-        $stmt = $db->prepare($sql);
-        $stmt->bindValue(':id_madre', $id_madre, PDO::PARAM_INT);
-        $stmt->execute();
-        return $stmt->fetchAll();
     }
 }
 

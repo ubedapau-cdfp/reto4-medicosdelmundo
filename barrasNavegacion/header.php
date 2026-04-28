@@ -1,11 +1,13 @@
 <?php // Inicio del apartado PHP
     // Incluimos la conexión POO y obtenemos las categorías madre
     include_once __DIR__ . "/../conexion.php";
+    include_once __DIR__ . "/../clases/Categoria.php";
     if (session_status() === PHP_SESSION_NONE) session_start();
     $base = '/reto4-medicosdelmundo/'; // Valor $base equivale a la ruta absoluta para su uso en la página
 
     $database = new Database();
-    $categorias_madre = $database->obtenerCategoriasMadre();
+    $conn = $database->conectar();
+    $categorias_madre = Categoria::obtenerCategoriasMadre($conn);
 ?> <!-- Cierre del apartado PHP -->
 
 <head>
@@ -22,27 +24,27 @@
             <?php 
             // 3. Recorremos las categorías madre
             foreach ($categorias_madre as $madre): 
-                // Obtener subcategorías usando la clase Database
-                $subcategorias = $database->obtenerSubcategorias((int)$madre['id_categoria']);
+                // Obtener subcategorías usando la clase Categoria
+                $subcategorias = Categoria::obtenerSubcategorias($conn, $madre->getIdCategoria());
                 // Si la categoría madre tiene una ruta definida, úsala como enlace
-                $madreHref = (isset($madre['ruta']) && !empty($madre['ruta'])) ? $base . $madre['ruta'] : $base . "contenidos.php?id=" . $madre['id_categoria'];
+                $madreHref = $base . "contenidos.php?id=" . $madre->getIdCategoria();
             ?>
                 <li class="dropdown">
                     <a href="<?= $madreHref ?>">
-                        <?php if (!empty($madre['icono'])): ?><i class="fa-solid <?= $madre['icono'] ?>"></i><?php endif; ?>
-                        <?= $madre['titulo'] ?> <?php if (count($subcategorias) > 0) echo '▾'; ?>
+                        <?php if (!empty($madre->getIcono())): ?><i class="fa-solid <?= $madre->getIcono() ?>"></i><?php endif; ?>
+                        <?= $madre->getTitulo() ?> <?php if (count($subcategorias) > 0) echo '▾'; ?>
                     </a>
                     
                     <?php if (count($subcategorias) > 0): ?>
                         <ul>
                             <?php foreach ($subcategorias as $hija): 
-                                // Para cada subcategoría, si tiene 'ruta' usarla, si no usar contenidos.php?id=
-                                $hijaHref = (isset($hija['ruta']) && !empty($hija['ruta'])) ? $base . $hija['ruta'] : $base . "contenidos.php?id=" . $hija['id_categoria'];
+                                // Para cada subcategoría
+                                $hijaHref = $base . "contenidos.php?id=" . $hija->getIdCategoria();
                             ?>
                                 <li>
                                     <a href="<?= $hijaHref ?>">
-                                        <?php if (!empty($hija['icono'])): ?><i class="fa-solid <?= $hija['icono'] ?>"></i><?php endif; ?>
-                                        <?= $hija['titulo'] ?>
+                                        <?php if (!empty($hija->getIcono())): ?><i class="fa-solid <?= $hija->getIcono() ?>"></i><?php endif; ?>
+                                        <?= $hija->getTitulo() ?>
                                     </a>
                                 </li>
                             <?php endforeach; ?>

@@ -1,10 +1,10 @@
 <?php
 class Usuario {
-    public $id_usuario;
-    public $email;
-    public $password;
-    public $nombre;
-    public $id_rol; // Relación con Rol
+    private $id_usuario;
+    private $email;
+    private $password;
+    private $nombre;
+    private $id_rol; // Relación con Rol
 
     public function __construct($id_usuario, $email, $password, $id_rol, $nombre = null) {
         $this->id_usuario = $id_usuario;
@@ -40,6 +40,14 @@ class Usuario {
 
     public function setRol($id_rol) {
         $this->id_rol = intval($id_rol);
+    }
+
+    public function getPassword() {
+        return $this->password;
+    }
+
+    public function setPassword($password) {
+        $this->password = $password;
     }
 
     public static function RecuperarByID($id) {
