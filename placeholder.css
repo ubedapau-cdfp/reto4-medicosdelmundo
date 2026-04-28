@@ -1,0 +1,85 @@
+
+/* -------------- VISTAS (ESTO HA SIDO LO ANTERIOR!! VIEJO!! ) -----------------*/
+/* VISTA DE TABLET */
+@media (max-width: 1024px) {
+
+    header {
+        flex-wrap: wrap; /* ELEMENTOS PUEDEN PASAR A LA SIGUIENTE LINEA SI NO CABEN EN 1 FILA */
+        height: auto; /* ALTURA */
+        padding: 15px 5%; /* ESPACIO ENTRE ELEMENTOS */
+    }
+
+    nav ul {
+        gap: 5px; /* HUECO ENTRE ELEMENTOS DE 5 PÍXELES */
+    }
+
+    nav ul li a {
+        padding: 15px 10px; /* ESPACIO ENTRE ELEMENTOS */
+        font-size: 14px; /* TAMAÑO DEL TEXTO */
+    }
+
+    .footer-row {
+        flex-direction: column; /* DE ESTILO COLUMNA */
+        text-align: center; /* TEXTO CENTRADO */
+    }
+
+    .contacto-final {
+        align-items: center; /* ITEMS CENTRADOS */
+    }
+}
+
+/* VISTA DE TELÉFONO MÓVIL */
+@media (max-width: 768px) {
+
+    header {
+        flex-direction: column; /* DE ESTILO COLUMNA */
+        align-items: flex-start;
+        gap: 10px; /* HUECO DE 10 PÍXELES ENTRE APARTADOS */
+        height: auto; /* ALTURA */
+        padding: 15px; /* ESPACIO ENTRE ELEMENTOS */
+    }
+
+    nav {
+        width: 100%; /* ANCHURA */
+        margin-left: 0; /* MARGEN RESPECTO LA IZQUIERDA */
+    }
+
+    nav ul {
+        flex-direction: column; /* ESTILO COLUMNA */
+        width: 100%; /* ANCHURA */
+    }
+
+    nav ul li a {
+        padding: 12px; /* ESPACIO ENTRE ELEMENTOS */
+        width: 100%; /* ANCHURA */
+    }
+
+    nav ul li ul {
+        position: static; /* NO HAY CONTROL DE POSICIÓN */
+        box-shadow: none; /* SIN SOMBREADO */
+    }
+
+    .enlaces-derecha {
+        width: 100%; /* ANCHURA */
+        justify-content: space-between; /* REPARTE EL ESPACIO ENTRE LOS ELEMENTOS */
+    }
+
+    .contenidos {
+        padding: 20px; /* ESPACIO ENTRE ELEMENTOS */
+        margin: 10px; /* MÁRGENES */
+    }
+
+    .footer-row {
+        flex-direction: column; /* DE ESTILO COLUMNA */
+        text-align: center; /* TEXTO CENTRADO */
+        gap: 30px; /* HUECO DE 30 PÍXELES ENTRE APARTADOS */
+    }
+
+    .contacto-final {
+        align-items: center; /* ITEMS CENTRADOS */
+    }
+
+    .direccion-telefono {
+        text-align: center; /* TEXTO CENTRADO */
+    }
+}

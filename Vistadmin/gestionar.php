@@ -93,12 +93,12 @@ if (isset($_GET['editar_bloque'])) {
         <?php if ($currentCategory): ?>
             <section class="gestion-section">
                 <h2><?= htmlspecialchars($currentCategory->getTitulo()) ?></h2>
-                <p><?= htmlspecialchars($currentCategory->getDescripcion()) ?></p>
-                <a href="<?= $base ?>Vistadmin/Menu.php" class="gestionar-btn">Volver al menú</a>
+                <p class="descripcionapartados"><?= htmlspecialchars($currentCategory->getDescripcion()) ?></p>
+                <a href="<?= $base ?>Vistadmin/Menu.php" class="menubutton"><i class="fa-solid fa-arrow-left"></i>Volver al menú</a>
                 <?php if ($isMadre): ?>
-                    <a href="?id=<?= $categoryId ?>&nueva_categoria=1" class="gestionar-btn gestionar-btn-add">Añadir Subcategoría</a>
+                    <a href="?id=<?= $categoryId ?>&nueva_categoria=1" class="menubutton"><i class="fa-solid fa-plus"></i>Añadir Subcategoría</a>
                 <?php else: ?>
-                    <a href="?id=<?= $categoryId ?>&nuevo_bloque=1" class="gestionar-btn gestionar-btn-add">Añadir Subcontenido</a>
+                    <a href="?id=<?= $categoryId ?>&nuevo_bloque=1" class="menubutton"><i class="fa-solid fa-plus"></i>Añadir Subcontenido</a>
                 <?php endif; ?>
             </section>
         <?php endif; ?>
@@ -114,11 +114,11 @@ if (isset($_GET['editar_bloque'])) {
                             <td class="gestionar-td"><?= htmlspecialchars($sub->getDescripcion()) ?></td>
                             <td class="gestionar-td"><?= htmlspecialchars($sub->getIcono()) ?></td>
                             <td class="gestionar-td">
-                                <a href="?id=<?= $categoryId ?>&editar_categoria=<?= $sub->getIdCategoria() ?>" class="gestionar-btn gestionar-btn-edit">Editar</a>
+                                <a href="?id=<?= $categoryId ?>&editar_categoria=<?= $sub->getIdCategoria() ?>" class="editbutton"><i class="fas fa-pencil"></i> Editar</a>
                                 <form method="post" action="?id=<?= $categoryId ?>" class="gestionar-form-inline">
                                     <input type="hidden" name="accion" value="eliminar_categoria">
                                     <input type="hidden" name="id_categoria" value="<?= $sub->getIdCategoria() ?>">
-                                    <button type="submit" class="gestionar-btn gestionar-btn-delete" onclick="return confirm('¿Eliminar subcategoría?')">Eliminar</button>
+                                    <button type="submit" class="deletebutton" onclick="return confirm('¿Eliminar subcategoría?')"><i class="fas fa-trash"></i> Eliminar</button>
                                 </form>
                             </td>
                         </tr>
@@ -140,11 +140,11 @@ if (isset($_GET['editar_bloque'])) {
                             <td class="gestionar-td"><?= htmlspecialchars(substr($bloque->getContenido(), 0, 80)) ?>...</td>
                             <td class="gestionar-td"><?= $bloque->getOrden() ?></td>
                             <td class="gestionar-td">
-                                <a href="?id=<?= $categoryId ?>&editar_bloque=<?= $bloque->getIdBloque() ?>" class="gestionar-btn gestionar-btn-edit">Editar</a>
+                                <a href="?id=<?= $categoryId ?>&editar_bloque=<?= $bloque->getIdBloque() ?>" class="editbutton"><i class="fas fa-pencil"></i> Editar</a>
                                 <form method="post" action="?id=<?= $categoryId ?>" class="gestionar-form-inline">
                                     <input type="hidden" name="accion" value="eliminar_bloque">
                                     <input type="hidden" name="id_bloque" value="<?= $bloque->getIdBloque() ?>">
-                                    <button type="submit" class="gestionar-btn gestionar-btn-delete" onclick="return confirm('¿Eliminar subcontenido?')">Eliminar</button>
+                                    <button type="submit" class="deletebutton" onclick="return confirm('¿Eliminar subcontenido?')"><i class="fas fa-trash"></i> Eliminar</button>
                                 </form>
                             </td>
                         </tr>
@@ -166,12 +166,12 @@ if (isset($_GET['editar_bloque'])) {
                             <td class="gestionar-td"><?= htmlspecialchars($cat->getIcono()) ?></td>
                             <td class="gestionar-td"><?= $cat->getIdMadre() ? 'Subcategoría' : 'Principal' ?></td>
                             <td class="gestionar-td">
-                                <a href="?id=<?= $cat->getIdCategoria() ?>" class="gestionar-btn gestionar-btn-edit">Ver</a>
-                                <a href="?editar_categoria=<?= $cat->getIdCategoria() ?>" class="gestionar-btn gestionar-btn-edit">Editar</a>
+                                <a href="?id=<?= $cat->getIdCategoria() ?>" class="viewbutton"><i class="fas fa-eye"></i> Ver</a>
+                                <a href="?editar_categoria=<?= $cat->getIdCategoria() ?>" class="editbutton"><i class="fas fa-pencil"></i> Editar</a>
                                 <form method="post" class="gestionar-form-inline">
                                     <input type="hidden" name="accion" value="eliminar_categoria">
                                     <input type="hidden" name="id_categoria" value="<?= $cat->getIdCategoria() ?>">
-                                    <button type="submit" class="gestionar-btn gestionar-btn-delete" onclick="return confirm('¿Eliminar?')">Eliminar</button>
+                                    <button type="submit" class="deletebutton" onclick="return confirm('¿Eliminar?')"><i class="fas fa-trash"></i> Eliminar</button>
                                 </form>
                             </td>
                         </tr>
@@ -201,8 +201,8 @@ if (isset($_GET['editar_bloque'])) {
                     <?php else: ?>
                         <input type="hidden" name="id_madre" value="">
                     <?php endif; ?>
-                    <button type="submit" class="gestionar-btn gestionar-btn-edit">Guardar</button>
-                    <a href="<?= $currentCategory ? '?id=' . $categoryId : '?' ?>" class="gestionar-btn">Cancelar</a>
+                    <button type="submit" class="savebutton"><i class="fa-solid fa-floppy-disk"></i>Guardar</button>
+                    <a href="<?= $currentCategory ? '?id=' . $categoryId : '?' ?>" class="deletebutton"><i class="fa-solid fa-times"></i> Cancelar</a>
                 </form>
             </section>
         <?php endif; ?>
@@ -224,8 +224,8 @@ if (isset($_GET['editar_bloque'])) {
                     <?php else: ?>
                         <input type="hidden" name="id_categoria" value="<?= $categoryId ?>">
                     <?php endif; ?>
-                    <button type="submit" class="gestionar-btn gestionar-btn-edit"><i class="fa-solid fa-floppy-disk"></i>Guardar</button>
-                    <a href="?id=<?= $categoryId ?>" class="gestionar-btn">Cancelar</a>
+                    <button type="submit" class="savebutton"><i class="fa-solid fa-floppy-disk"></i>Guardar</button>
+                    <a href="?id=<?= $categoryId ?>" class="deletebutton"><i class="fa-solid fa-times"></i> Cancelar</a>
                 </form>
             </section>
         <?php endif; ?>

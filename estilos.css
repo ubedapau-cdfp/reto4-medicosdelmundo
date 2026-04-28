@@ -290,7 +290,7 @@ nav ul li ul li a:hover {
 }
 
 /* BOTONES DE TIPO SUBMIT PARA REDIRECCIONAR (ej. Ser contratada) */
-button[type=submit], .opciones{
+button[type=submit]:not(.savebutton):not(.deletebutton), .opciones{
     background-color:#00065f; /* COLOR DEL FONDO */
     border-color:#0f143d; /* COLOR DEL BORDE */
     color: white; /* COLOR DE TEXTO */
@@ -309,11 +309,18 @@ button[type=submit], .opciones{
  }
 
 /* HOVER DE LOS BOTONES DE TIPO SUBMIT PARA REDIRECCIONAR (ej. Ser contratada) */
-button[type=submit]:hover{
+button[type=submit]:not(.savebutton):not(.deletebutton):hover{
     background-color: #0360ac; /* COLOR DEL FONDO */
     border-color:#0360ac; /* COLOR DEL BORDE */
     transition-duration: 0.3s; /* DURACIÓN DE LA TRANSICIÓN */
     cursor:pointer; /* DETECCIÓN DEL CURSOR AL PASAR SOBRE EL BOTÓN */
+}
+
+/*  SIGNIN.php  */
+body.login-body {
+    overflow: hidden;
+    height: 100vh;
+    margin-bottom: 0;
 }
 
 /* BOTÓN DEL LOGIN */
@@ -415,7 +422,7 @@ button[type=submit]:hover{
 }
 
 /* ESTILOS DE LOS TAG <h1>,<a>,<label> DEL CONTAINER menuform */
-.menuform h1,a,label{
+.menuform .h1login,a,label{
     color:#00065f; /* COLOR DEL TEXTO */
 }
 
@@ -512,8 +519,8 @@ th, td{
 
 /* BOTÓN DE BORRAR */
 .deletebutton{
-    background-color:#e71616; /* COLOR DEL FONDO */
-    border-color:#e71616; /* COLOR DEL BORDE */
+    background-color:#f10e0e; /* COLOR DEL FONDO */
+    border-color:#f10e0e; /* COLOR DEL BORDE */
     border-radius:10px; /* REDONDEO DE ESQUINAS DE 10 PÍXELES */
     font-size:15px; /* TAMAÑO DEL TEXTO */
     padding:5px /*Arriba/abajo*/ 20px; /*Izquierda/Derecha*/ /* ESPACIO ENTRE ELEMENTOS */
@@ -535,8 +542,8 @@ th, td{
 
 /* BOTÓN DE EDICIÓN */
 .editbutton{
-    background-color:#22c213; /* COLOR DEL FONDO */
-    border-color:#22c213; /* COLOR DEL BORDE */
+    background-color:#e1f017; /* COLOR DEL FONDO */
+    border-color:#e1f017; /* COLOR DEL BORDE */
     border-radius:10px; /* REDONDEO DE ESQUINAS DE 10 PÍXELES */
     font-size:15px; /* TAMAÑO DEL TEXTO */
     padding:5px /*Arriba/abajo*/ 20px; /*Izquierda/Derecha*/ /* ESPACIO ENTRE ELEMENTOS */
@@ -548,10 +555,35 @@ th, td{
 
 /* HOVERS DEL BOTÓN DE EDICIÓN */
 .editbutton:hover, .editbutton a:hover{
-    background-color: #1d7a01; /* COLOR DE FONDO */
-    border-color: #1d7a01; /* REDONDEO DE ESQUINAS DE 10 PÍXELES */
+    background-color: #8e9713; /* COLOR DE FONDO */
+    border-color: #8e9713; /* REDONDEO DE ESQUINAS DE 10 PÍXELES */
     color: WHITE !important; /* COLOR DE TEXTO */
     transition-duration: 0.3s; /* DURACIÓN DE LA TRANSICIÓN */
+}
+
+/* BOTÓN DE GUARDAR */
+button.savebutton,
+.savebutton {
+    background-color: #4af017 !important;
+    border-color: #4af017 !important;
+    border-radius: 10px;
+    font-size: 15px;
+    padding: 5px 20px;
+    margin: 15px;
+    border-style: solid;
+    font-family: 'Nexa Pro', 'Segoe UI', sans-serif;
+    text-decoration: none;
+    color: black !important;
+    cursor: pointer;
+}
+
+/* HOVER DEL BOTÓN DE GUARDAR */
+button.savebutton:hover,
+.savebutton:hover {
+    background-color: #279b04 !important;
+    border-color: #279b04 !important;
+    color: white !important;
+    transition-duration: 0.3s;
 }
 
 /* --- EDITAR USUARIA --- */
@@ -588,91 +620,6 @@ form select.formulario-edit {
 }
 
 
-
-/* -------------- VISTAS -----------------*/
-/* VISTA DE TABLET */
-@media (max-width: 1024px) {
-
-    header {
-        flex-wrap: wrap; /* ELEMENTOS PUEDEN PASAR A LA SIGUIENTE LINEA SI NO CABEN EN 1 FILA */
-        height: auto; /* ALTURA */
-        padding: 15px 5%; /* ESPACIO ENTRE ELEMENTOS */
-    }
-
-    nav ul {
-        gap: 5px; /* HUECO ENTRE ELEMENTOS DE 5 PÍXELES */
-    }
-
-    nav ul li a {
-        padding: 15px 10px; /* ESPACIO ENTRE ELEMENTOS */
-        font-size: 14px; /* TAMAÑO DEL TEXTO */
-    }
-
-    .footer-row {
-        flex-direction: column; /* DE ESTILO COLUMNA */
-        text-align: center; /* TEXTO CENTRADO */
-    }
-
-    .contacto-final {
-        align-items: center; /* ITEMS CENTRADOS */
-    }
-}
-
-/* VISTA DE TELÉFONO MÓVIL */
-@media (max-width: 768px) {
-
-    header {
-        flex-direction: column; /* DE ESTILO COLUMNA */
-        align-items: flex-start;
-        gap: 10px; /* HUECO DE 10 PÍXELES ENTRE APARTADOS */
-        height: auto; /* ALTURA */
-        padding: 15px; /* ESPACIO ENTRE ELEMENTOS */
-    }
-
-    nav {
-        width: 100%; /* ANCHURA */
-        margin-left: 0; /* MARGEN RESPECTO LA IZQUIERDA */
-    }
-
-    nav ul {
-        flex-direction: column; /* ESTILO COLUMNA */
-        width: 100%; /* ANCHURA */
-    }
-
-    nav ul li a {
-        padding: 12px; /* ESPACIO ENTRE ELEMENTOS */
-        width: 100%; /* ANCHURA */
-    }
-
-    nav ul li ul {
-        position: static; /* NO HAY CONTROL DE POSICIÓN */
-        box-shadow: none; /* SIN SOMBREADO */
-    }
-
-    .enlaces-derecha {
-        width: 100%; /* ANCHURA */
-        justify-content: space-between; /* REPARTE EL ESPACIO ENTRE LOS ELEMENTOS */
-    }
-
-    .contenidos {
-        padding: 20px; /* ESPACIO ENTRE ELEMENTOS */
-        margin: 10px; /* MÁRGENES */
-    }
-
-    .footer-row {
-        flex-direction: column; /* DE ESTILO COLUMNA */
-        text-align: center; /* TEXTO CENTRADO */
-        gap: 30px; /* HUECO DE 30 PÍXELES ENTRE APARTADOS */
-    }
-
-    .contacto-final {
-        align-items: center; /* ITEMS CENTRADOS */
-    }
-
-    .direccion-telefono {
-        text-align: center; /* TEXTO CENTRADO */
-    }
-}
 hr {
     display: none; /* Oculta la línea horizontal */
 }
@@ -709,8 +656,9 @@ hr {
     margin-bottom: 8px;
 }
 .menu-block p {
-    font-size: 14px;
+    font-size: 10px;
     opacity: 0.95;
+    text-align: left;
 }
 
 /* Paletas suaves para cada bloque */
@@ -803,21 +751,21 @@ hr {
 
 .menu-block-actions .editbutton {
     margin-left:19px !important;
-    background-color: #22c213;
-    border-color: #22c213;
+    background-color: #e1f017;
+    border-color: #e1f017;
     color: black !important;
 }
 
 .menu-block-actions .menu-action-form button.deletebutton {
-    background-color: #e71616;
-    border-color: #e71616;
+    background-color: #f10e0e;
+    border-color: #f10e0e;
     color: white !important;
 }
 
 /* Hovers */
 .menu-block-actions .editbutton:hover {
-    background-color: #1d7a01;
-    border-color: #1d7a01;
+    background-color: #8e9713;
+    border-color: #8e9713;
     color: white !important;
 }
 
@@ -899,6 +847,130 @@ hr {
     text-decoration: underline;
 }
 
+/* ── Botones dentro de tablas gestionar ── */
+.gestionar-td .editbutton,
+.gestionar-td .deletebutton {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: auto;
+    height: auto;
+    padding: 6px 14px;
+    margin: 3px;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 1px;
+    cursor: pointer;
+    text-decoration: none;
+    white-space: nowrap;
+    font-family: 'Nexa Pro', 'Segoe UI', sans-serif;
+}
+
+.gestionar-td .editbutton {
+    background-color: #e1f017;
+    border-color: #e1f017;
+    color: black;
+}
+
+.gestionar-td .editbutton:hover {
+    background-color: #8e9713;
+    border-color: #8e9713;
+    color: white;
+    transition-duration: 0.3s;
+}
+
+.gestionar-td .deletebutton {
+    background-color: #f10e0e;
+    border-color: #f10e0e;
+    color: white;
+}
+
+.gestionar-td .deletebutton:hover {
+    background-color: #9b0000;
+    border-color: #9b0000;
+    transition-duration: 0.3s;
+}
+
+/* BOTÓN DE VER */
+.viewbutton{
+    background-color:#00065f; /* COLOR DEL FONDO */
+    border-color:#00065f; /* COLOR DEL BORDE */
+    border-radius:10px; /* REDONDEO DE ESQUINAS DE 10 PÍXELES */
+    font-size:15px; /* TAMAÑO DEL TEXTO */
+    padding:5px /*Arriba/abajo*/ 20px; /*Izquierda/Derecha*/ /* ESPACIO ENTRE ELEMENTOS */
+    border-style: solid; /* TIPO DE BORDE SÓLIDO */
+    font-family: 'Nexa Pro', 'Segoe UI', sans-serif; /* ORDEN DE FUENTES A USAR */
+    font-weight:500; /* TIPO DE TEXTO: NEGRITA */
+    text-decoration: none; /* SIN DECORACIÓN DE TEXTO */
+    color: white; /* COLOR DE TEXTO */
+} 
+
+/* HOVERS DEL BOTÓN DE VER */
+.viewbutton:hover, .viewbutton a:hover{
+    background-color: #020daf; /* COLOR DE FONDO */
+    border-color: #020daf; /* REDONDEO DE ESQUINAS DE 10 PÍXELES */
+    color: WHITE !important; /* COLOR DE TEXTO */
+    transition-duration: 0.3s; /* DURACIÓN DE LA TRANSICIÓN */
+}
+
+/* BOTÓN DE VER */
+.menubutton{
+    background-color:#00065f; /* COLOR DEL FONDO */
+    border-color:#00065f; /* COLOR DEL BORDE */
+    border-radius:10px; /* REDONDEO DE ESQUINAS DE 10 PÍXELES */
+    font-size:15px; /* TAMAÑO DEL TEXTO */
+    padding:5px /*Arriba/abajo*/ 20px; /*Izquierda/Derecha*/ /* ESPACIO ENTRE ELEMENTOS */
+    border-style: solid; /* TIPO DE BORDE SÓLIDO */
+    font-family: 'Nexa Pro', 'Segoe UI', sans-serif; /* ORDEN DE FUENTES A USAR */
+    font-weight:500; /* TIPO DE TEXTO: NEGRITA */
+    text-decoration: none; /* SIN DECORACIÓN DE TEXTO */
+    color: white; /* COLOR DE TEXTO */
+} 
+
+/* HOVERS DEL BOTÓN DE VER */
+.menubutton:hover, .menubutton a:hover{
+    background-color: #3640ce; /* COLOR DE FONDO */
+    border-color: #3640ce; /* REDONDEO DE ESQUINAS DE 10 PÍXELES */
+    color: WHITE !important; /* COLOR DE TEXTO */
+    transition-duration: 0.3s; /* DURACIÓN DE LA TRANSICIÓN */
+}
+
+.titulomenu{
+    color: #ffffff; /* COLOR DEL TEXTO */
+    font-size: 28px; /* TAMAÑO DEL TEXTO */
+    margin-bottom: 8px; /* MARGEN RESPECTO ABAJO */
+}
+
+.descripcionmenu{
+    font-size: 10px; /* TAMAÑO DEL TEXTO */
+    opacity: 0.95; /* OPACIDAD */
+    text-align: left; /* ALINEACIÓN DEL TEXTO A LA IZQUIERDA */
+}
+
+.descripcionapartados{
+    font-size: 16px; /* TAMAÑO DEL TEXTO */
+    color: #3841b4; /* COLOR DEL TEXTO */
+    font-weight:500; /* TIPO DE TEXTO: NEGRITA */
+    text-align: center; /* ALINEACIÓN DEL TEXTO AL CENTRO */
+}
+
+h2{
+    color: #1e2699; /* COLOR DEL TEXTO */
+    text-align:center; /* ALINEACIÓN DEL TEXTO AL CENTRO */
+    font-size: 24px; /* TAMAÑO DEL TEXTO */
+    margin-bottom: 12px; /* MARGEN RESPECTO ABAJO */
+}
+
+h1{
+    color: #00065f; /* COLOR DEL TEXTO */
+    text-align:center; /* ALINEACIÓN DEL TEXTO AL CENTRO */
+    font-size: 32px; /* TAMAÑO DEL TEXTO */
+    margin-bottom: 20px; /* MARGEN RESPECTO ABAJO */
+}
+
 /* ─────────────────────── PREGUNTAS FRECUENTES ─────────────────────── */
 .faq-categoria {
     margin-bottom: 40px;
@@ -974,4 +1046,482 @@ hr {
     font-size: 16px;
     flex-shrink: 0;
     margin-top: 2px;
+}
+
+/* ---------- VISTAS ---------- */
+/* ================================================================
+   RESPONSIVE MEDIA QUERIES
+   Breakpoints:
+   - Móvil:    < 600px
+   - Tablet:   600px – 1024px
+   - Portátil: 1025px – 1440px
+   ================================================================ */
+
+
+/* ----------------------------------------------------------------
+   MÓVIL  (max-width: 599px)
+   ---------------------------------------------------------------- */
+@media (max-width: 599px) {
+
+    /* HEADER */
+    header {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 10px 4%;
+        gap: 8px;
+    }
+
+    header a.logo img {
+        height: 35px;
+    }
+
+    /* NAVEGACIÓN */
+    nav {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    nav ul li a {
+        padding: 12px 10px;
+        font-size: 14px;
+    }
+
+    /* DESPLEGABLES */
+    nav ul li ul {
+        position: static;
+        box-shadow: none;
+        min-width: 100%;
+    }
+
+    /* ENLACES DERECHA */
+    .enlaces-derecha {
+        margin-left: 0;
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .enlaces-derecha a {
+        width: auto;
+        height: auto;
+        padding: 10px 14px;
+        font-size: 14px;
+    }
+
+    /* CONTENIDOS */
+    .contenidos, .subapartados {
+        padding: 20px;
+        margin: 10px 6px;
+    }
+
+    .contenidos b        { font-size: 20px; }
+    .contenidos b.subtitulos { font-size: 16px; }
+    .contenidos b.ejemplos   { font-size: 13px; }
+
+    /* BOTONES */
+    .button {
+        font-size: 16px;
+        padding: 8px 12px;
+    }
+
+    button[type=submit], .opciones {
+        font-size: 13px;
+        padding: 8px 10px;
+    }
+
+    /* LOGIN / FORMULARIO */
+    .loginMenu {
+        flex-direction: column;
+    }
+
+    .ladoIzqdo {
+        display: none; /* Se oculta la imagen decorativa en móvil */
+    }
+
+    .menuform {
+        margin: 20px 16px;
+        padding: 30px 20px;
+    }
+
+    /* FOOTER */
+    .footer {
+        padding: 10px 4%;
+        position: static; /* En móvil el footer fluye con el documento */
+    }
+
+    .footer-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .map-container iframe {
+        width: 100%;
+        height: 140px;
+    }
+
+    .contacto-final {
+        align-items: center;
+        text-align: center;
+    }
+
+    /* TABLA */
+    table {
+        width: 100%;
+        font-size: 13px;
+    }
+
+    th, td {
+        padding: 8px 6px;
+    }
+
+    /* MENÚ GRID */
+    .menu-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, auto);
+        height: auto;
+        padding: 10px;
+    }
+
+    .menu-block h2   { font-size: 20px; }
+    .menu-block p    { font-size: 13px; }
+
+    .menu-block-actions {
+        position: static;
+        flex-direction: row;
+        justify-content: center;
+        margin-top: 10px;
+    }
+
+    /* TEXTO INICIO */
+    .texto-inicio    { font-size: 22px; }
+    .subtexto-inicio { font-size: 15px; }
+
+    .imagenes, .imagenes2 {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* BODY: quitar margen-bottom excesivo */
+    body {
+        margin-bottom: 40px;
+    }
+
+    /* BOTONES EDITAR / ELIMINAR en tablas */
+    .gestionar-td .editbutton,
+    .gestionar-td .deletebutton,
+    .editbutton,
+    .deletebutton {
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        width: auto !important;
+        height: auto !important;
+        padding: 6px 12px !important;
+        margin: 3px !important;
+        font-size: 13px !important;
+        font-weight: 700;
+        border-radius: 10px;
+        border-style: solid;
+        border-width: 1px;
+        cursor: pointer;
+        text-decoration: none;
+        white-space: nowrap;
+    }
+
+    .gestionar-td .editbutton,
+    .editbutton {
+        background-color: #e1f017 !important;
+        border-color: #e1f017 !important;
+        color: black !important;
+    }
+
+    .gestionar-td .deletebutton,
+    .deletebutton {
+        background-color: #f10e0e !important;
+        border-color: #f10e0e !important;
+        color: white !important;
+    }
+
+    /* Evitar que el form inline rompa el layout */
+    .gestionar-form-inline {
+        display: inline-flex !important;
+        align-items: center;
+    }
+
+    button.savebutton,
+    .savebutton {
+    background-color: #4af017 !important;
+    border-color: #4af017 !important;
+    color: black !important;
+}
+}
+
+
+/* ----------------------------------------------------------------
+   TABLET  (600px – 1024px)
+   ---------------------------------------------------------------- */
+@media (min-width: 600px) and (max-width: 1024px) {
+
+    /* HEADER */
+    header {
+        flex-wrap: wrap;
+        height: auto;
+        padding: 8px 4%;
+        gap: 10px;
+    }
+
+    header a.logo img {
+        height: 40px;
+    }
+
+    /* NAVEGACIÓN */
+    nav {
+        margin-left: 2%;
+    }
+
+    nav ul {
+        flex-wrap: wrap;
+        gap: 4px;
+    }
+
+    nav ul li a {
+        padding: 14px 10px;
+        font-size: 14px;
+    }
+
+    /* ENLACES DERECHA */
+    .enlaces-derecha {
+        margin-left: auto;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .enlaces-derecha a {
+        width: 120px;
+        height: 55px;
+        font-size: 13px;
+    }
+
+    /* CONTENIDOS */
+    .contenidos, .subapartados {
+        padding: 35px;
+        margin: 12px;
+    }
+
+    .contenidos b        { font-size: 22px; }
+    .contenidos b.subtitulos { font-size: 18px; }
+
+    /* BOTONES */
+    .button {
+        font-size: 17px;
+    }
+
+    button[type=submit], .opciones {
+        font-size: 14px;
+    }
+
+    /* LOGIN */
+    .ladoIzqdo {
+        flex: 0.3;
+    }
+
+    .menuform {
+        margin: 80px 80px;
+        padding: 60px 40px;
+    }
+
+    /* FOOTER */
+    .footer {
+        padding: 8px 4%;
+    }
+
+    .footer-row {
+        flex-wrap: wrap;
+        gap: 14px;
+    }
+
+    .map-container iframe {
+        width: 220px;
+        height: 120px;
+    }
+
+    /* TABLA */
+    table {
+        width: 90vw;
+    }
+
+    /* MENÚ GRID */
+    .menu-grid {
+        grid-template-columns: 1fr 1fr;
+        height: auto;
+        gap: 14px;
+        padding: 14px;
+    }
+
+    .menu-block h2   { font-size: 22px; }
+    .menu-block p    { font-size: 13px; }
+
+    /* TEXTO INICIO */
+    .texto-inicio    { font-size: 26px; }
+    .subtexto-inicio { font-size: 16px; }
+
+    .imagenes, .imagenes2 {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    body {
+        margin-bottom: 160px;
+    }
+
+     /* BOTONES EDITAR / ELIMINAR en tablas */
+    .gestionar-td .editbutton,
+    .gestionar-td .deletebutton,
+    .editbutton,
+    .deletebutton {
+        display: inline-flex !important;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        width: auto !important;
+        height: auto !important;
+        padding: 6px 14px !important;
+        margin: 3px !important;
+        font-size: 14px !important;
+        font-weight: 700;
+        border-radius: 10px;
+        border-style: solid;
+        border-width: 1px;
+        cursor: pointer;
+        text-decoration: none;
+        white-space: nowrap;
+    }
+
+    .gestionar-td .editbutton,
+    .editbutton {
+        background-color: #4af017 !important;
+        border-color: #4af017 !important;
+        color: black !important;
+    }
+
+    .gestionar-td .deletebutton,
+    .deletebutton {
+        background-color: #f10e0e !important;
+        border-color: #f10e0e !important;
+        color: white !important;
+    }
+
+    /* Evitar que el form inline rompa el layout */
+    .gestionar-form-inline {
+        display: inline-flex !important;
+        align-items: center;
+    }
+
+    button.savebutton,
+    .savebutton {
+    background-color: #4af017 !important;
+    border-color: #4af017 !important;
+    color: black !important;
+}
+}
+
+
+/* ----------------------------------------------------------------
+   PORTÁTIL  (1025px – 1440px)
+   ---------------------------------------------------------------- */
+@media (min-width: 1025px) and (max-width: 1440px) {
+
+    /* HEADER */
+    header {
+        padding: 0 4%;
+        height: 65px;
+    }
+
+    header a.logo img {
+        height: 42px;
+    }
+
+    /* NAVEGACIÓN */
+    nav {
+        margin-left: 3%;
+    }
+
+    nav ul li a {
+        padding: 22px 12px;
+        font-size: 14px;
+    }
+
+    /* ENLACES DERECHA */
+    .enlaces-derecha {
+        margin-left: 20vh;
+        gap: 14px;
+    }
+
+    .enlaces-derecha a {
+        width: 130px;
+        height: 65px;
+        font-size: 14px;
+    }
+
+    /* CONTENIDOS */
+    .contenidos, .subapartados {
+        padding: 40px;
+        margin: 14px;
+    }
+
+    .contenidos b        { font-size: 23px; }
+    .contenidos b.subtitulos { font-size: 19px; }
+
+    /* LOGIN */
+    .menuform {
+        margin: 120px 160px;
+        padding: 80px 60px;
+    }
+
+    /* FOOTER */
+    .footer {
+        padding: 0 4%;
+    }
+
+    .map-container iframe {
+        width: 260px;
+        height: 130px;
+    }
+
+    /* TABLA */
+    table {
+        width: 75vw;
+    }
+
+    /* MENÚ GRID */
+    .menu-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+        padding: 18px;
+    }
+
+    .menu-block h2 { font-size: 25px; }
+
+    /* TEXTO INICIO */
+    .texto-inicio    { font-size: 28px; }
+    .subtexto-inicio { font-size: 17px; }
+
+    body {
+        margin-bottom: 180px;
+    }
+
+    button.savebutton,
+    .savebutton {
+    background-color: #4af017 !important;
+    border-color: #4af017 !important;
+    color: black !important;
+}
 }

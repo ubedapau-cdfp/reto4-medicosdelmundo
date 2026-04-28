@@ -34,8 +34,8 @@ $categoriasMadre = Categoria::obtenerCategoriasMadre($conn);
 				<section class="menu-block-wrapper">
 					<a class="menu-block" href="<?= $base ?>Vistadmin/gestionar.php?id=<?= $cat->getIdCategoria() ?>">
 						<section class="block-content">
-							<h2><?= htmlspecialchars($cat->getTitulo()) ?></h2>
-							<p><?= htmlspecialchars($cat->getDescripcion()) ?></p>
+							<h2 class="titulomenu"><?= htmlspecialchars($cat->getTitulo()) ?></h2>
+							<p class="descripcionmenu"><?= htmlspecialchars($cat->getDescripcion()) ?></p>
 						</section>
 					</a>
 					<section class="menu-block-actions">

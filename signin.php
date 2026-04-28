@@ -11,14 +11,14 @@ $base = '/reto4-medicosdelmundo/'; // valor $base equivale a la ruta absoluta pa
     <link rel="icon" type="image/png" href="<?= $base ?>Imagenes/Logoreal.png"> <!-- Icono para la parte superior de la página -->
     <title>Login</title> <!-- Título para la parte superior de la página -->
 </head> <!-- Cierre del head -->
-<body> <!-- Inicio del body -->
+<body class="login-body"> <!-- Inicio del body -->
     <section class="loginMenu"> <!-- Inicio del section loginMenu -->
         <section class="ladoIzqdo"> <!-- Inicio del section ladoIzqdo -->
             <p></p> <!-- Separador -->
         </section> <!-- Cierre del section ladoIzqdo -->
         <section class="ladoDcho"> <!-- Inicio del section ladoDcho -->
             <section class="menuform"> <!-- Inicio del section menuform -->
-                <h1>Inicio de Sesión</h1> <!-- Párrafo de texto estilo h1 que sirve como título -->
+                <h1 class="h1login">Inicio de Sesión</h1> <!-- Párrafo de texto estilo h1 que sirve como título -->
                 &nbsp; <!-- Non-Breaking Space. Proporciona saltos de línea, con un espacio. -->
                 <form action='' method='POST'> <!-- Inicio de formulario con método POST -->
                     <label for='usuaria'>Nombre:</label> <!-- Texto para identificar el apartado 'Nombre' -->
