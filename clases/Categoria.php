@@ -86,13 +86,13 @@ class Categoria {
 
     // NUEVO: Obtener solo las categorías principales (Madres)
     public static function obtenerCategoriasMadre($db) {
-        $sql = "SELECT * FROM CATEGORIA WHERE id_madre IS NULL ORDER BY id_categoria ASC";
+        $sql = "SELECT * FROM CATEGORIA WHERE id_madre IS NULL ORDER BY titulo ASC";
         return self::ejecutarConsulta($db, $sql);
     }
 
     // NUEVO: Obtener las subcategorías de una madre específica
     public static function obtenerSubcategorias($db, $id_madre) {
-        $sql = "SELECT * FROM CATEGORIA WHERE id_madre = :id_madre ORDER BY id_categoria ASC";
+        $sql = "SELECT * FROM CATEGORIA WHERE id_madre = :id_madre ORDER BY titulo ASC";
         return self::ejecutarConsulta($db, $sql, [':id_madre' => $id_madre]);
     }
 

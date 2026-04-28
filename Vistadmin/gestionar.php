@@ -29,10 +29,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $titulo = $_POST['titulo'];
             $descripcion = $_POST['descripcion'];
             $icono = $_POST['icono'];
-            $id_madre = $_POST['id_madre'] ?: null;
             if ($id) {
+                $existingCategoria = Categoria::obtenerPorId($conn, $id);
+                $id_madre = $existingCategoria ? $existingCategoria->getIdMadre() : null;
                 Categoria::actualizar($conn, $id, $titulo, $descripcion, $icono, $id_madre);
             } else {
+                $id_madre = ($currentCategory && $isMadre) ? $currentCategory->getIdCategoria() : null;
                 Categoria::insertar($conn, $titulo, $descripcion, $icono, $id_madre);
             }
         } elseif ($accion === 'eliminar_bloque' && isset($_POST['id_bloque'])) {
@@ -104,10 +106,9 @@ if (isset($_GET['editar_bloque'])) {
             <section class="gestion-section">
                 <h2>Subcategorías de <?= htmlspecialchars($currentCategory->getTitulo()) ?></h2>
                 <table class="gestionar-table">
-                    <tr><th class="gestionar-th">ID</th><th class="gestionar-th">Título</th><th class="gestionar-th">Descripción</th><th class="gestionar-th">Icono</th><th class="gestionar-th">Acciones</th></tr>
+                    <tr><th class="gestionar-th">Título</th><th class="gestionar-th">Descripción</th><th class="gestionar-th">Icono</th><th class="gestionar-th">Acciones</th></tr>
                     <?php foreach ($subcategorias as $sub): ?>
                         <tr>
-                            <td class="gestionar-td"><?= $sub->getIdCategoria() ?></td>
                             <td class="gestionar-td"><?= htmlspecialchars($sub->getTitulo()) ?></td>
                             <td class="gestionar-td"><?= htmlspecialchars($sub->getDescripcion()) ?></td>
                             <td class="gestionar-td"><?= htmlspecialchars($sub->getIcono()) ?></td>
@@ -130,10 +131,9 @@ if (isset($_GET['editar_bloque'])) {
             <section class="gestion-section">
                 <h2>Subcontenido de <?= htmlspecialchars($currentCategory->getTitulo()) ?></h2>
                 <table class="gestionar-table">
-                    <tr><th class="gestionar-th">ID</th><th class="gestionar-th">Título</th><th class="gestionar-th">Subtítulo</th><th class="gestionar-th">Contenido</th><th class="gestionar-th">Orden</th><th class="gestionar-th">Acciones</th></tr>
+                    <tr><th class="gestionar-th">Título</th><th class="gestionar-th">Subtítulo</th><th class="gestionar-th">Contenido</th><th class="gestionar-th">Orden</th><th class="gestionar-th">Acciones</th></tr>
                     <?php foreach ($bloques as $bloque): ?>
                         <tr>
-                            <td class="gestionar-td"><?= $bloque->getIdBloque() ?></td>
                             <td class="gestionar-td"><?= htmlspecialchars($bloque->getTitulo()) ?></td>
                             <td class="gestionar-td"><?= htmlspecialchars($bloque->getSubtitulo()) ?></td>
                             <td class="gestionar-td"><?= htmlspecialchars(substr($bloque->getContenido(), 0, 80)) ?>...</td>
@@ -157,14 +157,13 @@ if (isset($_GET['editar_bloque'])) {
             <section class="gestion-section">
                 <h2>Categorías principales</h2>
                 <table class="gestionar-table">
-                    <tr><th class="gestionar-th">ID</th><th class="gestionar-th">Título</th><th class="gestionar-th">Descripción</th><th class="gestionar-th">Icono</th><th class="gestionar-th">Madre</th><th class="gestionar-th">Acciones</th></tr>
+                    <tr><th class="gestionar-th">Título</th><th class="gestionar-th">Descripción</th><th class="gestionar-th">Icono</th><th class="gestionar-th">Tipo</th><th class="gestionar-th">Acciones</th></tr>
                     <?php foreach ($categorias as $cat): ?>
                         <tr>
-                            <td class="gestionar-td"><?= $cat->getIdCategoria() ?></td>
                             <td class="gestionar-td"><?= htmlspecialchars($cat->getTitulo()) ?></td>
                             <td class="gestionar-td"><?= htmlspecialchars($cat->getDescripcion()) ?></td>
                             <td class="gestionar-td"><?= htmlspecialchars($cat->getIcono()) ?></td>
-                            <td class="gestionar-td"><?= $cat->getIdMadre() ?: 'N/A' ?></td>
+                            <td class="gestionar-td"><?= $cat->getIdMadre() ? 'Subcategoría' : 'Principal' ?></td>
                             <td class="gestionar-td">
                                 <a href="?id=<?= $cat->getIdCategoria() ?>" class="gestionar-btn gestionar-btn-edit">Ver</a>
                                 <a href="?editar_categoria=<?= $cat->getIdCategoria() ?>" class="gestionar-btn gestionar-btn-edit">Editar</a>
@@ -192,7 +191,15 @@ if (isset($_GET['editar_bloque'])) {
                     <label class="gestionar-label">Título: <input type="text" name="titulo" class="gestionar-input" value="<?= $editar_categoria ? htmlspecialchars($editar_categoria->getTitulo()) : '' ?>" required></label>
                     <label class="gestionar-label">Descripción: <textarea name="descripcion" class="gestionar-textarea"><?= $editar_categoria ? htmlspecialchars($editar_categoria->getDescripcion()) : '' ?></textarea></label>
                     <label class="gestionar-label">Icono: <input type="text" name="icono" class="gestionar-input" value="<?= $editar_categoria ? htmlspecialchars($editar_categoria->getIcono()) : '' ?>"></label>
-                    <label class="gestionar-label">Madre (ID): <input type="number" name="id_madre" class="gestionar-input" value="<?= $editar_categoria ? $editar_categoria->getIdMadre() : ($currentCategory && $isMadre ? $currentCategory->getIdCategoria() : '') ?>"></label>
+                    <?php if ($editar_categoria && $editar_categoria->getIdMadre()): ?>
+                        <?php $parentCategory = Categoria::obtenerPorId($conn, $editar_categoria->getIdMadre()); ?>
+                        <p>Subcategoría de: <strong><?= htmlspecialchars($parentCategory ? $parentCategory->getTitulo() : 'Desconocida') ?></strong></p>
+                        <input type="hidden" name="id_madre" value="<?= $editar_categoria->getIdMadre() ?>">
+                    <?php elseif ($currentCategory && $isMadre && !isset($editar_categoria)): ?>
+                        <input type="hidden" name="id_madre" value="<?= $currentCategory->getIdCategoria() ?>">
+                    <?php else: ?>
+                        <input type="hidden" name="id_madre" value="">
+                    <?php endif; ?>
                     <button type="submit" class="gestionar-btn gestionar-btn-edit">Guardar</button>
                     <a href="<?= $currentCategory ? '?id=' . $categoryId : '?' ?>" class="gestionar-btn">Cancelar</a>
                 </form>
@@ -211,7 +218,11 @@ if (isset($_GET['editar_bloque'])) {
                     <label class="gestionar-label">Subtítulo: <input type="text" name="subtitulo" class="gestionar-input" value="<?= $editar_bloque ? htmlspecialchars($editar_bloque->getSubtitulo()) : '' ?>"></label>
                     <label class="gestionar-label">Contenido: <textarea name="contenido" class="gestionar-textarea" required><?= $editar_bloque ? htmlspecialchars($editar_bloque->getContenido()) : '' ?></textarea></label>
                     <label class="gestionar-label">Orden: <input type="number" name="orden" class="gestionar-input" value="<?= $editar_bloque ? $editar_bloque->getOrden() : '' ?>" required></label>
-                    <label class="gestionar-label">Categoría (ID): <input type="number" name="id_categoria" class="gestionar-input" value="<?= $editar_bloque ? $editar_bloque->getIdCategoria() : $categoryId ?>" required></label>
+                    <?php if ($editar_bloque): ?>
+                        <input type="hidden" name="id_categoria" value="<?= $editar_bloque->getIdCategoria() ?>">
+                    <?php else: ?>
+                        <input type="hidden" name="id_categoria" value="<?= $categoryId ?>">
+                    <?php endif; ?>
                     <button type="submit" class="gestionar-btn gestionar-btn-edit">Guardar</button>
                     <a href="?id=<?= $categoryId ?>" class="gestionar-btn">Cancelar</a>
                 </form>
