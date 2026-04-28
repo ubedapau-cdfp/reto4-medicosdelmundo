@@ -21,24 +21,37 @@ $isMadre = $currentCategory ? $currentCategory->getIdMadre() === null : false;
 // Procesar acciones
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['accion'])) {
+        // En este campo recibimos la acción principal que el formulario quiere ejecutar.
         $accion = $_POST['accion'];
+
+        // Eliminar una categoría (madre o subcategoría).
         if ($accion === 'eliminar_categoria' && isset($_POST['id_categoria'])) {
             Categoria::eliminar($conn, $_POST['id_categoria']);
+
+        // Guardar una categoría nueva o editar una existente.
         } elseif ($accion === 'guardar_categoria') {
             $id = $_POST['id_categoria'] ?? null;
             $titulo = trim($_POST['titulo'] ?? '');
             $descripcion = trim($_POST['descripcion'] ?? '');
             $icono = trim($_POST['icono'] ?? '');
+            // id_madre puede ser null cuando se crea una categoría principal.
             $id_madre = isset($_POST['id_madre']) && $_POST['id_madre'] !== '' ? (int) $_POST['id_madre'] : null;
+
             if ($id) {
+                // Si hay id, estamos actualizando una categoría existente.
                 $existingCategoria = Categoria::obtenerPorId($conn, $id);
                 $currentIdMadre = $existingCategoria ? $existingCategoria->getIdMadre() : null;
                 Categoria::actualizar($conn, $id, $titulo, $descripcion, $icono, $currentIdMadre);
             } else {
+                // Si no hay id, creamos una nueva categoría.
                 Categoria::insertar($conn, $titulo, $descripcion, $icono, $id_madre);
             }
+
+        // Eliminar un bloque de contenido asociado a una categoría.
         } elseif ($accion === 'eliminar_bloque' && isset($_POST['id_bloque'])) {
             Bloque::eliminar($conn, $_POST['id_bloque']);
+
+        // Guardar un bloque de contenido nuevo o actualizado.
         } elseif ($accion === 'guardar_bloque') {
             $id = $_POST['id_bloque'] ?? null;
             $titulo = trim($_POST['titulo'] ?? '');
@@ -46,6 +59,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $contenido = trim($_POST['contenido'] ?? '');
             $orden = intval($_POST['orden'] ?? 0);
             $id_categoria = intval($_POST['id_categoria'] ?? 0);
+
             if ($id) {
                 Bloque::actualizar($conn, $id, $titulo, $subtitulo, $contenido, $orden, $id_categoria);
             } else {
@@ -53,6 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
 
+        // Después de procesar el formulario, redirigimos para evitar resubmisiones.
         $redirectUrl = $base . 'Vistadmin/gestionar.php';
         if ($categoryId) {
             $redirectUrl .= '?id=' . $categoryId;
@@ -62,17 +77,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
+// Cargamos todas las categorías para mostrar la lista principal.
 $categorias = Categoria::obtenerTodas($conn);
+
+// Inicializamos los arrays que pueden contener subcategorías o bloques según la categoría seleccionada.
 $bloques = [];
 $subcategorias = [];
+
 if ($currentCategory) {
+    // Si la categoría actual es madre, cargamos sus subcategorías.
     if ($isMadre) {
         $subcategorias = Categoria::obtenerSubcategorias($conn, $categoryId);
     } else {
+        // Si la categoría actual es una subcategoría, cargamos su contenido en bloques.
         $bloques = Bloque::obtenerPorCategoriaId($conn, $categoryId);
     }
 }
 
+// Si se solicitan editar una categoría o un bloque, cargamos los datos correspondientes.
 $editar_categoria = null;
 $editar_bloque = null;
 if (isset($_GET['editar_categoria'])) {
@@ -191,23 +213,44 @@ if (isset($_GET['editar_bloque'])) {
         <?php if ($editar_categoria || (isset($_GET['nueva_categoria']) && (!$currentCategory || $isMadre))): ?>
             <section class="gestionar-section">
                 <h3><?= $editar_categoria ? 'Editar' : 'Nueva' ?> Categoría</h3>
+                <!-- Formulario para crear o editar una categoría. -->
                 <form method="post" action="<?= $currentCategory ? '?id=' . $categoryId : '' ?>" class="gestionar-form">
                     <input type="hidden" name="accion" value="guardar_categoria">
+
+                    <!-- Si editamos una categoría existente, guardamos su id oculta. -->
                     <?php if ($editar_categoria): ?>
                         <input type="hidden" name="id_categoria" value="<?= $editar_categoria->getIdCategoria() ?>">
                     <?php endif; ?>
-                    <label class="gestionar-label">Título: <input type="text" name="titulo" class="gestionar-input" value="<?= $editar_categoria ? htmlspecialchars($editar_categoria->getTitulo()) : '' ?>" required></label>
-                    <label class="gestionar-label">Descripción: <textarea name="descripcion" class="gestionar-textarea"><?= $editar_categoria ? htmlspecialchars($editar_categoria->getDescripcion()) : '' ?></textarea></label>
-                    <label class="gestionar-label">Icono: <input type="text" name="icono" class="gestionar-input" value="<?= $editar_categoria ? htmlspecialchars($editar_categoria->getIcono()) : '' ?>"></label>
+
+                    <label class="gestionar-label">
+                        Título:
+                        <input type="text" name="titulo" class="gestionar-input" value="<?= $editar_categoria ? htmlspecialchars($editar_categoria->getTitulo()) : '' ?>" required>
+                    </label>
+
+                    <label class="gestionar-label">
+                        Descripción:
+                        <textarea name="descripcion" class="gestionar-textarea"><?= $editar_categoria ? htmlspecialchars($editar_categoria->getDescripcion()) : '' ?></textarea>
+                    </label>
+
+                    <!-- Valor del icono se guarda como texto en la base de datos. -->
+                    <label class="gestionar-label">
+                        Icono:
+                        <input type="text" name="icono" class="gestionar-input" value="<?= $editar_categoria ? htmlspecialchars($editar_categoria->getIcono()) : '' ?>">
+                    </label>
+
                     <?php if ($editar_categoria && $editar_categoria->getIdMadre()): ?>
+                        <!-- Si editamos una subcategoría, mostramos su categoría padre. -->
                         <?php $parentCategory = Categoria::obtenerPorId($conn, $editar_categoria->getIdMadre()); ?>
                         <p>Subcategoría de: <strong><?= htmlspecialchars($parentCategory ? $parentCategory->getTitulo() : 'Desconocida') ?></strong></p>
                         <input type="hidden" name="id_madre" value="<?= $editar_categoria->getIdMadre() ?>">
                     <?php elseif ($currentCategory && $isMadre && !isset($editar_categoria)): ?>
+                        <!-- Si estamos dentro de una categoría madre y vamos a crear subcategorías nuevas. -->
                         <input type="hidden" name="id_madre" value="<?= $currentCategory->getIdCategoria() ?>">
                     <?php else: ?>
+                        <!-- Si creamos una categoría principal desde la lista principal. -->
                         <input type="hidden" name="id_madre" value="">
                     <?php endif; ?>
+
                     <button type="submit" class="gestionar-btn gestionar-btn-edit">Guardar</button>
                     <a href="<?= $currentCategory ? '?id=' . $categoryId : '?' ?>" class="gestionar-btn">Cancelar</a>
                 </form>
@@ -215,6 +258,8 @@ if (isset($_GET['editar_bloque'])) {
         <?php endif; ?>
 
         <?php if ($editar_bloque || (isset($_GET['nuevo_bloque']) && $currentCategory && !$isMadre)): ?>
+            <!-- Si se solicita crear o editar un bloque, se muestra este formulario. -->
+            <!-- Formulario para crear o editar bloques dentro de una subcategoría. -->
             <section class="gestionar-section">
                 <h3><?= $editar_bloque ? 'Editar' : 'Nuevo' ?> Bloque</h3>
                 <form method="post" action="?id=<?= $categoryId ?>" class="gestionar-form">
