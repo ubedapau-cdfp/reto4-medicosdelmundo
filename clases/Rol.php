@@ -117,16 +117,15 @@
     }
 
     /**
-     * Elimina un rol de la base de datos
+     * Elimina este rol de la base de datos
      * @param PDO $db Conexión a la base de datos
-     * @param int $id_rol ID del rol a eliminar
      * @return bool true si se eliminó correctamente
      */
-    public static function eliminar($db, $id_rol) {
+    public function eliminar($db) {
         $sql = "DELETE FROM rol WHERE id_rol = :id_rol";
         try {
             $stmt = $db->prepare($sql);
-            $stmt->bindValue(':id_rol', intval($id_rol), PDO::PARAM_INT);
+            $stmt->bindValue(':id_rol', intval($this->id_rol), PDO::PARAM_INT);
             return $stmt->execute();
         } catch (PDOException $e) {
             echo "Error al eliminar rol: " . $e->getMessage();

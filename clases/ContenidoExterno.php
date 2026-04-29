@@ -161,16 +161,15 @@
     }
 
     /**
-     * Elimina un contenido externo
+     * Elimina este contenido externo
      * @param PDO $db Conexión a la base de datos
-     * @param int $id_url ID del contenido a eliminar
      * @return bool true si se eliminó correctamente
      */
-    public static function eliminar($db, $id_url) {
+    public function eliminar($db) {
         $sql = "DELETE FROM contenido_externo WHERE id_url = :id_url";
         try {
             $stmt = $db->prepare($sql);
-            $stmt->bindValue(':id_url', intval($id_url), PDO::PARAM_INT);
+            $stmt->bindValue(':id_url', intval($this->id_url), PDO::PARAM_INT);
             return $stmt->execute();
         } catch (PDOException $e) {
             echo "Error al eliminar contenido externo: " . $e->getMessage();

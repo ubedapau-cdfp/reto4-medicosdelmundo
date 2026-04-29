@@ -17,7 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['accion']) && $_POST['
     $rol = intval($_POST['rol'] ?? 0);
 
     if ($nombre !== '' && $email !== '' && $password !== '' && in_array($rol, [2, 3], true)) {
-        if (Usuario::crear($nombre, $email, $password, $rol)) {
+        $usuaria = new Usuario(0, $email, $password, $rol, $nombre);
+        if ($usuaria->crear()) {
             header('Location: panelusuarias.php');
             exit();
         }

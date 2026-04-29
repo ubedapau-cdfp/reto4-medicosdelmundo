@@ -26,7 +26,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         // Eliminar una categoría (madre o subcategoría).
         if ($accion === 'eliminar_categoria' && isset($_POST['id_categoria'])) {
-            Categoria::eliminar($conn, $_POST['id_categoria']);
+            $categoria = Categoria::obtenerPorId($conn, $_POST['id_categoria']);
+            if ($categoria) {
+                $categoria->eliminar($conn);
+            }
 
         // Guardar una categoría nueva o editar una existente.
         } elseif ($accion === 'guardar_categoria') {
@@ -40,16 +43,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($id) {
                 // Si hay id, estamos actualizando una categoría existente.
                 $existingCategoria = Categoria::obtenerPorId($conn, $id);
-                $currentIdMadre = $existingCategoria ? $existingCategoria->getIdMadre() : null;
-                Categoria::actualizar($conn, $id, $titulo, $descripcion, $icono, $currentIdMadre);
+                if ($existingCategoria) {
+                    $existingCategoria->setTitulo($titulo);
+                    $existingCategoria->setDescripcion($descripcion);
+                    $existingCategoria->setIcono($icono);
+                    $existingCategoria->actualizar($conn);
+                }
             } else {
                 // Si no hay id, creamos una nueva categoría.
-                Categoria::insertar($conn, $titulo, $descripcion, $icono, $id_madre);
+                $nuevaCategoria = new Categoria(0, $titulo, $descripcion, $icono, $id_madre);
+                $nuevaCategoria->insertar($conn);
             }
 
         // Eliminar un bloque de contenido asociado a una categoría.
         } elseif ($accion === 'eliminar_bloque' && isset($_POST['id_bloque'])) {
-            Bloque::eliminar($conn, $_POST['id_bloque']);
+            $bloque = Bloque::obtenerPorId($conn, $_POST['id_bloque']);
+            if ($bloque) {
+                $bloque->eliminar($conn);
+            }
 
         // Guardar un bloque de contenido nuevo o actualizado.
         } elseif ($accion === 'guardar_bloque') {
@@ -61,9 +72,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id_categoria = intval($_POST['id_categoria'] ?? 0);
 
             if ($id) {
-                Bloque::actualizar($conn, $id, $titulo, $subtitulo, $contenido, $orden, $id_categoria);
+                $existingBloque = Bloque::obtenerPorId($conn, $id);
+                if ($existingBloque) {
+                    $existingBloque->setTitulo($titulo);
+                    $existingBloque->setSubtitulo($subtitulo);
+                    $existingBloque->setContenido($contenido);
+                    $existingBloque->setOrden($orden);
+                    $existingBloque->actualizar($conn);
+                }
             } else {
-                Bloque::insertar($conn, $titulo, $subtitulo, $contenido, $orden, $id_categoria);
+                $nuevoBloque = new Bloque(0, $id_categoria, $titulo, $subtitulo, $contenido, $orden);
+                $nuevoBloque->insertar($conn);
             }
         }
 

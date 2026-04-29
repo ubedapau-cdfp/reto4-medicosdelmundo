@@ -44,6 +44,23 @@ class Categoria {
         return $this->id_madre;
     }
 
+    // Setters para actualización
+    public function setTitulo($titulo) {
+        $this->titulo = $titulo;
+    }
+
+    public function setDescripcion($descripcion) {
+        $this->descripcion = $descripcion;
+    }
+
+    public function setIcono($icono) {
+        $this->icono = $icono;
+    }
+
+    public function setIdMadre($id_madre) {
+        $this->id_madre = $id_madre;
+    }
+
     public function mostrarDatos() {
         echo "<h1>" . $this->titulo . "</h1>";
         if (!empty($this->descripcion)) {
@@ -149,26 +166,29 @@ class Categoria {
         }
     }
 
-    // Método para eliminar una categoría
-    public static function eliminar($db, $id_categoria) {
+    // Método para eliminar esta categoría
+    public function eliminar($db) {
         try {
             // Eliminar primero los bloques asociados a la categoría actual
             $sqlBloques = "DELETE FROM BLOQUE WHERE id_categoria = :id_categoria";
             $stmtBloques = $db->prepare($sqlBloques);
-            $stmtBloques->execute([':id_categoria' => $id_categoria]);
+            $stmtBloques->execute([':id_categoria' => $this->id_categoria]);
 
             // Eliminar recursivamente subcategorías hijas
             $sqlHijas = "SELECT id_categoria FROM CATEGORIA WHERE id_madre = :id_madre";
             $stmtHijas = $db->prepare($sqlHijas);
-            $stmtHijas->execute([':id_madre' => $id_categoria]);
+            $stmtHijas->execute([':id_madre' => $this->id_categoria]);
             while ($row = $stmtHijas->fetch(PDO::FETCH_ASSOC)) {
-                self::eliminar($db, $row['id_categoria']);
+                $hijaCategoria = self::obtenerPorId($db, $row['id_categoria']);
+                if ($hijaCategoria) {
+                    $hijaCategoria->eliminar($db);
+                }
             }
 
             // Eliminar la categoría actual
             $sql = "DELETE FROM CATEGORIA WHERE id_categoria = :id_categoria";
             $stmt = $db->prepare($sql);
-            $stmt->execute([':id_categoria' => $id_categoria]);
+            $stmt->execute([':id_categoria' => $this->id_categoria]);
 
             return true;
         } catch (PDOException $e) {

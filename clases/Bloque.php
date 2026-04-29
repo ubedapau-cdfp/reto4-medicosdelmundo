@@ -52,6 +52,27 @@
         return $this->id_categoria;
     }
 
+    // Setters para actualización
+    public function setTitulo($titulo) {
+        $this->titulo = $titulo;
+    }
+
+    public function setSubtitulo($subtitulo) {
+        $this->subtitulo = $subtitulo;
+    }
+
+    public function setContenido($contenido) {
+        $this->contenido = $contenido;
+    }
+
+    public function setOrden($orden) {
+        $this->orden = $orden;
+    }
+
+    public function setIdCategoria($id_categoria) {
+        $this->id_categoria = $id_categoria;
+    }
+
     //funcion mostrar datos
     public function mostrarDatos() {
         echo "<h2>" . $this->titulo . "</h2>";
@@ -181,12 +202,12 @@
         }
     }
 
-    // Método para eliminar un bloque
-    public static function eliminar($db, $id_bloque) {
+    // Método para eliminar este bloque
+    public function eliminar($db) {
         $sql = "DELETE FROM BLOQUE WHERE id_bloque = :id_bloque";
         try {
             $stmt = $db->prepare($sql);
-            $stmt->execute([':id_bloque' => $id_bloque]);
+            $stmt->execute([':id_bloque' => $this->id_bloque]);
             return true;
         } catch (PDOException $e) {
             echo "Error al eliminar bloque: " . $e->getMessage();

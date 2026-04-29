@@ -82,29 +82,33 @@ class Usuario {
         return $stmt->execute();
     }
 
-    public static function crear($nombre, $email, $password, $id_rol) {
+    public function crear() {
         require_once __DIR__ . '/../conexion.php';
         $database = new Database();
         $conn = $database->conectar();
 
         $sql = 'INSERT INTO USUARIOS (nombre, email, password_hash, id_rol) VALUES (:nombre, :email, :password_hash, :id_rol)';
         $stmt = $conn->prepare($sql);
-        $stmt->bindValue(':nombre', $nombre, PDO::PARAM_STR);
-        $stmt->bindValue(':email', $email, PDO::PARAM_STR);
-        $stmt->bindValue(':password_hash', password_hash($password, PASSWORD_DEFAULT), PDO::PARAM_STR);
-        $stmt->bindValue(':id_rol', intval($id_rol), PDO::PARAM_INT);
+        $stmt->bindValue(':nombre', $this->nombre, PDO::PARAM_STR);
+        $stmt->bindValue(':email', $this->email, PDO::PARAM_STR);
+        $stmt->bindValue(':password_hash', password_hash($this->password, PASSWORD_DEFAULT), PDO::PARAM_STR);
+        $stmt->bindValue(':id_rol', intval($this->id_rol), PDO::PARAM_INT);
 
-        return $stmt->execute();
+        if ($stmt->execute()) {
+            $this->id_usuario = $conn->lastInsertId();
+            return true;
+        }
+        return false;
     }
 
-    public static function EliminarByID($id) {
+    public function eliminar() {
         require_once __DIR__ . '/../conexion.php';
         $database = new Database();
         $conn = $database->conectar();
 
         $sql = 'DELETE FROM USUARIOS WHERE id_usuario = :id';
         $stmt = $conn->prepare($sql);
-        $stmt->bindValue(':id', intval($id), PDO::PARAM_INT);
+        $stmt->bindValue(':id', intval($this->id_usuario), PDO::PARAM_INT);
 
         return $stmt->execute();
     }

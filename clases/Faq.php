@@ -214,20 +214,17 @@
             return false;
         }
     }
-        }
-    }
 
     /**
-     * Elimina una pregunta frecuente
+     * Elimina esta pregunta frecuente
      * @param PDO $db Conexión a la base de datos
-     * @param int $id_faq ID del FAQ a eliminar
      * @return bool true si se eliminó correctamente
      */
-    public static function eliminar($db, $id_faq) {
+    public function eliminar($db) {
         $sql = "DELETE FROM faq WHERE id_faq = :id_faq";
         try {
             $stmt = $db->prepare($sql);
-            $stmt->bindValue(':id_faq', intval($id_faq), PDO::PARAM_INT);
+            $stmt->bindValue(':id_faq', intval($this->id_faq), PDO::PARAM_INT);
             return $stmt->execute();
         } catch (PDOException $e) {
             echo "Error al eliminar FAQ: " . $e->getMessage();
