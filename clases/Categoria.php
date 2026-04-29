@@ -76,7 +76,7 @@ class Categoria {
     }
 
     /**
-     * Función auxiliar interna para evitar repetir código de mapeo
+     * Función auxiliar interna
      */
     private static function ejecutarConsulta($db, $sql, $params = []) {
         $categorias = [];
@@ -101,19 +101,19 @@ class Categoria {
     }
 
 
-    // NUEVO: Obtener solo las categorías principales (Madres)
+    // Obtener solo las categorías principales (Madres)
     public static function obtenerCategoriasMadre($db) {
         $sql = "SELECT * FROM CATEGORIA WHERE id_madre IS NULL ORDER BY titulo ASC";
         return self::ejecutarConsulta($db, $sql);
     }
 
-    // NUEVO: Obtener las subcategorías de una madre específica
+    // Obtener las subcategorías de una madre específica
     public static function obtenerSubcategorias($db, $id_madre) {
         $sql = "SELECT * FROM CATEGORIA WHERE id_madre = :id_madre ORDER BY titulo ASC";
         return self::ejecutarConsulta($db, $sql, [':id_madre' => $id_madre]);
     }
 
-    // NUEVO: Obtener una categoría por su ID
+    // Obtener una categoría por su ID
     public static function obtenerPorId($db, $id_categoria) {
         $sql = "SELECT * FROM CATEGORIA WHERE id_categoria = :id_categoria";
         $categorias = self::ejecutarConsulta($db, $sql, [':id_categoria' => $id_categoria]);
@@ -174,7 +174,7 @@ class Categoria {
             $stmtBloques = $db->prepare($sqlBloques);
             $stmtBloques->execute([':id_categoria' => $this->id_categoria]);
 
-            // Eliminar recursivamente subcategorías hijas
+            // Eliminar subcategorías hijas
             $sqlHijas = "SELECT id_categoria FROM CATEGORIA WHERE id_madre = :id_madre";
             $stmtHijas = $db->prepare($sqlHijas);
             $stmtHijas->execute([':id_madre' => $this->id_categoria]);

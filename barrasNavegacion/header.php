@@ -22,11 +22,11 @@
     <nav>
         <ul>
             <?php 
-            // 3. Recorremos las categorías madre
+            // Recorremos las categorías madre
             foreach ($categorias_madre as $madre): 
                 // Obtener subcategorías usando la clase Categoria
                 $subcategorias = Categoria::obtenerSubcategorias($conn, $madre->getIdCategoria());
-                // Si la categoría madre tiene una ruta definida, úsala como enlace
+                // Si la categoría madre tiene una ruta definida, usarla como enlace
                 $madreHref = $base . "contenidos.php?id=" . $madre->getIdCategoria();
             ?>
                 <li class="dropdown">

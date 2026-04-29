@@ -27,7 +27,7 @@
         $this->fecha_actualizacion = $fecha_actualizacion ?: date('Y-m-d');
     }
 
-    // Ejemplo de "Getter" por si necesitaramos el título en otro archivo
+    // Getters y setters
     public function getTitulo() {
         return $this->titulo;
     }
@@ -83,7 +83,7 @@
         echo "<hr>";
     }
 
-    // --- NUEVO MÉTODO ESTÁTICO ---
+    // --- función obtenerPorCategoria ---
     public static function obtenerPorCategoria($db, $nombreCategoria) {
         $bloques = [];
         $sql = "SELECT b.* FROM BLOQUE b 
@@ -110,7 +110,7 @@
         return $bloques;
     }
 
-    // NUEVO: Obtener bloques por ID de categoría
+    // Obtener bloques por ID de categoría
     public static function obtenerPorCategoriaId($db, $id_categoria) {
         $bloques = [];
         $sql = "SELECT * FROM BLOQUE WHERE id_categoria = :id_categoria ORDER BY orden";
