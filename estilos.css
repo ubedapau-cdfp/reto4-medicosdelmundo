@@ -54,6 +54,7 @@
 body {
     font-family: "Open Sans", sans-serif; /* ORDEN DE FUENTES A USAR */
     background-color: #f1eaea; /* COLOR DEL FONDO DE LA PÁGINA */
+    background-image: url(Imagenes/bg.png); /* IMÁGEN USADA PARA EL FONDO */
     margin-bottom:200px; /* MARGEN RESPECTO ABAJO PARA QUE EL FOOTER NO SE SOLAPE CON EL CONTENIDO */
 }
 
@@ -112,7 +113,7 @@ nav ul li {
 nav ul li a {
     color: white; /* COLOR DEL TEXTO */
     text-decoration: none; /* SIN DECORACIÓN DE TEXTO */
-    padding: 25px 15px; /* ESPACIO ENTRE ELEMENTOS */
+    padding: 25px 5px; /* ESPACIO ENTRE ELEMENTOS */
     display: block; /* OCUPACIÓN DE TODO EL ANCHO DISPONIBLE */
     font-weight: bold; /* TIPO DE TEXTO: NEGRITA */
 }

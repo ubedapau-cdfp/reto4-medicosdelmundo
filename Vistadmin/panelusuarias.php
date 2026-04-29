@@ -88,7 +88,7 @@ $usuarios = $stmt->fetchAll();
 <?php endif; ?>
 
     <?php if (!empty($usuarios)): ?>
-        <div class="tabla-contenedor">
+        <section class="tabla-contenedor">
             <table>
                 <thead>
                     <tr>
@@ -112,7 +112,7 @@ $usuarios = $stmt->fetchAll();
                     <?php endforeach; ?>
                 </tbody>
             </table>
-        </div>
+        </section>
     <?php else: ?>
         <p>No hay usuarias registradas en la base de datos.</p>
     <?php endif; ?>

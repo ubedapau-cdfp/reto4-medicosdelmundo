@@ -14,9 +14,9 @@ $base = '/reto4-medicosdelmundo/';
 <?php include '../barrasNavegacion/header.php'; ?>
 <p>
 <section class="contenidos">
-    <div class="sobre-nosotras-content">
+    <section class="sobre-nosotras-content">
         <h1>Sobre Médicos del Mundo</h1>
-        <div class="sobre-nosotras-texto">
+        <section class="sobre-nosotras-texto">
             <p>Médicos del Mundo es una organización internacional humanitaria independiente que lucha por el derecho universal a la salud. Desde 1986, trabajamos en más de 80 países proporcionando atención médica de calidad a las poblaciones más vulnerables, especialmente en contextos de crisis humanitarias, conflictos armados y situaciones de pobreza extrema.</p>
             
             <p><strong>Nuestra Misión:</strong> Proporcionar atención médica gratuita y de calidad a personas en situaciones de vulnerabilidad, denunciar las violaciones de los derechos humanos relacionados con la salud y promover políticas que garanticen el acceso equitativo a la atención sanitaria para todos.</p>
@@ -24,14 +24,14 @@ $base = '/reto4-medicosdelmundo/';
             <p><strong>Nuestros Valores:</strong> Solidaridad, independencia, compromiso con los derechos humanos, profesionalismo y transparencia. Creemos en la acción directa sobre el terreno, combinada con el trabajo de incidencia política para cambiar las leyes y políticas injustas.</p>
             
             <p>En España y en todo el mundo, Médicos del Mundo desarrolla programas de salud comunitaria, atención a migrantes, lucha contra la pobreza energética, apoyo a personas sin hogar y respuesta a emergencias sanitarias. Nuestro trabajo se basa en la evidencia científica y en el respeto a la dignidad de cada persona.</p>
-        </div>
+        </section>
         
-        <div class="sobre-nosotras-enlace">
+        <section class="sobre-nosotras-enlace">
             <a href="https://www.medicosdelmundo.org/" target="_blank" class="button-web-mdm">
                 <i class="fas fa-external-link-alt"></i> Visitar Sitio Web Oficial
             </a>
-        </div>
-    </div>
+        </section>
+    </section>
 </section>
 <?php include '../barrasNavegacion/footer.php'; ?>
 

@@ -1,22 +1,22 @@
 ﻿<?php
 session_start();
 $base = '/reto4-medicosdelmundo/';
-// Acceso para administradoras (id_rol === 3)
-if (!isset($_SESSION['usuario_id']) || !isset($_SESSION['id_rol']) || intval($_SESSION['id_rol']) !== 3) {
+// Acceso para orientadoras y administradoras (id_rol === 2, 3)
+if (!isset($_SESSION['usuario_id']) || !isset($_SESSION['id_rol']) || !in_array(intval($_SESSION['id_rol']), [2, 3], true)) {
     header('Location: /reto4-medicosdelmundo/signin.php');
     exit();
 }
 
-require_once '../conexion.php';
-require_once '../clases/Categoria.php';
-require_once '../clases/Bloque.php';
+require_once '../conexion.php'; // conexión a la base de datos
+require_once '../clases/Categoria.php'; // clase para gestionar categorías
+require_once '../clases/Bloque.php'; // clase para gestionar bloques de contenido
 
-$db = new Database();
-$conn = $db->conectar();
+$db = new Database(); // Instanciamos la clase Database
+$conn = $db->conectar(); // Obtenemos la conexión a la base de datos
 
-$categoryId = isset($_GET['id']) && is_numeric($_GET['id']) ? (int) $_GET['id'] : null;
-$currentCategory = $categoryId ? Categoria::obtenerPorId($conn, $categoryId) : null;
-$isMadre = $currentCategory ? $currentCategory->getIdMadre() === null : false;
+$categoryId = isset($_GET['id']) && is_numeric($_GET['id']) ? (int) $_GET['id'] : null; /* Obtenemos el id de la categoría seleccionada desde la URL si existe. */
+$currentCategory = $categoryId ? Categoria::obtenerPorId($conn, $categoryId) : null; /* Si hay un id válido, obtenemos la categoría actual para mostrar su información y gestionar su contenido. */
+$isMadre = $currentCategory ? $currentCategory->getIdMadre() === null : false; /* Determinamos si la categoría actual es una categoría madre (sin id_madre) o una subcategoría (con id_madre). Esto nos ayudará a mostrar las opciones de gestión adecuadas. */
 
 // Procesar acciones
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -89,15 +89,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Después de procesar el formulario, redirigimos para evitar resubmisiones.
         $redirectUrl = $base . 'Vistadmin/gestionar.php';
         if ($categoryId) {
-            $redirectUrl .= '?id=' . $categoryId;
+            $redirectUrl .= '?id=' . $categoryId; // Si estamos dentro de una categoría específica, redirigimos a esa misma categoría para seguir gestionándola después de la acción.
         }
-        header('Location: ' . $redirectUrl);
+        header('Location: ' . $redirectUrl); // Redirigimos a la página de gestión después de procesar la acción para evitar resubmisiones del formulario al refrescar.
         exit();
     }
 }
 
 // Cargamos todas las categorías para mostrar la lista principal.
-$categorias = Categoria::obtenerTodas($conn);
+$categorias = Categoria::obtenerTodas($conn); // Obtenemos todas las categorías para mostrar en la lista principal, independientemente de si son madres o subcategorías.
 
 // Inicializamos los arrays que pueden contener subcategorías o bloques según la categoría seleccionada.
 $bloques = [];
@@ -142,7 +142,11 @@ if (isset($_GET['editar_bloque'])) {
             <section class="gestion-section">
                 <h2><?= htmlspecialchars($currentCategory->getTitulo()) ?></h2>
                 <p class="descripcionapartados"><?= htmlspecialchars($currentCategory->getDescripcion()) ?></p>
-                <a href="<?= $base ?>Vistadmin/Menu.php" class="menubutton"><i class="fa-solid fa-arrow-left"></i>Volver al menú</a>
+                <?php if (isset($_SESSION['id_rol']) && intval($_SESSION['id_rol']) === 3): ?>
+                    <a href="<?= $base ?>Vistadmin/Menu.php" class="menubutton"><i class="fa-solid fa-arrow-left"></i>Volver al menú</a>
+                <?php else: ?>
+                    <a href="<?= $base ?>VistaOrientadora/Menu.php" class="menubutton"><i class="fa-solid fa-arrow-left"></i>Volver al menú</a>
+                <?php endif; ?>
                 <?php if ($isMadre): ?>
                     <a href="?id=<?= $categoryId ?>&nueva_categoria=1" class="menubutton"><i class="fa-solid fa-plus"></i>Añadir Subcategoría</a>
                 <?php else: ?>
