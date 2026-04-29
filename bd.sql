@@ -159,7 +159,7 @@ INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES
 1. Días trabajados del mes actual.
 2. Vacaciones no disfrutadas.
 3. Parte proporcional de las pagas extras.
-Si se acaba un coZntrato temporal, también te corresponden 12 días de indemnización por año trabajado.', 1, 24);
+Si se acaba un contrato temporal, también te corresponden 12 días de indemnización por año trabajado.', 1, 24);
 
 -- Jornada y Horarios
 INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES 
