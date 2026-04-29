@@ -7,16 +7,16 @@ if (!isset($_SESSION['usuario_id']) || !isset($_SESSION['id_rol']) || intval($_S
     exit();
 }
 
-require_once '../conexion.php';
-require_once '../clases/Categoria.php';
-require_once '../clases/Bloque.php';
+require_once '../conexion.php'; /* conexión a la base de datos */
+require_once '../clases/Categoria.php'; /* clase para gestionar categorías */
+require_once '../clases/Bloque.php'; /* clase para gestionar bloques de contenido */
 
-$db = new Database();
-$conn = $db->conectar();
+$db = new Database(); /*  */
+$conn = $db->conectar(); /*  */
 
-$categoryId = isset($_GET['id']) && is_numeric($_GET['id']) ? (int) $_GET['id'] : null;
-$currentCategory = $categoryId ? Categoria::obtenerPorId($conn, $categoryId) : null;
-$isMadre = $currentCategory ? $currentCategory->getIdMadre() === null : false;
+$categoryId = isset($_GET['id']) && is_numeric($_GET['id']) ? (int) $_GET['id'] : null; /* Obtenemos el id de la categoría seleccionada desde la URL si existe. */
+$currentCategory = $categoryId ? Categoria::obtenerPorId($conn, $categoryId) : null; /* Si hay un id válido, obtenemos la categoría actual para mostrar su información y gestionar su contenido. */
+$isMadre = $currentCategory ? $currentCategory->getIdMadre() === null : false; /* Determinamos si la categoría actual es una categoría madre (sin id_madre) o una subcategoría (con id_madre). Esto nos ayudará a mostrar las opciones de gestión adecuadas. */
 
 // Procesar acciones
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
