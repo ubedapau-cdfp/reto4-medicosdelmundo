@@ -10,7 +10,10 @@ require_once __DIR__ . '/../clases/Usuario.php';
 
 if (isset($_GET['id']) && intval($_GET['id']) > 0) {
     $id = intval($_GET['id']);
-    Usuario::EliminarByID($id);
+    $usuaria = Usuario::RecuperarByID($id);
+    if ($usuaria) {
+        $usuaria->eliminar();
+    }
 }
 
 header('Location: panelusuarias.php');
