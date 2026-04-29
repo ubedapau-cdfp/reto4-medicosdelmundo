@@ -1,8 +1,8 @@
 ﻿<?php
 session_start();
 $base = '/reto4-medicosdelmundo/';
-// Acceso para administradoras (id_rol === 3)
-if (!isset($_SESSION['usuario_id']) || !isset($_SESSION['id_rol']) || intval($_SESSION['id_rol']) !== 3) {
+// Acceso para orientadoras y administradoras (id_rol === 2, 3)
+if (!isset($_SESSION['usuario_id']) || !isset($_SESSION['id_rol']) || !in_array(intval($_SESSION['id_rol']), [2, 3], true)) {
     header('Location: /reto4-medicosdelmundo/signin.php');
     exit();
 }
@@ -142,7 +142,11 @@ if (isset($_GET['editar_bloque'])) {
             <section class="gestion-section">
                 <h2><?= htmlspecialchars($currentCategory->getTitulo()) ?></h2>
                 <p class="descripcionapartados"><?= htmlspecialchars($currentCategory->getDescripcion()) ?></p>
-                <a href="<?= $base ?>Vistadmin/Menu.php" class="menubutton"><i class="fa-solid fa-arrow-left"></i>Volver al menú</a>
+                <?php if (isset($_SESSION['id_rol']) && intval($_SESSION['id_rol']) === 3): ?>
+                    <a href="<?= $base ?>Vistadmin/Menu.php" class="menubutton"><i class="fa-solid fa-arrow-left"></i>Volver al menú</a>
+                <?php else: ?>
+                    <a href="<?= $base ?>VistaOrientadora/Menu.php" class="menubutton"><i class="fa-solid fa-arrow-left"></i>Volver al menú</a>
+                <?php endif; ?>
                 <?php if ($isMadre): ?>
                     <a href="?id=<?= $categoryId ?>&nueva_categoria=1" class="menubutton"><i class="fa-solid fa-plus"></i>Añadir Subcategoría</a>
                 <?php else: ?>

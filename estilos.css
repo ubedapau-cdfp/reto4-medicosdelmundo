@@ -112,7 +112,7 @@ nav ul li {
 nav ul li a {
     color: white; /* COLOR DEL TEXTO */
     text-decoration: none; /* SIN DECORACIÓN DE TEXTO */
-    padding: 25px 15px; /* ESPACIO ENTRE ELEMENTOS */
+    padding: 25px 10px; /* ESPACIO ENTRE ELEMENTOS */
     display: block; /* OCUPACIÓN DE TODO EL ANCHO DISPONIBLE */
     font-weight: bold; /* TIPO DE TEXTO: NEGRITA */
 }
