@@ -32,7 +32,7 @@
                 echo "<section class='loginFail'>Usuario o contraseña incorrectos.</section>"; // Mostramos mensaje de error
                 }
                 } catch (PDOException $e) {
-                    echo "<section class='loginFail'>Error: " . $e->getMessage()."</section>";
+                    echo "<section class='loginFail'>Error: " . $e->getMessage()."</section>"; // Mensaje de error
                     }
                     }
 ?>

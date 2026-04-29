@@ -1,9 +1,9 @@
-<?php
-$base = '/reto4-medicosdelmundo/';
-require_once '../conexion.php';
+<?php // Inicio del apartado PHP
+$base = '/reto4-medicosdelmundo/'; // Ruta base para enlaces y recursos
+require_once '../conexion.php'; // Incluir el archivo de conexión a la base de datos
 
-$db = new Database();
-$conn = $db->conectar();
+$db = new Database(); // Crear una instancia de la clase Database
+$conn = $db->conectar(); // Establecer la conexión a la base de datos
 
 // Obtener todas las preguntas frecuentes agrupadas por categoría
 $sql = "SELECT f.id_faq, f.pregunta, f.respuesta, f.id_categoria, c.titulo as categoria_titulo
@@ -13,20 +13,20 @@ $sql = "SELECT f.id_faq, f.pregunta, f.respuesta, f.id_categoria, c.titulo as ca
 
 $faqs = [];
 try {
-    $stmt = $conn->prepare($sql);
-    $stmt->execute();
-    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        $categoria = $row['categoria_titulo'] ?: 'Sin categoría';
-        if (!isset($faqs[$categoria])) {
-            $faqs[$categoria] = [];
+    $stmt = $conn->prepare($sql); // Preparar la consulta SQL
+    $stmt->execute(); // Ejecutar la consulta
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) { // Iterar sobre los resultados de la consulta
+        $categoria = $row['categoria_titulo'] ?: 'Sin categoría'; // Usar 'Sin categoría' si no hay título de categoría
+        if (!isset($faqs[$categoria])) { // Verificar si la categoría ya existe en el array, si no, inicializarla
+            $faqs[$categoria] = []; // Inicializar el array para la categoría si no existe
         }
-        $faqs[$categoria][] = [
-            'pregunta' => $row['pregunta'],
-            'respuesta' => $row['respuesta']
+        $faqs[$categoria][] = [ // Agregar la pregunta frecuente al array de la categoría correspondiente
+            'pregunta' => $row['pregunta'], // Guardar la pregunta frecuente
+            'respuesta' => $row['respuesta'] // Guardar la respuesta a la pregunta frecuente
         ];
     }
-} catch (PDOException $e) {
-    echo "Error al obtener preguntas frecuentes: " . $e->getMessage();
+} catch (PDOException $e) { 
+    echo "Error al obtener preguntas frecuentes: " . $e->getMessage(); // Mensaje de error
 }
 ?>
 <!DOCTYPE html>
@@ -39,22 +39,22 @@ try {
 <link rel="stylesheet" href="../estilos.css">
 </head>
 <body>
-<?php include '../barrasNavegacion/header.php'; ?>
+<?php include '../barrasNavegacion/header.php'; ?> <!-- Inclusión del header en la página -->
 <section class="contenidos">
     <h1>Preguntas Frecuentes</h1>
     <p>Encuentra respuestas a las preguntas más comunes sobre tus derechos laborales.</p>
     
-    <?php if (empty($faqs)): ?>
+    <?php if (empty($faqs)): ?> <!-- Si no hay preguntas frecuentes, mostrar mensaje -->
         <p>No hay preguntas frecuentes disponibles en este momento.</p>
     <?php else: ?>
-        <?php foreach ($faqs as $categoria => $items): ?>
+        <?php foreach ($faqs as $categoria => $items): ?> <!-- Iterar sobre cada categoría de preguntas frecuentes -->
             <section class="faq-categoria">
-                <h2 class="categoria-titulo"><?= htmlspecialchars($categoria) ?></h2>
+                <h2 class="categoria-titulo"><?= htmlspecialchars($categoria) ?></h2> <!-- Título de la categoría de preguntas frecuentes -->
                 <section class="faq-items">
-                    <?php foreach ($items as $item): ?>
+                    <?php foreach ($items as $item): ?> <!-- Iterar sobre cada pregunta frecuente dentro de la categoría -->
                         <section class="faq-item">
-                            <p class="faq-pregunta"><b>P: <?= htmlspecialchars($item['pregunta']) ?></b></p>
-                            <p class="faq-respuesta"><b>R:</b> <?= htmlspecialchars($item['respuesta']) ?></p>
+                            <p class="faq-pregunta"><b>P: <?= htmlspecialchars($item['pregunta']) ?></b></p> <!-- Pregunta frecuente en negrita -->
+                            <p class="faq-respuesta"><b>R:</b> <?= htmlspecialchars($item['respuesta']) ?></p> <!-- Respuesta a la pregunta frecuente -->
                         </section>
                     <?php endforeach; ?>
                 </section>
@@ -62,6 +62,6 @@ try {
         <?php endforeach; ?>
     <?php endif; ?>
 </section>
-<?php include '../barrasNavegacion/footer.php'; ?>
+<?php include '../barrasNavegacion/footer.php'; ?> <!-- Inclusión del footer en la página -->
 </body>
 </html>

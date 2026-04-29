@@ -14,81 +14,79 @@ require_once '../clases/Bloque.php'; // clase para gestionar bloques de contenid
 $db = new Database(); // Instanciamos la clase Database
 $conn = $db->conectar(); // Obtenemos la conexión a la base de datos
 
-$categoryId = isset($_GET['id']) && is_numeric($_GET['id']) ? (int) $_GET['id'] : null; /* Obtenemos el id de la categoría seleccionada desde la URL si existe. */
-$currentCategory = $categoryId ? Categoria::obtenerPorId($conn, $categoryId) : null; /* Si hay un id válido, obtenemos la categoría actual para mostrar su información y gestionar su contenido. */
-$isMadre = $currentCategory ? $currentCategory->getIdMadre() === null : false; /* Determinamos si la categoría actual es una categoría madre (sin id_madre) o una subcategoría (con id_madre). Esto nos ayudará a mostrar las opciones de gestión adecuadas. */
+$categoryId = isset($_GET['id']) && is_numeric($_GET['id']) ? (int) $_GET['id'] : null; // Obtenemos el id de la categoría seleccionada desde la URL si existe.
+$currentCategory = $categoryId ? Categoria::obtenerPorId($conn, $categoryId) : null; // Si hay un id válido, obtenemos la categoría actual para mostrar su información y gestionar su contenido.
+$isMadre = $currentCategory ? $currentCategory->getIdMadre() === null : false; 
+// Determinamos si la categoría actual es una categoría madre (sin id_madre) o una subcategoría (con id_madre). Esto nos ayudará a mostrar las opciones de gestión adecuadas.
 
-// Procesar acciones
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['accion'])) {
-        // En este campo recibimos la acción principal que el formulario quiere ejecutar.
-        $accion = $_POST['accion'];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') { // Si el formulario se ha enviado, procesamos la acción correspondiente.
+    if (isset($_POST['accion'])) { // Si existe accion en el POST
+        $accion = $_POST['accion']; // Obtenemos la acción y la guardamos en una variable
 
-        // Eliminar una categoría (madre o subcategoría).
-        if ($accion === 'eliminar_categoria' && isset($_POST['id_categoria'])) {
-            $categoria = Categoria::obtenerPorId($conn, $_POST['id_categoria']);
-            if ($categoria) {
-                $categoria->eliminar($conn);
+        if ($accion === 'eliminar_categoria' && isset($_POST['id_categoria'])) { // Si la accion es eliminar_categoria y existe id_categoria en el POST
+            $categoria = Categoria::obtenerPorId($conn, $_POST['id_categoria']); // Obtenemos la categoría a eliminar por su id
+            if ($categoria) { // Si la categoría existe
+                $categoria->eliminar($conn); // Llamamos a eliminar en la clase Categoria
             }
 
         // Guardar una categoría nueva o editar una existente.
-        } elseif ($accion === 'guardar_categoria') {
-            $id = $_POST['id_categoria'] ?? null;
-            $titulo = trim($_POST['titulo'] ?? '');
-            $descripcion = trim($_POST['descripcion'] ?? '');
-            $icono = trim($_POST['icono'] ?? '');
+        } elseif ($accion === 'guardar_categoria') { // Si la accion es guardar_categoria
+            $id = $_POST['id_categoria'] ?? null; // Guardamos en el $id, si no, es null
+            $titulo = trim($_POST['titulo'] ?? ''); // Guardamos el titulo, si no, es vacío
+            $descripcion = trim($_POST['descripcion'] ?? ''); // Guardamos la descripción, si no, es vacío
+            $icono = trim($_POST['icono'] ?? ''); // Guardamos el icono, si no, es vacío
             // id_madre puede ser null cuando se crea una categoría principal.
-            $id_madre = isset($_POST['id_madre']) && $_POST['id_madre'] !== '' ? (int) $_POST['id_madre'] : null;
+            $id_madre = isset($_POST['id_madre']) && $_POST['id_madre'] !== '' ? (int) $_POST['id_madre'] : null; // Guardamos el id_madre, si no, es null.
 
             if ($id) {
                 // Si hay id, estamos actualizando una categoría existente.
-                $existingCategoria = Categoria::obtenerPorId($conn, $id);
-                if ($existingCategoria) {
-                    $existingCategoria->setTitulo($titulo);
-                    $existingCategoria->setDescripcion($descripcion);
-                    $existingCategoria->setIcono($icono);
-                    $existingCategoria->actualizar($conn);
+                $existingCategoria = Categoria::obtenerPorId($conn, $id); // Obtenemos la categoría existente por su id para actualizarla.
+                if ($existingCategoria) { // Si la categoría existe
+                    $existingCategoria->setTitulo($titulo); // Actualizamos el título
+                    $existingCategoria->setDescripcion($descripcion); // Actualizamos la descripción
+                    $existingCategoria->setIcono($icono); // Actualizamos el icono
+                    $existingCategoria->actualizar($conn); // Llamamos a actualizar en la clase Categoria para guardar los cambios en la base de datos.
                 }
             } else {
                 // Si no hay id, creamos una nueva categoría.
-                $nuevaCategoria = new Categoria(0, $titulo, $descripcion, $icono, $id_madre);
-                $nuevaCategoria->insertar($conn);
+                $nuevaCategoria = new Categoria(0, $titulo, $descripcion, $icono, $id_madre); // Creamos nueva Categoría, con id = 0, pues se asignará automáticamente
+                $nuevaCategoria->insertar($conn); // Llamamos a insertar en la clase Categoria para guardar la nueva categoría en la base de datos.
             }
 
         // Eliminar un bloque de contenido asociado a una categoría.
-        } elseif ($accion === 'eliminar_bloque' && isset($_POST['id_bloque'])) {
-            $bloque = Bloque::obtenerPorId($conn, $_POST['id_bloque']);
-            if ($bloque) {
-                $bloque->eliminar($conn);
+        } elseif ($accion === 'eliminar_bloque' && isset($_POST['id_bloque'])) { // Si la acción es eliminar_bloque y existe id_bloque en el POST
+            $bloque = Bloque::obtenerPorId($conn, $_POST['id_bloque']); // Obtenemos el bloque a eliminar por su id
+            if ($bloque) { // Si el bloque existe
+                $bloque->eliminar($conn); // Llamamos a eliminar en la clase Bloque para eliminar el bloque de contenido de la base de datos.
             }
 
         // Guardar un bloque de contenido nuevo o actualizado.
-        } elseif ($accion === 'guardar_bloque') {
-            $id = $_POST['id_bloque'] ?? null;
-            $titulo = trim($_POST['titulo'] ?? '');
-            $subtitulo = trim($_POST['subtitulo'] ?? '');
-            $contenido = trim($_POST['contenido'] ?? '');
-            $orden = intval($_POST['orden'] ?? 0);
-            $id_categoria = intval($_POST['id_categoria'] ?? 0);
+        } elseif ($accion === 'guardar_bloque') { // Si la acción es guardar_bloque
+            $id = $_POST['id_bloque'] ?? null; // Guardamos en $id el id del bloque, si no existe, es null
+            $titulo = trim($_POST['titulo'] ?? ''); // Guardamos el título del bloque, si no existe, es vacío
+            $subtitulo = trim($_POST['subtitulo'] ?? ''); // Guardamos el subtítulo del bloque, si no existe, es vacío
+            $contenido = trim($_POST['contenido'] ?? ''); // Guardamos el contenido del bloque, si no existe, es vacío
+            $orden = intval($_POST['orden'] ?? 0); // Guardamos el orden del bloque, si no existe, es 0
+            $id_categoria = intval($_POST['id_categoria'] ?? 0); // Guardamos el id de la categoría a la que pertenece el bloque, si no existe, es 0
 
-            if ($id) {
-                $existingBloque = Bloque::obtenerPorId($conn, $id);
-                if ($existingBloque) {
-                    $existingBloque->setTitulo($titulo);
-                    $existingBloque->setSubtitulo($subtitulo);
-                    $existingBloque->setContenido($contenido);
-                    $existingBloque->setOrden($orden);
-                    $existingBloque->actualizar($conn);
+            if ($id) { // Si hay id
+                $existingBloque = Bloque::obtenerPorId($conn, $id); // Obtenemos el bloque existente por su id para actualizarlo.
+                if ($existingBloque) { // Si el bloque existe
+                    $existingBloque->setTitulo($titulo); // Actualizamos el título del bloque
+                    $existingBloque->setSubtitulo($subtitulo); // Actualizamos el subtítulo del bloque
+                    $existingBloque->setContenido($contenido); // Actualizamos el contenido del bloque
+                    $existingBloque->setOrden($orden); // Actualizamos el orden del bloque
+                    $existingBloque->actualizar($conn); // Llamamos a actualizar en la clase Bloque para guardar los cambios del bloque en la base de datos.
                 }
             } else {
-                $nuevoBloque = new Bloque(0, $id_categoria, $titulo, $subtitulo, $contenido, $orden);
-                $nuevoBloque->insertar($conn);
+                $nuevoBloque = new Bloque(0, $id_categoria, $titulo, $subtitulo, $contenido, $orden); // Creamos un nueva Categoría con id = 0, pues se asignará automáticamente, junto a su id_categoria correspondiente.
+                $nuevoBloque->insertar($conn); // Llamamos a insertar en la clase Bloque para guardar el nuevo bloque de contenido en la base de datos.
             }
         }
 
         // Después de procesar el formulario, redirigimos para evitar resubmisiones.
-        $redirectUrl = $base . 'Vistadmin/gestionar.php';
-        if ($categoryId) {
+        $redirectUrl = $base . 'Vistadmin/gestionar.php'; // Redirigimos a la página de gestionar.php
+        if ($categoryId) { // Si hay una categoría seleccionada, añadimos su id a la URL para redirigir a esa categoría
             $redirectUrl .= '?id=' . $categoryId; // Si estamos dentro de una categoría específica, redirigimos a esa misma categoría para seguir gestionándola después de la acción.
         }
         header('Location: ' . $redirectUrl); // Redirigimos a la página de gestión después de procesar la acción para evitar resubmisiones del formulario al refrescar.
@@ -96,17 +94,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 
-// Cargamos todas las categorías para mostrar la lista principal.
 $categorias = Categoria::obtenerTodas($conn); // Obtenemos todas las categorías para mostrar en la lista principal, independientemente de si son madres o subcategorías.
 
-// Inicializamos los arrays que pueden contener subcategorías o bloques según la categoría seleccionada.
-$bloques = [];
-$subcategorias = [];
+$bloques = []; // Array para almacenar los bloques de contenido si la categoría actual es una subcategoría.
+$subcategorias = []; // Array para almacenar las subcategorías si la categoría actual es una categoría madre.
 
 if ($currentCategory) {
     // Si la categoría actual es madre, cargamos sus subcategorías.
-    if ($isMadre) {
-        $subcategorias = Categoria::obtenerSubcategorias($conn, $categoryId);
+    if ($isMadre) { //
+        $subcategorias = Categoria::obtenerSubcategorias($conn, $categoryId); //
     } else {
         // Si la categoría actual es una subcategoría, cargamos su contenido en bloques.
         $bloques = Bloque::obtenerPorCategoriaId($conn, $categoryId);
@@ -138,7 +134,7 @@ if (isset($_GET['editar_bloque'])) {
     <main class="gestionar-main">
         <h1>Gestionar Apartados y Subapartados</h1>
 
-        <?php if ($currentCategory): ?>
+        <?php if ($currentCategory): ?> <!-- Si hay una categoría seleccionada, mostramos su información y opciones de gestión. -->
             <section class="gestion-section">
                 <h2><?= htmlspecialchars($currentCategory->getTitulo()) ?></h2>
                 <p class="descripcionapartados"><?= htmlspecialchars($currentCategory->getDescripcion()) ?></p>
@@ -155,12 +151,12 @@ if (isset($_GET['editar_bloque'])) {
             </section>
         <?php endif; ?>
 
-        <?php if ($currentCategory && $isMadre): ?>
+        <?php if ($currentCategory && $isMadre): ?> <!-- Si hay una categoría seleccionada y es madre, mostramos sus subcategorías. -->
             <section class="gestion-section">
                 <h2>Subcategorías de <?= htmlspecialchars($currentCategory->getTitulo()) ?></h2>
                 <table class="gestionar-table">
                     <tr><th class="gestionar-th">Título</th><th class="gestionar-th">Descripción</th><th class="gestionar-th">Icono</th><th class="gestionar-th">Acciones</th></tr>
-                    <?php foreach ($subcategorias as $sub): ?>
+                    <?php foreach ($subcategorias as $sub): ?> <!-- Recorremos las subcategorías de la categoría madre actual para mostrarlas en una tabla con opciones de gestión. -->
                         <tr>
                             <td class="gestionar-td"><?= htmlspecialchars($sub->getTitulo()) ?></td>
                             <td class="gestionar-td"><?= htmlspecialchars($sub->getDescripcion()) ?></td>
@@ -213,14 +209,14 @@ if (isset($_GET['editar_bloque'])) {
                     <tr><th class="gestionar-th">Título</th><th class="gestionar-th">Descripción</th><th class="gestionar-th">Icono</th><th class="gestionar-th">Tipo</th><th class="gestionar-th">Acciones</th></tr>
                     <?php foreach ($categorias as $cat): ?>
                         <tr>
-                            <td class="gestionar-td"><?= htmlspecialchars($cat->getTitulo()) ?></td>
-                            <td class="gestionar-td"><?= htmlspecialchars($cat->getDescripcion()) ?></td>
-                            <td class="gestionar-td"><?= htmlspecialchars($cat->getIcono()) ?></td>
-                            <td class="gestionar-td"><?= $cat->getIdMadre() ? 'Subcategoría' : 'Principal' ?></td>
+                            <td class="gestionar-td"><?= htmlspecialchars($cat->getTitulo()) ?></td> <!-- Mostramos el título de la categoría -->
+                            <td class="gestionar-td"><?= htmlspecialchars($cat->getDescripcion()) ?></td> <!-- Mostramos la descripción de la categoría -->
+                            <td class="gestionar-td"><?= htmlspecialchars($cat->getIcono()) ?></td> <!-- Mostramos el icono de la categoría -->
+                            <td class="gestionar-td"><?= $cat->getIdMadre() ? 'Subcategoría' : 'Principal' ?></td> <!-- Mostramos si es una categoría principal o una subcategoría según tenga id_madre o no -->
                             <td class="gestionar-td">
-                                <a href="?id=<?= $cat->getIdCategoria() ?>" class="viewbutton"><i class="fas fa-eye"></i> Ver</a>
+                                <a href="?id=<?= $cat->getIdCategoria() ?>" class="viewbutton"><i class="fas fa-eye"></i> Ver</a> <!-- Enlace para ver la categoría, redirige a la misma página con el id de la categoría para mostrar su contenido. -->
                                 <a href="?editar_categoria=<?= $cat->getIdCategoria() ?>" class="editbutton"><i class="fas fa-pencil"></i> Editar</a>
-                                <form method="post" class="gestionar-form-inline">
+                                <form method="post" class="gestionar-form-inline"> 
                                     <input type="hidden" name="accion" value="eliminar_categoria">
                                     <input type="hidden" name="id_categoria" value="<?= $cat->getIdCategoria() ?>">
                                     <button type="submit" class="deletebutton" onclick="return confirm('¿Eliminar?')"><i class="fas fa-trash"></i> Eliminar</button>
@@ -279,27 +275,34 @@ if (isset($_GET['editar_bloque'])) {
             </section>
         <?php endif; ?>
 
-        <?php if ($editar_bloque || (isset($_GET['nuevo_bloque']) && $currentCategory && !$isMadre)): ?>
-            <!-- Si se solicita crear o editar un bloque, se muestra este formulario. -->
-            <!-- Formulario para crear o editar bloques dentro de una subcategoría. -->
+        <?php if ($editar_bloque || (isset($_GET['nuevo_bloque']) && $currentCategory && !$isMadre)): ?> 
+            <!-- Solo mostramos el formulario de bloque si estamos editando un bloque existente o creando uno nuevo dentro de una subcategoría. -->
             <section class="gestionar-section">
-                <h3><?= $editar_bloque ? 'Editar' : 'Nuevo' ?> Bloque</h3>
-                <form method="post" action="?id=<?= $categoryId ?>" class="gestionar-form">
+                <h3><?= $editar_bloque ? 'Editar' : 'Nuevo' ?> Bloque</h3> <!-- Formulario para crear o editar un bloque de contenido dentro de una subcategoría. -->
+                <form method="post" action="?id=<?= $categoryId ?>" class="gestionar-form"> <!-- El formulario se envía a la misma página con el id de la categoría actual para gestionar su contenido. -->
                     <input type="hidden" name="accion" value="guardar_bloque">
-                    <?php if ($editar_bloque): ?>
-                        <input type="hidden" name="id_bloque" value="<?= $editar_bloque->getIdBloque() ?>">
+                    <?php if ($editar_bloque): ?> <!-- Si estamos editando un bloque existente, guardamos su id oculta. -->
+                        <input type="hidden" name="id_bloque" value="<?= $editar_bloque->getIdBloque() ?>"> 
+                        <!-- Guardamos el id del bloque que estamos editando, se actualiza ese bloque en lugar de crear uno nuevo. -->
                     <?php endif; ?>
                     <label class="gestionar-label">Título: <input type="text" name="titulo" class="gestionar-input" value="<?= $editar_bloque ? htmlspecialchars($editar_bloque->getTitulo()) : '' ?>" required></label>
+                    <!-- Campo para el título del bloque, requerido. -->
                     <label class="gestionar-label">Subtítulo: <input type="text" name="subtitulo" class="gestionar-input" value="<?= $editar_bloque ? htmlspecialchars($editar_bloque->getSubtitulo()) : '' ?>"></label>
+                    <!-- Campo para el subtítulo del bloque, opcional. -->
                     <label class="gestionar-label">Contenido: <textarea name="contenido" class="gestionar-textarea" required><?= $editar_bloque ? htmlspecialchars($editar_bloque->getContenido()) : '' ?></textarea></label>
+                    <!-- Campo para el contenido del bloque, requerido. -->
                     <label class="gestionar-label">Orden: <input type="number" name="orden" class="gestionar-input" value="<?= $editar_bloque ? $editar_bloque->getOrden() : '' ?>" required></label>
+                    <!-- Campo para el orden del bloque, requerido. -->
                     <?php if ($editar_bloque): ?>
-                        <input type="hidden" name="id_categoria" value="<?= $editar_bloque->getIdCategoria() ?>">
+                        <input type="hidden" name="id_categoria" value="<?= $editar_bloque->getIdCategoria() ?>"> 
+                        <!-- Guardamos el id de la categoría a la que pertenece el bloque que estamos editando para mantener la relación. -->
                     <?php else: ?>
-                        <input type="hidden" name="id_categoria" value="<?= $categoryId ?>">
+                        <input type="hidden" name="id_categoria" value="<?= $categoryId ?>"> 
+                        <!-- Si es un bloque nuevo, asignamos el id de la categoría actual para relacionarlo correctamente. -->
                     <?php endif; ?>
-                    <button type="submit" class="savebutton"><i class="fa-solid fa-floppy-disk"></i>Guardar</button>
-                    <a href="?id=<?= $categoryId ?>" class="deletebutton"><i class="fa-solid fa-times"></i> Cancelar</a>
+                    <button type="submit" class="savebutton"><i class="fa-solid fa-floppy-disk"></i>Guardar</button> <!-- Botón para guardar el bloque de contenido. -->
+                    <a href="?id=<?= $categoryId ?>" class="deletebutton"><i class="fa-solid fa-times"></i> Cancelar</a> 
+                    <!-- Enlace para cancelar la acción y volver a la vista de gestión de la categoría sin guardar cambios. -->
                 </form>
             </section>
         <?php endif; ?>
