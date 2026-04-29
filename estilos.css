@@ -54,6 +54,7 @@
 body {
     font-family: "Open Sans", sans-serif; /* ORDEN DE FUENTES A USAR */
     background-color: #f1eaea; /* COLOR DEL FONDO DE LA PÁGINA */
+    background-image: url(Imagenes/bg.png); /* IMÁGEN USADA PARA EL FONDO */
     margin-bottom:200px; /* MARGEN RESPECTO ABAJO PARA QUE EL FOOTER NO SE SOLAPE CON EL CONTENIDO */
 }
 
