@@ -7,12 +7,12 @@ if (!isset($_SESSION['usuario_id']) || !isset($_SESSION['id_rol']) || intval($_S
     exit();
 }
 
-require_once '../conexion.php'; /* conexión a la base de datos */
-require_once '../clases/Categoria.php'; /* clase para gestionar categorías */
-require_once '../clases/Bloque.php'; /* clase para gestionar bloques de contenido */
+require_once '../conexion.php'; // conexión a la base de datos
+require_once '../clases/Categoria.php'; // clase para gestionar categorías
+require_once '../clases/Bloque.php'; // clase para gestionar bloques de contenido
 
-$db = new Database(); /*  */
-$conn = $db->conectar(); /*  */
+$db = new Database(); // Instanciamos la clase Database
+$conn = $db->conectar(); // Obtenemos la conexión a la base de datos
 
 $categoryId = isset($_GET['id']) && is_numeric($_GET['id']) ? (int) $_GET['id'] : null; /* Obtenemos el id de la categoría seleccionada desde la URL si existe. */
 $currentCategory = $categoryId ? Categoria::obtenerPorId($conn, $categoryId) : null; /* Si hay un id válido, obtenemos la categoría actual para mostrar su información y gestionar su contenido. */
@@ -61,24 +61,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $id_categoria = intval($_POST['id_categoria'] ?? 0);
 
             if ($id) {
-                Bloque::actualizar($conn, $id, $titulo, $subtitulo, $contenido, $orden, $id_categoria);
+                Bloque::actualizar($conn, $id, $titulo, $subtitulo, $contenido, $orden, $id_categoria); // Si hay id, actualizamos el bloque existente.
             } else {
-                Bloque::insertar($conn, $titulo, $subtitulo, $contenido, $orden, $id_categoria);
+                Bloque::insertar($conn, $titulo, $subtitulo, $contenido, $orden, $id_categoria); // Si no hay id, creamos un nuevo bloque asociado a la categoría actual.
             }
         }
 
         // Después de procesar el formulario, redirigimos para evitar resubmisiones.
         $redirectUrl = $base . 'Vistadmin/gestionar.php';
         if ($categoryId) {
-            $redirectUrl .= '?id=' . $categoryId;
+            $redirectUrl .= '?id=' . $categoryId; // Si estamos dentro de una categoría específica, redirigimos a esa misma categoría para seguir gestionándola después de la acción.
         }
-        header('Location: ' . $redirectUrl);
+        header('Location: ' . $redirectUrl); // Redirigimos a la página de gestión después de procesar la acción para evitar resubmisiones del formulario al refrescar.
         exit();
     }
 }
 
 // Cargamos todas las categorías para mostrar la lista principal.
-$categorias = Categoria::obtenerTodas($conn);
+$categorias = Categoria::obtenerTodas($conn); // Obtenemos todas las categorías para mostrar en la lista principal, independientemente de si son madres o subcategorías.
 
 // Inicializamos los arrays que pueden contener subcategorías o bloques según la categoría seleccionada.
 $bloques = [];
