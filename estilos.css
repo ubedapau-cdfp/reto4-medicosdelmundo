@@ -14,9 +14,9 @@
     font-family: "Open Sans";
     src: url('Fonts/OpenSans-Italic-VariableFont_wdth,wght.ttf') format("truetype-variations"),
          url('Fonts/OpenSans-Italic-VariableFont_wdth,wght.ttf') format("truetype");
-    font-weight: normal; /* Peso de la fuente (la carga en su estado de defecto.)*/
-  font-style: normal; /* Estilo de la fuente normal (es decir, no es italic, o negrita.) */
-  font-display: swap; /* Pone el texto personalizado en cuanto se cargue en la página */
+    font-weight: 100 900; /* Peso de la fuente variable */
+    font-style: italic; /* Estilo de la fuente itálica */
+    font-display: swap; /* Pone el texto personalizado en cuanto se cargue en la página */
 }
 
 /* ---------------------- APARTADO PARA FONT AWESOME ----------------------------*/
@@ -53,9 +53,17 @@
 /* BODY DE TODA LA PÁGINA */
 body {
     font-family: "Open Sans", sans-serif; /* ORDEN DE FUENTES A USAR */
-    background-color: #f1eaea; /* COLOR DEL FONDO DE LA PÁGINA */
+    font-style: normal; /* FUENTE NORMAL, SIN CURSIVA */
+    background-color: #E2E8F0; /* COLOR DEL FONDO DE LA PÁGINA */
     background-image: url(Imagenes/bg.png); /* IMÁGEN USADA PARA EL FONDO */
     margin-bottom:200px; /* MARGEN RESPECTO ABAJO PARA QUE EL FOOTER NO SE SOLAPE CON EL CONTENIDO */
+}
+
+.contenidos,
+.subapartados,
+.contenidos *,
+.subapartados * {
+    font-style: normal !important; /* Asegura texto normal en contenedores */
 }
 
 /* Ajuste puntual para la página de menú: eliminar margen si se necesita */
@@ -245,12 +253,14 @@ nav ul li ul li a:hover {
 
 /* SECTION DEL CONTENIDO A ENSEÑAR EN LA PÁGINA WEB */
 .contenidos, .subapartados{
-    background-color: #b0b0b0; /* COLOR DE FONDO */
+    background-color: #E9ECEF; /* COLOR DE FONDO */
     border-radius: 15px; /* REDONDEO DE ESQUINAS DE 15 PÍXELES */
     padding:50px; /* ESPACIO ENTRE ELEMENTOS */
     margin:15px; /* MÁRGENES */
     text-align: center; /* TEXTO CENTRADO */
     color: #000000; /* COLOR DEL TEXTO */
+    border: 1px solid #CED4DA;
+    border-style: solid; /* TIPO DE BORDE SÓLIDO */
 }
 
 /* HOVER DEL CONTAINER CONTENIDOS PARA QUE SE CAMBIE EL COLOR EL RATÓN */
