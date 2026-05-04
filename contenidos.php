@@ -48,11 +48,36 @@ if ($isMadre) {
 </head>
 <body>
 
+<?php
+// Función helper para obtener la primera imagen de una categoría
+function obtenerImagenCategoria($conn, $id_categoria) {
+    $bloques = Bloque::obtenerPorCategoriaId($conn, $id_categoria);
+    if (!empty($bloques)) {
+        foreach ($bloques as $bloque) {
+            $imagenes = ContenidoExterno::obtenerImagenesPorBloqueId($conn, $bloque->getIdBloque());
+            if (!empty($imagenes)) {
+                return $imagenes[0]; // Retorna la primera imagen encontrada
+            }
+        }
+    }
+    return null;
+}
+
+$imagenCategoria = obtenerImagenCategoria($conn, $id_categoria);
+?>
+
 <?php include 'barrasNavegacion/header.php'; ?>
 
-<section class="contenidos">
-    <h1><?php echo htmlspecialchars($categoria->getTitulo()); ?></h1>
-    <p><?php echo htmlspecialchars($categoria->getDescripcion()); ?></p>
+<section class="contenidos contenido-con-imagen">
+    <div class="contenido-texto">
+        <h1><?php echo htmlspecialchars($categoria->getTitulo()); ?></h1>
+        <p><?php echo htmlspecialchars($categoria->getDescripcion()); ?></p>
+    </div>
+    <?php if ($imagenCategoria): ?>
+        <div class="contenido-imagen">
+            <img src="<?php echo htmlspecialchars($imagenCategoria); ?>" alt="Imagen de <?php echo htmlspecialchars($categoria->getTitulo()); ?>">
+        </div>
+    <?php endif; ?>
 </section>
 
 <section class="subapartados">
@@ -60,11 +85,17 @@ if ($isMadre) {
 if ($isMadre) {
     // Mostrar subcategorías como enlaces
     if (!empty($subcategorias)) {
-        echo "<h2>Subapartados:</h2><ul>";
+        echo "<h2>Subapartados:</h2><div class='subapartados-grid'>";
         foreach ($subcategorias as $sub) {
-            echo "<li><a href='contenidos.php?id=" . $sub->getIdCategoria() . "'>" . htmlspecialchars($sub->getTitulo()) . "</a></li>";
+            $imagenSub = obtenerImagenCategoria($conn, $sub->getIdCategoria());
+            echo "<a href='contenidos.php?id=" . $sub->getIdCategoria() . "' class='subapartado-card'>";
+            if (!empty($imagenSub)) {
+                echo "<div class='subapartado-thumb'><img src='" . htmlspecialchars($imagenSub) . "' alt='" . htmlspecialchars($sub->getTitulo()) . "'></div>";
+            }
+            echo "<div class='subapartado-info'><h3>" . htmlspecialchars($sub->getTitulo()) . "</h3><p>" . htmlspecialchars($sub->getDescripcion()) . "</p></div>";
+            echo "</a>";
         }
-        echo "</ul>";
+        echo "</div>";
     } else {
         echo "<p>No hay subapartados disponibles.</p>";
     }
@@ -75,7 +106,7 @@ if ($isMadre) {
             $bloque->mostrarDatos();
             
             // Obtener y mostrar enlaces externos si existen
-            $enlacesExternos = ContenidoExterno::obtenerPorBloqueId($conn, $bloque->getIdBloque());
+            $enlacesExternos = ContenidoExterno::obtenerEnlacesPorBloqueId($conn, $bloque->getIdBloque());
             if (!empty($enlacesExternos)) {
                 echo "<div class='enlaces-externos'>";
                 echo "<h4>Enlaces relacionados:</h4>";

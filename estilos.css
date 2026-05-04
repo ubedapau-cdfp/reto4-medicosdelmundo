@@ -319,6 +319,110 @@ button[type=submit]:not(.savebutton):not(.deletebutton), .opciones{
     text-decoration:none; /* SIN DECORACIÓN DE TEXTO */
  }
 
+/* Estilos para contenido con imagen */
+.contenido-con-imagen {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 30px;
+    padding: 40px;
+    margin: 20px;
+    background-color: #E9ECEF;
+    border-radius: 18px;
+    border: 1px solid #CED4DA;
+    flex-wrap: wrap;
+    text-align: left;
+}
+
+.contenido-texto {
+    flex: 1 1 55%;
+    min-width: 280px;
+}
+
+.contenido-imagen {
+    flex: 0 0 35%;
+    min-width: 240px;
+    max-width: 420px;
+}
+
+.contenido-imagen img {
+    width: 100%;
+    height: auto;
+    border-radius: 18px;
+    object-fit: cover;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+}
+
+.subapartados-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 18px;
+    margin-top: 20px;
+}
+
+.subapartado-card {
+    display: flex;
+    flex-direction: column;
+    background: #FFFFFF;
+    border-radius: 18px;
+    border: 1px solid #CED4DA;
+    text-decoration: none;
+    color: inherit;
+    overflow: hidden;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.subapartado-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.12);
+}
+
+.subapartado-thumb img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.subapartado-info {
+    padding: 18px;
+}
+
+.subapartado-info h3 {
+    margin-bottom: 8px;
+    font-size: 1.2rem;
+}
+
+.subapartado-info p {
+    color: #3b3b3b;
+    line-height: 1.5;
+    font-size: 0.95rem;
+}
+
+.imagen-preview {
+    margin: 10px 0;
+}
+
+.imagen-preview p {
+    font-size: 0.9rem;
+    margin-bottom: 8px;
+}
+
+.preview-img {
+    width: 100%;
+    max-width: 220px;
+    border-radius: 12px;
+    display: block;
+    object-fit: cover;
+}
+
+.gestionar-label small {
+    display: block;
+    margin-top: 5px;
+    color: #555;
+    font-size: 0.85rem;
+}
+
+
 /* HOVER DE LOS BOTONES DE TIPO SUBMIT PARA REDIRECCIONAR (ej. Ser contratada) */
 button[type=submit]:not(.savebutton):not(.deletebutton):hover{
     background-color: #0360ac; /* COLOR DEL FONDO */

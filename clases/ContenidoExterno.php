@@ -98,14 +98,38 @@
     }
 
     /**
-     * Obtiene todos los contenidos externos asociados a un bloque
+     * Obtiene todas las imágenes asociadas a un bloque (URLs que terminan en extensiones de imagen)
+     * @param PDO $db Conexión a la base de datos
+     * @param int $id_bloque ID del bloque
+     * @return array|null Array de URLs de imágenes
+     */
+    public static function obtenerImagenesPorBloqueId($db, $id_bloque) {
+        $imagenes = [];
+        $sql = "SELECT url_externas FROM contenido WHERE id_bloque = :id_bloque AND (url_externas LIKE '%.jpg' OR url_externas LIKE '%.jpeg' OR url_externas LIKE '%.png' OR url_externas LIKE '%.gif' OR url_externas LIKE '%.webp' OR url_externas LIKE '%.svg') ORDER BY id_url ASC";
+        try {
+            $stmt = $db->prepare($sql);
+            $stmt->bindValue(':id_bloque', intval($id_bloque), PDO::PARAM_INT);
+            $stmt->execute();
+            
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $imagenes[] = $row['url_externas'];
+            }
+        } catch (PDOException $e) {
+            echo "Error al obtener imágenes por bloque: " . $e->getMessage();
+            return null;
+        }
+        return $imagenes;
+    }
+
+    /**
+     * Obtiene todos los enlaces externos asociados a un bloque (URLs que NO terminan en extensiones de imagen)
      * @param PDO $db Conexión a la base de datos
      * @param int $id_bloque ID del bloque
      * @return array|null Array de objetos ContenidoExterno
      */
-    public static function obtenerPorBloqueId($db, $id_bloque) {
+    public static function obtenerEnlacesPorBloqueId($db, $id_bloque) {
         $contenidos = [];
-        $sql = "SELECT id_url, url_externas, id_bloque FROM contenido WHERE id_bloque = :id_bloque ORDER BY id_url ASC";
+        $sql = "SELECT id_url, url_externas, id_bloque FROM contenido WHERE id_bloque = :id_bloque AND NOT (url_externas LIKE '%.jpg' OR url_externas LIKE '%.jpeg' OR url_externas LIKE '%.png' OR url_externas LIKE '%.gif' OR url_externas LIKE '%.webp' OR url_externas LIKE '%.svg') ORDER BY id_url ASC";
         try {
             $stmt = $db->prepare($sql);
             $stmt->bindValue(':id_bloque', intval($id_bloque), PDO::PARAM_INT);
@@ -115,7 +139,7 @@
                 $contenidos[] = new self($row['id_url'], $row['url_externas'], $row['id_bloque']);
             }
         } catch (PDOException $e) {
-            echo "Error al obtener contenidos por bloque: " . $e->getMessage();
+            echo "Error al obtener enlaces por bloque: " . $e->getMessage();
             return null;
         }
         return $contenidos;
