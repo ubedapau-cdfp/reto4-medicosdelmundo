@@ -28,6 +28,7 @@ $categoriasMadre = Categoria::obtenerCategoriasMadre($conn);
 	<main class="menu-grid-container">
 		<section class="menu-page-actions">
 			<a class="menu-add-btn" href="<?= $base ?>Vistadmin/gestionar.php?nueva_categoria=1">+ Añadir categoría madre</a>
+			<a class="menu-add-btn" href="<?= $base ?>Vistadmin/gestionar_faqs.php" style="background-color: #ff6b6b;"><i class="fas fa-question-circle"></i> Gestionar FAQs</a>
 		</section>
 		<section class="menu-grid">
 			<?php foreach ($categoriasMadre as $cat): ?>

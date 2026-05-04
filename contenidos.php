@@ -3,6 +3,7 @@
 include 'conexion.php';
 include 'clases/Categoria.php';
 include 'clases/Bloque.php';
+include 'clases/ContenidoExterno.php';
 
 // Inicializamos la conexión POO
 $database = new Database();
@@ -72,6 +73,19 @@ if ($isMadre) {
     if (!empty($listaBloques)) {
         foreach ($listaBloques as $bloque) {
             $bloque->mostrarDatos();
+            
+            // Obtener y mostrar enlaces externos si existen
+            $enlacesExternos = ContenidoExterno::obtenerPorBloqueId($conn, $bloque->getIdBloque());
+            if (!empty($enlacesExternos)) {
+                echo "<div class='enlaces-externos'>";
+                echo "<h4>Enlaces relacionados:</h4>";
+                echo "<ul>";
+                foreach ($enlacesExternos as $enlace) {
+                    echo "<li><a href='" . htmlspecialchars($enlace->getUrlExternas()) . "' target='_blank'>" . htmlspecialchars($enlace->getUrlExternas()) . "</a></li>";
+                }
+                echo "</ul>";
+                echo "</div>";
+            }
         }
     } else {
         echo "<p>No hay contenido disponible para esta categoría.</p>";

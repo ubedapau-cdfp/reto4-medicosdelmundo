@@ -10,6 +10,7 @@ if (!isset($_SESSION['usuario_id']) || !isset($_SESSION['id_rol']) || !in_array(
 require_once '../conexion.php'; // conexión a la base de datos
 require_once '../clases/Categoria.php'; // clase para gestionar categorías
 require_once '../clases/Bloque.php'; // clase para gestionar bloques de contenido
+require_once '../clases/Faq.php'; // clase para gestionar preguntas frecuentes
 
 $db = new Database(); // Instanciamos la clase Database
 $conn = $db->conectar(); // Obtenemos la conexión a la base de datos
@@ -82,7 +83,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') { // Si el formulario se ha enviado, 
                 $nuevoBloque = new Bloque(0, $id_categoria, $titulo, $subtitulo, $contenido, $orden); // Creamos un nueva Categoría con id = 0, pues se asignará automáticamente, junto a su id_categoria correspondiente.
                 $nuevoBloque->insertar($conn); // Llamamos a insertar en la clase Bloque para guardar el nuevo bloque de contenido en la base de datos.
             }
-        }
+
+        // Eliminar una FAQ
+        } elseif ($accion === 'eliminar_faq' && isset($_POST['id_faq'])) {
+            $faq = Faq::obtenerPorId($conn, $_POST['id_faq']);
+            if ($faq) {
+                $faq->eliminar($conn);
+            }
+
+        // Guardar una FAQ nueva o editada
+        } elseif ($accion === 'guardar_faq') {
+            $id = $_POST['id_faq'] ?? null;
+            $pregunta = trim($_POST['pregunta'] ?? '');
+            $respuesta = trim($_POST['respuesta'] ?? '');
+            $id_categoria = intval($_POST['id_categoria'] ?? 0);
+
+            if ($id) {
+                $existingFaq = Faq::obtenerPorId($conn, $id);
+                if ($existingFaq) {
+                    $existingFaq->setPregunta($pregunta);
+                    $existingFaq->setRespuesta($respuesta);
+                    $existingFaq->setIdCategoria($id_categoria);
+                    $existingFaq->actualizar($conn);
+                }
+            } else {
+                $nuevoFaq = new Faq(0, $pregunta, $respuesta, $id_categoria);
+                $nuevoFaq->insertar($conn);
+            }
 
         // Después de procesar el formulario, redirigimos para evitar resubmisiones.
         $redirectUrl = $base . 'Vistadmin/gestionar.php'; // Redirigimos a la página de gestionar.php
@@ -93,11 +120,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') { // Si el formulario se ha enviado, 
         exit();
     }
 }
+}
 
 $categorias = Categoria::obtenerTodas($conn); // Obtenemos todas las categorías para mostrar en la lista principal, independientemente de si son madres o subcategorías.
 
 $bloques = []; // Array para almacenar los bloques de contenido si la categoría actual es una subcategoría.
 $subcategorias = []; // Array para almacenar las subcategorías si la categoría actual es una categoría madre.
+$faqs = []; // Array para almacenar las FAQs de la categoría actual.
 
 if ($currentCategory) {
     // Si la categoría actual es madre, cargamos sus subcategorías.
@@ -107,16 +136,22 @@ if ($currentCategory) {
         // Si la categoría actual es una subcategoría, cargamos su contenido en bloques.
         $bloques = Bloque::obtenerPorCategoriaId($conn, $categoryId);
     }
+    // Cargamos las FAQs de la categoría actual
+    $faqs = Faq::obtenerPorCategoria($conn, $categoryId);
 }
 
 // Si se solicitan editar una categoría o un bloque, cargamos los datos correspondientes.
 $editar_categoria = null;
 $editar_bloque = null;
+$editar_faq = null;
 if (isset($_GET['editar_categoria'])) {
     $editar_categoria = Categoria::obtenerPorId($conn, $_GET['editar_categoria']);
 }
 if (isset($_GET['editar_bloque'])) {
     $editar_bloque = Bloque::obtenerPorId($conn, $_GET['editar_bloque']);
+}
+if (isset($_GET['editar_faq'])) {
+    $editar_faq = Faq::obtenerPorId($conn, $_GET['editar_faq']);
 }
 ?>
 <!doctype html>
@@ -200,6 +235,32 @@ if (isset($_GET['editar_bloque'])) {
                 </table>
                 <?php if (empty($bloques)): ?>
                     <p>No hay subcontenido para esta categoría.</p>
+                <?php endif; ?>
+            </section>
+
+            <!-- Sección de FAQs -->
+            <section class="gestion-section">
+                <h2>Preguntas Frecuentes (FAQs)</h2>
+                <a href="?id=<?= $categoryId ?>&nuevo_faq=1" class="menubutton"><i class="fa-solid fa-plus"></i>Añadir FAQ</a>
+                <table class="gestionar-table">
+                    <tr><th class="gestionar-th">Pregunta</th><th class="gestionar-th">Respuesta</th><th class="gestionar-th">Acciones</th></tr>
+                    <?php foreach ($faqs as $faq): ?>
+                        <tr>
+                            <td class="gestionar-td"><?= htmlspecialchars($faq->getPregunta()) ?></td>
+                            <td class="gestionar-td"><?= htmlspecialchars(substr($faq->getRespuesta(), 0, 80)) ?>...</td>
+                            <td class="gestionar-td">
+                                <a href="?id=<?= $categoryId ?>&editar_faq=<?= $faq->getIdFaq() ?>" class="editbutton"><i class="fas fa-pencil"></i> Editar</a>
+                                <form method="post" action="?id=<?= $categoryId ?>" class="gestionar-form-inline">
+                                    <input type="hidden" name="accion" value="eliminar_faq">
+                                    <input type="hidden" name="id_faq" value="<?= $faq->getIdFaq() ?>">
+                                    <button type="submit" class="deletebutton" onclick="return confirm('¿Eliminar FAQ?')"><i class="fas fa-trash"></i> Eliminar</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </table>
+                <?php if (empty($faqs)): ?>
+                    <p>No hay preguntas frecuentes para esta categoría.</p>
                 <?php endif; ?>
             </section>
         <?php else: ?>
@@ -303,6 +364,28 @@ if (isset($_GET['editar_bloque'])) {
                     <button type="submit" class="savebutton"><i class="fa-solid fa-floppy-disk"></i>Guardar</button> <!-- Botón para guardar el bloque de contenido. -->
                     <a href="?id=<?= $categoryId ?>" class="deletebutton"><i class="fa-solid fa-times"></i> Cancelar</a> 
                     <!-- Enlace para cancelar la acción y volver a la vista de gestión de la categoría sin guardar cambios. -->
+                </form>
+            </section>
+        <?php endif; ?>
+
+        <?php if ($editar_faq || (isset($_GET['nuevo_faq']) && $currentCategory)): ?> 
+            <!-- Formulario para crear o editar una FAQ -->
+            <section class="gestionar-section">
+                <h3><?= $editar_faq ? 'Editar' : 'Nueva' ?> Pregunta Frecuente</h3>
+                <form method="post" action="?id=<?= $categoryId ?>" class="gestionar-form">
+                    <input type="hidden" name="accion" value="guardar_faq">
+                    <?php if ($editar_faq): ?>
+                        <input type="hidden" name="id_faq" value="<?= $editar_faq->getIdFaq() ?>">
+                    <?php endif; ?>
+                    <label class="gestionar-label">Pregunta: <input type="text" name="pregunta" class="gestionar-input" value="<?= $editar_faq ? htmlspecialchars($editar_faq->getPregunta()) : '' ?>" required></label>
+                    <label class="gestionar-label">Respuesta: <textarea name="respuesta" class="gestionar-textarea" required><?= $editar_faq ? htmlspecialchars($editar_faq->getRespuesta()) : '' ?></textarea></label>
+                    <?php if ($editar_faq): ?>
+                        <input type="hidden" name="id_categoria" value="<?= $editar_faq->getIdCategoria() ?>">
+                    <?php else: ?>
+                        <input type="hidden" name="id_categoria" value="<?= $categoryId ?>">
+                    <?php endif; ?>
+                    <button type="submit" class="savebutton"><i class="fa-solid fa-floppy-disk"></i>Guardar</button>
+                    <a href="?id=<?= $categoryId ?>" class="deletebutton"><i class="fa-solid fa-times"></i> Cancelar</a>
                 </form>
             </section>
         <?php endif; ?>

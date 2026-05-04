@@ -108,119 +108,165 @@ INSERT INTO CATEGORIA (id_categoria, titulo, descripcion, icono, id_madre) VALUE
 
 -- Ser Trabajadora
 INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES 
-('La Relación Laboral', 'Los 5 requisitos clave', 'Para que seas considerada trabajadora y estés protegida por la ley, tu relación debe ser: 
-1. Voluntaria: Tú eliges trabajar libremente. 
-2. Personal: El trabajo lo realizas tú, nadie puede sustituirte. 
-3. Por cuenta ajena: Los beneficios del trabajo son para la empresa. 
-4. Dependiente: Trabajas bajo las órdenes de tu jefa. 
-5. Retribución: Trabajas a cambio de un salario.', 1, 11),
-('Leyes que te Protegen', 'Jerarquía normativa', 'Tus derechos están ordenados. Nada de lo que firmes puede ir en contra de esto:
-- Constitución Española: El derecho al trabajo y no discriminación.
-- Estatuto de los Trabajadores: La ley principal para todas.
-- Convenio Colectivo: Las normas específicas de tu sector.
-- Contrato de Trabajo: Tus condiciones particulares (siempre deben mejorar la ley).', 2, 11);
+('La Relación Laboral', 'Requisitos y Tipos de Relación', 'Para que tu actividad sea considerada una relación laboral ordinaria y estés bajo el amparo del Estatuto de los Trabajadores, deben cumplirse cinco condiciones esenciales: 
+1. Voluntariedad: Debes prestar tus servicios libremente, sin coacción. 
+2. Carácter Personalísimo: El trabajo debe ser realizado por ti directamente, sin posibilidad de ser sustituida por otra persona. 
+3. Ajeneidad: Los frutos de tu trabajo pertenecen a la empresa, no a ti, y es la empresa quien asume los riesgos económicos. 
+4. Dependencia: Trabajas dentro del ámbito de organización y dirección de otra persona (física o jurídica). 
+5. Retribución: Recibes un salario a cambio de tu tiempo y esfuerzo.
+
+Existen relaciones especiales (como empleadas del hogar, deportistas o artistas) que tienen normas propias, y relaciones excluidas (como los funcionarios públicos o trabajos familiares) donde no se aplica el Estatuto de los Trabajadores.', 1, 11),
+
+('Leyes que te Protegen', 'Jerarquía Normativa y Convenios', 'Tus derechos se rigen por un orden jerárquico que garantiza mínimos que nadie puede rebajar:
+- Constitución Española: Protege derechos fundamentales como la huelga y la no discriminación.
+- Estatuto de los Trabajadores: Es la ley base que establece los derechos mínimos para todas las trabajadoras en España.
+- Convenios Colectivos: Son acuerdos entre representantes de trabajadores y empresas de un sector específico (ej. Consultoría, Hostelería). Estos convenios suelen mejorar los mínimos de la ley y establecen tu salario real según tu categoría.
+- Contrato de Trabajo: Tu acuerdo particular con la empresa. Es vital recordar que un contrato nunca puede establecer condiciones peores que las del convenio o la ley; si lo hiciera, esa cláusula sería nula.', 2, 11);
 
 -- Edad y Nacionalidad
 INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES 
-('Capacidad por Edad', 'Menores de edad', 'Si tienes entre 16 y 18 años, necesitas la autorización de tus tutoras. Tienes prohibido: realizar horas extras, trabajar de noche (22:00 a 06:00) y realizar tareas peligrosas. Tu descanso debe ser de 30 minutos si la jornada supera 4.5 horas.', 1, 12),
-('Situación de Nacionalidad', 'Mujeres extranjeras', 'Si eres de fuera de la UE, necesitas la autorización de residencia y trabajo. La empresa tiene la obligación de solicitarla y darte de alta en Seguridad Social. Si no tienes permiso y trabajas, el contrato es nulo pero tienes derecho a reclamar tu sueldo por el tiempo trabajado.', 2, 12);
+('Capacidad por Edad', 'Protección a menores de 18 años', 'Si tienes entre 16 y 18 años (menor de edad), la ley te otorga una protección especial para garantizar tu salud y formación:
+- Autorización: Necesitas el permiso de tus padres o tutores para firmar el contrato.
+- Prohibiciones: Tienes prohibido realizar horas extraordinarias, trabajar en horario nocturno (de 22:00 a 06:00) y realizar actividades declaradas insalubres, penosas o peligrosas.
+- Descansos: Si tu jornada diaria excede las 4,5 horas, tienes derecho a un descanso mínimo de 30 minutos. Tu descanso semanal debe ser de al menos dos días ininterrumpidos.', 1, 12),
+
+('Situación de Nacionalidad', 'Derechos de mujeres extranjeras', 'Si no posees la nacionalidad de un país de la Unión Europea, necesitas una autorización previa de residencia y trabajo para que el contrato sea plenamente válido. La empresa tiene la obligación legal de solicitar tu alta en la Seguridad Social. 
+Es fundamental saber que, si trabajas sin el permiso correspondiente, el contrato se considera nulo por falta de capacidad, pero mantienes el derecho a percibir el salario por el trabajo ya realizado y a las prestaciones derivadas de accidentes de trabajo que pudieras sufrir. La ley protege tu derecho al cobro independientemente de tu situación administrativa.', 2, 12);
 
 -- Tipos de Contrato
 INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES 
-('Contratos Estables', 'Indefinidos y Fijos-Discontinuos', 'El contrato indefinido no tiene fecha de fin. El Fijo-Discontinuo es para trabajos que no son todo el año pero se repiten siempre (ej. campañas de recogida o comedores escolares). Tienes los mismos derechos que una trabajadora a tiempo completo.', 1, 13),
-('Contratos de Duración', 'Temporales y Formativos', 'Solo se permiten por:
-- Circunstancias de la producción: Máximo 6 meses (ampliable a 1 año) por exceso de trabajo.
-- Sustitución: Para cubrir a una compañera (ej. por maternidad).
-- Formación: Si no tienes título (Alternancia) o si acabas de obtenerlo (Práctica Profesional, duración de 6 meses a 1 año).', 2, 13);
+('Contratos Estables', 'Indefinidos y Fijos-Discontinuos 2025', 'La norma general es el contrato indefinido, que garantiza estabilidad sin fecha de finalización. 
+- Fijo-Discontinuo: Se utiliza para trabajos que son estables pero intermitentes en el tiempo (como campañas agrícolas, comedores escolares o servicios de temporada). Aunque el contrato se "pausa" cuando no hay actividad, mantienes tu antigüedad y el derecho a ser llamada de nuevo cuando la actividad se reanude según el orden pactado. Tienes los mismos derechos de protección y seguridad social que una trabajadora a tiempo completo durante los periodos de actividad.', 1, 13),
+
+('Contratos de Duración', 'Temporales y Formativos (Reforma 2025)', 'Los contratos temporales solo son legales bajo causas muy específicas:
+1. Por circunstancias de la producción: Para incrementos ocasionales e imprevisibles de trabajo. Su duración máxima es de 6 meses (ampliable a 1 año por convenio).
+2. Por sustitución: Para cubrir a una trabajadora con derecho a reserva de puesto (ej. baja por maternidad o excedencia).
+3. Contratos Formativos: 
+   - Formación en alternancia: Para compatibilizar trabajo y estudios (máximo 2 años).
+   - Práctica Profesional: Para quienes ya tienen título, con una duración de entre 6 meses y 1 año, asegurando tareas acordes a tu nivel de estudios.', 2, 13);
 
 -- Cambios de Condiciones
 INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES 
-('Movilidad Geográfica', 'Traslados y Desplazamientos', 'Si la empresa quiere que trabajes en otra ciudad:
-- Traslado: Es definitivo. Deben avisarte con 30 días. Puedes aceptar (te pagan mudanza), rescindir el contrato (20 días de indemnización/año) o reclamar al juez.
-- Desplazamiento: Es temporal. Tienes derecho a 4 días de permiso pagado por cada 3 meses fuera.', 1, 21),
-('Movilidad Funcional', 'Cambio de tareas', 'Si te piden hacer tareas de superior categoría, deben pagarte el sueldo de esa categoría. Si son tareas de inferior categoría, solo pueden obligarte por causas urgentes y deben mantenerte tu sueldo original.', 2, 21);
+('Movilidad Geográfica', 'Traslados vs Desplazamientos', 'La empresa puede cambiar tu lugar de trabajo si existen causas económicas o técnicas, pero con condiciones:
+- Traslado: Implica cambio de residencia definitivo o superior a 12 meses en 3 años. Deben avisarte con 30 días de antelación. Puedes elegir: aceptar (con compensación de gastos de mudanza), impugnar ante el juez o extinguir el contrato recibiendo una indemnización de 20 días por año (máximo 12 mensualidades).
+- Desplazamiento: Es temporal (menos de 12 meses en 3 años). Deben avisarte con 5 días de antelación. Tienes derecho a dietas, gastos de viaje y a un permiso de 4 días laborables en tu domicilio de origen por cada 3 meses de desplazamiento.', 1, 21),
+
+('Modificación de Condiciones', 'Sustancial y Funcional', 'Si la empresa cambia tus funciones (Movilidad Funcional), debe respetar tu dignidad y titulación. Si te asignan tareas de categoría superior, tienes derecho al salario de esa categoría; si son inferiores, deben mantener tu salario original y solo puede ser por causas urgentes.
+Para cambios en jornada, horario o salarios (Modificación Sustancial), la empresa debe demostrar causas justificadas y notificarte con 15 días de antelación. Si el cambio te perjudica, puedes rescindir el contrato con una indemnización de 20 días por año trabajado.', 2, 21);
 
 -- Maternidad y Pausas
 INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES 
-('Permiso por Nacimiento', 'Tus 16 semanas', 'Tienes derecho a 16 semanas:
-- 6 semanas obligatorias tras el parto.
-- 10 semanas voluntarias que puedes usar hasta que el bebé cumpla 1 año.
-Cobrarás el 100% de tu sueldo a través de la Seguridad Social.', 1, 22),
-('Derecho a Excedencia', 'Cuidado de familiares', 'Puedes pedir excedencia para cuidar a tus hijos (hasta 3 años) o a un familiar que no pueda valerse por sí mismo (hasta 2 años). Durante el primer año tienes reserva de tu puesto de trabajo exacto.', 2, 22);
+('Suspensión por Nacimiento', 'Novedades 2025: 17 semanas', 'El derecho a la suspensión del contrato por nacimiento y cuidado del menor se ha actualizado en 2025, extendiéndose a un total de 17 semanas de permiso:
+- 6 semanas obligatorias: Deben disfrutarse inmediatamente después del parto, a jornada completa, para asegurar la salud de la madre.
+- 11 semanas voluntarias: Se pueden disfrutar de forma seguida o interrumpida durante los primeros 12 meses de vida del bebé.
+Durante este periodo, la Seguridad Social te abona el 100% de tu base reguladora, y la empresa no puede despedirte, ya que se consideraría nulo por discriminación.', 1, 22),
+
+('Excedencias y Cuidados', 'Conciliación de la Vida Familiar', 'Tienes derecho a pausar tu contrato mediante excedencias:
+- Por cuidado de hijos: Hasta que el menor cumpla 3 años. Durante el primer año tienes derecho a la reserva de tu puesto de trabajo específico; después, la reserva es para un puesto del mismo grupo profesional.
+- Por cuidado de familiares: Hasta 2 años para cuidar a parientes de hasta 2º grado que no puedan valerse por sí mismos.
+En ambos casos, el periodo computa a efectos de antigüedad en la empresa y tienes derecho a asistir a cursos de formación profesional a los que te convoque la empresa.', 2, 22);
 
 -- Despido y Cierre
 INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES 
-('Protección ante el Despido', '¿Qué es un Despido Nulo?', 'Si te despiden por estar embarazada, por pedir la lactancia o por ser víctima de violencia de género, el despido es NULO. Esto significa que la empresa está obligada a readmitirte inmediatamente y pagarte los sueldos que no cobraste.', 1, 23),
-('Tipos de Despido', 'Objetivo y Disciplinario', 'El despido Objetivo (causas económicas) da derecho a 20 días por año. El Disciplinario (por falta grave) no da indemnización. Si no estás de acuerdo, firma siempre como "NO CONFORME" para poder reclamar ante el juez.', 2, 23);
+('Protección ante el Despido', 'El Despido Nulo y sus causas', 'Un despido se declara NULO cuando tiene como móvil alguna causa de discriminación prohibida o viola derechos fundamentales. Casos automáticos de nulidad incluyen:
+- Embarazo, maternidad o lactancia.
+- Ser víctima de violencia de género que ejerce sus derechos de movilidad o reducción.
+- Solicitar o estar disfrutando de permisos de conciliación.
+La consecuencia del despido nulo es la readmisión inmediata de la trabajadora en su puesto de trabajo y el abono de los "salarios de tramitación" (los sueldos que dejaste de cobrar desde el despido hasta la sentencia).', 1, 23),
+
+('Procedimiento de Despido', 'Objetivo y Disciplinario', 'Existen dos formas principales de despido unilateral por la empresa:
+- Despido Objetivo: Por causas económicas, técnicas o de producción. La empresa debe darte 15 días de preaviso y pagarte una indemnización de 20 días por año (máximo 12 mensualidades).
+- Despido Disciplinario: Por incumplimientos graves tuyos (faltas, desobediencia). No hay preaviso ni indemnización.
+Consejo Vital: Si no estás de acuerdo, firma la carta de despido y el finiquito escribiendo "NO CONFORME" junto a tu firma; esto es esencial para poder reclamar después ante el Juzgado de lo Social en un plazo de 20 días.', 2, 23);
 
 -- Finiquito y Liquidación
 INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES 
-('Tu Liquidación Final', '¿Qué te deben pagar?', 'Al irte, te deben el finiquito que incluye:
-1. Días trabajados del mes actual.
-2. Vacaciones no disfrutadas.
-3. Parte proporcional de las pagas extras.
-Si se acaba un contrato temporal, también te corresponden 12 días de indemnización por año trabajado.', 1, 24);
+('Liquidación Final', 'Cálculo del Finiquito y Liquidación', 'Al finalizar tu contrato, la empresa debe entregarte el documento de liquidación o finiquito. Este debe desglosar obligatoriamente:
+1. Salarios devengados: Los días trabajados del último mes que aún no has cobrado.
+2. Vacaciones no disfrutadas: Deben pagarte en dinero los días de vacaciones que has generado pero no has gastado (aproximadamente 2.5 días por mes trabajado).
+3. Pagas Extraordinarias: La parte proporcional de las pagas de verano y Navidad si no las tienes prorrateadas en tu sueldo mensual.
+Si tu contrato era temporal, además te corresponde una indemnización de 12 días de salario por cada año de servicio prestado.', 1, 24);
 
 -- Jornada y Horarios
 INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES 
-('Tu Jornada Laboral', 'Límites y distribución', 'Como trabajadora, tu jornada es el tiempo que dedicas a tu actividad laboral.
-- Límite Semanal: No puedes superar las 40 horas semanales de promedio en cómputo anual.
-- Límite Diario: No puedes trabajar más de 9 horas al día (8 horas si eres menor de 18 años).
-- Distribución Irregular: La empresa puede distribuir de forma desigual el 10% de tu jornada anual, pero debe avisarte con al menos 5 días de antelación.', 1, 31),
-('El Horario de Trabajo', 'Tu organización diaria', 'El horario fija las horas exactas de entrada y salida. Puede ser:
-- Continuo: Trabajas de tirón con un solo descanso corto.
-- Partido: Tu jornada se divide en dos partes con una interrupción larga para comer.
-- Rígido o Flexible: Dependiendo de si tienes libertad para elegir tus horas de entrada y salida respetando un tiempo común.', 2, 31);
+('Jornada Laboral', 'Límites legales y registro obligatorio', 'Tu jornada es el tiempo efectivo en el que estás a disposición de la empresa. Los límites son claros para evitar abusos:
+- Máximo semanal: 40 horas de promedio anual.
+- Máximo diario: 9 horas de trabajo efectivo (8 horas para menores). Entre jornadas debe haber un descanso mínimo de 12 horas.
+- Registro de Jornada: La empresa está obligada por ley a registrar diariamente tu hora exacta de entrada y salida. Este registro debe estar a tu disposición y es tu mejor prueba en caso de que realices horas extras que no te quieran pagar.', 1, 31),
+
+('Organización del Horario', 'Distribución Irregular y Turnos', 'La empresa puede decidir que trabajes más unas semanas que otras (Distribución Irregular) afectando hasta al 10% de tu jornada anual, pero debe avisarte con al menos 5 días de antelación.
+En trabajos a turnos (mañana/tarde/noche), ninguna trabajadora puede estar en el turno de noche más de dos semanas consecutivas, salvo que lo pida voluntariamente. Si tu jornada es partida, el tiempo de descanso intermedio (comida) no computa como trabajo a menos que el convenio diga lo contrario.', 2, 31);
 
 -- Descansos y Vacaciones
 INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES 
-('Tus Descansos Obligatorios', 'Diarios y semanales', 'Para proteger tu salud, tienes derecho a:
-- Descanso Diario: Al menos 12 horas entre que terminas una jornada y empiezas la siguiente.
-- Descanso en la Jornada: Si trabajas más de 6 horas seguidas, tienes derecho a 15 minutos (20 minutos si eres menor de 18 tras 4,5 horas).
-- Descanso Semanal: Un mínimo de un día y medio ininterrumpido (normalmente sábado tarde y domingo). Si eres menor, el descanso es de dos días completos.', 1, 32),
-('Vacaciones y Festivos', 'Días de descanso pagado', 'Tienes derecho a un mínimo de 30 días naturales de vacaciones por año trabajado.
-- No pueden ser sustituidas por dinero (salvo que el contrato termine).
-- Debes conocer las fechas al menos 2 meses antes de empezar.
-- Si coinciden con una baja por embarazo o maternidad, tienes derecho a disfrutarlas en otra fecha aunque haya terminado el año natural.', 2, 32);
+('Descansos Obligatorios', 'Diarios, Semanales y en la Jornada', 'El descanso es un derecho irrenunciable para garantizar la seguridad laboral:
+- Durante la jornada: Si trabajas más de 6 horas seguidas, tienes derecho a 15 minutos de descanso (20 minutos si eres menor tras 4.5 horas). Este tiempo solo se paga si así lo establece tu convenio.
+- Semanal: Tienes derecho a un descanso mínimo de un día y medio ininterrumpido (36 horas), que normalmente comprende la tarde del sábado y el domingo completo. Para menores, el descanso es de 2 días completos.', 1, 32),
+
+('Vacaciones Anuales', 'Derechos y Planificación', 'Tienes derecho a un mínimo de 30 días naturales de vacaciones pagadas al año. 
+- Acuerdo: Las fechas deben pactarse de mutuo acuerdo. La empresa no puede imponerlas unilateralmente ni tú cogerlas sin permiso. Debes conocer el calendario oficial con 2 meses de antelación.
+- Situaciones Especiales: Si durante tus vacaciones sufres una Incapacidad Temporal (baja médica) o coinciden con el permiso de nacimiento/lactancia, tienes derecho a disfrutarlas en una fecha distinta, incluso aunque haya terminado el año natural.', 2, 32);
 
 -- Horas y Turnos
 INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES 
-('Horas Extraordinarias', 'Voluntariedad y límites', 'Son las horas que trabajas por encima de tu jornada ordinaria.
-- Son voluntarias (salvo que se pacten por contrato) y tienen un límite de 80 horas al año.
-- Se pagan más caras que la hora normal o se compensan con tiempo de descanso.
-- Las trabajadoras menores y las nocturnas tienen prohibido realizarlas.', 1, 33),
-('Trabajo Nocturno y Turnos', 'Condiciones especiales', 'Se considera trabajo nocturno el que realizas entre las 22:00 y las 06:00 horas. Tienes derecho a un plus de nocturnidad.
-Registro de Jornada: Es obligatorio que la empresa registre cada día tu hora de entrada y salida. Tienes derecho a acceder a este registro para comprobar tus horas.', 2, 33);
+('Horas Extraordinarias', 'Límites y Compensación', 'Las horas extra son aquellas que exceden tu jornada ordinaria:
+- Voluntariedad: Salvo que se firmen en contrato o sean por fuerza mayor (reparar daños urgentes), son totalmente voluntarias.
+- Límite: No puedes hacer más de 80 horas extras al año (las compensadas con descanso no cuentan para este límite).
+- Pago: Deben pagarse con un importe superior a la hora normal o compensarse con tiempos de descanso pagado dentro de los 4 meses siguientes a su realización.', 1, 33),
+
+('Nocturnidad y Plus', 'Trabajo entre las 22h y las 06h', 'Se considera trabajadora nocturna a quien realiza al menos 3 horas de su jornada diaria en horario de noche (22:00 a 06:00). 
+- Salud: Estas trabajadoras tienen derecho a una evaluación gratuita de salud periódica.
+- Salario: Tienes derecho a percibir el "Plus de Nocturnidad" definido en tu convenio, a menos que el salario se haya establecido ya considerando que el trabajo es nocturno por su propia naturaleza. Los menores tienen prohibido este tipo de horario bajo cualquier circunstancia.', 2, 33);
 
 -- Permisos y Conciliación
 INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES 
-('Permisos Retribuidos', 'Días libres pagados', 'Puedes ausentarte del trabajo manteniendo tu sueldo en estos casos:
-- Matrimonio o Registro de Pareja: 15 días.
-- Enfermedad grave o ingreso de familiares: 5 días.
-- Fallecimiento de pariente: 2 días.
+('Permisos Retribuidos', 'Ausencias con derecho a sueldo', 'Puedes faltar al trabajo avisando previamente y justificando la causa, manteniendo tu salario íntegro:
+- Matrimonio/Pareja de hecho: 15 días naturales.
+- Accidente o enfermedad grave, hospitalización o intervención quirúrgica de familiares (hasta 2º grado): 5 días laborables.
+- Fallecimiento de pariente (hasta 2º grado): 2 días (4 si requiere desplazamiento).
 - Mudanza: 1 día.
-- Exámenes o deberes públicos: El tiempo indispensable (ej. para votar o ir al médico).', 1, 34),
-('Teletrabajo y Desconexión', 'Trabajar desde casa', 'Si trabajas a distancia al menos el 30% de tu tiempo, tienes derecho a un contrato por escrito que incluya:
-- Inventario de los equipos (ordenador, silla, etc.) que la empresa debe pagarte.
-- Compensación por los gastos (luz, internet).
-- Desconexión Digital: Tienes derecho a no contestar mensajes ni llamadas de trabajo fuera de tu horario laboral.', 2, 34);
+- Deber inexcusable: El tiempo necesario para votar, juicios o visitas médicas indispensables.', 1, 34),
+
+('Trabajo a Distancia', 'Teletrabajo y Desconexión Digital', 'Si teletrabajas más del 30% de tu jornada (ej. 2 días a la semana), tienes derecho a firmar un Acuerdo de Teletrabajo por escrito. 
+- Gastos: La empresa debe proporcionarte y mantener los equipos (ordenador, silla ergonómica) y compensar los gastos de suministros (luz, internet).
+- Desconexión Digital: Tienes derecho legal a no responder emails, WhatsApps o llamadas de trabajo fuera de tu horario laboral. La empresa no puede sancionarte por ejercer este derecho de desconexión.', 2, 34);
 
 -- ==========================================
--- FAQs
+-- FAQs (Respuestas detalladas)
 -- ==========================================
 INSERT INTO FAQ (pregunta, respuesta, id_categoria) VALUES 
-('¿Me pueden despedir por estar embarazada?', 'No. Se considera despido nulo y la empresa deberá readmitirte de inmediato.', 23),
-('¿Qué pasa si no tengo papeles y trabajo?', 'El contrato no es válido legalmente, pero tú tienes derecho a cobrar por todo el tiempo que hayas trabajado.', 12),
-('¿Cuánto tiempo tengo para descansar entre jornadas?', 'Por ley, deben pasar al menos 12 horas desde que sales del trabajo hasta que vuelves a entrar.', 14),
-('¿Puedo pedir una hora para cuidar a mi bebé?', 'Sí, es el permiso de lactancia. Tienes derecho a una hora de ausencia hasta que el bebé cumpla 9 meses.', 22),
-('¿Puedo elegir yo las fechas de mis vacaciones?', 'Deben ser pactadas entre tú y la empresa. En caso de desacuerdo, un juez decidirá la fecha. Debes conocerlas con 2 meses de antelación.', 32),
-('¿Me tienen que pagar las horas extras con dinero?', 'Pueden pagártelas con dinero (según convenio) o compensártelas con tiempo de descanso pagado en los 4 meses siguientes.', 33),
-('¿Tengo derecho a ir al médico durante mi jornada?', 'Sí, es un permiso retribuido por el tiempo indispensable para asistir a visitas médicas o exámenes, siempre que lo justifiques adecuadamente.', 34),
-('¿Qué pasa si trabajo de noche?', 'Tienes derecho a una retribución específica llamada "plus de nocturnidad" y tu jornada no puede exceder las 8 horas diarias de media.', 33);
+('¿Me pueden despedir por estar embarazada?', 'Absolutamente no. Según el artículo 55 del Estatuto de los Trabajadores, el despido de una trabajadora embarazada (o que ha solicitado permisos de lactancia o nacimiento) se considera automáticamente NULO. Esto significa que la empresa está obligada legalmente a readmitirte en tu mismo puesto y a pagarte todos los salarios que dejaste de percibir desde el día del despido hasta que vuelvas a tu puesto.', 23),
+
+('¿Qué pasa si trabajo sin contrato o "sin papeles"?', 'Aunque no tengas un contrato escrito o carezcas de permiso de residencia, la ley protege tu derecho al trabajo realizado. Si puedes demostrar que trabajas para la empresa (mediante mensajes, testigos o fotos), se presume que existe un contrato indefinido a jornada completa. Tienes derecho a reclamar judicialmente todos tus salarios, vacaciones y finiquito. La falta de permiso administrativo del trabajador no invalida su derecho a cobrar por el esfuerzo ya prestado.', 12),
+
+('¿Es obligatorio el preaviso para irme de la empresa?', 'Sí, si decides dimitir voluntariamente (Baja Voluntaria), debes dar el preaviso que indique tu convenio colectivo (normalmente 15 días). Si no lo haces, la empresa tiene derecho a descontarte del finiquito un día de salario por cada día de preaviso no cumplido. No necesitas dar preaviso si te vas por un incumplimiento grave de la empresa (ej. si no te pagan el sueldo durante meses).', 24),
+
+('¿Cómo se calcula mi indemnización por despido?', 'Depende del tipo de despido declarado:
+- Despido Objetivo (Causas económicas): 20 días de salario por año trabajado (máximo 12 mensualidades).
+- Despido Improcedente (Sin causa real): 33 días de salario por año trabajado (máximo 24 mensualidades).
+Para el cálculo se usa tu salario regulador (salario bruto anual con pagas extras dividido entre 365 días) y tu antigüedad total en la empresa.', 23),
+
+('¿Puedo pedir la reducción de jornada para cuidar a mi hijo/a?', 'Sí, tienes derecho a la "Reducción de Jornada por Guarda Legal" hasta que el menor cumpla 12 años. Puedes reducir entre un octavo (1/8) y la mitad (1/2) de tu jornada, con una reducción proporcional del salario. Lo más importante es que tú tienes el derecho a elegir el horario que mejor te convenga dentro de tu jornada ordinaria, y la empresa solo puede negarse por razones organizativas muy graves justificadas por escrito.', 34),
+
+('¿Tengo derecho a días libres si mi pareja se pone enferma?', 'Sí. Tras la reforma legal, dispones de un permiso retribuido de 5 días laborables al año para el cuidado de familiares (incluyendo cónyuge o pareja de hecho) en caso de accidente, enfermedad grave u hospitalización que requiera reposo domiciliario. Este permiso es pagado al 100% por la empresa y no tienes que recuperar esas horas después.', 34);
 
 -- ==========================================
 -- CONTENIDO (URLs externas)
 -- ==========================================
+-- Enlaces para la Categoría Madre (ID 1) o Bloques generales
 INSERT INTO contenido (url_externas, id_bloque) VALUES 
-('https://www.mites.gob.es/es/guia/texto/guia_6.htm', 15),
-('https://www.boe.es/buscar/act.php?id=BOE-A-2021-11472', 18);
+('https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430', 1), -- Enlace al Estatuto de los Trabajadores (BOE)
+('https://sede.seg-social.gob.es/wps/portal/sede/sede/Ciudadanos/Informes+y+Certificados/10124', 2); -- Informe de Vida Laboral
+
+-- Enlaces para Despidos y Paro (Subcategoría 9 / Bloques de Extinción)
+INSERT INTO contenido (url_externas, id_bloque) VALUES 
+('https://www.sepe.es/HomeSepe/personas/desempleo/prestaciones/tramitar-prestacion.html', 8), -- SEPE: Tramitar prestación por desempleo
+('https://www.sepe.es/HomeSepe/personas/desempleo/pago-unico.html', 8); -- SEPE: Información sobre el Pago Único (Capitalización)
+
+-- Enlaces para Maternidad/Paternidad (Subcategoría 8 / Bloques de Suspensión)
+INSERT INTO contenido (url_externas, id_bloque) VALUES 
+('https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesInformacion/44667', 6); -- Seguridad Social: Nacimiento y cuidado de menor
+
+-- Enlaces para Conciliación y SAMA (Subcategoría 9 / Bloques de Finalización)
+INSERT INTO contenido (url_externas, id_bloque) VALUES 
+('https://www.mites.gob.es/es/guia/texto/guia_11.htm', 9); -- Guía Laboral del Ministerio: Despidos y Conciliación
