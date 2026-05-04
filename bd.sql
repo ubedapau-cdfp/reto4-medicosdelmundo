@@ -276,11 +276,6 @@ INSERT INTO contenido (url_externas, id_bloque) VALUES
 INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES 
 ('Mis Derechos Iniciales', 'Bienvenida', 'Imagen de portada de la categoría principal.', 0, 1);
 
--- Insertar la imagen en la tabla contenido vinculada al bloque recién creado
--- La imagen se vinculará automáticamente al bloque con el id más alto que acabamos de crear
-INSERT INTO contenido (url_externas, id_bloque) VALUES 
-('Imagenes/Contenidos/mi-tiempo-laboral.png', (SELECT MAX(id_bloque) FROM BLOQUE WHERE id_categoria = 1)); -- Primera imagen de la categoría 1
-
 -- ==========================================
 -- NUEVA CATEGORÍA MADRE: MI SALARIO
 -- ==========================================
@@ -344,3 +339,22 @@ INSERT INTO FAQ (pregunta, respuesta, id_categoria) VALUES
 ('¿Qué son los devengos no salariales?', 'Son cantidades que recibes pero que no son "pago por tu trabajo" en sí, sino compensaciones por gastos. Ejemplos comunes son el plus de transporte, las dietas por comer fuera o las indemnizaciones por traslados. La diferencia principal es que estos conceptos no suelen cotizar para la jubilación o el paro.', 42),
 
 ('¿Cuál es el salario mínimo (SMI) en 2025?', 'El SMI garantiza un suelo salarial digno. Para una jornada completa, el mínimo legal es de 1.221€ mensuales si se percibe en 14 pagas, lo que suma un total de 17.094€ brutos al año. Ningún contrato a jornada completa puede estar por debajo de esta cifra.', 41);
+
+-- 1. Creamos un bloque específico para la categoría 3 (Mi Tiempo Laboral)
+-- Ponemos orden 0 para que sea lo primero que aparezca
+INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) 
+VALUES (
+    'Mi Tiempo Laboral', 
+    'Cabecera', 
+    'Imagen principal de la categoría.', 
+    0, 
+    3
+);
+
+-- 2. Ahora sí, relacionamos la foto con ese bloque recién creado
+-- Buscamos el bloque que acabamos de crear por su título
+INSERT INTO contenido (url_externas, id_bloque) 
+VALUES (
+    'Imagenes/Contenidos/mi-tiempo-laboral.png', 
+    (SELECT id_bloque FROM BLOQUE WHERE titulo = 'Mi Tiempo Laboral' AND id_categoria = 3 LIMIT 1)
+);
