@@ -270,3 +270,77 @@ INSERT INTO contenido (url_externas, id_bloque) VALUES
 -- Enlaces para Conciliación y SAMA (Subcategoría 9 / Bloques de Finalización)
 INSERT INTO contenido (url_externas, id_bloque) VALUES 
 ('https://www.mites.gob.es/es/guia/texto/guia_11.htm', 9); -- Guía Laboral del Ministerio: Despidos y Conciliación
+
+-- Imágenes para Categoría Principal 1 (Mis Derechos Iniciales)
+-- Crear un bloque con la imagen de portada
+INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES 
+('Mis Derechos Iniciales', 'Bienvenida', 'Imagen de portada de la categoría principal.', 0, 1);
+
+-- Insertar la imagen en la tabla contenido vinculada al bloque recién creado
+-- La imagen se vinculará automáticamente al bloque con el id más alto que acabamos de crear
+INSERT INTO contenido (url_externas, id_bloque) VALUES 
+('Imagenes/Contenidos/mi-tiempo-laboral.png', (SELECT MAX(id_bloque) FROM BLOQUE WHERE id_categoria = 1)); -- Primera imagen de la categoría 1
+
+-- ==========================================
+-- NUEVA CATEGORÍA MADRE: MI SALARIO
+-- ==========================================
+INSERT INTO CATEGORIA (id_categoria, titulo, descripcion, icono, id_madre) VALUES 
+(4, 'Mi Salario y mi Nómina', 'Todo lo que necesitas saber para entender tu sueldo, tus derechos y tu recibo de salario.', 'fa-solid fa-money-check-dollar', NULL);
+
+-- SUB-CATEGORÍAS DE SALARIO
+INSERT INTO CATEGORIA (id_categoria, titulo, descripcion, icono, id_madre) VALUES 
+(41, 'Conceptos y Cuantía', 'Qué es el salario, el SMI y los tipos de retribución.', 'fa-solid fa-coins', 4),
+(42, 'La Estructura de la Nómina', 'Cómo leer tu recibo: devengos, deducciones y bases.', 'fa-solid fa-file-invoice-dollar', 4),
+(43, 'Garantías y Protección', 'Derechos ante impagos, el FOGASA y anticipos.', 'fa-solid fa-hand-holding-dollar', 4);
+
+-- ==========================================
+-- BLOQUES DE CONTENIDO (Enriquecidos)
+-- ==========================================
+
+-- Conceptos y Cuantía (ID 41)
+INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES 
+('¿Qué es el Salario?', 'Definición y Límites Legales', 'El salario es la totalidad de las percepciones económicas que recibes por la prestación profesional de tus servicios. 
+- Salario por Convenio: Normalmente, tu sueldo viene fijado en el Convenio Colectivo de tu sector según tu categoría profesional. 
+- El SMI (Sueldo Mínimo Interprofesional): Es la cuantía mínima legal que cualquier trabajadora debe cobrar. Según los datos actuales, el SMI se sitúa en 1.221€/mes en 14 pagas (o 17.094€ brutos anuales). 
+- Carácter Inembargable: La ley protege tu salario mínimo; la parte del sueldo que no exceda el SMI no puede ser embargada por deudas, asegurando tu subsistencia básica.', 1, 41),
+
+('Tipos de Salario', 'Dinero vs Especie', 'Tu remuneración puede llegar de dos formas distintas que deben estar claramente reflejadas:
+1. Salario en Dinero: Es la forma común, pagada por transferencia o, excepcionalmente, en efectivo (máximo 2.500€). En ningún caso la parte en dinero puede ser inferior al SMI.
+2. Salario en Especie: Son beneficios no monetarios como el uso de vivienda, coche de empresa, seguros médicos o cheques restaurante. 
+- Límite Legal: El salario en especie nunca puede superar el 30% de tus percepciones salariales totales. Es decir, al menos el 70% de tu sueldo siempre debe ser dinero en efectivo o transferencia.', 2, 41);
+
+-- Estructura de la Nómina (ID 42)
+INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES 
+('Devengos y Deducciones', 'Lo que sumas y lo que restas', 'Tu nómina se divide en dos grandes columnas que determinan lo que finalmente llega a tu banco:
+- Devengos: Son las cantidades brutas. Se dividen en "Salariales" (sueldo base, pluses, antigüedad, pagas extra) y "No Salariales" (dietas, indemnizaciones o gastos de transporte que no cotizan igual).
+- Deducciones: Es lo que se te retiene legalmente. Incluye tu aportación a la Seguridad Social (para cubrir tu jubilación, desempleo y bajas) y la retención del IRPF (un pago a cuenta de tu impuesto sobre la renta que varía según tu situación familiar y nivel de ingresos). El resultado final tras restar las deducciones a los devengos es tu "Salario Neto" o líquido a percibir.', 1, 42),
+
+('Bases de Cotización', 'Tu protección social futura', 'Las bases de cotización son las cifras sobre las que se calculan tus futuras prestaciones:
+- BCCC (Contingencias Comunes): Se usa para calcular tu jubilación, bajas por enfermedad común y permisos de maternidad/paternidad. Incluye el salario base y la parte proporcional de las pagas extras.
+- BCCP (Contingencias Profesionales): Cubre accidentes de trabajo, enfermedades profesionales y desempleo. Es la base que determina cuánto cobrarás de "paro" si te quedas sin trabajo.
+- Horas Extraordinarias: Tienen una cotización específica y adicional. Entender estas bases es vital, ya que cuanto más alta sea tu cotización, mayor será tu protección en el futuro.', 2, 42);
+
+-- Garantías y Protección (ID 43)
+INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES 
+('Derechos ante el Pago', 'Plazos y Anticipos', 'El cobro del salario es tu derecho principal y está protegido por normas estrictas:
+- Puntualidad: El salario debe pagarse en la fecha convenida, sin que el periodo de pago pueda exceder de un mes.
+- Anticipos: Tienes derecho a percibir, antes de que llegue el día de pago, anticipos a cuenta del trabajo ya realizado durante el mes en curso.
+- Interés por demora: Si la empresa se retrasa en el pago, tienes derecho a reclamar un interés del 10% anual sobre la cantidad adeudada. Si el retraso es continuado y grave, podrías solicitar judicialmente la extinción del contrato con la misma indemnización que un despido improcedente.', 1, 43),
+
+('Garantías del Salario', 'Privilegios y el FOGASA', 'Si la empresa entra en crisis o quiebra, tu salario tiene una protección especial:
+- Superprivilegio: Los salarios de los últimos 30 días de trabajo (hasta el doble del SMI) tienen preferencia absoluta de cobro sobre cualquier otra deuda de la empresa.
+- FOGASA (Fondo de Garantía Salarial): Es un organismo estatal que garantiza que, si la empresa es declarada insolvente, tú cobres tus salarios e indemnizaciones pendientes (con ciertos límites legales). Funciona como un "seguro" para que nunca te quedes totalmente desprotegida ante el cierre de tu centro de trabajo.', 2, 43);
+
+-- ==========================================
+-- FAQs DE SALARIO
+-- ==========================================
+INSERT INTO FAQ (pregunta, respuesta, id_categoria) VALUES 
+('¿Qué pasa si mi empresa no me da la nómina?', 'La empresa está obligada por ley a entregarte un recibo individual de salarios (nómina) cada mes. Es tu comprobante de que se han realizado los pagos y las cotizaciones. Si no te la dan, puedes ser sancionada la empresa y tú tendrías dificultades para reclamar impagos o solicitar prestaciones.', 42),
+
+('¿Me pueden pagar todo el sueldo en "especie" o beneficios?', 'No. Por ley, el salario en especie no puede superar el 30% de las percepciones salariales. Además, la parte que recibes en dinero siempre debe ser, como mínimo, igual a la cuantía del SMI.', 41),
+
+('¿Qué puedo hacer si la empresa se retrasa constantemente en el pago?', 'Tienes dos vías: 1) Reclamar las cantidades con un 10% de interés por demora. 2) Si el retraso es grave y persistente, puedes solicitar ante el juez la resolución del contrato, lo que te daría derecho a la indemnización máxima (como si fuera un despido improcedente) y acceso al paro.', 43),
+
+('¿Qué son los devengos no salariales?', 'Son cantidades que recibes pero que no son "pago por tu trabajo" en sí, sino compensaciones por gastos. Ejemplos comunes son el plus de transporte, las dietas por comer fuera o las indemnizaciones por traslados. La diferencia principal es que estos conceptos no suelen cotizar para la jubilación o el paro.', 42),
+
+('¿Cuál es el salario mínimo (SMI) en 2025?', 'El SMI garantiza un suelo salarial digno. Para una jornada completa, el mínimo legal es de 1.221€ mensuales si se percibe en 14 pagas, lo que suma un total de 17.094€ brutos al año. Ningún contrato a jornada completa puede estar por debajo de esta cifra.', 41);
