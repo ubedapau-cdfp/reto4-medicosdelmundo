@@ -322,8 +322,8 @@ button[type=submit]:not(.savebutton):not(.deletebutton), .opciones{
 /* Estilos para contenido con imagen */
 .contenido-con-imagen {
     display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: center;
     gap: 30px;
     padding: 40px;
     margin: 20px;
@@ -331,18 +331,20 @@ button[type=submit]:not(.savebutton):not(.deletebutton), .opciones{
     border-radius: 18px;
     border: 1px solid #CED4DA;
     flex-wrap: wrap;
-    text-align: left;
+    text-align: center;
 }
 
 .contenido-texto {
-    flex: 1 1 55%;
+    flex: 1 1 100%;
     min-width: 280px;
+    text-align: center;
 }
 
 .contenido-imagen {
-    flex: 0 0 35%;
+    flex: 0 0 auto;
     min-width: 240px;
     max-width: 420px;
+    margin: 0 auto;
 }
 
 .contenido-imagen img {
