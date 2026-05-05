@@ -59,7 +59,7 @@
      */
     public static function obtenerTodas($db) {
         $contenidos = [];
-        $sql = "SELECT id_url, url_externas, id_bloque FROM contenido_externo ORDER BY id_url ASC";
+        $sql = "SELECT id_url, url_externas, id_bloque FROM contenido ORDER BY id_url ASC";
         try {
             $stmt = $db->prepare($sql);
             $stmt->execute();
@@ -81,7 +81,7 @@
      * @return ContenidoExterno|null
      */
     public static function obtenerPorId($db, $id_url) {
-        $sql = "SELECT id_url, url_externas, id_bloque FROM contenido_externo WHERE id_url = :id_url";
+        $sql = "SELECT id_url, url_externas, id_bloque FROM contenido WHERE id_url = :id_url";
         try {
             $stmt = $db->prepare($sql);
             $stmt->bindValue(':id_url', intval($id_url), PDO::PARAM_INT);
@@ -98,14 +98,38 @@
     }
 
     /**
-     * Obtiene todos los contenidos externos asociados a un bloque
+     * Obtiene todas las imágenes asociadas a un bloque (URLs que terminan en extensiones de imagen)
+     * @param PDO $db Conexión a la base de datos
+     * @param int $id_bloque ID del bloque
+     * @return array|null Array de URLs de imágenes
+     */
+    public static function obtenerImagenesPorBloqueId($db, $id_bloque) {
+        $imagenes = [];
+        $sql = "SELECT url_externas FROM contenido WHERE id_bloque = :id_bloque AND (url_externas LIKE '%.jpg' OR url_externas LIKE '%.jpeg' OR url_externas LIKE '%.png' OR url_externas LIKE '%.gif' OR url_externas LIKE '%.webp' OR url_externas LIKE '%.svg') ORDER BY id_url ASC";
+        try {
+            $stmt = $db->prepare($sql);
+            $stmt->bindValue(':id_bloque', intval($id_bloque), PDO::PARAM_INT);
+            $stmt->execute();
+            
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $imagenes[] = $row['url_externas'];
+            }
+        } catch (PDOException $e) {
+            echo "Error al obtener imágenes por bloque: " . $e->getMessage();
+            return null;
+        }
+        return $imagenes;
+    }
+
+    /**
+     * Obtiene todos los enlaces externos asociados a un bloque (URLs que NO terminan en extensiones de imagen)
      * @param PDO $db Conexión a la base de datos
      * @param int $id_bloque ID del bloque
      * @return array|null Array de objetos ContenidoExterno
      */
-    public static function obtenerPorBloqueId($db, $id_bloque) {
+    public static function obtenerEnlacesPorBloqueId($db, $id_bloque) {
         $contenidos = [];
-        $sql = "SELECT id_url, url_externas, id_bloque FROM contenido_externo WHERE id_bloque = :id_bloque ORDER BY id_url ASC";
+        $sql = "SELECT id_url, url_externas, id_bloque FROM contenido WHERE id_bloque = :id_bloque AND NOT (url_externas LIKE '%.jpg' OR url_externas LIKE '%.jpeg' OR url_externas LIKE '%.png' OR url_externas LIKE '%.gif' OR url_externas LIKE '%.webp' OR url_externas LIKE '%.svg') ORDER BY id_url ASC";
         try {
             $stmt = $db->prepare($sql);
             $stmt->bindValue(':id_bloque', intval($id_bloque), PDO::PARAM_INT);
@@ -115,7 +139,7 @@
                 $contenidos[] = new self($row['id_url'], $row['url_externas'], $row['id_bloque']);
             }
         } catch (PDOException $e) {
-            echo "Error al obtener contenidos por bloque: " . $e->getMessage();
+            echo "Error al obtener enlaces por bloque: " . $e->getMessage();
             return null;
         }
         return $contenidos;
@@ -127,7 +151,7 @@
      * @return int ID del nuevo contenido o false si hay error
      */
     public function insertar($db) {
-        $sql = "INSERT INTO contenido_externo (url_externas, id_bloque) VALUES (:url_externas, :id_bloque)";
+        $sql = "INSERT INTO contenido (url_externas, id_bloque) VALUES (:url_externas, :id_bloque)";
         try {
             $stmt = $db->prepare($sql);
             $stmt->bindValue(':url_externas', $this->url_externas, PDO::PARAM_STR);
@@ -147,7 +171,7 @@
      * @return bool true si se actualizó correctamente
      */
     public function actualizar($db) {
-        $sql = "UPDATE contenido_externo SET url_externas = :url_externas, id_bloque = :id_bloque WHERE id_url = :id_url";
+        $sql = "UPDATE contenido SET url_externas = :url_externas, id_bloque = :id_bloque WHERE id_url = :id_url";
         try {
             $stmt = $db->prepare($sql);
             $stmt->bindValue(':url_externas', $this->url_externas, PDO::PARAM_STR);
@@ -166,7 +190,7 @@
      * @return bool true si se eliminó correctamente
      */
     public function eliminar($db) {
-        $sql = "DELETE FROM contenido_externo WHERE id_url = :id_url";
+        $sql = "DELETE FROM contenido WHERE id_url = :id_url";
         try {
             $stmt = $db->prepare($sql);
             $stmt->bindValue(':id_url', intval($this->id_url), PDO::PARAM_INT);

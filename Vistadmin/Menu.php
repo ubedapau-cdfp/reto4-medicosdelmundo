@@ -28,6 +28,7 @@ $categoriasMadre = Categoria::obtenerCategoriasMadre($conn); // Obtiene las cate
 	<main class="menu-grid-container">
 		<section class="menu-page-actions">
 			<a class="menu-add-btn" href="<?= $base ?>Vistadmin/gestionar.php?nueva_categoria=1">+ Añadir categoría madre</a> <!-- Botón para añadir una nueva categoría madre -->
+			<a class="menu-add-btn" href="<?= $base ?>Vistadmin/gestionar_faqs.php" style="background-color: #ff6b6b;"><i class="fas fa-question-circle"></i> Gestionar FAQs</a> <!-- Botón para gestionar FAQs -->
 		</section>
 		<section class="menu-grid">
 			<?php foreach ($categoriasMadre as $cat): ?> <!-- Itera sobre cada categoría madre obtenida de la base de datos -->

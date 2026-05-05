@@ -64,7 +64,7 @@ class Categoria {
     public function mostrarDatos() {
         echo "<h1>" . $this->titulo . "</h1>";
         if (!empty($this->descripcion)) {
-            echo "<p><i>" . $this->descripcion . "</i></p>";
+            echo "<p>" . $this->descripcion . "</p>";
         }
     }
 
