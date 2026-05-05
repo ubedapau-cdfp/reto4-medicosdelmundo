@@ -358,3 +358,49 @@ VALUES (
     'Imagenes/Contenidos/mi-tiempo-laboral.png', 
     (SELECT id_bloque FROM BLOQUE WHERE titulo = 'Mi Tiempo Laboral' AND id_categoria = 3 LIMIT 1)
 );
+
+-- Imágenes de portada para categorías principales y subcategorías
+-- Categorías principales
+INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES
+('Mis Derechos Iniciales', 'Bienvenida', 'Imagen de portada de la categoría principal.', 0, 1),
+('Protección y Cambios', 'Bienvenida', 'Imagen de portada de la categoría principal.', 0, 2),
+('Mi Salario y mi Nómina', 'Bienvenida', 'Imagen de portada de la categoría principal.', 0, 4);
+
+-- Subcategorías
+INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES
+('Ser Trabajadora', 'Portada', 'Imagen de portada de la subcategoría.', 0, 11),
+('Edad y Nacionalidad', 'Portada', 'Imagen de portada de la subcategoría.', 0, 12),
+('Tipos de Contrato', 'Portada', 'Imagen de portada de la subcategoría.', 0, 13),
+('Jornada y Descanso', 'Portada', 'Imagen de portada de la subcategoría.', 0, 14),
+('Cambios de Condiciones', 'Portada', 'Imagen de portada de la subcategoría.', 0, 21),
+('Maternidad y Pausas', 'Portada', 'Imagen de portada de la subcategoría.', 0, 22),
+('Despido y Cierre', 'Portada', 'Imagen de portada de la subcategoría.', 0, 23),
+('Finiquito y Liquidación', 'Portada', 'Imagen de portada de la subcategoría.', 0, 24),
+('Jornada y Horarios', 'Portada', 'Imagen de portada de la subcategoría.', 0, 31),
+('Descansos y Vacaciones', 'Portada', 'Imagen de portada de la subcategoría.', 0, 32),
+('Horas y Turnos', 'Portada', 'Imagen de portada de la subcategoría.', 0, 33),
+('Permisos y Conciliación', 'Portada', 'Imagen de portada de la subcategoría.', 0, 34),
+('Conceptos y Cuantía', 'Portada', 'Imagen de portada de la subcategoría.', 0, 41),
+('La Estructura de la Nómina', 'Portada', 'Imagen de portada de la subcategoría.', 0, 42),
+('Garantías y Protección', 'Portada', 'Imagen de portada de la subcategoría.', 0, 43);
+
+-- Asignación de imágenes a las categorías y subcategorías
+INSERT INTO contenido (url_externas, id_bloque) VALUES
+('Imagenes/Contenidos/derechos-del-trabajador.jpg', (SELECT id_bloque FROM BLOQUE WHERE titulo = 'Mis Derechos Iniciales' AND id_categoria = 1 LIMIT 1)),
+('Imagenes/Contenidos/proteccion-y-cambios.jpg', (SELECT id_bloque FROM BLOQUE WHERE titulo = 'Protección y Cambios' AND id_categoria = 2 LIMIT 1)),
+('Imagenes/Contenidos/mi-salario-y-mi-nomina.jpg', (SELECT id_bloque FROM BLOQUE WHERE titulo = 'Mi Salario y mi Nómina' AND id_categoria = 4 LIMIT 1)),
+('Imagenes/Contenidos/ser-trabajadora.jpg', (SELECT id_bloque FROM BLOQUE WHERE titulo = 'Ser Trabajadora' AND id_categoria = 11 LIMIT 1)),
+('Imagenes/Contenidos/edad-y-nacionalidad.jpg', (SELECT id_bloque FROM BLOQUE WHERE titulo = 'Edad y Nacionalidad' AND id_categoria = 12 LIMIT 1)),
+('Imagenes/Contenidos/tipos-de-contrato.jfif', (SELECT id_bloque FROM BLOQUE WHERE titulo = 'Tipos de Contrato' AND id_categoria = 13 LIMIT 1)),
+('Imagenes/Contenidos/jornada-y-descanso.jpg', (SELECT id_bloque FROM BLOQUE WHERE titulo = 'Jornada y Descanso' AND id_categoria = 14 LIMIT 1)),
+('Imagenes/Contenidos/cambios-y-condiciones.jpg', (SELECT id_bloque FROM BLOQUE WHERE titulo = 'Cambios de Condiciones' AND id_categoria = 21 LIMIT 1)),
+('Imagenes/Contenidos/maternidad-y-pausas.jpg', (SELECT id_bloque FROM BLOQUE WHERE titulo = 'Maternidad y Pausas' AND id_categoria = 22 LIMIT 1)),
+('Imagenes/Contenidos/despido-y-cierre.jpg', (SELECT id_bloque FROM BLOQUE WHERE titulo = 'Despido y Cierre' AND id_categoria = 23 LIMIT 1)),
+('Imagenes/Contenidos/finiquito-y-liquidacion.png', (SELECT id_bloque FROM BLOQUE WHERE titulo = 'Finiquito y Liquidación' AND id_categoria = 24 LIMIT 1)),
+('Imagenes/Contenidos/jornada-y-horarios.jpg', (SELECT id_bloque FROM BLOQUE WHERE titulo = 'Jornada y Horarios' AND id_categoria = 31 LIMIT 1)),
+('Imagenes/Contenidos/descansos-y-vacaciones.jpg', (SELECT id_bloque FROM BLOQUE WHERE titulo = 'Descansos y Vacaciones' AND id_categoria = 32 LIMIT 1)),
+('Imagenes/Contenidos/horas-y-turnos.jpg', (SELECT id_bloque FROM BLOQUE WHERE titulo = 'Horas y Turnos' AND id_categoria = 33 LIMIT 1)),
+('Imagenes/Contenidos/permisos-y-conciliacion.jpg', (SELECT id_bloque FROM BLOQUE WHERE titulo = 'Permisos y Conciliación' AND id_categoria = 34 LIMIT 1)),
+('Imagenes/Contenidos/conceptos-y-cuantia.jpg', (SELECT id_bloque FROM BLOQUE WHERE titulo = 'Conceptos y Cuantía' AND id_categoria = 41 LIMIT 1)),
+('Imagenes/Contenidos/la-estructura-de-la-nomina.jpg', (SELECT id_bloque FROM BLOQUE WHERE titulo = 'La Estructura de la Nómina' AND id_categoria = 42 LIMIT 1)),
+('Imagenes/Contenidos/garantias-y-proteccion.jpg', (SELECT id_bloque FROM BLOQUE WHERE titulo = 'Garantías y Protección' AND id_categoria = 43 LIMIT 1));
