@@ -12,12 +12,12 @@ $error = null;
 $usuaria = null;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $id = intval($_POST['id'] ?? 0);
+    $id = intval($_POST['id'] ?? 0); // Guardado valor, cambiado a int. Si no, 0 por defecto.
     $nombre = trim($_POST['nombre'] ?? '');
     $email = trim($_POST['email'] ?? '');
     $rol = intval($_POST['rol'] ?? 0);
 
-    $usuaria = Usuario::RecuperarByID($id);
+    $usuaria = Usuario::RecuperarByID($id); // Función Estática RecuperarByID.
     if ($usuaria) {
         $usuaria->setNombre($nombre);
         $usuaria->setEmail($email);
