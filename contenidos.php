@@ -133,6 +133,14 @@ $imagenPrincipal = obtenerRutaImagen($categoria->getTitulo(), 'Imagenes/Contenid
         // Lógica para categorías finales (Muestra los bloques de contenido)
         if (!empty($listaBloques)): 
             foreach ($listaBloques as $bloque): 
+                // --- FILTRO PARA OCULTAR LA LEYENDA DE LA PORTADA ---
+                // Si el título es "Portada", ignoramos este bloque y saltamos al siguiente
+                if (trim($bloque->getSubtitulo()) === 'Portada') {
+                    continue; 
+                }
+                if (trim($bloque->getContenido()) === 'Imagen de portada de la subcategoría.') {
+                    continue;
+                }
                 // Mostramos los datos del bloque (Texto, etc.)
                 $bloque->mostrarDatos(); 
                 
