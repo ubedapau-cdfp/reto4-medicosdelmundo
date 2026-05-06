@@ -827,7 +827,27 @@ hr {
     border-radius: 10px;
     font-weight: 700;
 }
+.menu-add-btn:hover{
+    background-color: #023b69;
+    color: white;
+    transition: 0.3s;
+}
 
+.menu-faq-btn {
+    display: inline-block;
+    background-color: #ff6b6b;
+    color: white;
+    padding: 10px 18px;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 700;
+}
+
+.menu-faq-btn:hover{
+    background-color: #a13434;
+    color: white;
+    transition: 0.3s;
+}
 .menu-block-wrapper {
     position: relative;
 }
