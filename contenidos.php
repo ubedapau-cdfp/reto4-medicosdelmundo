@@ -5,6 +5,11 @@ include 'clases/Categoria.php';
 include 'clases/Bloque.php';
 include 'clases/ContenidoExterno.php';
 
+// Forzar que no se use caché
+header("Cache-Control: no-cache, no-store, must-revalidate");
+header("Pragma: no-cache");
+header("Expires: 0");
+
 // Inicializamos la conexión POO
 $database = new Database();
 $conn = $database->conectar();
@@ -49,8 +54,47 @@ if ($isMadre) {
 <body>
 
 <?php
-// Función helper para obtener la primera imagen de una categoría
-function obtenerImagenCategoria($conn, $id_categoria) {
+// Función helper para convertir un texto a slug (ej: "Ser Trabajadora" → "ser-trabajadora")
+function textoASlug($texto) {
+    $slug = strtolower($texto);
+    $slug = preg_replace('/[áàäâã]/i', 'a', $slug);
+    $slug = preg_replace('/[éèëê]/i', 'e', $slug);
+    $slug = preg_replace('/[íìïî]/i', 'i', $slug);
+    $slug = preg_replace('/[óòöô]/i', 'o', $slug);
+    $slug = preg_replace('/[úùüû]/i', 'u', $slug);
+    $slug = preg_replace('/[ñ]/i', 'n', $slug);
+    $slug = preg_replace('/[^a-z0-9]+/', '-', $slug);
+    $slug = trim($slug, '-');
+    return $slug;
+}
+
+// Función helper para obtener la imagen de una categoría por su nombre
+function obtenerImagenCategoria($conn, $id_categoria, $titulo_categoria = null) {
+    // Si no se proporciona el título, obtenerlo de la BD
+    if (!$titulo_categoria) {
+        $categoria = Categoria::obtenerPorId($conn, $id_categoria);
+        if (!$categoria) {
+            return null;
+        }
+        $titulo_categoria = $categoria->getTitulo();
+    }
+    
+    // Convertir el título a slug para buscar la imagen
+    $slug = textoASlug($titulo_categoria);
+    
+    // Extensiones de imagen permitidas
+    $extensiones = ['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', '.jfif'];
+    $carpeta_imagenes = 'Imagenes/Contenidos/';
+    
+    // Buscar si existe una imagen con ese nombre
+    foreach ($extensiones as $ext) {
+        $ruta_imagen = $carpeta_imagenes . $slug . $ext;
+        if (file_exists($ruta_imagen)) {
+            return $ruta_imagen;
+        }
+    }
+    
+    // Si no se encuentra imagen por slug, buscar en los bloques (fallback)
     $bloques = Bloque::obtenerPorCategoriaId($conn, $id_categoria);
     if (!empty($bloques)) {
         foreach ($bloques as $bloque) {
@@ -63,7 +107,7 @@ function obtenerImagenCategoria($conn, $id_categoria) {
     return null;
 }
 
-$imagenCategoria = obtenerImagenCategoria($conn, $id_categoria);
+$imagenCategoria = obtenerImagenCategoria($conn, $id_categoria, $categoria->getTitulo());
 ?>
 
 <?php include 'barrasNavegacion/header.php'; ?>
@@ -87,7 +131,7 @@ if ($isMadre) {
     if (!empty($subcategorias)) {
         echo "<h2>Subapartados:</h2><div class='subapartados-grid'>";
         foreach ($subcategorias as $sub) {
-            $imagenSub = obtenerImagenCategoria($conn, $sub->getIdCategoria());
+            $imagenSub = obtenerImagenCategoria($conn, $sub->getIdCategoria(), $sub->getTitulo());
             echo "<a href='contenidos.php?id=" . $sub->getIdCategoria() . "' class='subapartado-card'>";
             if (!empty($imagenSub)) {
                 echo "<div class='subapartado-thumb'><img src='" . htmlspecialchars($imagenSub) . "' alt='" . htmlspecialchars($sub->getTitulo()) . "'></div>";
