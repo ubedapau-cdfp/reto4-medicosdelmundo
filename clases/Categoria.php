@@ -103,19 +103,21 @@ class Categoria {
 
     // Obtener solo las categorías principales (Madres)
     public static function obtenerCategoriasMadre($db) {
-        $sql = "SELECT * FROM CATEGORIA WHERE id_madre IS NULL ORDER BY titulo ASC";
+        $sql = "SELECT * FROM CATEGORIA WHERE id_madre IS NULL ORDER BY id_categoria ASC";
         return self::ejecutarConsulta($db, $sql);
     }
 
     // Obtener las subcategorías de una madre específica
     public static function obtenerSubcategorias($db, $id_madre) {
-        $sql = "SELECT * FROM CATEGORIA WHERE id_madre = :id_madre ORDER BY titulo ASC";
+        $sql = "SELECT * FROM CATEGORIA WHERE id_madre = :id_madre ORDER BY id_categoria ASC";
+        $id_madre = (int)$id_madre; // Asegurar que sea entero
         return self::ejecutarConsulta($db, $sql, [':id_madre' => $id_madre]);
     }
 
     // Obtener una categoría por su ID
     public static function obtenerPorId($db, $id_categoria) {
         $sql = "SELECT * FROM CATEGORIA WHERE id_categoria = :id_categoria";
+        $id_categoria = (int)$id_categoria; // Asegurar que sea entero
         $categorias = self::ejecutarConsulta($db, $sql, [':id_categoria' => $id_categoria]);
         return !empty($categorias) ? $categorias[0] : null;
     }

@@ -5,6 +5,11 @@ include 'clases/Categoria.php';
 include 'clases/Bloque.php';
 include 'clases/ContenidoExterno.php';
 
+// Forzar que no se use caché
+header("Cache-Control: no-cache, no-store, must-revalidate");
+header("Pragma: no-cache");
+header("Expires: 0");
+
 // Inicializamos la conexión POO
 $database = new Database();
 $conn = $database->conectar();
