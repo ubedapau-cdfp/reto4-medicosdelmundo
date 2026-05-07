@@ -72,6 +72,7 @@ INSERT INTO USUARIOS(id_usuario, email, password_hash, nombre, id_rol) VALUES
     (4, 'estoymosqueado@copabacana.com', '$2a$12$iT2882exM.y41zO0DFf.nekov3VBVSkmRGT2o8eZ71opfRPR2Rbsi', 'Orientadora', 2),
     (5, 'mepicalaabeja123@ekisde.com', '$2a$12$pHtQ0.F4RSG.ABYb0N5aTeOu9.t14TcB7mPfx5OdT/zMiHWUDqPkS', 'Orientadora', 2),
     (6, 'mepicalaabeja124@ekisde.com', '$2a$12$pHtQ0.F4RSG.ABYb0N5aTeOu9.t14TcB7mPfx5OdT/zMiHWUDqPkS', 'Orientadora', 2);
+    (7, 'mamahuevo@mamail.com', '$2a$12$pHtQ0.F4RSG.ABYb0N5aTeOu9.t14TcB7mPfx5OdT/zMiHWUDqPkS', 'Orientadora', 2);
 
 -- ==========================================
 -- CATEGORÍAS MADRE
