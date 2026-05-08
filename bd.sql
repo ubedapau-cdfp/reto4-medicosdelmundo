@@ -68,7 +68,7 @@ INSERT INTO ROL(id_rol, nombre_rol) VALUES
 INSERT INTO USUARIOS(id_usuario, email, password_hash, nombre, id_rol) VALUES 
     (1, 'correodeprueba@google.com', '$2a$12$BOn7nGRmV/J0p6vpXzJOVOAlfYtfaLY2WBUgMIrLBKz5G.ouOYO3S', 'Prueba', 3), 
     (2, 'correo@holamail.com', '$2a$12$V0Gat3GouS0lWD44Oovz6u3VY8UZbNA7Q7YY5DmU9nqlYzfmNhea.', 'Usuaria123', 3),
-    (3, 'megustanlaspatatas@bravas.com', '$2a$12$VSDjDWfXVhtDd5r8ZPlOwuwcocY8xhTGZIPK8BXIXj.XqohEV9i8y', 'Bravas', 2),
+    (3, 'megustanlaspatatas@bravas.com', '$2a$12$VSDjDWfXVhtDd5r8ZPlOwuwcocY8xhTGZIPK8BXIXj.XqohEV9i8y', 'Bravas', 2);
 
 -- ==========================================
 -- CATEGORÍAS MADRE
