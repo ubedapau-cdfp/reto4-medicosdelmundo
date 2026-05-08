@@ -69,10 +69,6 @@ INSERT INTO USUARIOS(id_usuario, email, password_hash, nombre, id_rol) VALUES
     (1, 'correodeprueba@google.com', '$2a$12$BOn7nGRmV/J0p6vpXzJOVOAlfYtfaLY2WBUgMIrLBKz5G.ouOYO3S', 'Prueba', 3), 
     (2, 'correo@holamail.com', '$2a$12$V0Gat3GouS0lWD44Oovz6u3VY8UZbNA7Q7YY5DmU9nqlYzfmNhea.', 'Usuaria123', 3),
     (3, 'megustanlaspatatas@bravas.com', '$2a$12$VSDjDWfXVhtDd5r8ZPlOwuwcocY8xhTGZIPK8BXIXj.XqohEV9i8y', 'Bravas', 2),
-    (4, 'estoymosqueado@copabacana.com', '$2a$12$iT2882exM.y41zO0DFf.nekov3VBVSkmRGT2o8eZ71opfRPR2Rbsi', 'Orientadora', 2),
-    (5, 'mepicalaabeja123@ekisde.com', '$2a$12$pHtQ0.F4RSG.ABYb0N5aTeOu9.t14TcB7mPfx5OdT/zMiHWUDqPkS', 'Orientadora', 2),
-    (6, 'mepicalaabeja124@ekisde.com', '$2a$12$pHtQ0.F4RSG.ABYb0N5aTeOu9.t14TcB7mPfx5OdT/zMiHWUDqPkS', 'Orientadora', 2);
-    (7, 'mamahuevo@mamail.com', '$2a$12$pHtQ0.F4RSG.ABYb0N5aTeOu9.t14TcB7mPfx5OdT/zMiHWUDqPkS', 'Orientadora', 2);
 
 -- ==========================================
 -- CATEGORÍAS MADRE
@@ -121,13 +117,13 @@ Existen relaciones especiales (como empleadas del hogar, deportistas o artistas)
 ('Leyes que te Protegen', 'Jerarquía Normativa y Convenios', 'Tus derechos se rigen por un orden jerárquico que garantiza mínimos que nadie puede rebajar:
 - Constitución Española: Protege derechos fundamentales como la huelga y la no discriminación.
 - Estatuto de los Trabajadores: Es la ley base que establece los derechos mínimos para todas las trabajadoras en España.
-- Convenios Colectivos: Son acuerdos entre representantes de trabajadores y empresas de un sector específico (ej. Consultoría, Hostelería). Estos convenios suelen mejorar los mínimos de la ley y establecen tu salario real según tu categoría.
-- Contrato de Trabajo: Tu acuerdo particular con la empresa. Es vital recordar que un contrato nunca puede establecer condiciones peores que las del convenio o la ley; si lo hiciera, esa cláusula sería nula.', 2, 11);
+- Convenios Colectivos: Son acuerdos entre representantes de trabajadoras y empresas de un sector específico (ej. Consultoría, Hostelería). Estos convenios suelen mejorar los mínimos de la ley y establecen tu salario real según tu categoría.
+- Contrato de Trabajo: Tu acuerdo particular con la empresa. Es vital recordar que un contrato nunca puede establecer condiciones peores que las del convenio o la ley. Si lo hiciera, esa cláusula sería nula.', 2, 11);
 
 -- Edad y Nacionalidad
 INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES 
 ('Capacidad por Edad', 'Protección a menores de 18 años', 'Si tienes entre 16 y 18 años (menor de edad), la ley te otorga una protección especial para garantizar tu salud y formación:
-- Autorización: Necesitas el permiso de tus padres o tutores para firmar el contrato.
+- Autorización: Necesitas el permiso de tus tutores legales para firmar el contrato.
 - Prohibiciones: Tienes prohibido realizar horas extraordinarias, trabajar en horario nocturno (de 22:00 a 06:00) y realizar actividades declaradas insalubres, penosas o peligrosas.
 - Descansos: Si tu jornada diaria excede las 4,5 horas, tienes derecho a un descanso mínimo de 30 minutos. Tu descanso semanal debe ser de al menos dos días ininterrumpidos.', 1, 12),
 
@@ -152,18 +148,19 @@ INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES
 - Traslado: Implica cambio de residencia definitivo o superior a 12 meses en 3 años. Deben avisarte con 30 días de antelación. Puedes elegir: aceptar (con compensación de gastos de mudanza), impugnar ante el juez o extinguir el contrato recibiendo una indemnización de 20 días por año (máximo 12 mensualidades).
 - Desplazamiento: Es temporal (menos de 12 meses en 3 años). Deben avisarte con 5 días de antelación. Tienes derecho a dietas, gastos de viaje y a un permiso de 4 días laborables en tu domicilio de origen por cada 3 meses de desplazamiento.', 1, 21),
 
-('Modificación de Condiciones', 'Sustancial y Funcional', 'Si la empresa cambia tus funciones (Movilidad Funcional), debe respetar tu dignidad y titulación. Si te asignan tareas de categoría superior, tienes derecho al salario de esa categoría; si son inferiores, deben mantener tu salario original y solo puede ser por causas urgentes.
+('Modificación de Condiciones', 'Sustancial y Funcional', 'Si la empresa cambia tus funciones (Movilidad Funcional), debe respetar tu dignidad y titulación. Si te asignan tareas de categoría superior, tienes derecho al salario de esa categoría. Si son inferiores, deben mantener tu salario original y solo puede ser por causas urgentes.
 Para cambios en jornada, horario o salarios (Modificación Sustancial), la empresa debe demostrar causas justificadas y notificarte con 15 días de antelación. Si el cambio te perjudica, puedes rescindir el contrato con una indemnización de 20 días por año trabajado.', 2, 21);
 
 -- Maternidad y Pausas
 INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES 
-('Suspensión por Nacimiento', 'Novedades 2025: 17 semanas', 'El derecho a la suspensión del contrato por nacimiento y cuidado del menor se ha actualizado en 2025, extendiéndose a un total de 17 semanas de permiso:
+('Suspensión por Nacimiento', '19 semanas', 'El derecho a la suspensión del contrato por nacimiento y cuidado del menor se ha actualizado, extendiéndose a un total de 19 semanas de permiso:
 - 6 semanas obligatorias: Deben disfrutarse inmediatamente después del parto, a jornada completa, para asegurar la salud de la madre.
 - 11 semanas voluntarias: Se pueden disfrutar de forma seguida o interrumpida durante los primeros 12 meses de vida del bebé.
+- 2 últimas semanas: se pueden distribuir de forma flexible hasta que el menor cumpla los 8 años de edad.
 Durante este periodo, la Seguridad Social te abona el 100% de tu base reguladora, y la empresa no puede despedirte, ya que se consideraría nulo por discriminación.', 1, 22),
 
 ('Excedencias y Cuidados', 'Conciliación de la Vida Familiar', 'Tienes derecho a pausar tu contrato mediante excedencias:
-- Por cuidado de hijos: Hasta que el menor cumpla 3 años. Durante el primer año tienes derecho a la reserva de tu puesto de trabajo específico; después, la reserva es para un puesto del mismo grupo profesional.
+- Por cuidado de hijos: Hasta que el menor cumpla 3 años. Durante el primer año tienes derecho a la reserva de tu puesto de trabajo específico. Después, la reserva es para un puesto del mismo grupo profesional.
 - Por cuidado de familiares: Hasta 2 años para cuidar a parientes de hasta 2º grado que no puedan valerse por sí mismos.
 En ambos casos, el periodo computa a efectos de antigüedad en la empresa y tienes derecho a asistir a cursos de formación profesional a los que te convoque la empresa.', 2, 22);
 
@@ -178,7 +175,7 @@ La consecuencia del despido nulo es la readmisión inmediata de la trabajadora e
 ('Procedimiento de Despido', 'Objetivo y Disciplinario', 'Existen dos formas principales de despido unilateral por la empresa:
 - Despido Objetivo: Por causas económicas, técnicas o de producción. La empresa debe darte 15 días de preaviso y pagarte una indemnización de 20 días por año (máximo 12 mensualidades).
 - Despido Disciplinario: Por incumplimientos graves tuyos (faltas, desobediencia). No hay preaviso ni indemnización.
-Consejo Vital: Si no estás de acuerdo, firma la carta de despido y el finiquito escribiendo "NO CONFORME" junto a tu firma; esto es esencial para poder reclamar después ante el Juzgado de lo Social en un plazo de 20 días.', 2, 23);
+Consejo Vital: Si no estás de acuerdo, firma la carta de despido y el finiquito escribiendo "NO CONFORME" junto a tu firma. Esto es esencial para poder reclamar después ante el Juzgado de lo Social en un plazo de 20 días.', 2, 23);
 
 -- Finiquito y Liquidación
 INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES 
@@ -196,7 +193,7 @@ Si tu contrato era temporal, además te corresponde una indemnización de 12 dí
 -- ---------------------------------------------------------
 
 INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES 
-('Definición de Jornada', 'Límites y Trabajo Efectivo', 'La jornada de trabajo es el total de horas de trabajo efectivo realizadas entre la entrada y la salida. Por norma general, no se computan los tiempos de desplazamiento, cambios de vestuario o descansos para café/comida, salvo que el convenio diga lo contrario.
+('Definición de Jornada', 'Límites y Trabajo Efectivo', 'La jornada de trabajo es el total de horas de trabajo efectivo realizadas entre la entrada y la salida. Por norma general, no se computan los tiempos de desplazamiento o cambios de vestuario, salvo que el convenio diga lo contrario.
 Límites legales:
 - Máxima ordinaria: 40 horas semanales de promedio en cómputo anual.
 - Límite diario: Máximo 9 horas (8 horas para menores de 18 años).', 3, 31),
@@ -266,7 +263,7 @@ INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES
 - Causas económicas o técnicas: Reducción autorizada entre el 10% y 70%.', 4, 34),
 
 ('Trabajo a Distancia', 'Teletrabajo y Desconexión Digital', 'Si teletrabajas más del 30% de tu jornada (ej. 2 días a la semana), tienes derecho a firmar un Acuerdo de Teletrabajo por escrito. 
-- Gastos: La empresa debe proporcionarte y mantener los equipos (ordenador, silla ergonómica) y compensar los gastos de suministros (luz, internet).
+- Gastos: La empresa debe proporcionarte y mantener los equipos (ordenador, silla ergonómica) e incluir en la nómina el plus de teletrabajo (si aplica por convenio) para ayudar con los gastos de suministros derivados del teletrabajo en tu hogar(luz, internet).
 - Desconexión Digital: Tienes derecho legal a no responder emails, WhatsApps o llamadas de trabajo fuera de tu horario laboral. La empresa no puede sancionarte por ejercer este derecho de desconexión.', 2, 34);
 
 -- ==========================================
