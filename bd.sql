@@ -112,7 +112,7 @@ INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES
 4. Dependencia: Trabajas dentro del ámbito de organización y dirección de otra persona (física o jurídica). 
 5. Retribución: Recibes un salario a cambio de tu tiempo y esfuerzo.
 
-Existen relaciones especiales (como empleadas del hogar, deportistas o artistas) que tienen normas propias, y relaciones excluidas (como los funcionarios públicos o trabajos familiares) donde no se aplica el Estatuto de los Trabajadores.', 1, 11),
+Existen relaciones especiales (como empleadas del hogar, deportistas o artistas) que tienen normas propias, y relaciones excluidas (como las funcionarias públicas o trabajos familiares) donde no se aplica el Estatuto de los Trabajadores.', 1, 11),
 
 ('Leyes que te Protegen', 'Jerarquía Normativa y Convenios', 'Tus derechos se rigen por un orden jerárquico que garantiza mínimos que nadie puede rebajar:
 - Constitución Española: Protege derechos fundamentales como la huelga y la no discriminación.
@@ -145,7 +145,7 @@ INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES
 -- Cambios de Condiciones
 INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES 
 ('Movilidad Geográfica', 'Traslados vs Desplazamientos', 'La empresa puede cambiar tu lugar de trabajo si existen causas económicas o técnicas, pero con condiciones:
-- Traslado: Implica cambio de residencia definitivo o superior a 12 meses en 3 años. Deben avisarte con 30 días de antelación. Puedes elegir: aceptar (con compensación de gastos de mudanza), impugnar ante el juez o extinguir el contrato recibiendo una indemnización de 20 días por año (máximo 12 mensualidades).
+- Traslado: Implica cambio de residencia definitivo o superior a 12 meses en 3 años. Deben avisarte con 30 días de antelación. Puedes elegir: aceptar (con compensación de gastos de mudanza), impugnar ante el juzgado o extinguir el contrato recibiendo una indemnización de 20 días por año (máximo 12 mensualidades).
 - Desplazamiento: Es temporal (menos de 12 meses en 3 años). Deben avisarte con 5 días de antelación. Tienes derecho a dietas, gastos de viaje y a un permiso de 4 días laborables en tu domicilio de origen por cada 3 meses de desplazamiento.', 1, 21),
 
 ('Modificación de Condiciones', 'Sustancial y Funcional', 'Si la empresa cambia tus funciones (Movilidad Funcional), debe respetar tu dignidad y titulación. Si te asignan tareas de categoría superior, tienes derecho al salario de esa categoría. Si son inferiores, deben mantener tu salario original y solo puede ser por causas urgentes.
@@ -238,11 +238,11 @@ INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES
 - Límite: 80 horas anuales.
 - Compensación: Se pueden pagar (mínimo valor de hora ordinaria) o compensar con descanso en los 4 meses siguientes. Si no se compensan, deben pagarse obligatoriamente.
 - Fuerza Mayor: Horas para reparar daños urgentes (no cuentan para el límite de 80h).
-- Prohibiciones: No pueden realizarlas menores, trabajadores nocturnos ni contratos a tiempo parcial.', 4, 33),
+- Prohibiciones: No pueden realizarlas menores, trabajadoras nocturnas ni personas con contrato a tiempo parcial.', 4, 33),
 
 ('Nocturnidad y Plus', 'Trabajo entre las 22h y las 06h', 'Se considera trabajadora nocturna a quien realiza al menos 3 horas de su jornada diaria en horario de noche (22:00 a 06:00). 
 - Salud: Estas trabajadoras tienen derecho a una evaluación gratuita de salud periódica.
-- Salario: Tienes derecho a percibir el "Plus de Nocturnidad" definido en tu convenio, a menos que el salario se haya establecido ya considerando que el trabajo es nocturno por su propia naturaleza. Los menores tienen prohibido este tipo de horario bajo cualquier circunstancia.', 2, 33);
+- Salario: Tienes derecho a percibir el "Plus de Nocturnidad" definido en tu convenio, a menos que el salario se haya establecido ya considerando que el trabajo es nocturno por su propia naturaleza. Las menores tienen prohibido este tipo de horario bajo cualquier circunstancia.', 2, 33);
 
 -- ---------------------------------------------------------
 -- 4. PERMISOS Y CONCILIACIÓN (ID_CATEGORIA: 34)
@@ -272,7 +272,7 @@ INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES
 INSERT INTO FAQ (pregunta, respuesta, id_categoria) VALUES 
 ('¿Me pueden despedir por estar embarazada?', 'Absolutamente no. Según el artículo 55 del Estatuto de los Trabajadores, el despido de una trabajadora embarazada (o que ha solicitado permisos de lactancia o nacimiento) se considera automáticamente NULO. Esto significa que la empresa está obligada legalmente a readmitirte en tu mismo puesto y a pagarte todos los salarios que dejaste de percibir desde el día del despido hasta que vuelvas a tu puesto.', 23),
 
-('¿Qué pasa si trabajo sin contrato o "sin papeles"?', 'Aunque no tengas un contrato escrito o carezcas de permiso de residencia, la ley protege tu derecho al trabajo realizado. Si puedes demostrar que trabajas para la empresa (mediante mensajes, testigos o fotos), se presume que existe un contrato indefinido a jornada completa. Tienes derecho a reclamar judicialmente todos tus salarios, vacaciones y finiquito. La falta de permiso administrativo del trabajador no invalida su derecho a cobrar por el esfuerzo ya prestado.', 12),
+('¿Qué pasa si trabajo sin contrato o "sin papeles"?', 'Aunque no tengas un contrato escrito o carezcas de permiso de residencia, la ley protege tu derecho al trabajo realizado. Si puedes demostrar que trabajas para la empresa (mediante mensajes, testigos o fotos), se presume que existe un contrato indefinido a jornada completa. Tienes derecho a reclamar judicialmente todos tus salarios, vacaciones y finiquito. La falta de permiso administrativo de la trabajadora no invalida su derecho a cobrar por el esfuerzo ya prestado.', 12),
 
 ('¿Es obligatorio el preaviso para irme de la empresa?', 'Sí, si decides dimitir voluntariamente (Baja Voluntaria), debes dar el preaviso que indique tu convenio colectivo (normalmente 15 días). Si no lo haces, la empresa tiene derecho a descontarte del finiquito un día de salario por cada día de preaviso no cumplido. No necesitas dar preaviso si te vas por un incumplimiento grave de la empresa (ej. si no te pagan el sueldo durante meses).', 24),
 
