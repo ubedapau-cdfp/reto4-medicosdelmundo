@@ -257,20 +257,20 @@ Para el cálculo se usa tu salario regulador (salario bruto anual con pagas extr
 -- Enlaces para la Categoría Madre (ID 1) o Bloques generales
 INSERT INTO contenido (url_externas, id_bloque) VALUES 
 ('https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430', 1), -- Enlace al Estatuto de los Trabajadores (BOE)
-('https://sede.seg-social.gob.es/wps/portal/sede/sede/Ciudadanos/Informes+y+Certificados/10124', 2); -- Informe de Vida Laboral
+('https://revista.seg-social.es/-/c%C3%B3mo-obtener-el-informe-de-vida-laboral', 2); -- Informe de Vida Laboral
 
 -- Enlaces para Despidos y Paro (Subcategoría 9 / Bloques de Extinción)
 INSERT INTO contenido (url_externas, id_bloque) VALUES 
-('https://www.sepe.es/HomeSepe/personas/desempleo/prestaciones/tramitar-prestacion.html', 8), -- SEPE: Tramitar prestación por desempleo
-('https://www.sepe.es/HomeSepe/personas/desempleo/pago-unico.html', 8); -- SEPE: Información sobre el Pago Único (Capitalización)
+('https://sede.sepe.gob.es/portalSede/es/procedimientos-y-servicios/personas/proteccion-por-desempleo/solicitud-de-prestaciones', 8), -- SEPE: Tramitar prestación por desempleo
+('https://www.sepe.es/HomeSepe/autonomos/capitaliza-tu-prestacion.html', 8); -- SEPE: Información sobre el Pago Único (Capitalización)
 
 -- Enlaces para Maternidad/Paternidad (Subcategoría 8 / Bloques de Suspensión)
 INSERT INTO contenido (url_externas, id_bloque) VALUES 
-('https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesInformacion/44667', 6); -- Seguridad Social: Nacimiento y cuidado de menor
+('https://prestaciones.seg-social.es/servicio/prestacion-nacimiento-adopcion-cuidado-menor.html', 6); -- Seguridad Social: Nacimiento y cuidado de menor
 
 -- Enlaces para Conciliación y SAMA (Subcategoría 9 / Bloques de Finalización)
 INSERT INTO contenido (url_externas, id_bloque) VALUES 
-('https://www.mites.gob.es/es/guia/texto/guia_11.htm', 9); -- Guía Laboral del Ministerio: Despidos y Conciliación
+('https://digital.gob.es/content/dam/sgad/sefp/es/portalsefp/funcion-publica/dialogo-social/conciliacion/Guia_conciliacion.pdf', 9); -- Guía Laboral del Ministerio: Despidos y Conciliación
 
 -- Imágenes para Categoría Principal 1 (Mis Derechos Iniciales)
 -- Crear un bloque con la imagen de portada
