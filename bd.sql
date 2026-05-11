@@ -414,3 +414,9 @@ WHERE id_categoria = 14;
 
 -- Sincroniza la secuencia de la tabla CATEGORIA
 SELECT setval('categoria_id_categoria_seq', (SELECT MAX(id_categoria) FROM CATEGORIA));
+
+-- Sincroniza la secuencia de la tabla ROL
+SELECT setval('rol_id_rol_seq', (SELECT MAX(id_rol) FROM ROL));
+
+-- Sincroniza la secuencia de la tabla USUARIOS
+SELECT setval('usuarios_id_usuario_seq', (SELECT MAX(id_usuario) FROM USUARIOS));
