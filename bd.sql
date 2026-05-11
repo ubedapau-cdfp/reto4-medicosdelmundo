@@ -411,3 +411,6 @@ WHERE id_categoria = 14;
 -- ya que en tu script original no figuraba el INSERT de CATEGORIA para el ID 14)
 DELETE FROM CATEGORIA 
 WHERE id_categoria = 14;
+
+-- Sincroniza la secuencia de la tabla CATEGORIA
+SELECT setval('categoria_id_categoria_seq', (SELECT MAX(id_categoria) FROM CATEGORIA));
