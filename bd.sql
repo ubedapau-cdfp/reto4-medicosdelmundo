@@ -71,7 +71,7 @@ INSERT INTO USUARIOS(id_usuario, email, password_hash, nombre, id_rol) VALUES
     (3, 'megustanlaspatatas@bravas.com', '$2a$12$VSDjDWfXVhtDd5r8ZPlOwuwcocY8xhTGZIPK8BXIXj.XqohEV9i8y', 'Bravas', 2),
     (4, 'estoymosqueado@copabacana.com', '$2a$12$iT2882exM.y41zO0DFf.nekov3VBVSkmRGT2o8eZ71opfRPR2Rbsi', 'Orientadora', 2),
     (5, 'mepicalaabeja123@ekisde.com', '$2a$12$pHtQ0.F4RSG.ABYb0N5aTeOu9.t14TcB7mPfx5OdT/zMiHWUDqPkS', 'Orientadora', 2),
-    (6, 'mepicalaabeja124@ekisde.com', '$2a$12$pHtQ0.F4RSG.ABYb0N5aTeOu9.t14TcB7mPfx5OdT/zMiHWUDqPkS', 'Orientadora', 2);
+    (6, 'mepicalaabeja124@ekisde.com', '$2a$12$pHtQ0.F4RSG.ABYb0N5aTeOu9.t14TcB7mPfx5OdT/zMiHWUDqPkS', 'Orientadora', 2),
     (7, 'mamahuevo@mamail.com', '$2a$12$pHtQ0.F4RSG.ABYb0N5aTeOu9.t14TcB7mPfx5OdT/zMiHWUDqPkS', 'Orientadora', 2);
 
 -- ==========================================
@@ -122,7 +122,7 @@ Existen relaciones especiales (como empleadas del hogar, deportistas o artistas)
 - Constitución Española: Protege derechos fundamentales como la huelga y la no discriminación.
 - Estatuto de los Trabajadores: Es la ley base que establece los derechos mínimos para todas las trabajadoras en España.
 - Convenios Colectivos: Son acuerdos entre representantes de trabajadores y empresas de un sector específico (ej. Consultoría, Hostelería). Estos convenios suelen mejorar los mínimos de la ley y establecen tu salario real según tu categoría.
-- Contrato de Trabajo: Tu acuerdo particular con la empresa. Es vital recordar que un contrato nunca puede establecer condiciones peores que las del convenio o la ley; si lo hiciera, esa cláusula sería nula.', 2, 11);
+- Contrato de Trabajo: Tu acuerdo particular con la empresa. Es vital recordar que un contrato nunca puede establecer condiciones peores que las del convenio o la ley. Si lo hiciera, esa cláusula sería nula.', 2, 11);
 
 -- Edad y Nacionalidad
 INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES 
@@ -405,3 +405,16 @@ INSERT INTO contenido (url_externas, id_bloque) VALUES
 ('Imagenes/Contenidos/conceptos-y-cuantia.jpg', (SELECT id_bloque FROM BLOQUE WHERE titulo = 'Conceptos y Cuantía' AND id_categoria = 41 LIMIT 1)),
 ('Imagenes/Contenidos/la-estructura-de-la-nomina.jpg', (SELECT id_bloque FROM BLOQUE WHERE titulo = 'La Estructura de la Nómina' AND id_categoria = 42 LIMIT 1)),
 ('Imagenes/Contenidos/garantias-y-proteccion.jpg', (SELECT id_bloque FROM BLOQUE WHERE titulo = 'Garantías y Protección' AND id_categoria = 43 LIMIT 1));
+
+-- 1. Borramos primero el contenido (la URL de la imagen) asociado a los bloques de esa categoría
+DELETE FROM contenido 
+WHERE id_bloque IN (SELECT id_bloque FROM BLOQUE WHERE id_categoria = 14);
+
+-- 2. Borramos el bloque de 'Portada' que creaste para esa categoría
+DELETE FROM BLOQUE 
+WHERE id_categoria = 14;
+
+-- 3. Finalmente, borramos la categoría (si es que llegaste a insertarla manualmente, 
+-- ya que en tu script original no figuraba el INSERT de CATEGORIA para el ID 14)
+DELETE FROM CATEGORIA 
+WHERE id_categoria = 14;
