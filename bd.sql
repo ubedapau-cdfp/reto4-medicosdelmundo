@@ -68,7 +68,11 @@ INSERT INTO ROL(id_rol, nombre_rol) VALUES
 INSERT INTO USUARIOS(id_usuario, email, password_hash, nombre, id_rol) VALUES 
     (1, 'correodeprueba@google.com', '$2a$12$BOn7nGRmV/J0p6vpXzJOVOAlfYtfaLY2WBUgMIrLBKz5G.ouOYO3S', 'Prueba', 3), 
     (2, 'correo@holamail.com', '$2a$12$V0Gat3GouS0lWD44Oovz6u3VY8UZbNA7Q7YY5DmU9nqlYzfmNhea.', 'Usuaria123', 3),
-    (3, 'megustanlaspatatas@bravas.com', '$2a$12$VSDjDWfXVhtDd5r8ZPlOwuwcocY8xhTGZIPK8BXIXj.XqohEV9i8y', 'Bravas', 2);
+    (3, 'megustanlaspatatas@bravas.com', '$2a$12$VSDjDWfXVhtDd5r8ZPlOwuwcocY8xhTGZIPK8BXIXj.XqohEV9i8y', 'Bravas', 2),
+    (4, 'estoymosqueado@copabacana.com', '$2a$12$iT2882exM.y41zO0DFf.nekov3VBVSkmRGT2o8eZ71opfRPR2Rbsi', 'Orientadora', 2),
+    (5, 'mepicalaabeja123@ekisde.com', '$2a$12$pHtQ0.F4RSG.ABYb0N5aTeOu9.t14TcB7mPfx5OdT/zMiHWUDqPkS', 'Orientadora', 2),
+    (6, 'mepicalaabeja124@ekisde.com', '$2a$12$pHtQ0.F4RSG.ABYb0N5aTeOu9.t14TcB7mPfx5OdT/zMiHWUDqPkS', 'Orientadora', 2);
+    (7, 'mamahuevo@mamail.com', '$2a$12$pHtQ0.F4RSG.ABYb0N5aTeOu9.t14TcB7mPfx5OdT/zMiHWUDqPkS', 'Orientadora', 2);
 
 -- ==========================================
 -- CATEGORÍAS MADRE
@@ -112,18 +116,18 @@ INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES
 4. Dependencia: Trabajas dentro del ámbito de organización y dirección de otra persona (física o jurídica). 
 5. Retribución: Recibes un salario a cambio de tu tiempo y esfuerzo.
 
-Existen relaciones especiales (como empleadas del hogar, deportistas o artistas) que tienen normas propias, y relaciones excluidas (como las funcionarias públicas o trabajos familiares) donde no se aplica el Estatuto de los Trabajadores.', 1, 11),
+Existen relaciones especiales (como empleadas del hogar, deportistas o artistas) que tienen normas propias, y relaciones excluidas (como los funcionarios públicos o trabajos familiares) donde no se aplica el Estatuto de los Trabajadores.', 1, 11),
 
 ('Leyes que te Protegen', 'Jerarquía Normativa y Convenios', 'Tus derechos se rigen por un orden jerárquico que garantiza mínimos que nadie puede rebajar:
 - Constitución Española: Protege derechos fundamentales como la huelga y la no discriminación.
 - Estatuto de los Trabajadores: Es la ley base que establece los derechos mínimos para todas las trabajadoras en España.
-- Convenios Colectivos: Son acuerdos entre representantes de trabajadoras y empresas de un sector específico (ej. Consultoría, Hostelería). Estos convenios suelen mejorar los mínimos de la ley y establecen tu salario real según tu categoría.
-- Contrato de Trabajo: Tu acuerdo particular con la empresa. Es vital recordar que un contrato nunca puede establecer condiciones peores que las del convenio o la ley. Si lo hiciera, esa cláusula sería nula.', 2, 11);
+- Convenios Colectivos: Son acuerdos entre representantes de trabajadores y empresas de un sector específico (ej. Consultoría, Hostelería). Estos convenios suelen mejorar los mínimos de la ley y establecen tu salario real según tu categoría.
+- Contrato de Trabajo: Tu acuerdo particular con la empresa. Es vital recordar que un contrato nunca puede establecer condiciones peores que las del convenio o la ley; si lo hiciera, esa cláusula sería nula.', 2, 11);
 
 -- Edad y Nacionalidad
 INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES 
 ('Capacidad por Edad', 'Protección a menores de 18 años', 'Si tienes entre 16 y 18 años (menor de edad), la ley te otorga una protección especial para garantizar tu salud y formación:
-- Autorización: Necesitas el permiso de tus tutores legales para firmar el contrato.
+- Autorización: Necesitas el permiso de tus padres o tutores para firmar el contrato.
 - Prohibiciones: Tienes prohibido realizar horas extraordinarias, trabajar en horario nocturno (de 22:00 a 06:00) y realizar actividades declaradas insalubres, penosas o peligrosas.
 - Descansos: Si tu jornada diaria excede las 4,5 horas, tienes derecho a un descanso mínimo de 30 minutos. Tu descanso semanal debe ser de al menos dos días ininterrumpidos.', 1, 12),
 
@@ -145,22 +149,21 @@ INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES
 -- Cambios de Condiciones
 INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES 
 ('Movilidad Geográfica', 'Traslados vs Desplazamientos', 'La empresa puede cambiar tu lugar de trabajo si existen causas económicas o técnicas, pero con condiciones:
-- Traslado: Implica cambio de residencia definitivo o superior a 12 meses en 3 años. Deben avisarte con 30 días de antelación. Puedes elegir: aceptar (con compensación de gastos de mudanza), impugnar ante el juzgado o extinguir el contrato recibiendo una indemnización de 20 días por año (máximo 12 mensualidades).
+- Traslado: Implica cambio de residencia definitivo o superior a 12 meses en 3 años. Deben avisarte con 30 días de antelación. Puedes elegir: aceptar (con compensación de gastos de mudanza), impugnar ante el juez o extinguir el contrato recibiendo una indemnización de 20 días por año (máximo 12 mensualidades).
 - Desplazamiento: Es temporal (menos de 12 meses en 3 años). Deben avisarte con 5 días de antelación. Tienes derecho a dietas, gastos de viaje y a un permiso de 4 días laborables en tu domicilio de origen por cada 3 meses de desplazamiento.', 1, 21),
 
-('Modificación de Condiciones', 'Sustancial y Funcional', 'Si la empresa cambia tus funciones (Movilidad Funcional), debe respetar tu dignidad y titulación. Si te asignan tareas de categoría superior, tienes derecho al salario de esa categoría. Si son inferiores, deben mantener tu salario original y solo puede ser por causas urgentes.
+('Modificación de Condiciones', 'Sustancial y Funcional', 'Si la empresa cambia tus funciones (Movilidad Funcional), debe respetar tu dignidad y titulación. Si te asignan tareas de categoría superior, tienes derecho al salario de esa categoría; si son inferiores, deben mantener tu salario original y solo puede ser por causas urgentes.
 Para cambios en jornada, horario o salarios (Modificación Sustancial), la empresa debe demostrar causas justificadas y notificarte con 15 días de antelación. Si el cambio te perjudica, puedes rescindir el contrato con una indemnización de 20 días por año trabajado.', 2, 21);
 
 -- Maternidad y Pausas
 INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES 
-('Suspensión por Nacimiento', '19 semanas', 'El derecho a la suspensión del contrato por nacimiento y cuidado del menor se ha actualizado, extendiéndose a un total de 19 semanas de permiso:
+('Suspensión por Nacimiento', 'Novedades 2025: 17 semanas', 'El derecho a la suspensión del contrato por nacimiento y cuidado del menor se ha actualizado en 2025, extendiéndose a un total de 17 semanas de permiso:
 - 6 semanas obligatorias: Deben disfrutarse inmediatamente después del parto, a jornada completa, para asegurar la salud de la madre.
 - 11 semanas voluntarias: Se pueden disfrutar de forma seguida o interrumpida durante los primeros 12 meses de vida del bebé.
-- 2 últimas semanas: se pueden distribuir de forma flexible hasta que el menor cumpla los 8 años de edad.
 Durante este periodo, la Seguridad Social te abona el 100% de tu base reguladora, y la empresa no puede despedirte, ya que se consideraría nulo por discriminación.', 1, 22),
 
 ('Excedencias y Cuidados', 'Conciliación de la Vida Familiar', 'Tienes derecho a pausar tu contrato mediante excedencias:
-- Por cuidado de hijos: Hasta que el menor cumpla 3 años. Durante el primer año tienes derecho a la reserva de tu puesto de trabajo específico. Después, la reserva es para un puesto del mismo grupo profesional.
+- Por cuidado de hijos: Hasta que el menor cumpla 3 años. Durante el primer año tienes derecho a la reserva de tu puesto de trabajo específico; después, la reserva es para un puesto del mismo grupo profesional.
 - Por cuidado de familiares: Hasta 2 años para cuidar a parientes de hasta 2º grado que no puedan valerse por sí mismos.
 En ambos casos, el periodo computa a efectos de antigüedad en la empresa y tienes derecho a asistir a cursos de formación profesional a los que te convoque la empresa.', 2, 22);
 
@@ -175,7 +178,7 @@ La consecuencia del despido nulo es la readmisión inmediata de la trabajadora e
 ('Procedimiento de Despido', 'Objetivo y Disciplinario', 'Existen dos formas principales de despido unilateral por la empresa:
 - Despido Objetivo: Por causas económicas, técnicas o de producción. La empresa debe darte 15 días de preaviso y pagarte una indemnización de 20 días por año (máximo 12 mensualidades).
 - Despido Disciplinario: Por incumplimientos graves tuyos (faltas, desobediencia). No hay preaviso ni indemnización.
-Consejo Vital: Si no estás de acuerdo, firma la carta de despido y el finiquito escribiendo "NO CONFORME" junto a tu firma. Esto es esencial para poder reclamar después ante el Juzgado de lo Social en un plazo de 20 días.', 2, 23);
+Consejo Vital: Si no estás de acuerdo, firma la carta de despido y el finiquito escribiendo "NO CONFORME" junto a tu firma; esto es esencial para poder reclamar después ante el Juzgado de lo Social en un plazo de 20 días.', 2, 23);
 
 -- Finiquito y Liquidación
 INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES 
@@ -185,85 +188,48 @@ INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES
 3. Pagas Extraordinarias: La parte proporcional de las pagas de verano y Navidad si no las tienes prorrateadas en tu sueldo mensual.
 Si tu contrato era temporal, además te corresponde una indemnización de 12 días de salario por cada año de servicio prestado.', 1, 24);
 
--- ==========================================
--- INSERTS PARA CATEGORÍA 3: MI TIEMPO LABORAL
--- ==========================================
--- ---------------------------------------------------------
--- 1. JORNADA Y HORARIOS (ID_CATEGORIA: 31)
--- ---------------------------------------------------------
-
+-- Jornada y Horarios
 INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES 
-('Definición de Jornada', 'Límites y Trabajo Efectivo', 'La jornada de trabajo es el total de horas de trabajo efectivo realizadas entre la entrada y la salida. Por norma general, no se computan los tiempos de desplazamiento o cambios de vestuario, salvo que el convenio diga lo contrario.
-Límites legales:
-- Máxima ordinaria: 40 horas semanales de promedio en cómputo anual.
-- Límite diario: Máximo 9 horas (8 horas para menores de 18 años).', 3, 31),
+('Jornada Laboral', 'Límites legales y registro obligatorio', 'Tu jornada es el tiempo efectivo en el que estás a disposición de la empresa. Los límites son claros para evitar abusos:
+- Máximo semanal: 40 horas de promedio anual.
+- Máximo diario: 9 horas de trabajo efectivo (8 horas para menores). Entre jornadas debe haber un descanso mínimo de 12 horas.
+- Registro de Jornada: La empresa está obligada por ley a registrar diariamente tu hora exacta de entrada y salida. Este registro debe estar a tu disposición y es tu mejor prueba en caso de que realices horas extras que no te quieran pagar.', 1, 31),
 
-('Organización y Registro', 'Distribución, Flexibilidad y Teletrabajo', 'La jornada puede distribuirse de dos formas:
-1. Regular: Siempre el mismo número de horas al día o semana.
-2. Irregular: Distribución desigual (hasta un 10% de la jornada anual) con preaviso de 5 días.
+('Organización del Horario', 'Distribución Irregular y Turnos', 'La empresa puede decidir que trabajes más unas semanas que otras (Distribución Irregular) afectando hasta al 10% de tu jornada anual, pero debe avisarte con al menos 5 días de antelación.
+En trabajos a turnos (mañana/tarde/noche), ninguna trabajadora puede estar en el turno de noche más de dos semanas consecutivas, salvo que lo pida voluntariamente. Si tu jornada es partida, el tiempo de descanso intermedio (comida) no computa como trabajo a menos que el convenio diga lo contrario.', 2, 31);
 
-Tipos de Horario:
-- Rígido: Horas fijas de entrada y salida.
-- Flexible: Elección de horario dentro de márgenes preestablecidos.
-
-Registro de Jornada: Es obligatorio registrar diariamente el inicio y fin de la jornada. La empresa debe conservar los registros durante 4 años.
-Teletrabajo: Se considera regular si supera el 30% de la jornada en 3 meses y requiere contrato por escrito.', 4, 31);
-
--- Enlace de interés para Jornada (Estatuto de los Trabajadores)
-INSERT INTO contenido (url_externas, id_bloque) VALUES 
-('https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430&p=20201231&tn=1#a34', (SELECT id_bloque FROM BLOQUE WHERE titulo = 'Definición de Jornada' AND id_categoria = 31 LIMIT 1));
-
--- 2. DESCANSOS Y VACACIONES (ID_CATEGORIA: 32)
--- ---------------------------------------------------------
-
+-- Descansos y Vacaciones
 INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES 
-('Descansos Obligatorios', 'Tiempos de recuperación', 'El descanso es fundamental para la salud laboral:
-- Entre jornadas: Mínimo 12 horas de pausa entre el fin de una y el inicio de la siguiente.
-- Durante la jornada: Si supera las 6 horas, corresponde un descanso de al menos 15 minutos (30 minutos para menores si superan las 4,5 horas).
-- Semanal: Mínimo un día y medio ininterrumpido (2 días para menores).', 3, 32),
-
-('Vacaciones y Festivos', 'Periodos de Interrupción Anual', 'Derechos sobre el tiempo libre:
-- Vacaciones: Mínimo de 30 días naturales al año. Las fechas deben conocerse con 2 meses de antelación y no son sustituibles por dinero (salvo fin de contrato).
-- Festivos: Dispones de 14 festivos anuales retribuidos y no recuperables (2 locales y el resto estatales/autonómicos).', 4, 32),
+('Descansos Obligatorios', 'Diarios, Semanales y en la Jornada', 'El descanso es un derecho irrenunciable para garantizar la seguridad laboral:
+- Durante la jornada: Si trabajas más de 6 horas seguidas, tienes derecho a 15 minutos de descanso (20 minutos si eres menor tras 4.5 horas). Este tiempo solo se paga si así lo establece tu convenio.
+- Semanal: Tienes derecho a un descanso mínimo de un día y medio ininterrumpido (36 horas), que normalmente comprende la tarde del sábado y el domingo completo. Para menores, el descanso es de 2 días completos.', 1, 32),
 
 ('Vacaciones Anuales', 'Derechos y Planificación', 'Tienes derecho a un mínimo de 30 días naturales de vacaciones pagadas al año. 
 - Acuerdo: Las fechas deben pactarse de mutuo acuerdo. La empresa no puede imponerlas unilateralmente ni tú cogerlas sin permiso. Debes conocer el calendario oficial con 2 meses de antelación.
 - Situaciones Especiales: Si durante tus vacaciones sufres una Incapacidad Temporal (baja médica) o coinciden con el permiso de nacimiento/lactancia, tienes derecho a disfrutarlas en una fecha distinta, incluso aunque haya terminado el año natural.', 2, 32);
 
--- ---------------------------------------------------------
--- 3. HORAS Y TURNOS (ID_CATEGORIA: 33)
--- ---------------------------------------------------------
+-- Horas y Turnos
 INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES 
-('Horas Extraordinarias', 'Exceso de Jornada y Compensación', 'Son horas que exceden la jornada ordinaria:
-- Límite: 80 horas anuales.
-- Compensación: Se pueden pagar (mínimo valor de hora ordinaria) o compensar con descanso en los 4 meses siguientes. Si no se compensan, deben pagarse obligatoriamente.
-- Fuerza Mayor: Horas para reparar daños urgentes (no cuentan para el límite de 80h).
-- Prohibiciones: No pueden realizarlas menores, trabajadoras nocturnas ni personas con contrato a tiempo parcial.', 4, 33),
+('Horas Extraordinarias', 'Límites y Compensación', 'Las horas extra son aquellas que exceden tu jornada ordinaria:
+- Voluntariedad: Salvo que se firmen en contrato o sean por fuerza mayor (reparar daños urgentes), son totalmente voluntarias.
+- Límite: No puedes hacer más de 80 horas extras al año (las compensadas con descanso no cuentan para este límite).
+- Pago: Deben pagarse con un importe superior a la hora normal o compensarse con tiempos de descanso pagado dentro de los 4 meses siguientes a su realización.', 1, 33),
 
 ('Nocturnidad y Plus', 'Trabajo entre las 22h y las 06h', 'Se considera trabajadora nocturna a quien realiza al menos 3 horas de su jornada diaria en horario de noche (22:00 a 06:00). 
 - Salud: Estas trabajadoras tienen derecho a una evaluación gratuita de salud periódica.
-- Salario: Tienes derecho a percibir el "Plus de Nocturnidad" definido en tu convenio, a menos que el salario se haya establecido ya considerando que el trabajo es nocturno por su propia naturaleza. Las menores tienen prohibido este tipo de horario bajo cualquier circunstancia.', 2, 33);
+- Salario: Tienes derecho a percibir el "Plus de Nocturnidad" definido en tu convenio, a menos que el salario se haya establecido ya considerando que el trabajo es nocturno por su propia naturaleza. Los menores tienen prohibido este tipo de horario bajo cualquier circunstancia.', 2, 33);
 
--- ---------------------------------------------------------
--- 4. PERMISOS Y CONCILIACIÓN (ID_CATEGORIA: 34)
--- ---------------------------------------------------------
-
+-- Permisos y Conciliación
 INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES 
-('Permisos Retribuidos', 'Ausencias con derecho a sueldo', 'Ejemplos principales de permisos que puedes solicitar avisando previamente:
-- Matrimonio o registro de pareja de hecho: 15 días naturales.
-- Fallecimiento/Enfermedad grave familiar: De 2 a 5 días según el caso.
+('Permisos Retribuidos', 'Ausencias con derecho a sueldo', 'Puedes faltar al trabajo avisando previamente y justificando la causa, manteniendo tu salario íntegro:
+- Matrimonio/Pareja de hecho: 15 días naturales.
+- Accidente o enfermedad grave, hospitalización o intervención quirúrgica de familiares (hasta 2º grado): 5 días laborables.
+- Fallecimiento de pariente (hasta 2º grado): 2 días (4 si requiere desplazamiento).
 - Mudanza: 1 día.
-- Deber inexcusable: Tiempo indispensable (juicios, mesas electorales).
-- Alerta climática (por imposibilidad para acceder al centro de trabajo o por riesgo): Hasta 4 días.
-- Lactancia: Reducción de 1 hora diaria hasta los 9 meses del hijo.', 3, 34),
-
-('Reducción de Jornada', 'Causas de Conciliación y Protección', 'Situaciones para reducir el tiempo de trabajo:
-- Cuidado de familiares: Reducción de entre 1/8 y la mitad de la jornada (con reducción proporcional de salario).
-- Víctimas de violencia de género: Derecho a reducción o reordenación del tiempo de trabajo.
-- Causas económicas o técnicas: Reducción autorizada entre el 10% y 70%.', 4, 34),
+- Deber inexcusable: El tiempo necesario para votar, juicios o visitas médicas indispensables.', 1, 34),
 
 ('Trabajo a Distancia', 'Teletrabajo y Desconexión Digital', 'Si teletrabajas más del 30% de tu jornada (ej. 2 días a la semana), tienes derecho a firmar un Acuerdo de Teletrabajo por escrito. 
-- Gastos: La empresa debe proporcionarte y mantener los equipos (ordenador, silla ergonómica) e incluir en la nómina el plus de teletrabajo (si aplica por convenio) para ayudar con los gastos de suministros derivados del teletrabajo en tu hogar(luz, internet).
+- Gastos: La empresa debe proporcionarte y mantener los equipos (ordenador, silla ergonómica) y compensar los gastos de suministros (luz, internet).
 - Desconexión Digital: Tienes derecho legal a no responder emails, WhatsApps o llamadas de trabajo fuera de tu horario laboral. La empresa no puede sancionarte por ejercer este derecho de desconexión.', 2, 34);
 
 -- ==========================================
@@ -272,7 +238,7 @@ INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES
 INSERT INTO FAQ (pregunta, respuesta, id_categoria) VALUES 
 ('¿Me pueden despedir por estar embarazada?', 'Absolutamente no. Según el artículo 55 del Estatuto de los Trabajadores, el despido de una trabajadora embarazada (o que ha solicitado permisos de lactancia o nacimiento) se considera automáticamente NULO. Esto significa que la empresa está obligada legalmente a readmitirte en tu mismo puesto y a pagarte todos los salarios que dejaste de percibir desde el día del despido hasta que vuelvas a tu puesto.', 23),
 
-('¿Qué pasa si trabajo sin contrato o "sin papeles"?', 'Aunque no tengas un contrato escrito o carezcas de permiso de residencia, la ley protege tu derecho al trabajo realizado. Si puedes demostrar que trabajas para la empresa (mediante mensajes, testigos o fotos), se presume que existe un contrato indefinido a jornada completa. Tienes derecho a reclamar judicialmente todos tus salarios, vacaciones y finiquito. La falta de permiso administrativo de la trabajadora no invalida su derecho a cobrar por el esfuerzo ya prestado.', 12),
+('¿Qué pasa si trabajo sin contrato o "sin papeles"?', 'Aunque no tengas un contrato escrito o carezcas de permiso de residencia, la ley protege tu derecho al trabajo realizado. Si puedes demostrar que trabajas para la empresa (mediante mensajes, testigos o fotos), se presume que existe un contrato indefinido a jornada completa. Tienes derecho a reclamar judicialmente todos tus salarios, vacaciones y finiquito. La falta de permiso administrativo del trabajador no invalida su derecho a cobrar por el esfuerzo ya prestado.', 12),
 
 ('¿Es obligatorio el preaviso para irme de la empresa?', 'Sí, si decides dimitir voluntariamente (Baja Voluntaria), debes dar el preaviso que indique tu convenio colectivo (normalmente 15 días). Si no lo haces, la empresa tiene derecho a descontarte del finiquito un día de salario por cada día de preaviso no cumplido. No necesitas dar preaviso si te vas por un incumplimiento grave de la empresa (ej. si no te pagan el sueldo durante meses).', 24),
 
@@ -290,22 +256,21 @@ Para el cálculo se usa tu salario regulador (salario bruto anual con pagas extr
 -- ==========================================
 -- Enlaces para la Categoría Madre (ID 1) o Bloques generales
 INSERT INTO contenido (url_externas, id_bloque) VALUES 
-('https://www.boe.es/biblioteca_juridica/abrir_pdf.php?id=PUB-DT-2025-139', 1), -- Enlace al Estatuto de los Trabajadores más actualizado
-('https://expinterweb.mites.gob.es/mapas/consultaAvanzada', 2); -- Buscador de convenios colectivos del Ministerio de Trabajo
+('https://www.boe.es/buscar/act.php?id=BOE-A-2015-11430', 1), -- Enlace al Estatuto de los Trabajadores (BOE)
+('https://sede.seg-social.gob.es/wps/portal/sede/sede/Ciudadanos/Informes+y+Certificados/10124', 2); -- Informe de Vida Laboral
 
 -- Enlaces para Despidos y Paro (Subcategoría 9 / Bloques de Extinción)
 INSERT INTO contenido (url_externas, id_bloque) VALUES 
-('https://sede.sepe.gob.es/portalSede/procedimientos-y-servicios/personas/proteccion-por-desempleo/solicitud-de-prestaciones', 8), -- SEPE: Tramitar prestación por desempleo
-('https://www.sepe.es/HomeSepe/autonomos/capitaliza-tu-prestacion.', 8); -- SEPE: Información sobre el Pago Único (Capitalización)
+('https://www.sepe.es/HomeSepe/personas/desempleo/prestaciones/tramitar-prestacion.html', 8), -- SEPE: Tramitar prestación por desempleo
+('https://www.sepe.es/HomeSepe/personas/desempleo/pago-unico.html', 8); -- SEPE: Información sobre el Pago Único (Capitalización)
 
 -- Enlaces para Maternidad/Paternidad (Subcategoría 8 / Bloques de Suspensión)
 INSERT INTO contenido (url_externas, id_bloque) VALUES 
-('https://prestaciones.seg-social.es/servicio/prestacion-nacimiento-adopcion-cuidado-menor.html?categoria=nacimiento-adopcion-embarazo', 6); -- Seguridad Social: Nacimiento y cuidado de menor
+('https://www.seg-social.es/wps/portal/wss/internet/Trabajadores/PrestacionesPensionesInformacion/44667', 6); -- Seguridad Social: Nacimiento y cuidado de menor
 
 -- Enlaces para Conciliación y SAMA (Subcategoría 9 / Bloques de Finalización)
 INSERT INTO contenido (url_externas, id_bloque) VALUES 
-('https://www.mites.gob.es/es/Guia/pdfs/Guia_Laboral.pdf#page=277', 9), -- Guía Laboral del Ministerio completa
-('https://www.fundacionsama.com/informacion-basica-presentacion/', 9); -- Presentación de la Fundación SAMA
+('https://www.mites.gob.es/es/guia/texto/guia_11.htm', 9); -- Guía Laboral del Ministerio: Despidos y Conciliación
 
 -- Imágenes para Categoría Principal 1 (Mis Derechos Iniciales)
 -- Crear un bloque con la imagen de portada
@@ -337,12 +302,7 @@ INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES
 
 ('Tipos de Salario', 'Dinero vs Especie', 'Tu remuneración puede llegar de dos formas distintas que deben estar claramente reflejadas:
 1. Salario en Dinero: Es la forma común, pagada por transferencia o, excepcionalmente, en efectivo (máximo 2.500€). En ningún caso la parte en dinero puede ser inferior al SMI.
-2. En especie: Retribuciones no monetarias (vivienda, coche, tickets restaurante). Nunca puede superar el 30% del salario total; el 70% restante debe ser siempre en dinero.', 2, 41),
-('Devengos en la Nómina', 'Salariales y No Salariales', 'Los devengos se dividen en:
-- Percepciones Salariales: Salario base, complementos (antigüedad, peligrosidad), horas extra y pagas extra.
-- Percepciones No Salariales: Cantidades para compensar gastos (dietas, transporte, ropa de trabajo). Estas no cotizan a la Seguridad Social dentro de los límites legales.', 3, 41),
-
-('Límites Legales del Salario en Especie', 'Protección de tu salario real', 'Aunque el salario en especie puede ser un complemento interesante, la ley establece límites claros para proteger tu poder adquisitivo:
+2. Salario en Especie: Son beneficios no monetarios como el uso de vivienda, coche de empresa, seguros médicos o cheques restaurante. 
 - Límite Legal: El salario en especie nunca puede superar el 30% de tus percepciones salariales totales. Es decir, al menos el 70% de tu sueldo siempre debe ser dinero en efectivo o transferencia.', 2, 41);
 
 -- Estructura de la Nómina (ID 42)
@@ -350,10 +310,7 @@ INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES
 ('Devengos y Deducciones', 'Lo que sumas y lo que restas', 'Tu nómina se divide en dos grandes columnas que determinan lo que finalmente llega a tu banco:
 - Devengos: Son las cantidades brutas. Se dividen en "Salariales" (sueldo base, pluses, antigüedad, pagas extra) y "No Salariales" (dietas, indemnizaciones o gastos de transporte que no cotizan igual).
 - Deducciones: Es lo que se te retiene legalmente. Incluye tu aportación a la Seguridad Social (para cubrir tu jubilación, desempleo y bajas) y la retención del IRPF (un pago a cuenta de tu impuesto sobre la renta que varía según tu situación familiar y nivel de ingresos). El resultado final tras restar las deducciones a los devengos es tu "Salario Neto" o líquido a percibir.', 1, 42),
-('Deducciones: ¿Por qué cobro menos?', 'Seguridad Social e IRPF', 'El salario neto es el resultado de restar al bruto:
-- Seguridad Social: Cotizaciones para cubrir desempleo, jubilación y bajas.
-- IRPF: Impuesto progresivo sobre tu renta. Funciona como un adelanto para tu declaración anual. El porcentaje varía según tus ingresos y situación familiar (hijos, discapacidad).
-- Otros: Anticipos o cuotas sindicales.', 1, 42),
+
 ('Bases de Cotización', 'Tu protección social futura', 'Las bases de cotización son las cifras sobre las que se calculan tus futuras prestaciones:
 - BCCC (Contingencias Comunes): Se usa para calcular tu jubilación, bajas por enfermedad común y permisos de maternidad/paternidad. Incluye el salario base y la parte proporcional de las pagas extras.
 - BCCP (Contingencias Profesionales): Cubre accidentes de trabajo, enfermedades profesionales y desempleo. Es la base que determina cuánto cobrarás de "paro" si te quedas sin trabajo.
@@ -382,8 +339,7 @@ INSERT INTO FAQ (pregunta, respuesta, id_categoria) VALUES
 
 ('¿Qué son los devengos no salariales?', 'Son cantidades que recibes pero que no son "pago por tu trabajo" en sí, sino compensaciones por gastos. Ejemplos comunes son el plus de transporte, las dietas por comer fuera o las indemnizaciones por traslados. La diferencia principal es que estos conceptos no suelen cotizar para la jubilación o el paro.', 42),
 
-('¿Cuál es el salario mínimo (SMI) en 2025?', 'El SMI garantiza un suelo salarial digno. Para una jornada completa, el mínimo legal es de 1.221€ mensuales si se percibe en 14 pagas, lo que suma un total de 17.094€ brutos al año. Ningún contrato a jornada completa puede estar por debajo de esta cifra.', 41),
-('¿Para qué sirve cotizar por Contingencias Comunes (BCCC)?', 'Esta base sirve para calcular el importe que recibirás en caso de enfermedad común, accidente no laboral, maternidad, paternidad y tu futura jubilación.', 42);
+('¿Cuál es el salario mínimo (SMI) en 2025?', 'El SMI garantiza un suelo salarial digno. Para una jornada completa, el mínimo legal es de 1.221€ mensuales si se percibe en 14 pagas, lo que suma un total de 17.094€ brutos al año. Ningún contrato a jornada completa puede estar por debajo de esta cifra.', 41);
 
 -- 1. Creamos un bloque específico para la categoría 3 (Mi Tiempo Laboral)
 -- Ponemos orden 0 para que sea lo primero que aparezca
