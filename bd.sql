@@ -132,10 +132,10 @@ Es fundamental saber que, si trabajas sin el permiso correspondiente, el contrat
 
 -- Tipos de Contrato
 INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES 
-('Contratos Estables', 'Indefinidos y Fijos-Discontinuos 2025', 'La norma general es el contrato indefinido, que garantiza estabilidad sin fecha de finalización. 
+('Contratos Estables', 'Indefinidos y Fijos-Discontinuos actualmente', 'La norma general es el contrato indefinido, que garantiza estabilidad sin fecha de finalización. 
 - Fijo-Discontinuo: Se utiliza para trabajos que son estables pero intermitentes en el tiempo (como campañas agrícolas, comedores escolares o servicios de temporada). Aunque el contrato se "pausa" cuando no hay actividad, mantienes tu antigüedad y el derecho a ser llamada de nuevo cuando la actividad se reanude según el orden pactado. Tienes los mismos derechos de protección y seguridad social que una trabajadora a tiempo completo durante los periodos de actividad.', 1, 13),
 
-('Contratos de Duración', 'Temporales y Formativos (Reforma 2025)', 'Los contratos temporales solo son legales bajo causas muy específicas:
+('Contratos de Duración', 'Temporales y Formativos (actualmente)', 'Los contratos temporales solo son legales bajo causas muy específicas:
 1. Por circunstancias de la producción: Para incrementos ocasionales e imprevisibles de trabajo. Su duración máxima es de 6 meses (ampliable a 1 año por convenio).
 2. Por sustitución: Para cubrir a una trabajadora con derecho a reserva de puesto (ej. baja por maternidad o excedencia).
 3. Contratos Formativos: 
@@ -153,7 +153,7 @@ Para cambios en jornada, horario o salarios (Modificación Sustancial), la empre
 
 -- Maternidad y Pausas
 INSERT INTO BLOQUE (titulo, subtitulo, contenido, orden, id_categoria) VALUES 
-('Suspensión por Nacimiento', 'Novedades 2025: 17 semanas', 'El derecho a la suspensión del contrato por nacimiento y cuidado del menor se ha actualizado en 2025, extendiéndose a un total de 17 semanas de permiso:
+('Suspensión por Nacimiento', 'Novedades : 17 semanas', 'El derecho a la suspensión del contrato por nacimiento y cuidado del menor se ha actualizado en la actualidad, extendiéndose a un total de 17 semanas de permiso:
 - 6 semanas obligatorias: Deben disfrutarse inmediatamente después del parto, a jornada completa, para asegurar la salud de la madre.
 - 11 semanas voluntarias: Se pueden disfrutar de forma seguida o interrumpida durante los primeros 12 meses de vida del bebé.
 Durante este periodo, la Seguridad Social te abona el 100% de tu base reguladora, y la empresa no puede despedirte, ya que se consideraría nulo por discriminación.', 1, 22),
@@ -332,7 +332,7 @@ INSERT INTO FAQ (pregunta, respuesta, id_categoria) VALUES
 
 ('¿Qué son los devengos no salariales?', 'Son cantidades que recibes pero que no son "pago por tu trabajo" en sí, sino compensaciones por gastos. Ejemplos comunes son el plus de transporte, las dietas por comer fuera o las indemnizaciones por traslados. La diferencia principal es que estos conceptos no suelen cotizar para la jubilación o el paro.', 42),
 
-('¿Cuál es el salario mínimo (SMI) en 2025?', 'El SMI garantiza un suelo salarial digno. Para una jornada completa, el mínimo legal es de 1.221€ mensuales si se percibe en 14 pagas, lo que suma un total de 17.094€ brutos al año. Ningún contrato a jornada completa puede estar por debajo de esta cifra.', 41);
+('¿Cuál es el salario mínimo (SMI) actualmente?', 'El SMI garantiza un suelo salarial digno. Para una jornada completa, el mínimo legal es de 1.221€ mensuales si se percibe en 14 pagas, lo que suma un total de 17.094€ brutos al año. Ningún contrato a jornada completa puede estar por debajo de esta cifra.', 41);
 
 -- 1. Creamos un bloque específico para la categoría 3 (Mi Tiempo Laboral)
 -- Ponemos orden 0 para que sea lo primero que aparezca
