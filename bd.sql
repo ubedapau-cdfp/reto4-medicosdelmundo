@@ -68,11 +68,7 @@ INSERT INTO ROL(id_rol, nombre_rol) VALUES
 INSERT INTO USUARIOS(id_usuario, email, password_hash, nombre, id_rol) VALUES 
     (1, 'correodeprueba@google.com', '$2a$12$BOn7nGRmV/J0p6vpXzJOVOAlfYtfaLY2WBUgMIrLBKz5G.ouOYO3S', 'Prueba', 3), 
     (2, 'correo@holamail.com', '$2a$12$V0Gat3GouS0lWD44Oovz6u3VY8UZbNA7Q7YY5DmU9nqlYzfmNhea.', 'Usuaria123', 3),
-    (3, 'megustanlaspatatas@bravas.com', '$2a$12$VSDjDWfXVhtDd5r8ZPlOwuwcocY8xhTGZIPK8BXIXj.XqohEV9i8y', 'Bravas', 2),
-    (4, 'estoymosqueado@copabacana.com', '$2a$12$iT2882exM.y41zO0DFf.nekov3VBVSkmRGT2o8eZ71opfRPR2Rbsi', 'Orientadora', 2),
-    (5, 'mepicalaabeja123@ekisde.com', '$2a$12$pHtQ0.F4RSG.ABYb0N5aTeOu9.t14TcB7mPfx5OdT/zMiHWUDqPkS', 'Orientadora', 2),
-    (6, 'mepicalaabeja124@ekisde.com', '$2a$12$pHtQ0.F4RSG.ABYb0N5aTeOu9.t14TcB7mPfx5OdT/zMiHWUDqPkS', 'Orientadora', 2),
-    (7, 'mamahuevo@mamail.com', '$2a$12$pHtQ0.F4RSG.ABYb0N5aTeOu9.t14TcB7mPfx5OdT/zMiHWUDqPkS', 'Orientadora', 2);
+    (3, 'megustanlaspatatas@bravas.com', '$2a$12$VSDjDWfXVhtDd5r8ZPlOwuwcocY8xhTGZIPK8BXIXj.XqohEV9i8y', 'Bravas', 2);
 
 -- ==========================================
 -- CATEGORÍAS MADRE
@@ -260,13 +256,10 @@ INSERT INTO contenido (url_externas, id_bloque) VALUES
 ('https://revista.seg-social.es/-/c%C3%B3mo-obtener-el-informe-de-vida-laboral', 2); -- Informe de Vida Laboral
 
 -- Enlaces para Despidos y Paro (Subcategoría 9 / Bloques de Extinción)
-INSERT INTO contenido (url_externas, id_bloque) VALUES 
-('https://sede.sepe.gob.es/portalSede/es/procedimientos-y-servicios/personas/proteccion-por-desempleo/solicitud-de-prestaciones', 8), -- SEPE: Tramitar prestación por desempleo
-('https://www.sepe.es/HomeSepe/autonomos/capitaliza-tu-prestacion.html', 8); -- SEPE: Información sobre el Pago Único (Capitalización)
+ -- SEPE: Información sobre el Pago Único (Capitalización)
 
 -- Enlaces para Maternidad/Paternidad (Subcategoría 8 / Bloques de Suspensión)
-INSERT INTO contenido (url_externas, id_bloque) VALUES 
-('https://prestaciones.seg-social.es/servicio/prestacion-nacimiento-adopcion-cuidado-menor.html', 6); -- Seguridad Social: Nacimiento y cuidado de menor
+ -- Seguridad Social: Nacimiento y cuidado de menor
 
 -- Enlaces para Conciliación y SAMA (Subcategoría 9 / Bloques de Finalización)
 INSERT INTO contenido (url_externas, id_bloque) VALUES 
@@ -418,3 +411,12 @@ WHERE id_categoria = 14;
 -- ya que en tu script original no figuraba el INSERT de CATEGORIA para el ID 14)
 DELETE FROM CATEGORIA 
 WHERE id_categoria = 14;
+
+-- Sincroniza la secuencia de la tabla CATEGORIA
+SELECT setval('categoria_id_categoria_seq', (SELECT MAX(id_categoria) FROM CATEGORIA));
+
+-- Sincroniza la secuencia de la tabla ROL
+SELECT setval('rol_id_rol_seq', (SELECT MAX(id_rol) FROM ROL));
+
+-- Sincroniza la secuencia de la tabla USUARIOS
+SELECT setval('usuarios_id_usuario_seq', (SELECT MAX(id_usuario) FROM USUARIOS));
