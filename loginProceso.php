@@ -25,7 +25,7 @@
             } elseif ($rol === 2) { // Si el rol es 2, Orientadora
                 header('Location: /reto4-medicosdelmundo/VistaOrientadora/Menu.php'); // Redirección a menú de orientadora
             } else { // Si el rol no es ni 2 ni 3
-                header('Location: /reto4-medicosdelmundo/home/home.php'); // Redirección a página de inicio
+                header('Location: /reto4-medicosdelmundo/index.php'); // Redirección a página de inicio
             }
             exit();
             } else { // Si el usuario no existe o la contraseña es incorrecta

@@ -3,7 +3,7 @@ if (session_status() === PHP_SESSION_NONE) session_start();
 $base = '/reto4-medicosdelmundo/'; // Valor $base equivale a la ruta absoluta para su uso en la página
 ?> <!-- Cierre del apartado PHP -->
 <header>
-		<a href="<?= $base ?>home/home.php" class="logo"> <!-- Redirección al home -->
+		<a href="<?= $base ?>index.php" class="logo"> <!-- Redirección al home -->
 			<img src="<?= $base ?>Imagenes/Logoreal.png" alt="Logo"> <!-- Logo de la página -->
 		</a>
 		<?php // Inicio del apartado PHP

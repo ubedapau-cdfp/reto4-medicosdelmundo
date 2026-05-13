@@ -28,7 +28,7 @@ $base = '/reto4-medicosdelmundo/'; // valor $base equivale a la ruta absoluta pa
                     <input type='password' name='contrasena' size='46' id='contrasena' placeholder=' •••••••' required> <!-- Campo de texto del apartado 'Contrasena' obligatorio -->
                     <p></p> <!-- Separador -->
                     <button type='submit'><i class="fa-solid fa-user-check"></i>Iniciar Sesión</button> <!-- Botón para iniciar sesión -->
-                    <button type='submit'><a href='/reto4-medicosdelmundo/home/home.php'><i class="fa-solid fa-arrow-rotate-left"></i>Volver a Inicio</a></button> <!-- Botón con enlace que redirecciona a home.php -->
+                    <button type='submit'><a href='/reto4-medicosdelmundo/index.php'><i class="fa-solid fa-arrow-rotate-left"></i>Volver a Inicio</a></button> <!-- Botón con enlace que redirecciona a index.php -->
                     <p></p> <!-- Separador -->
                     <?php require_once 'loginProceso.php' ?> <!-- Proceso del login importado mediante PHP -->
                 </form> <!-- Cierre del formulario -->

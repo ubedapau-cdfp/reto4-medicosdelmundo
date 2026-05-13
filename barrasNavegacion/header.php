@@ -15,7 +15,7 @@
 </head>
 
 <header> <!-- Inicio del header -->
-    <a href="<?= $base ?>home/home.php" class="logo"> <!-- Inicio del enlace, que redirecciona al home.php -->
+    <a href="<?= $base ?>index.php" class="logo"> <!-- Inicio del enlace, que redirecciona al index.php -->
         <img src="<?= $base ?>Imagenes/Logoreal.png" alt="Logo"> <!-- Imagen del logo de la ONG -->
     </a> <!-- Cierre del enlace -->
 
